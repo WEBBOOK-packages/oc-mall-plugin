@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Classes\Exceptions;
+namespace WebBook\Mall\Classes\Exceptions;
 
 use Illuminate\Support\Collection;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\Discount;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\Discount;
 use RuntimeException;
 
 class InvalidDiscountException extends RuntimeException

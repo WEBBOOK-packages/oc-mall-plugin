@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
 use Event;
-use OFFLINE\Mall\Classes\Exceptions\OutOfStockException;
-use OFFLINE\Mall\Classes\PaymentState\PendingState;
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\Address;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\Customer;
-use OFFLINE\Mall\Models\CustomField;
-use OFFLINE\Mall\Models\CustomFieldOption;
-use OFFLINE\Mall\Models\CustomFieldValue;
-use OFFLINE\Mall\Models\Discount;
-use OFFLINE\Mall\Models\Order;
-use OFFLINE\Mall\Models\OrderState;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\ShippingMethod;
-use OFFLINE\Mall\Models\Tax;
-use OFFLINE\Mall\Models\Variant;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Classes\Exceptions\OutOfStockException;
+use WebBook\Mall\Classes\PaymentState\PendingState;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\Address;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\Customer;
+use WebBook\Mall\Models\CustomField;
+use WebBook\Mall\Models\CustomFieldOption;
+use WebBook\Mall\Models\CustomFieldValue;
+use WebBook\Mall\Models\Discount;
+use WebBook\Mall\Models\Order;
+use WebBook\Mall\Models\OrderState;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\Tax;
+use WebBook\Mall\Models\Variant;
+use WebBook\Mall\Tests\PluginTestCase;
 use RainLab\User\Models\User;
 
 class OrderTest extends PluginTestCase
@@ -62,7 +62,7 @@ class OrderTest extends PluginTestCase
         $this->assertEquals(299.99, $order->total_taxes);
         $this->assertEquals(1300.00, $order->total_post_taxes);
         $this->assertEquals(2800, $order->total_weight);
-        
+
         $this->assertNotEmpty($order->ip_address);
 
         $this->assertFalse($order->shipping_address_same_as_billing);

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Cms\Classes\Page;
 use DB;
@@ -12,14 +12,14 @@ use Model;
 use October\Rain\Database\Traits\Nullable;
 use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Traits\CustomFields;
-use OFFLINE\Mall\Classes\Traits\HashIds;
-use OFFLINE\Mall\Classes\Traits\Images;
-use OFFLINE\Mall\Classes\Traits\PriceAccessors;
-use OFFLINE\Mall\Classes\Traits\ProductPriceAccessors;
-use OFFLINE\Mall\Classes\Traits\PropertyValues;
-use OFFLINE\Mall\Classes\Traits\StockAndQuantity;
-use OFFLINE\Mall\Classes\Traits\UserSpecificPrice;
+use WebBook\Mall\Classes\Traits\CustomFields;
+use WebBook\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Traits\Images;
+use WebBook\Mall\Classes\Traits\PriceAccessors;
+use WebBook\Mall\Classes\Traits\ProductPriceAccessors;
+use WebBook\Mall\Classes\Traits\PropertyValues;
+use WebBook\Mall\Classes\Traits\StockAndQuantity;
+use WebBook\Mall\Classes\Traits\UserSpecificPrice;
 use System\Models\File;
 
 class Variant extends Model
@@ -48,7 +48,7 @@ class Variant extends Model
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_product_variants';
+    public $table = 'webbook_mall_product_variants';
 
     /**
      * The translatable attributes of this model.
@@ -146,7 +146,7 @@ class Variant extends Model
     public $belongsToMany = [
         'files' => [
             ProductFile::class,
-            'table' => 'offline_mall_product_file_variant',
+            'table' => 'webbook_mall_product_file_variant',
         ],
     ];
     
@@ -213,14 +213,14 @@ class Variant extends Model
 
     public function afterDelete()
     {
-        DB::table('offline_mall_property_values')->where('variant_id', $this->id)->delete();
-        DB::table('offline_mall_wishlist_items')->where('variant_id', $this->id)->delete();
+        DB::table('webbook_mall_property_values')->where('variant_id', $this->id)->delete();
+        DB::table('webbook_mall_wishlist_items')->where('variant_id', $this->id)->delete();
     }
 
     public function getImageSetIdOptions()
     {
         $null = [
-            '' => '-- ' . trans('offline.mall::lang.image_sets.create_new'),
+            '' => '-- ' . trans('webbook.mall::lang.image_sets.create_new'),
         ];
 
         $sets = Product::find(post('id', $this->product_id))->image_sets;
@@ -358,7 +358,7 @@ class Variant extends Model
 
         $items = self::published()
             ->whereHas('product', function ($query) {
-                $query->where('offline_mall_products.published', 1);
+                $query->where('webbook_mall_products.published', 1);
             })
             ->with('product')
             ->get()

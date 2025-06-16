@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use October\Rain\Database\Traits\Nullable;
 use October\Rain\Database\Traits\Validation;
@@ -16,7 +16,7 @@ class ProductPrice extends Price
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_product_prices';
+    public $table = 'webbook_mall_product_prices';
 
     /**
      * The attributes that are mass assignable.
@@ -55,7 +55,7 @@ class ProductPrice extends Price
      * @var array
      */
     public $morphTo = [ ];
-    
+
     /**
      * The relationships that should be touched on save.
      * @var array

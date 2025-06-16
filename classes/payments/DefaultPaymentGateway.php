@@ -1,11 +1,11 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Payments;
+namespace WebBook\Mall\Classes\Payments;
 
 use InvalidArgumentException;
 use LogicException;
-use OFFLINE\Mall\Models\Order;
-use OFFLINE\Mall\Models\PaymentMethod;
+use WebBook\Mall\Models\Order;
+use WebBook\Mall\Models\PaymentMethod;
 use Session;
 
 /**

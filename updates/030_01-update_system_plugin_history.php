@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +20,7 @@ class UpdateSystemPluginHistory_030_01 extends Migration
         $rows = DB::table('system_plugin_history')
             ->select('*')
             ->from('system_plugin_history')
-            ->where('code', 'OFFLINE.Mall')
+            ->where('code', 'WebBook.Mall')
             ->where('type', 'script')
             ->get()
             ->all();
@@ -70,7 +70,7 @@ class UpdateSystemPluginHistory_030_01 extends Migration
             } else {
                 $filename = substr('00' . $grp, -3) . '_' . substr('0' . $idx, -2) . '-' . $row->detail;
             }
-            
+
             // Check if new file exists
             if (!file_exists(__DIR__ . '/' . $filename)) {
                 $error = 'Migration file "' . $filename . '" on path "' . __DIR__ . '" does not exist.';

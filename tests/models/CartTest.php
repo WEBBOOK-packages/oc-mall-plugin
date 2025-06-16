@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
 use DB;
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Classes\Exceptions\OutOfStockException;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\Customer;
-use OFFLINE\Mall\Models\CustomField;
-use OFFLINE\Mall\Models\CustomFieldOption;
-use OFFLINE\Mall\Models\CustomFieldValue;
-use OFFLINE\Mall\Models\Discount;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\ShippingMethod;
-use OFFLINE\Mall\Models\Variant;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Classes\Exceptions\OutOfStockException;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\Customer;
+use WebBook\Mall\Models\CustomField;
+use WebBook\Mall\Models\CustomFieldOption;
+use WebBook\Mall\Models\CustomFieldValue;
+use WebBook\Mall\Models\Discount;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\Variant;
+use WebBook\Mall\Tests\PluginTestCase;
 
 class CartTest extends PluginTestCase
 {
@@ -452,7 +452,7 @@ class CartTest extends PluginTestCase
 
     public function test_shipping_method_gets_reset_if_it_becomes_unavailable()
     {
-        DB::table('offline_mall_shipping_methods')->truncate();
+        DB::table('webbook_mall_shipping_methods')->truncate();
 
         $product        = Product::first();
         $product->stock = 100;
@@ -501,7 +501,7 @@ class CartTest extends PluginTestCase
 
     public function test_shipping_method_gets_nulled_of_none_is_available()
     {
-        DB::table('offline_mall_shipping_methods')->truncate();
+        DB::table('webbook_mall_shipping_methods')->truncate();
 
         $product        = Product::first();
         $product->price = ['CHF' => 100, 'EUR' => 150];

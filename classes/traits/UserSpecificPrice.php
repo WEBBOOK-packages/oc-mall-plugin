@@ -1,10 +1,10 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Traits;
+namespace WebBook\Mall\Classes\Traits;
 
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\CustomerGroup;
-use OFFLINE\Mall\Models\Price;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\CustomerGroup;
+use WebBook\Mall\Models\Price;
 
 trait UserSpecificPrice
 {
@@ -51,7 +51,7 @@ trait UserSpecificPrice
     protected function hasUserSpecificPrice(): bool
     {
         return ! app()->runningInBackend()
-            && optional(Auth::user())->offline_mall_customer_group_id !== null
+            && optional(Auth::user())->webbook_mall_customer_group_id !== null
             && $this->customer_group_prices->count() > 0;
     }
 }

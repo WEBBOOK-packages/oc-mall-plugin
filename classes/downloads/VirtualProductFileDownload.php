@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Classes\Downloads;
+namespace WebBook\Mall\Classes\Downloads;
 
 use Auth;
 use Cms\Classes\Controller;
@@ -10,9 +10,9 @@ use Cms\Classes\Page;
 use Flash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\ProductFileGrant;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\ProductFileGrant;
 use Request;
 use Session;
 
@@ -68,7 +68,7 @@ class VirtualProductFileDownload
 
         // If no file is around, return and log an error. The site admin needs to fix this!
         Log::error(
-            '[OFFLINE.Mall] A virtual product without a file attachment has been purchased. You need to fix this!',
+            '[WebBook.Mall] A virtual product without a file attachment has been purchased. You need to fix this!',
             ['grant' => $grant, 'product' => $product, 'user' => Auth::user()]
         );
 
@@ -98,7 +98,7 @@ class VirtualProductFileDownload
     protected function redirectToLogin()
     {
         Session::put('mall.login.redirect', Request::url());
-        Flash::warning(trans('offline.mall::frontend.session.login_required'));
+        Flash::warning(trans('webbook.mall::frontend.session.login_required'));
 
         $url = (new Controller())->pageUrl(GeneralSettings::get('account_page'));
 
@@ -114,6 +114,6 @@ class VirtualProductFileDownload
      */
     protected function trans(string $key)
     {
-        return trans('offline.mall::lang.product_file.errors.' . $key);
+        return trans('webbook.mall::lang.product_file.errors.' . $key);
     }
 }

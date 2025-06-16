@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 use Model;
 use October\Rain\Database\Traits\Sortable;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Database\IsStates;
+use WebBook\Mall\Classes\Database\IsStates;
 use RuntimeException;
 use Session;
 
@@ -62,14 +62,14 @@ class Currency extends Model
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_currencies';
+    public $table = 'webbook_mall_currencies';
 
     /**
      * The validation rules for the single attributes.
      * @var array
      */
     public $rules = [
-        'code'          => 'required|unique:offline_mall_currencies,code',
+        'code'          => 'required|unique:webbook_mall_currencies,code',
         'rate'          => 'required',
         'decimals'      => 'required',
         'format'        => 'required',
@@ -177,13 +177,13 @@ class Currency extends Model
     public static function unknown($currency = null): self
     {
         Log::error(
-            '[OFFLINE.Mall] Unknown currency was requested',
+            '[WebBook.Mall] Unknown currency was requested',
             ['currency' => $currency, 'url' => request()->url()]
         );
 
         return new self([
             'code'       => '???',
-            'symbol'     => trans('offline.mall::lang.currency_settings.unknown'),
+            'symbol'     => trans('webbook.mall::lang.currency_settings.unknown'),
             'rate'       => 1,
             'decimals'   => 2,
             'format'     => '{{ price|number_format(currency.decimals, " ", ",") }} ({{ currency.symbol }})',
@@ -239,15 +239,15 @@ class Currency extends Model
      */
     public function afterDelete()
     {
-        DB::table('offline_mall_prices')->where('currency_id', $this->id)->delete();
-        DB::table('offline_mall_product_prices')->where('currency_id', $this->id)->delete();
-        DB::table('offline_mall_customer_group_prices')->where('currency_id', $this->id)->delete();
+        DB::table('webbook_mall_prices')->where('currency_id', $this->id)->delete();
+        DB::table('webbook_mall_product_prices')->where('currency_id', $this->id)->delete();
+        DB::table('webbook_mall_customer_group_prices')->where('currency_id', $this->id)->delete();
         Cache::forget(self::CURRENCIES_CACHE_KEY);
         Cache::forget(self::DEFAULT_CURRENCY_CACHE_KEY);
         Cache::forget(self::JSON_PRICE_CACHE_KEY);
         Session::forget(static::CURRENCY_SESSION_KEY);
     }
-    
+
     /**
      * Get available order state flag options.
      * @return array

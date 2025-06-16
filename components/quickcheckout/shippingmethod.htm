@@ -1,5 +1,5 @@
 <header class="mall-quick-checkout__collapsible-header">
-    <h2 class="mall-quick-checkout__heading">{{ 'offline.mall::frontend.shipping'|trans }}</h2>
+    <h2 class="mall-quick-checkout__heading">{{ 'webbook.mall::frontend.shipping'|trans }}</h2>
     <div class="mall-quick-checkout__collapsible-summary">
         {% if cart.shipping_method is defined %}
             {{ cart.shipping_method.name|default(null) }}
@@ -28,7 +28,7 @@
                         {% if method.guaranteed_delivery_days|default(null) %}
                             <p>
                                 {% set days = method.guaranteed_delivery_days %}
-                                {{ 'offline.mall::frontend.shipping_method.guaranteed_delivery_days'|transchoice(days, {days: days}) }}
+                                {{ 'webbook.mall::frontend.shipping_method.guaranteed_delivery_days'|transchoice(days, {days: days}) }}
                             </p>
                         {% endif %}
                     </div>
@@ -41,11 +41,11 @@
                         {% if method.rates.count|default(0) > 0 %}
                             {{ isActiveMethod
                             ? (__SELF__.cart.totals.shippingTotal.totalPostTaxes|money )
-                            : ( 'offline.mall::frontend.select_for_shipping_total'|trans ) }}
+                            : ( 'webbook.mall::frontend.select_for_shipping_total'|trans ) }}
                         {% else %}
                             {{ method.price().integer > 0
                             ? (method.price().string|raw)
-                            : ('offline.mall::frontend.no_additional_charges'|trans) }}
+                            : ('webbook.mall::frontend.no_additional_charges'|trans) }}
                         {% endif %}
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                 {% endif %}
             </a>
         {% else %}
-            <p>{{ 'offline.mall::frontend.no_shipping_method_available'|trans }} </p>
+            <p>{{ 'webbook.mall::frontend.no_shipping_method_available'|trans }} </p>
         {% endfor %}
     </div>
 </section>

@@ -1,12 +1,12 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Jobs;
+namespace WebBook\Mall\Classes\Jobs;
 
 use App;
 use Illuminate\Contracts\Queue\Job;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Mail;
-use OFFLINE\Mall\Models\Order;
+use WebBook\Mall\Models\Order;
 
 /**
  * This Job sends the order confirmation to the customer. It also generates
@@ -18,7 +18,7 @@ class SendOrderConfirmationToCustomer
     {
         if ($job->attempts() > 10) {
             logger()->critical(
-                '[OFFLINE.Mall] Failed to send checkout confirmation mail after 10 attempts.',
+                '[WebBook.Mall] Failed to send checkout confirmation mail after 10 attempts.',
                 ['input' => $input]
             );
             $job->delete();
@@ -39,7 +39,7 @@ class SendOrderConfirmationToCustomer
                 $message->to($order->customer->user->email, $order->customer->name);
 
                 if ($pdf = $order->getPDFInvoice()) {
-                    $file_name = trans('offline.mall::lang.order.order_file_name', ['order' => $order->id]);
+                    $file_name = trans('webbook.mall::lang.order.order_file_name', ['order' => $order->id]);
                     $message->attachData($pdf->output(), sprintf('%s.pdf', $file_name));
                 }
             }

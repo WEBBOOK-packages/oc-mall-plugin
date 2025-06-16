@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Cms\Classes\Theme;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Redirect;
 use October\Rain\Exception\ValidationException;
 use October\Rain\Support\Facades\Flash;
-use OFFLINE\Mall\Classes\Traits\HashIds;
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\ShippingMethod;
-use OFFLINE\Mall\Models\Wishlist;
-use OFFLINE\Mall\Models\WishlistItem;
+use WebBook\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\Wishlist;
+use WebBook\Mall\Models\WishlistItem;
 
 class Wishlists extends MallComponent
 {
@@ -94,8 +94,8 @@ class Wishlists extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.wishlists.details.name',
-            'description' => 'offline.mall::lang.components.wishlists.details.description',
+            'name'        => 'webbook.mall::lang.components.wishlists.details.name',
+            'description' => 'webbook.mall::lang.components.wishlists.details.description',
         ];
     }
 
@@ -103,8 +103,8 @@ class Wishlists extends MallComponent
     {
         return [
             'showShipping' => [
-                'title'       => 'offline.mall::lang.components.wishlists.properties.showShipping.title',
-                'description' => 'offline.mall::lang.components.wishlists.properties.showShipping.description',
+                'title'       => 'webbook.mall::lang.components.wishlists.properties.showShipping.title',
+                'description' => 'webbook.mall::lang.components.wishlists.properties.showShipping.description',
                 'type'        => 'checkbox',
             ],
         ];
@@ -145,7 +145,7 @@ class Wishlists extends MallComponent
         $this->currentItem->name = post('name');
         $this->currentItem->save();
 
-        Flash::success(trans('offline.mall::frontend.wishlist.renamed'));
+        Flash::success(trans('webbook.mall::frontend.wishlist.renamed'));
 
         return $this->refreshList();
     }
@@ -217,7 +217,7 @@ class Wishlists extends MallComponent
 
         $this->currentItem->delete();
 
-        Flash::success(trans('offline.mall::frontend.wishlist.deleted'));
+        Flash::success(trans('webbook.mall::frontend.wishlist.deleted'));
 
         // Set the current item to the next available record.
         $this->items       = $this->getWishlists();
@@ -233,9 +233,9 @@ class Wishlists extends MallComponent
         $allInStock = $this->currentItem->addToCart(Cart::byUser(Auth::user()));
 
         if (! $allInStock) {
-            Flash::warning(trans('offline.mall::frontend.wishlists.stockmissing'));
+            Flash::warning(trans('webbook.mall::frontend.wishlists.stockmissing'));
         } else {
-            Flash::success(trans('offline.mall::frontend.wishlists.addedtocart'));
+            Flash::success(trans('webbook.mall::frontend.wishlists.addedtocart'));
         }
 
         // redirect to the cart page.

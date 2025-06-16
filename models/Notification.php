@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Illuminate\Support\Facades\Cache;
 use LogicException;
@@ -18,11 +18,11 @@ class Notification extends Model
 
     public const CACHE_KEY = 'mall.enabled.notifications';
 
-    public $table = 'offline_mall_notifications';
+    public $table = 'webbook_mall_notifications';
 
     public $rules = [
         'name'     => 'required',
-        'code'     => 'required|unique:offline_mall_notifications,code',
+        'code'     => 'required|unique:webbook_mall_notifications,code',
         'template' => 'required',
     ];
 
@@ -40,7 +40,7 @@ class Notification extends Model
 
     public static function getEnabled()
     {
-        if (! Schema::hasTable('offline_mall_notifications')) {
+        if (! Schema::hasTable('webbook_mall_notifications')) {
             return collect([]);
         }
 
@@ -54,6 +54,6 @@ class Notification extends Model
 
     public function beforeDeleting()
     {
-        throw new LogicException('OFFLINE.Mall: Notifications cannot be deleted.');
+        throw new LogicException('WebBook.Mall: Notifications cannot be deleted.');
     }
 }

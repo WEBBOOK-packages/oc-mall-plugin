@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Controllers;
+namespace WebBook\Mall\Controllers;
 
 use Backend\Behaviors\FormController;
 use Backend\Behaviors\ListController;
@@ -10,9 +10,9 @@ use Backend\Behaviors\RelationController;
 use Backend\Classes\Controller;
 use BackendMenu;
 use October\Rain\Database\Builder;
-use OFFLINE\Mall\Classes\Database\IsStatesScope;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\ShippingMethod;
+use WebBook\Mall\Classes\Database\IsStatesScope;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\ShippingMethod;
 use System\Classes\SettingsManager;
 
 class ShippingMethods extends Controller
@@ -50,7 +50,7 @@ class ShippingMethods extends Controller
      * @var array
      */
     public $requiredPermissions = [
-        'offline.mall.manage_shipping_methods',
+        'webbook.mall.manage_shipping_methods',
     ];
 
     /**
@@ -60,9 +60,9 @@ class ShippingMethods extends Controller
     {
         parent::__construct();
         BackendMenu::setContext('October.System', 'system', 'settings');
-        SettingsManager::setContext('OFFLINE.Mall', 'shipping_method_settings');
+        SettingsManager::setContext('WebBook.Mall', 'shipping_method_settings');
     }
-    
+
     /**
      * Extend query to show disabled records.
      * @param Builder $query
@@ -72,7 +72,7 @@ class ShippingMethods extends Controller
     {
         $query->withDisabled();
     }
-    
+
     /**
      * Extend query to show disabled records.
      * @param Builder $query

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
 use Event;
 use Illuminate\Support\Facades\DB;
-use OFFLINE\Mall\Models\Address;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\ShippingMethod;
-use OFFLINE\Mall\Models\Tax;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Models\Address;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\Tax;
+use WebBook\Mall\Tests\PluginTestCase;
 use RainLab\Location\Models\Country;
 
 class ShippingMethodTest extends PluginTestCase
@@ -24,7 +24,7 @@ class ShippingMethodTest extends PluginTestCase
     public function setUp(): void
     {
         parent::setUp();
-        DB::table('offline_mall_shipping_methods')->truncate();
+        DB::table('webbook_mall_shipping_methods')->truncate();
 
         // Set Country
         Event::listen('mall.cart.setCountry', function ($model) {
@@ -39,7 +39,7 @@ class ShippingMethodTest extends PluginTestCase
     public function test_return_only_enabled_shipping_methods()
     {
         $method = ShippingMethod::create([
-            'name'          => trans('offline.mall::demo.shipping_methods.standard'),
+            'name'          => trans('webbook.mall::demo.shipping_methods.standard'),
             'sort_order'    => 1,
             'is_default'    => true,
         ]);
@@ -60,9 +60,9 @@ class ShippingMethodTest extends PluginTestCase
                 'priceable_type' => ShippingMethod::MORPH_KEY,
             ]),
         ]);
-        
+
         $method = ShippingMethod::create([
-            'name'                      => trans('offline.mall::demo.shipping_methods.express'),
+            'name'                      => trans('webbook.mall::demo.shipping_methods.express'),
             'sort_order'                => 1,
             'is_default'                => false,
             'guaranteed_delivery_days'  => 3,
@@ -252,7 +252,7 @@ class ShippingMethodTest extends PluginTestCase
         $cart->addProduct($product, 1);
         $cart->setShippingAddress($address);
 
-        \DB::table('offline_mall_prices')->where('priceable_type', ShippingMethod::MORPH_KEY)->delete();
+        \DB::table('webbook_mall_prices')->where('priceable_type', ShippingMethod::MORPH_KEY)->delete();
 
         $method                     = new ShippingMethod();
         $method->name               = 'Test';
@@ -300,7 +300,7 @@ class ShippingMethodTest extends PluginTestCase
         $cart->addProduct($product, 1);
         $cart->setShippingAddress($address);
 
-        \DB::table('offline_mall_prices')->where('priceable_type', ShippingMethod::MORPH_KEY)->delete();
+        \DB::table('webbook_mall_prices')->where('priceable_type', ShippingMethod::MORPH_KEY)->delete();
 
         $method                     = new ShippingMethod();
         $method->name               = 'Test';

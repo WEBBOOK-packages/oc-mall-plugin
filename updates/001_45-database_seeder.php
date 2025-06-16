@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use October\Rain\Database\Updates\Seeder;
 

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Cms\Classes\ComponentBase;
-use OFFLINE\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Traits\HashIds;
 
 /**
- * This is the base class of all OFFLINE.Mall components.
+ * This is the base class of all WebBook.Mall components.
  */
 abstract class MallComponent extends ComponentBase
 {

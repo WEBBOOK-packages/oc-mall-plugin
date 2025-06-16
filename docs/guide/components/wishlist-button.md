@@ -17,7 +17,7 @@ The variant id can be `null`.
 ## Styling
 
 Take a look
-at [the relevant SCSS files in our demo repository](https://github.com/OFFLINE-GmbH/oc-mall-theme/blob/master/resources/scss/mall/wishlists.scss)
+at [the relevant SCSS files in our demo repository](https://github.com/WebBook-GmbH/oc-mall-theme/blob/master/resources/scss/mall/wishlists.scss)
 to get an idea on how to style this component.
 
 ## Events
@@ -41,7 +41,7 @@ $(function () {
 If you place this button inside the [Product component](./product.md)
 you can reference the `item` variable to access the currenlty viewed product/variant.
 
-Checkout [the source of the demo website](https://github.com/OFFLINE-GmbH/oc-mall-theme/blob/master/partials/product/belowcartbutton.htm)
+Checkout [the source of the demo website](https://github.com/WebBook-GmbH/oc-mall-theme/blob/master/partials/product/belowcartbutton.htm)
  to see an example implementation.
 
 ```twig

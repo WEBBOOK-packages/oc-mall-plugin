@@ -1,10 +1,10 @@
 <?php
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
-use OFFLINE\Mall\Models\Category;
-use OFFLINE\Mall\Models\PropertyGroup;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Models\Category;
+use WebBook\Mall\Models\PropertyGroup;
+use WebBook\Mall\Tests\PluginTestCase;
 
 class SortableRelationTest extends PluginTestCase
 {

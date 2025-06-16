@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Backend\Models\ExportModel;
 

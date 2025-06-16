@@ -1,16 +1,16 @@
 <?php
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use DB;
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class CreateOfflineMallPropertyValues extends Migration
+class CreateWebBookMallPropertyValues extends Migration
 {
     public function up()
     {
-        Schema::create('offline_mall_property_values', function ($table) {
+        Schema::create('webbook_mall_property_values', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->integer('product_id')->unsigned();
@@ -37,6 +37,6 @@ class CreateOfflineMallPropertyValues extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('offline_mall_property_values');
+        Schema::dropIfExists('webbook_mall_property_values');
     }
 }

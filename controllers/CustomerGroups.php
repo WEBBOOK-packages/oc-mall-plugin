@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Controllers;
+namespace WebBook\Mall\Controllers;
 
 use Backend\Behaviors\FormController;
 use Backend\Behaviors\ListController;
@@ -46,7 +46,7 @@ class CustomerGroups extends Controller
      * @var array
      */
     public $requiredPermissions = [
-        'offline.mall.manage_customer_groups',
+        'webbook.mall.manage_customer_groups',
     ];
 
     /**

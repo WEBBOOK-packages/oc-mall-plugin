@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Factories;
+namespace WebBook\Mall\Updates\Factories;
 
 use Illuminate\Database\Eloquent\Factory;
 //use October\Rain\Database\Factories\Factory;
-use OFFLINE\Mall\Models\Address;
+use WebBook\Mall\Models\Address;
 use RainLab\Location\Models\Country;
 
 /**

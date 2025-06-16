@@ -1,9 +1,9 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Index;
+namespace WebBook\Mall\Classes\Index;
 
 use Illuminate\Support\Collection;
-use OFFLINE\Mall\Classes\CategoryFilter\SortOrder\SortOrder;
+use WebBook\Mall\Classes\CategoryFilter\SortOrder\SortOrder;
 
 interface Index
 {

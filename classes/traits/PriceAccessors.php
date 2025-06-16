@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Classes\Traits;
+namespace WebBook\Mall\Classes\Traits;
 
 use Closure;
 use October\Rain\Database\Collection;
-use OFFLINE\Mall\Classes\Database\IsStatesScope;
-use OFFLINE\Mall\Classes\Utils\Money;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Variant;
+use WebBook\Mall\Classes\Database\IsStatesScope;
+use WebBook\Mall\Classes\Utils\Money;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Variant;
 
 trait PriceAccessors
 {

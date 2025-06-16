@@ -1,14 +1,14 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Index;
+namespace WebBook\Mall\Classes\Index;
 
 use Illuminate\Support\Collection;
 use Nahid\JsonQ\Jsonq;
-use OFFLINE\Mall\Classes\CategoryFilter\Filter;
-use OFFLINE\Mall\Classes\CategoryFilter\RangeFilter;
-use OFFLINE\Mall\Classes\CategoryFilter\SetFilter;
-use OFFLINE\Mall\Classes\CategoryFilter\SortOrder\SortOrder;
-use OFFLINE\Mall\Models\Currency;
+use WebBook\Mall\Classes\CategoryFilter\Filter;
+use WebBook\Mall\Classes\CategoryFilter\RangeFilter;
+use WebBook\Mall\Classes\CategoryFilter\SetFilter;
+use WebBook\Mall\Classes\CategoryFilter\SortOrder\SortOrder;
+use WebBook\Mall\Models\Currency;
 
 class Filebase implements Index
 {

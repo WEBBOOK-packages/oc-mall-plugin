@@ -1,12 +1,12 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Traits\Cart;
+namespace WebBook\Mall\Classes\Traits\Cart;
 
 use October\Rain\Support\Collection;
-use OFFLINE\Mall\Classes\Totals\TaxTotal;
-use OFFLINE\Mall\Classes\Traits\FilteredTaxes;
-use OFFLINE\Mall\Models\ServiceOption;
-use OFFLINE\Mall\Models\Tax;
+use WebBook\Mall\Classes\Totals\TaxTotal;
+use WebBook\Mall\Classes\Traits\FilteredTaxes;
+use WebBook\Mall\Models\ServiceOption;
+use WebBook\Mall\Models\Tax;
 
 trait CartItemPriceAccessors
 {

@@ -15,7 +15,7 @@ Show a shipping method selector along with the Wishlist. Shipping cost will be i
 ## Styling
 
 Take a look
-at [the relevant SCSS files in our demo repository](https://github.com/OFFLINE-GmbH/oc-mall-theme/blob/master/resources/scss/mall/wishlists.scss)
+at [the relevant SCSS files in our demo repository](https://github.com/WebBook-GmbH/oc-mall-theme/blob/master/resources/scss/mall/wishlists.scss)
 to get an idea on how to style this component.
 
 ## Events

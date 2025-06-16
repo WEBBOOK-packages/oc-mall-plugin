@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\Sortable;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Traits\PriceAccessors;
+use WebBook\Mall\Classes\Traits\PriceAccessors;
 
 class ServiceOption extends Model
 {
@@ -19,7 +19,7 @@ class ServiceOption extends Model
 
     public const MORPH_KEY = 'mall.service_option';
 
-    public $table = 'offline_mall_service_options';
+    public $table = 'webbook_mall_service_options';
 
     public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
 

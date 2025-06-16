@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\Sluggable;
@@ -23,7 +23,7 @@ class ReviewCategory extends Model
         'name',
     ];
 
-    public $table = 'offline_mall_review_categories';
+    public $table = 'webbook_mall_review_categories';
 
     public $slugs = [
         'slug' => 'name',
@@ -36,7 +36,7 @@ class ReviewCategory extends Model
     public $belongsToMany = [
         'categories' => [
             Category::class,
-            'table' => 'offline_mall_category_review_category',
+            'table' => 'webbook_mall_category_review_category',
         ],
     ];
 }

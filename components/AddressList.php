@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Auth;
 use Illuminate\Support\Collection;
 use October\Rain\Exception\ValidationException;
 use October\Rain\Support\Facades\Flash;
-use OFFLINE\Mall\Models\Address;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\Address;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\GeneralSettings;
 
 /**
  * Display a list of user addresses.
@@ -60,8 +60,8 @@ class AddressList extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.addressList.details.name',
-            'description' => 'offline.mall::lang.components.addressList.details.description',
+            'name'        => 'webbook.mall::lang.components.addressList.details.name',
+            'description' => 'webbook.mall::lang.components.addressList.details.description',
         ];
     }
 
@@ -98,7 +98,7 @@ class AddressList extends MallComponent
     {
         $this->updateDefaultAddressFromUser('shipping');
 
-        Flash::success(trans('offline.mall::lang.components.addressList.messages.default_shipping_address_changed'));
+        Flash::success(trans('webbook.mall::lang.components.addressList.messages.default_shipping_address_changed'));
 
         return [
             '.mall-address-list__list' => $this->renderPartial($this->alias . '::list'),
@@ -113,7 +113,7 @@ class AddressList extends MallComponent
     {
         $this->updateDefaultAddressFromUser('billing');
 
-        Flash::success(trans('offline.mall::lang.components.addressList.messages.default_billing_address_changed'));
+        Flash::success(trans('webbook.mall::lang.components.addressList.messages.default_billing_address_changed'));
 
         return [
             '.mall-address-list__list' => $this->renderPartial($this->alias . '::list'),
@@ -135,7 +135,7 @@ class AddressList extends MallComponent
         $address = Address::byCustomer($customer)->where('id', $id)->first();
 
         if (!$address) {
-            throw new ValidationException(['id' => trans('offline.mall::lang.components.addressList.errors.address_not_found')]);
+            throw new ValidationException(['id' => trans('webbook.mall::lang.components.addressList.errors.address_not_found')]);
         }
 
         if ($type === 'billing') {
@@ -166,11 +166,11 @@ class AddressList extends MallComponent
         $address = Address::byCustomer($customer)->where('id', $id)->first();
 
         if (!$address) {
-            throw new ValidationException(['id' => trans('offline.mall::lang.components.addressList.errors.address_not_found')]);
+            throw new ValidationException(['id' => trans('webbook.mall::lang.components.addressList.errors.address_not_found')]);
         }
 
         if (Address::byCustomer($customer)->count() <= 1) {
-            throw new ValidationException(['id' => trans('offline.mall::lang.components.addressList.errors.cannot_delete_last_address')]);
+            throw new ValidationException(['id' => trans('webbook.mall::lang.components.addressList.errors.cannot_delete_last_address')]);
         }
 
         $address->delete();
@@ -182,7 +182,7 @@ class AddressList extends MallComponent
             $customer->default_shipping_address_id = $defaultAddress->id;
             $cart->setShippingAddress($defaultAddress);
         }
-        
+
         if ($customer->default_billing_address_id === $address->id) {
             $customer->default_billing_address_id = $defaultAddress->id;
             $cart->setBillingAddress($defaultAddress);
@@ -190,7 +190,7 @@ class AddressList extends MallComponent
 
         $customer->save();
 
-        Flash::success(trans('offline.mall::lang.components.addressList.messages.address_deleted'));
+        Flash::success(trans('webbook.mall::lang.components.addressList.messages.address_deleted'));
 
         return [
             '.mall-address-list__list' => $this->renderPartial($this->alias . '::list'),

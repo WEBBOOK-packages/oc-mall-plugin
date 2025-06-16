@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Classes\Cart;
+namespace WebBook\Mall\Classes\Cart;
 
 use Auth;
 use Illuminate\Support\Collection;
-use OFFLINE\Mall\Classes\Totals\TotalsCalculatorInput;
-use OFFLINE\Mall\Classes\Utils\Money;
-use OFFLINE\Mall\Models\Discount;
+use WebBook\Mall\Classes\Totals\TotalsCalculatorInput;
+use WebBook\Mall\Classes\Utils\Money;
+use WebBook\Mall\Models\Discount;
 
 class DiscountApplier
 {
@@ -123,7 +123,7 @@ class DiscountApplier
         if ($discount->trigger === 'customer_group' && $this->userBelongsToCustomerGroup(intval($discount->customer_group_id))) {
             return true;
         }
-        
+
         if ($discount->trigger === 'shipping_method' && $this->appliesForShippingMethod($discount)) {
             return true;
         }

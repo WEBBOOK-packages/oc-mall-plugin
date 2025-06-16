@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Illuminate\Support\Collection;
 use Model;
 use October\Rain\Database\Traits\Encryptable;
-use OFFLINE\Mall\Classes\Payments\PaymentGateway;
+use WebBook\Mall\Classes\Payments\PaymentGateway;
 
 class PaymentGatewaySettings extends Model
 {
@@ -15,9 +15,9 @@ class PaymentGatewaySettings extends Model
 
     public $implement = ['System.Behaviors.SettingsModel'];
 
-    public $settingsCode = 'offline_mall_settings';
+    public $settingsCode = 'webbook_mall_settings';
 
-    public $settingsFields = '$/offline/mall/models/settings/fields_payment_gateways.yaml';
+    public $settingsFields = '$/webbook/mall/models/settings/fields_payment_gateways.yaml';
 
     protected $encryptable = [];
 

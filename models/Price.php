@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Model;
 use October\Rain\Database\Traits\Nullable;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Database\IsStates;
-use OFFLINE\Mall\Classes\Utils\Money;
+use WebBook\Mall\Classes\Database\IsStates;
+use WebBook\Mall\Classes\Utils\Money;
 
 class Price extends Model
 {
@@ -27,7 +27,7 @@ class Price extends Model
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_prices';
+    public $table = 'webbook_mall_prices';
 
     /**
      * The validation rules for the single attributes.
@@ -143,12 +143,12 @@ class Price extends Model
             }
 
             $builder->join(
-                'offline_mall_price_categories',
-                'offline_mall_prices.price_category_id',
+                'webbook_mall_price_categories',
+                'webbook_mall_prices.price_category_id',
                 '=',
-                'offline_mall_price_categories.id'
+                'webbook_mall_price_categories.id'
             );
-            $builder->where('offline_mall_price_categories.is_enabled', true);
+            $builder->where('webbook_mall_price_categories.is_enabled', true);
 
             return $builder;
         }
@@ -289,7 +289,7 @@ class Price extends Model
             ],
             'category' => null,
         ];
-        
+
         if ($this->category) {
             $data['category'] = [
                 'sort_order' => $this->category->sort_order,

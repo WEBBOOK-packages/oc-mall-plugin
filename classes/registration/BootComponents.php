@@ -1,31 +1,31 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Registration;
+namespace WebBook\Mall\Classes\Registration;
 
-use OFFLINE\Mall\Components\AddressForm;
-use OFFLINE\Mall\Components\AddressList;
-use OFFLINE\Mall\Components\AddressSelector;
-use OFFLINE\Mall\Components\Cart;
-use OFFLINE\Mall\Components\Checkout;
-use OFFLINE\Mall\Components\CurrencyPicker;
-use OFFLINE\Mall\Components\CustomerProfile;
-use OFFLINE\Mall\Components\DiscountApplier;
-use OFFLINE\Mall\Components\EnhancedEcommerceAnalytics;
-use OFFLINE\Mall\Components\MallDependencies;
-use OFFLINE\Mall\Components\MyAccount;
-use OFFLINE\Mall\Components\OrdersList;
-use OFFLINE\Mall\Components\PaymentMethodSelector;
-use OFFLINE\Mall\Components\Product as ProductComponent;
-use OFFLINE\Mall\Components\ProductReviews;
-use OFFLINE\Mall\Components\Products as ProductsComponent;
-use OFFLINE\Mall\Components\ProductsFilter;
-use OFFLINE\Mall\Components\QuickCheckout;
-use OFFLINE\Mall\Components\ShippingMethodSelector;
-use OFFLINE\Mall\Components\SignUp;
-use OFFLINE\Mall\Components\WishlistButton;
-use OFFLINE\Mall\Components\Wishlists;
-use OFFLINE\Mall\FormWidgets\Price;
-use OFFLINE\Mall\FormWidgets\PropertyFields;
+use WebBook\Mall\Components\AddressForm;
+use WebBook\Mall\Components\AddressList;
+use WebBook\Mall\Components\AddressSelector;
+use WebBook\Mall\Components\Cart;
+use WebBook\Mall\Components\Checkout;
+use WebBook\Mall\Components\CurrencyPicker;
+use WebBook\Mall\Components\CustomerProfile;
+use WebBook\Mall\Components\DiscountApplier;
+use WebBook\Mall\Components\EnhancedEcommerceAnalytics;
+use WebBook\Mall\Components\MallDependencies;
+use WebBook\Mall\Components\MyAccount;
+use WebBook\Mall\Components\OrdersList;
+use WebBook\Mall\Components\PaymentMethodSelector;
+use WebBook\Mall\Components\Product as ProductComponent;
+use WebBook\Mall\Components\ProductReviews;
+use WebBook\Mall\Components\Products as ProductsComponent;
+use WebBook\Mall\Components\ProductsFilter;
+use WebBook\Mall\Components\QuickCheckout;
+use WebBook\Mall\Components\ShippingMethodSelector;
+use WebBook\Mall\Components\SignUp;
+use WebBook\Mall\Components\WishlistButton;
+use WebBook\Mall\Components\Wishlists;
+use WebBook\Mall\FormWidgets\Price;
+use WebBook\Mall\FormWidgets\PropertyFields;
 
 trait BootComponents
 {

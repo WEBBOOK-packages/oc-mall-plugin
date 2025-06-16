@@ -1,11 +1,11 @@
-name: 'offline.mall::lang.common.variants'
-modelClass: OFFLINE\Mall\Models\Variant
-form: $/offline/mall/models/variant/fields.yaml
-defaultRedirect: offline/mall/variants
+name: 'webbook.mall::lang.common.variants'
+modelClass: WebBook\Mall\Models\Variant
+form: $/webbook/mall/models/variant/fields.yaml
+defaultRedirect: webbook/mall/variants
 create:
-    redirect: 'offline/mall/variants/update/:id'
-    redirectClose: offline/mall/variants
+    redirect: 'webbook/mall/variants/update/:id'
+    redirectClose: webbook/mall/variants
 update:
-    redirect: offline/mall/variants
-    redirectClose: offline/mall/variants
+    redirect: webbook/mall/variants
+    redirectClose: webbook/mall/variants
 preview: {  }

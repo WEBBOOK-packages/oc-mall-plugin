@@ -1,10 +1,10 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Payments;
+namespace WebBook\Mall\Classes\Payments;
 
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Models\Order;
-use OFFLINE\Mall\Models\PaymentMethod;
+use WebBook\Mall\Models\Order;
+use WebBook\Mall\Models\PaymentMethod;
 
 /**
  * The PaymentGateway is responsible for the orchestration

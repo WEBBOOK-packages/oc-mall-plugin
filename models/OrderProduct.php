@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Traits\JsonPrice;
+use WebBook\Mall\Classes\Traits\JsonPrice;
 
 class OrderProduct extends Model
 {
@@ -21,7 +21,7 @@ class OrderProduct extends Model
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_order_products';
+    public $table = 'webbook_mall_order_products';
 
     /**
      * The validation rules for the single attributes.

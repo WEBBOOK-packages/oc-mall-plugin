@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Index;
+namespace WebBook\Mall\Classes\Index;
 
 use RuntimeException;
 

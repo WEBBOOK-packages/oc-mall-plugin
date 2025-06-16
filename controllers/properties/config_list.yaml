@@ -1,7 +1,7 @@
-title: 'offline.mall::lang.product.properties'
-modelClass: OFFLINE\Mall\Models\Property
-list: $/offline/mall/models/property/columns.yaml
-recordUrl: 'offline/mall/properties/update/:id'
+title: 'webbook.mall::lang.product.properties'
+modelClass: WebBook\Mall\Models\Property
+list: $/webbook/mall/models/property/columns.yaml
+recordUrl: 'webbook/mall/properties/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'
 recordsPerPage: 20
 showSetup: true

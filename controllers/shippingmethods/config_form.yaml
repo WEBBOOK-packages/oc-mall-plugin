@@ -1,14 +1,14 @@
-name: offline.mall::lang.common.shipping_methods
-modelClass: OFFLINE\Mall\Models\ShippingMethod
-form: $/offline/mall/models/shippingmethod/fields.yaml
-defaultRedirect: offline/mall/shippingmethods
+name: webbook.mall::lang.common.shipping_methods
+modelClass: WebBook\Mall\Models\ShippingMethod
+form: $/webbook/mall/models/shippingmethod/fields.yaml
+defaultRedirect: webbook/mall/shippingmethods
 create:
-    title: 'offline.mall::lang.titles.shipping_methods.create'
-    redirect: 'offline/mall/shippingmethods/update/:id'
-    redirectClose: offline/mall/shippingmethods
+    title: 'webbook.mall::lang.titles.shipping_methods.create'
+    redirect: 'webbook/mall/shippingmethods/update/:id'
+    redirectClose: webbook/mall/shippingmethods
 update:
-    title: 'offline.mall::lang.titles.shipping_methods.update'
-    redirect: offline/mall/shippingmethods
-    redirectClose: offline/mall/shippingmethods
+    title: 'webbook.mall::lang.titles.shipping_methods.update'
+    redirect: webbook/mall/shippingmethods
+    redirectClose: webbook/mall/shippingmethods
 preview:
-    title: 'offline.mall::lang.titles.shipping_methods.preview'
+    title: 'webbook.mall::lang.titles.shipping_methods.preview'

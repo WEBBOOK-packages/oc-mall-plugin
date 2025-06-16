@@ -1,15 +1,15 @@
 <?php
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class CreateOfflineMallCountryTax extends Migration
+class CreateWebBookMallCountryTax extends Migration
 {
     public function up()
     {
-        Schema::create('offline_mall_country_tax', function ($table) {
+        Schema::create('webbook_mall_country_tax', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->integer('country_id');
@@ -18,9 +18,9 @@ class CreateOfflineMallCountryTax extends Migration
             $table->unique(['country_id', 'tax_id']);
         });
     }
-    
+
     public function down()
     {
-        Schema::dropIfExists('offline_mall_country_tax');
+        Schema::dropIfExists('webbook_mall_country_tax');
     }
 }

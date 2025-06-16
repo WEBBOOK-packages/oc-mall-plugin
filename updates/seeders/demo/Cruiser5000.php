@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Demo;
+namespace WebBook\Mall\Updates\Seeders\Demo;
 
-use OFFLINE\Mall\Models\ProductPrice;
-use OFFLINE\Mall\Models\Review;
+use WebBook\Mall\Models\ProductPrice;
+use WebBook\Mall\Models\Review;
 
 class Cruiser5000 extends DemoProduct
 {
@@ -16,10 +16,10 @@ class Cruiser5000 extends DemoProduct
             'user_defined_id'              => 'MTB001',
             'slug'                         => 'cruiser-5000',
             'name'                         => 'Cruiser 5000',
-            'description'                  => trans('offline.mall::demo.products.cruiser_5000.description'),
-            'description_short'            => trans('offline.mall::demo.products.cruiser_5000.description_short'),
-            'meta_title'                   => trans('offline.mall::demo.products.cruiser_5000.meta_title'),
-            'meta_description'             => trans('offline.mall::demo.products.cruiser_5000.meta_description'),
+            'description'                  => trans('webbook.mall::demo.products.cruiser_5000.description'),
+            'description_short'            => trans('webbook.mall::demo.products.cruiser_5000.description_short'),
+            'meta_title'                   => trans('webbook.mall::demo.products.cruiser_5000.meta_title'),
+            'meta_description'             => trans('webbook.mall::demo.products.cruiser_5000.meta_description'),
             'meta_keywords'                => 'mtb, mountainbike, cruiser, bike',
             'weight'                       => 14000,
             'inventory_management_method'  => 'variant',
@@ -54,13 +54,13 @@ class Cruiser5000 extends DemoProduct
     {
         return [
             'color'       => [
-                'name'  => trans('offline.mall::demo.products.properties.devils_red'),
+                'name'  => trans('webbook.mall::demo.products.properties.devils_red'),
                 'hex'   => '#e74c3c',
             ],
             'rear-travel' => '155',
             'fork-travel' => '160',
-            'material'    => trans('offline.mall::demo.products.properties.carbon'),
-            'gender'      => trans('offline.mall::demo.products.properties.unisex'),
+            'material'    => trans('webbook.mall::demo.products.properties.carbon'),
+            'gender'      => trans('webbook.mall::demo.products.properties.unisex'),
         ];
     }
 
@@ -130,7 +130,7 @@ class Cruiser5000 extends DemoProduct
     {
         return [
             [
-                'name'     =>  trans('offline.mall::demo.products.fields.include_bike_assembly'),
+                'name'     =>  trans('webbook.mall::demo.products.fields.include_bike_assembly'),
                 'type'     => 'checkbox',
                 'price'    => ['USD' => 490, 'EUR' => 200, 'CHF' => 5900],
                 'required' => false,
@@ -142,7 +142,7 @@ class Cruiser5000 extends DemoProduct
     {
         return [
             [
-                'name'          =>  trans('offline.mall::demo.products.images.main'),
+                'name'          =>  trans('webbook.mall::demo.products.images.main'),
                 'is_main_set'   => true,
                 'images'        => [
                     realpath(__DIR__ . '/images/cruiser-5000-1.jpg'),
@@ -167,8 +167,8 @@ class Cruiser5000 extends DemoProduct
             ],
             [
                 'review'           => new Review([
-                    'title'       => trans('offline.mall::demo.products.cruiser_5000.reviews.title'),
-                    'description' => trans('offline.mall::demo.products.cruiser_5000.reviews.description'),
+                    'title'       => trans('webbook.mall::demo.products.cruiser_5000.reviews.title'),
+                    'description' => trans('webbook.mall::demo.products.cruiser_5000.reviews.description'),
                     'rating'      => 3,
                 ]),
                 'category_reviews' => [

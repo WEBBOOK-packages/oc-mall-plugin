@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\CategoryFilter\SortOrder;
+namespace WebBook\Mall\Classes\CategoryFilter\SortOrder;
 
 class Manual extends SortOrder
 {

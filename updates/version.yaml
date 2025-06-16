@@ -574,7 +574,7 @@ v3.2.2:
 v3.3.0:
     - 'Various Bugfixes'
     - 'Added support for RainLab.User 3.0'
-    - 'Deprecated OFFLINE\Mall\Models\User, use the RainLab.User model instead'
+    - 'Deprecated WebBook\Mall\Models\User, use the RainLab.User model instead'
 v3.3.1:
     - 'Minor Bugfixes'
     - 'Fixed strict variables issue on oldPrice() attribute, thanks to @dathwa (#1118).'

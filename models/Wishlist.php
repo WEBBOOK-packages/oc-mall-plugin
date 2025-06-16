@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Carbon\Carbon;
 use Cookie;
 use Illuminate\Support\Collection;
 use Model;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Exceptions\OutOfStockException;
-use OFFLINE\Mall\Classes\Totals\TotalsCalculator;
-use OFFLINE\Mall\Classes\Totals\TotalsCalculatorInput;
-use OFFLINE\Mall\Classes\Traits\HashIds;
-use OFFLINE\Mall\Classes\Traits\PDFMaker;
-use OFFLINE\Mall\Classes\Traits\ShippingMethods;
-use OFFLINE\Mall\Classes\User\Auth;
+use WebBook\Mall\Classes\Exceptions\OutOfStockException;
+use WebBook\Mall\Classes\Totals\TotalsCalculator;
+use WebBook\Mall\Classes\Totals\TotalsCalculatorInput;
+use WebBook\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Traits\PDFMaker;
+use WebBook\Mall\Classes\Traits\ShippingMethods;
+use WebBook\Mall\Classes\User\Auth;
 use RainLab\User\Models\User;
 use Session;
 
@@ -26,7 +26,7 @@ class Wishlist extends Model
     use PDFMaker;
     use ShippingMethods;
 
-    public $table = 'offline_mall_wishlists';
+    public $table = 'webbook_mall_wishlists';
 
     public $rules = [
         'name'        => 'required',
@@ -123,7 +123,7 @@ class Wishlist extends Model
             ? ['customer_id' => $user->customer->id]
             : ['session_id' => static::getSessionId()];
 
-        $name = $name ?? trans('offline.mall::frontend.wishlist.default_name');
+        $name = $name ?? trans('webbook.mall::frontend.wishlist.default_name');
 
         return Wishlist::create(array_merge($attributes, ['name' => $name]));
     }

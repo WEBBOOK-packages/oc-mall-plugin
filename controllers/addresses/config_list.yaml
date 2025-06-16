@@ -1,7 +1,7 @@
-title: 'offline.mall::lang.common.addresses'
-modelClass: OFFLINE\Mall\Models\Address
-list: $/offline/mall/models/address/columns.yaml
-recordUrl: 'offline/mall/addresses/update/:id'
+title: 'webbook.mall::lang.common.addresses'
+modelClass: WebBook\Mall\Models\Address
+list: $/webbook/mall/models/address/columns.yaml
+recordUrl: 'webbook/mall/addresses/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'
 recordsPerPage: 20
 showSetup: true

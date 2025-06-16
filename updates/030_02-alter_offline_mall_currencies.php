@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class AlterOfflineMallCurrencies_030_02 extends Migration
+class AlterWebBookMallCurrencies_030_02 extends Migration
 {
     /**
      * Install Migration
@@ -17,7 +17,7 @@ class AlterOfflineMallCurrencies_030_02 extends Migration
      */
     public function up()
     {
-        Schema::table('offline_mall_currencies', function (Blueprint $table) {
+        Schema::table('webbook_mall_currencies', function (Blueprint $table) {
             $table->boolean('is_enabled')->default(true)->after('is_default');
         });
     }
@@ -29,11 +29,11 @@ class AlterOfflineMallCurrencies_030_02 extends Migration
      */
     public function down()
     {
-        if (Schema::hasColumn('offline_mall_currencies', 'is_enabled')) {
+        if (Schema::hasColumn('webbook_mall_currencies', 'is_enabled')) {
             if (method_exists(Schema::class, 'dropColumns')) {
-                Schema::dropColumns('offline_mall_currencies', 'is_enabled');
+                Schema::dropColumns('webbook_mall_currencies', 'is_enabled');
             } else {
-                Schema::table('offline_mall_currencies', function (Blueprint $table) {
+                Schema::table('webbook_mall_currencies', function (Blueprint $table) {
                     $table->dropColumn('is_enabled');
                 });
             }

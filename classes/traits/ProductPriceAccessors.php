@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Classes\Traits;
+namespace WebBook\Mall\Classes\Traits;
 
 use October\Rain\Database\Collection;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Models\CustomerGroup;
-use OFFLINE\Mall\Models\PriceCategory;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Models\CustomerGroup;
+use WebBook\Mall\Models\PriceCategory;
 
 trait ProductPriceAccessors
 {
@@ -99,7 +99,7 @@ trait ProductPriceAccessors
 
         return null;
     }
-    
+
     /**
      * Undocumented function
      * @deprecated 3.2.2 - The oldPrice category has been made optional.

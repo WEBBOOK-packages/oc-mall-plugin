@@ -1,12 +1,12 @@
-name: 'offline.mall::lang.common.order_states'
-modelClass: OFFLINE\Mall\Models\OrderState
-form: $/offline/mall/models/orderstate/fields.yaml
-defaultRedirect: offline/mall/orderstate
+name: 'webbook.mall::lang.common.order_states'
+modelClass: WebBook\Mall\Models\OrderState
+form: $/webbook/mall/models/orderstate/fields.yaml
+defaultRedirect: webbook/mall/orderstate
 create:
-    title: 'offline.mall::lang.titles.order_states.create'
-    redirect: 'offline/mall/orderstate/update/:id'
-    redirectClose: offline/mall/orderstate
+    title: 'webbook.mall::lang.titles.order_states.create'
+    redirect: 'webbook/mall/orderstate/update/:id'
+    redirectClose: webbook/mall/orderstate
 update:
-    title: 'offline.mall::lang.titles.order_states.edit'
-    redirect: offline/mall/orderstate
-    redirectClose: offline/mall/orderstate
+    title: 'webbook.mall::lang.titles.order_states.edit'
+    redirect: webbook/mall/orderstate
+    redirectClose: webbook/mall/orderstate

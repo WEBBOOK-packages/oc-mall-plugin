@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Registration;
+namespace WebBook\Mall\Classes\Registration;
 
 use Backend;
 use Backend\Widgets\Filter;
@@ -8,10 +8,10 @@ use Backend\Widgets\Form;
 use Backend\Widgets\Lists;
 use Event;
 use October\Rain\Database\Builder;
-use OFFLINE\Mall\Models\Address;
-use OFFLINE\Mall\Models\Customer;
-use OFFLINE\Mall\Models\CustomerGroup;
-use OFFLINE\Mall\Models\Tax;
+use WebBook\Mall\Models\Address;
+use WebBook\Mall\Models\Customer;
+use WebBook\Mall\Models\CustomerGroup;
+use WebBook\Mall\Models\Tax;
 use RainLab\Location\Models\Country as RainLabCountry;
 use RainLab\User\Controllers\Users as RainLabUsersController;
 use RainLab\User\Models\User as RainLabUser;
@@ -35,7 +35,7 @@ trait BootExtensions
         RainLabCountry::extend(function ($model) {
             $model->belongsToMany['taxes'] = [
                 Tax::class,
-                'table'    => 'offline_mall_country_tax',
+                'table'    => 'webbook_mall_country_tax',
                 'key'      => 'country_id',
                 'otherKey' => 'tax_id',
             ];
@@ -46,7 +46,7 @@ trait BootExtensions
     {
         RainLabUser::extend(function (RainLabUser $model) {
             $model->hasOne['customer']          = Customer::class;
-            $model->belongsTo['customer_group'] = [CustomerGroup::class, 'key' => 'offline_mall_customer_group_id'];
+            $model->belongsTo['customer_group'] = [CustomerGroup::class, 'key' => 'webbook_mall_customer_group_id'];
             $model->hasManyThrough['addresses']        = [
                 Address::class,
                 'key'        => 'user_id',
@@ -55,7 +55,7 @@ trait BootExtensions
             ];
             $model->addFillable([
                 'customer_group',
-                'offline_mall_customer_group_id',
+                'webbook_mall_customer_group_id',
             ]);
 
             // RainLab.User 3.0
@@ -105,7 +105,7 @@ trait BootExtensions
                 $users->addDynamicProperty('relationConfig');
             }
 
-            $myConfigPath = '$/offline/mall/controllers/users/config_relation.yaml';
+            $myConfigPath = '$/webbook/mall/controllers/users/config_relation.yaml';
             $users->relationConfig = $users->mergeConfig(
                 $users->relationConfig,
                 $myConfigPath
@@ -125,18 +125,18 @@ trait BootExtensions
         Event::listen('backend.menu.extendItems', function ($manager) {
             $manager->addSideMenuItems('RainLab.User', 'user', [
                 'customer_groups' => [
-                    'label'       => 'offline.mall::lang.common.customer_groups',
-                    'url'         => Backend::url('offline/mall/customergroups'),
+                    'label'       => 'webbook.mall::lang.common.customer_groups',
+                    'url'         => Backend::url('webbook/mall/customergroups'),
                     'icon'        => 'icon-users',
-                    'permissions' => ['offline.mall.manage_customer_groups'],
+                    'permissions' => ['webbook.mall.manage_customer_groups'],
                 ],
             ]);
             $manager->addSideMenuItems('RainLab.User', 'user', [
                 'customer_addresses' => [
-                    'label'       => 'offline.mall::lang.common.addresses',
-                    'url'         => Backend::url('offline/mall/addresses'),
+                    'label'       => 'webbook.mall::lang.common.addresses',
+                    'url'         => Backend::url('webbook/mall/addresses'),
                     'icon'        => 'icon-home',
-                    'permissions' => ['offline.mall.manage_customer_addresses'],
+                    'permissions' => ['webbook.mall.manage_customer_addresses'],
                 ],
             ]);
         }, 5);
@@ -153,17 +153,17 @@ trait BootExtensions
 
             $widget->addTabFields([
                 'customer_group' => [
-                    'label'       => trans('offline.mall::lang.common.customer_group'),
+                    'label'       => trans('webbook.mall::lang.common.customer_group'),
                     'type'        => 'relation',
                     'nameFrom'    => 'name',
-                    'emptyOption' => trans('offline.mall::lang.common.none'),
-                    'tab'         => 'offline.mall::lang.plugin.name',
+                    'emptyOption' => trans('webbook.mall::lang.common.none'),
+                    'tab'         => 'webbook.mall::lang.plugin.name',
                 ],
                 //'addresses'      => [
-                //    'label' => trans('offline.mall::lang.common.addresses'),
+                //    'label' => trans('webbook.mall::lang.common.addresses'),
                 //    'type'  => 'partial',
-                //    'path'  => '$/offline/mall/controllers/users/_addresses.htm',
-                //    'tab'   => 'offline.mall::lang.plugin.name',
+                //    'path'  => '$/webbook/mall/controllers/users/_addresses.htm',
+                //    'tab'   => 'webbook.mall::lang.plugin.name',
                 //],
             ]);
         }, 5);
@@ -181,7 +181,7 @@ trait BootExtensions
             // Add a new column
             $list->addColumns([
                 'customer_group' => [
-                    'label'     => trans('offline.mall::lang.common.customer_group'),
+                    'label'     => trans('webbook.mall::lang.common.customer_group'),
                     'default'   => '',
                     'after'     => 'email',
                     'relation'  => 'customer_group',
@@ -203,11 +203,11 @@ trait BootExtensions
 
             $filter->addScopes([
                 'has_customer' => [
-                    'label'         => trans('offline.mall::lang.order.customer'),
+                    'label'         => trans('webbook.mall::lang.order.customer'),
                     'type'          => 'switch',
                     'conditions'    => [
-                        'offline_mall_customers.id = null',
-                        'offline_mall_customers.id <> null',
+                        'webbook_mall_customers.id = null',
+                        'webbook_mall_customers.id <> null',
                     ],
                     'modelScope'    => 'hasCustomerFilter',
                 ],

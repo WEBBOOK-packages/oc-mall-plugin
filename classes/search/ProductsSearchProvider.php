@@ -1,13 +1,13 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Search;
+namespace WebBook\Mall\Classes\Search;
 
 use Cms\Classes\Controller;
 use October\Rain\Support\Collection;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Variant;
-use OFFLINE\SiteSearch\Classes\Providers\ResultsProvider;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Variant;
+use WebBook\SiteSearch\Classes\Providers\ResultsProvider;
 use RainLab\Translate\Models\Attribute;
 
 class ProductsSearchProvider extends ResultsProvider
@@ -48,11 +48,11 @@ class ProductsSearchProvider extends ResultsProvider
                 $results->put($match->id, $match);
             }
         }
-        
+
         // clean any null values from the results collection
         $results = $results->filter();
-        
-        // Build the OFFLINE.SiteSearch results collection.
+
+        // Build the WebBook.SiteSearch results collection.
         foreach ($results as $match) {
             $url = $controller->pageUrl($productPage, [
                 'slug'    => $match->slug,
@@ -79,12 +79,12 @@ class ProductsSearchProvider extends ResultsProvider
 
     public function displayName()
     {
-        return trans('offline.mall::lang.common.product');
+        return trans('webbook.mall::lang.common.product');
     }
 
     public function identifier()
     {
-        return 'OFFLINE.Mall';
+        return 'WebBook.Mall';
     }
 
     protected function searchProducts()

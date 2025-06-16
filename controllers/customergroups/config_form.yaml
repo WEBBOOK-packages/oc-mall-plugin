@@ -1,12 +1,12 @@
-name: 'offline.mall::lang.common.customer_groups'
-modelClass: OFFLINE\Mall\Models\CustomerGroup
-form: $/offline/mall/models/customergroup/fields.yaml
-defaultRedirect: offline/mall/customergroups
+name: 'webbook.mall::lang.common.customer_groups'
+modelClass: WebBook\Mall\Models\CustomerGroup
+form: $/webbook/mall/models/customergroup/fields.yaml
+defaultRedirect: webbook/mall/customergroups
 create:
-    title: 'offline.mall::lang.titles.customer_groups.create'
-    redirect: 'offline/mall/customergroups/update/:id'
-    redirectClose: offline/mall/customergroups
+    title: 'webbook.mall::lang.titles.customer_groups.create'
+    redirect: 'webbook/mall/customergroups/update/:id'
+    redirectClose: webbook/mall/customergroups
 update:
-    title: 'offline.mall::lang.titles.customer_groups.update'
-    redirect: offline/mall/customergroups
-    redirectClose: offline/mall/customergroups
+    title: 'webbook.mall::lang.titles.customer_groups.update'
+    redirect: webbook/mall/customergroups
+    redirectClose: webbook/mall/customergroups

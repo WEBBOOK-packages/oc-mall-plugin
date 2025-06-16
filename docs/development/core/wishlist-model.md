@@ -30,4 +30,4 @@ $pdf->output();                   // Return string representation
 ```
 
 Take a look at the demo theme for an example implementation:
-[https://github.com/OFFLINE-GmbH/oc-mall-theme/tree/master/partials/mallPDF/wishlist](https://github.com/OFFLINE-GmbH/oc-mall-theme/tree/master/partials/mallPDF/wishlist)
+[https://github.com/WebBook-GmbH/oc-mall-theme/tree/master/partials/mallPDF/wishlist](https://github.com/WebBook-GmbH/oc-mall-theme/tree/master/partials/mallPDF/wishlist)

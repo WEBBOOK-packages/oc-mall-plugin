@@ -1,7 +1,7 @@
-title: offline.mall::lang.currency_settings.label
-modelClass: OFFLINE\Mall\Models\Currency
-list: $/offline/mall/models/currency/columns.yaml
-recordUrl: 'offline/mall/currencies/update/:id'
+title: webbook.mall::lang.currency_settings.label
+modelClass: WebBook\Mall\Models\Currency
+list: $/webbook/mall/models/currency/columns.yaml
+recordUrl: 'webbook/mall/currencies/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'
 recordsPerPage: 20
 showSetup: true

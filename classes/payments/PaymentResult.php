@@ -1,12 +1,12 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Payments;
+namespace WebBook\Mall\Classes\Payments;
 
-use OFFLINE\Mall\Classes\PaymentState\FailedState;
-use OFFLINE\Mall\Classes\PaymentState\PaidState;
-use OFFLINE\Mall\Classes\PaymentState\PendingState;
-use OFFLINE\Mall\Models\Order;
-use OFFLINE\Mall\Models\PaymentLog;
+use WebBook\Mall\Classes\PaymentState\FailedState;
+use WebBook\Mall\Classes\PaymentState\PaidState;
+use WebBook\Mall\Classes\PaymentState\PendingState;
+use WebBook\Mall\Models\Order;
+use WebBook\Mall\Models\PaymentLog;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 use Config;
@@ -97,7 +97,7 @@ class PaymentResult
         } catch (Throwable $e) {
             // Even if the log failed we *have* to mark this order as paid since the payment went already through.
             logger()->error(
-                'OFFLINE.Mall: Could not log successful payment.',
+                'WebBook.Mall: Could not log successful payment.',
                 ['data' => $data, 'response' => $response, 'order' => $this->order, 'exception' => $e]
             );
         }
@@ -109,7 +109,7 @@ class PaymentResult
         } catch (Throwable $e) {
             // If the order could not be marked as paid the shop admin will have to do this manually.
             logger()->critical(
-                'OFFLINE.Mall: Could not mark paid order as paid.',
+                'WebBook.Mall: Could not mark paid order as paid.',
                 ['data' => $data, 'response' => $response, 'order' => $this->order, 'exception' => $e]
             );
         }
@@ -135,7 +135,7 @@ class PaymentResult
         } catch (Throwable $e) {
             // If the order could not be marked as pending the shop admin will have to do this manually.
             logger()->critical(
-                'OFFLINE.Mall: Could not mark pending order as pending.',
+                'WebBook.Mall: Could not mark pending order as pending.',
                 ['order' => $this->order, 'exception' => $e]
             );
         }
@@ -158,11 +158,11 @@ class PaymentResult
     {
         $this->successful = false;
 
-        $shouldLog = Config::get('offline.mall::features.log_failed_payments', true);
+        $shouldLog = Config::get('webbook.mall::features.log_failed_payments', true);
 
         if ($shouldLog) {
             logger()->error(
-                'OFFLINE.Mall: A payment failed.',
+                'WebBook.Mall: A payment failed.',
                 ['data' => $data, 'response' => $response, 'order' => $this->order]
             );
         }
@@ -172,7 +172,7 @@ class PaymentResult
         } catch (Throwable $e) {
             if ($shouldLog) {
                 logger()->error(
-                    'OFFLINE.Mall: Could not log failed payment.',
+                    'WebBook.Mall: Could not log failed payment.',
                     ['data' => $data, 'response' => $response, 'order' => $this->order, 'exception' => $e]
                 );
             }
@@ -184,7 +184,7 @@ class PaymentResult
         } catch (Throwable $e) {
             if ($shouldLog) {
                 logger()->critical(
-                    'OFFLINE.Mall: Could not mark failed order as failed.',
+                    'WebBook.Mall: Could not mark failed order as failed.',
                     ['data' => $data, 'response' => $response, 'order' => $this->order, 'exception' => $e]
                 );
             }

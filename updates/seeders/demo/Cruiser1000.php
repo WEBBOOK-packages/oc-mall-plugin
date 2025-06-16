@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Demo;
+namespace WebBook\Mall\Updates\Seeders\Demo;
 
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\ProductPrice;
-use OFFLINE\Mall\Models\Review;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\ProductPrice;
+use WebBook\Mall\Models\Review;
 
 class Cruiser1000 extends DemoProduct
 {
@@ -17,10 +17,10 @@ class Cruiser1000 extends DemoProduct
             'user_defined_id'              => 'CITY001',
             'slug'                         => 'cruiser-1000',
             'name'                         => 'Cruiser 1000',
-            'description'                  => trans('offline.mall::demo.products.cruiser_1000.description'),
-            'description_short'            => trans('offline.mall::demo.products.cruiser_1000.description_short'),
-            'meta_title'                   => trans('offline.mall::demo.products.cruiser_1000.meta_title'),
-            'meta_description'             => trans('offline.mall::demo.products.cruiser_1000.meta_description'),
+            'description'                  => trans('webbook.mall::demo.products.cruiser_1000.description'),
+            'description_short'            => trans('webbook.mall::demo.products.cruiser_1000.description_short'),
+            'meta_title'                   => trans('webbook.mall::demo.products.cruiser_1000.meta_title'),
+            'meta_description'             => trans('webbook.mall::demo.products.cruiser_1000.meta_description'),
             'meta_keywords'                => 'city, citybike, cruiser, bike',
             'weight'                       => 9000,
             'inventory_management_method'  => 'variant',
@@ -46,13 +46,13 @@ class Cruiser1000 extends DemoProduct
     {
         return [
             'color'       => [
-                'name'  =>  trans('offline.mall::demo.products.properties.dark_grey'),
+                'name'  =>  trans('webbook.mall::demo.products.properties.dark_grey'),
                 'hex'   => '#333333',
             ],
             'rear-travel' => '0',
             'fork-travel' => '110',
-            'material'    => trans('offline.mall::demo.products.properties.aluminium'),
-            'gender'      => trans('offline.mall::demo.products.properties.unisex'),
+            'material'    => trans('webbook.mall::demo.products.properties.aluminium'),
+            'gender'      => trans('webbook.mall::demo.products.properties.unisex'),
         ];
     }
 
@@ -141,7 +141,7 @@ class Cruiser1000 extends DemoProduct
     {
         return [
             [
-                'name'     =>  trans('offline.mall::demo.products.fields.include_bike_assembly'),
+                'name'     =>  trans('webbook.mall::demo.products.fields.include_bike_assembly'),
                 'type'     => 'checkbox',
                 'price'    => ['USD' => 490, 'EUR' => 200, 'CHF' => 5900],
                 'required' => false,
@@ -153,7 +153,7 @@ class Cruiser1000 extends DemoProduct
     {
         return [
             [
-                'name'          =>  trans('offline.mall::demo.products.images.main'),
+                'name'          =>  trans('webbook.mall::demo.products.images.main'),
                 'is_main_set'   => true,
                 'images'        => [
                     realpath(__DIR__ . '/images/cruiser-1000-1.jpg'),
@@ -168,15 +168,15 @@ class Cruiser1000 extends DemoProduct
         return [
             [
                 'review'           => new Review([
-                    'title'       => trans('offline.mall::demo.products.cruiser_1000.reviews.great_bike.title'),
-                    'description' => trans('offline.mall::demo.products.cruiser_1000.reviews.great_bike.description'),
+                    'title'       => trans('webbook.mall::demo.products.cruiser_1000.reviews.great_bike.title'),
+                    'description' => trans('webbook.mall::demo.products.cruiser_1000.reviews.great_bike.description'),
                     'rating'      => 5,
                     'pros'        => [
-                        ['value' => trans('offline.mall::demo.products.cruiser_1000.reviews.great_bike.pros_01')],
-                        ['value' => trans('offline.mall::demo.products.cruiser_1000.reviews.great_bike.pros_02')],
+                        ['value' => trans('webbook.mall::demo.products.cruiser_1000.reviews.great_bike.pros_01')],
+                        ['value' => trans('webbook.mall::demo.products.cruiser_1000.reviews.great_bike.pros_02')],
                     ],
                     'cons'        => [
-                        ['value' => trans('offline.mall::demo.products.cruiser_1000.reviews.great_bike.cons_01')],
+                        ['value' => trans('webbook.mall::demo.products.cruiser_1000.reviews.great_bike.cons_01')],
                     ],
                 ]),
                 'category_reviews' => [

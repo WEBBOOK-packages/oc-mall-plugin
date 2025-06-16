@@ -1,15 +1,15 @@
 <?php
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class CreateOfflineMallOrderProducts extends Migration
+class CreateWebBookMallOrderProducts extends Migration
 {
     public function up()
     {
-        Schema::create('offline_mall_order_products', function ($table) {
+        Schema::create('webbook_mall_order_products', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->integer('order_id');
@@ -53,6 +53,6 @@ class CreateOfflineMallOrderProducts extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('offline_mall_order_products');
+        Schema::dropIfExists('webbook_mall_order_products');
     }
 }

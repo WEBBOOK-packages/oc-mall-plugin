@@ -1,31 +1,31 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Registration;
+namespace WebBook\Mall\Classes\Registration;
 
 use Event;
-use OFFLINE\Mall\Classes\Events\MailingEventHandler;
-use OFFLINE\Mall\Classes\Search\ProductsSearchProvider;
-use OFFLINE\Mall\Models\Brand;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\Category;
-use OFFLINE\Mall\Models\Customer;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\Order;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\ProductPrice;
-use OFFLINE\Mall\Models\PropertyValue;
-use OFFLINE\Mall\Models\Variant;
-use OFFLINE\Mall\Models\Wishlist;
+use WebBook\Mall\Classes\Events\MailingEventHandler;
+use WebBook\Mall\Classes\Search\ProductsSearchProvider;
+use WebBook\Mall\Models\Brand;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\Category;
+use WebBook\Mall\Models\Customer;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\Order;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\ProductPrice;
+use WebBook\Mall\Models\PropertyValue;
+use WebBook\Mall\Models\Variant;
+use WebBook\Mall\Models\Wishlist;
 
 trait BootEvents
 {
     public function registerObservers()
     {
-        Product::observe(\OFFLINE\Mall\Classes\Observers\ProductObserver::class);
-        Variant::observe(\OFFLINE\Mall\Classes\Observers\VariantObserver::class);
-        Brand::observe(\OFFLINE\Mall\Classes\Observers\BrandObserver::class);
-        PropertyValue::observe(\OFFLINE\Mall\Classes\Observers\PropertyValueObserver::class);
-        ProductPrice::observe(\OFFLINE\Mall\Classes\Observers\ProductPriceObserver::class);
+        Product::observe(\WebBook\Mall\Classes\Observers\ProductObserver::class);
+        Variant::observe(\WebBook\Mall\Classes\Observers\VariantObserver::class);
+        Brand::observe(\WebBook\Mall\Classes\Observers\BrandObserver::class);
+        PropertyValue::observe(\WebBook\Mall\Classes\Observers\PropertyValueObserver::class);
+        ProductPrice::observe(\WebBook\Mall\Classes\Observers\ProductPriceObserver::class);
     }
 
     protected function registerEvents()
@@ -48,12 +48,12 @@ trait BootEvents
     {
         $listTypes = function () {
             return [
-                'mall-category' => '[OFFLINE.Mall] ' . trans('offline.mall::lang.menu_items.single_category'),
-                'mall-product' => '[OFFLINE.Mall] ' . trans('offline.mall::lang.menu_items.single_product'),
-                'mall-variant' => '[OFFLINE.Mall] ' . trans('offline.mall::lang.menu_items.single_variant'),
-                'all-mall-categories' => '[OFFLINE.Mall] ' . trans('offline.mall::lang.menu_items.all_categories'),
-                'all-mall-products' => '[OFFLINE.Mall] ' . trans('offline.mall::lang.menu_items.all_products'),
-                'all-mall-variants' => '[OFFLINE.Mall] ' . trans('offline.mall::lang.menu_items.all_variants'),
+                'mall-category' => '[WebBook.Mall] ' . trans('webbook.mall::lang.menu_items.single_category'),
+                'mall-product' => '[WebBook.Mall] ' . trans('webbook.mall::lang.menu_items.single_product'),
+                'mall-variant' => '[WebBook.Mall] ' . trans('webbook.mall::lang.menu_items.single_variant'),
+                'all-mall-categories' => '[WebBook.Mall] ' . trans('webbook.mall::lang.menu_items.all_categories'),
+                'all-mall-products' => '[WebBook.Mall] ' . trans('webbook.mall::lang.menu_items.all_products'),
+                'all-mall-variants' => '[WebBook.Mall] ' . trans('webbook.mall::lang.menu_items.all_variants'),
             ];
         };
 

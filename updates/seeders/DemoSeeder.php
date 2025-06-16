@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders;
+namespace WebBook\Mall\Updates\Seeders;
 
 use October\Rain\Database\Updates\Seeder;
-use OFFLINE\Mall\Updates\Seeders\Tables\BrandTableSeeder;
-use OFFLINE\Mall\Updates\Seeders\Tables\CategoryTableSeeder;
-use OFFLINE\Mall\Updates\Seeders\Tables\CustomerGroupTableSeeder;
-use OFFLINE\Mall\Updates\Seeders\Tables\CustomerTableSeeder;
-use OFFLINE\Mall\Updates\Seeders\Tables\CustomFieldTableSeeder;
-use OFFLINE\Mall\Updates\Seeders\Tables\ProductTableSeeder;
-use OFFLINE\Mall\Updates\Seeders\Tables\PropertyTableSeeder;
-use OFFLINE\Mall\Updates\Seeders\Tables\ReviewCategoryTableSeeder;
-use OFFLINE\Mall\Updates\Seeders\Tables\ServiceTableSeeder;
+use WebBook\Mall\Updates\Seeders\Tables\BrandTableSeeder;
+use WebBook\Mall\Updates\Seeders\Tables\CategoryTableSeeder;
+use WebBook\Mall\Updates\Seeders\Tables\CustomerGroupTableSeeder;
+use WebBook\Mall\Updates\Seeders\Tables\CustomerTableSeeder;
+use WebBook\Mall\Updates\Seeders\Tables\CustomFieldTableSeeder;
+use WebBook\Mall\Updates\Seeders\Tables\ProductTableSeeder;
+use WebBook\Mall\Updates\Seeders\Tables\PropertyTableSeeder;
+use WebBook\Mall\Updates\Seeders\Tables\ReviewCategoryTableSeeder;
+use WebBook\Mall\Updates\Seeders\Tables\ServiceTableSeeder;
 
 class DemoSeeder extends Seeder
 {

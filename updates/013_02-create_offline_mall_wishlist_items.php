@@ -1,15 +1,15 @@
 <?php
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class CreateOfflineMallWishlistItems extends Migration
+class CreateWebBookMallWishlistItems extends Migration
 {
     public function up()
     {
-        Schema::create('offline_mall_wishlist_items', function ($table) {
+        Schema::create('webbook_mall_wishlist_items', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->integer('wishlist_id')->index();
@@ -24,6 +24,6 @@ class CreateOfflineMallWishlistItems extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('offline_mall_wishlist_items');
+        Schema::dropIfExists('webbook_mall_wishlist_items');
     }
 }

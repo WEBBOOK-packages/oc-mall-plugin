@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
 use Exception;
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Tests\PluginTestCase;
 use RainLab\User\Models\User;
 use Throwable;
 

@@ -12,7 +12,7 @@ hero:
       link: /guide/index
     - theme: alt
       text: Visit Demo Website
-      link: https://mall.offline.swiss
+      link: https://mall.webbook.swiss
       target: _blank
 
 features:

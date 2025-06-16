@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 /**
  * The MallDependencies component bundles all needed
@@ -18,8 +18,8 @@ class MallDependencies extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.dependencies.details.name',
-            'description' => 'offline.mall::lang.components.dependencies.details.description',
+            'name'        => 'webbook.mall::lang.components.dependencies.details.name',
+            'description' => 'webbook.mall::lang.components.dependencies.details.description',
         ];
     }
 

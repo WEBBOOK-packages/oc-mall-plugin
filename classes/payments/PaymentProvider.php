@@ -1,13 +1,13 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Payments;
+namespace WebBook\Mall\Classes\Payments;
 
 use Cms\Classes\Controller;
 use Cms\Classes\Theme;
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\Order;
-use OFFLINE\Mall\Models\PaymentGatewaySettings;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\Order;
+use WebBook\Mall\Models\PaymentGatewaySettings;
 use Request;
 use Session;
 use Url;
@@ -147,7 +147,7 @@ abstract class PaymentProvider
 
         if (! file_exists($formPartial)) {
             $formPartial = plugins_path(
-                "offline/mall/classes/payments/{$this->identifier()}/{$this->paymentFormPartial()}.htm"
+                "webbook/mall/classes/payments/{$this->identifier()}/{$this->paymentFormPartial()}.htm"
             );
         }
 

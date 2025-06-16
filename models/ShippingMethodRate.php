@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Traits\PriceAccessors;
+use WebBook\Mall\Classes\Traits\PriceAccessors;
 
 class ShippingMethodRate extends Model
 {
@@ -23,7 +23,7 @@ class ShippingMethodRate extends Model
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_shipping_method_rates';
+    public $table = 'webbook_mall_shipping_method_rates';
 
     /**
      * Indicates if the model should be timestamped.

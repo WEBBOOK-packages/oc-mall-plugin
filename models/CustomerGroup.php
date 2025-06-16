@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\Sortable;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Traits\NullPrice;
+use WebBook\Mall\Classes\Traits\NullPrice;
 use RainLab\User\Models\User;
 
 class CustomerGroup extends Model
@@ -28,7 +28,7 @@ class CustomerGroup extends Model
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_customer_groups';
+    public $table = 'webbook_mall_customer_groups';
 
     /**
      * The translatable attributes of this model.
@@ -69,7 +69,7 @@ class CustomerGroup extends Model
      * @var array
      */
     public $hasMany = [
-        'users'  => [User::class, 'key' => 'offline_mall_customer_group_id'],
+        'users'  => [User::class, 'key' => 'webbook_mall_customer_group_id'],
         'prices' => [CustomerGroupPrice::class],
     ];
 

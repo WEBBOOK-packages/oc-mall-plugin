@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Auth;
 use Illuminate\Support\Collection;
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\ShippingMethod;
 use Validator;
 
 /**
@@ -55,8 +55,8 @@ class ShippingMethodSelector extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.shippingMethodSelector.details.name',
-            'description' => 'offline.mall::lang.components.shippingMethodSelector.details.description',
+            'name'        => 'webbook.mall::lang.components.shippingMethodSelector.details.name',
+            'description' => 'webbook.mall::lang.components.shippingMethodSelector.details.description',
         ];
     }
 
@@ -116,7 +116,7 @@ class ShippingMethodSelector extends MallComponent
     public function onChangeMethod()
     {
         $v = Validator::make(post(), [
-            'id' => 'required|exists:offline_mall_shipping_methods,id',
+            'id' => 'required|exists:webbook_mall_shipping_methods,id',
         ]);
 
         if ($v->fails()) {
@@ -127,7 +127,7 @@ class ShippingMethodSelector extends MallComponent
 
         if (! $this->methods || ! $this->methods->contains($id)) {
             throw new ValidationException([
-                'id' => trans('offline.mall::lang.components.shippingMethodSelector.errors.unavailable'),
+                'id' => trans('webbook.mall::lang.components.shippingMethodSelector.errors.unavailable'),
             ]);
         }
 

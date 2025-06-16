@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Event;
 use Model;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\User\Auth;
+use WebBook\Mall\Classes\User\Auth;
 
 /**
  * @property Customer $customer
@@ -16,15 +16,15 @@ class Review extends Model
 {
     use Validation;
 
-    public $table = 'offline_mall_reviews';
+    public $table = 'webbook_mall_reviews';
 
     public $rules = [
         'title' => 'required_with:description|max:190',
         'description' => 'max:500',
         'rating' => 'required|numeric|between:1,5',
-        'product_id' => 'required|exists:offline_mall_products,id',
-        'variant_id' => 'nullable|exists:offline_mall_product_variants,id',
-        'customer_id' => 'nullable|exists:offline_mall_customers,id',
+        'product_id' => 'required|exists:webbook_mall_products,id',
+        'variant_id' => 'nullable|exists:webbook_mall_product_variants,id',
+        'customer_id' => 'nullable|exists:webbook_mall_customers,id',
     ];
 
     public $fillable = [
@@ -144,7 +144,7 @@ class Review extends Model
     public function getCustomerNameAttribute()
     {
         if (! $this->customer) {
-            return trans('offline.mall::lang.reviews.anonymous');
+            return trans('webbook.mall::lang.reviews.anonymous');
         }
 
         return $this->customer->name;

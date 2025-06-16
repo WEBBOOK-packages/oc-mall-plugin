@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\User;
+namespace WebBook\Mall\Classes\User;
 
 /**
  * Auth forwards calls to the RainLab\User\Facades\Auth if available (< 3.0)

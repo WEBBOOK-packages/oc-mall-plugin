@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use DB;
 use October\Rain\Exception\ValidationException;
 use October\Rain\Support\Facades\Flash;
-use OFFLINE\Mall\Classes\Customer\SignUpHandler;
-use OFFLINE\Mall\Classes\User\Auth;
+use WebBook\Mall\Classes\Customer\SignUpHandler;
+use WebBook\Mall\Classes\User\Auth;
 use RainLab\User\Models\Setting;
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserGroup;
@@ -36,8 +36,8 @@ class CustomerProfile extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.customerProfile.details.name',
-            'description' => 'offline.mall::lang.components.customerProfile.details.description',
+            'name'        => 'webbook.mall::lang.components.customerProfile.details.name',
+            'description' => 'webbook.mall::lang.components.customerProfile.details.description',
         ];
     }
 
@@ -128,6 +128,6 @@ class CustomerProfile extends MallComponent
             ]);
         }
 
-        Flash::success(trans('offline.mall::lang.common.saved_changes'));
+        Flash::success(trans('webbook.mall::lang.common.saved_changes'));
     }
 }

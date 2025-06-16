@@ -1,11 +1,11 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Jobs;
+namespace WebBook\Mall\Classes\Jobs;
 
 use Cache;
 use Illuminate\Contracts\Queue\Job;
-use OFFLINE\Mall\Models\Category;
-use OFFLINE\Mall\Models\UniquePropertyValue;
+use WebBook\Mall\Models\Category;
+use WebBook\Mall\Models\UniquePropertyValue;
 
 class UpdateUniquePropertyForCategory
 {

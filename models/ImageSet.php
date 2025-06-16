@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use DB;
 use Model;
@@ -22,7 +22,7 @@ class ImageSet extends Model
         'name',
     ];
 
-    public $table = 'offline_mall_image_sets';
+    public $table = 'webbook_mall_image_sets';
 
     public $rules = [
         'name' => 'required',
@@ -45,7 +45,7 @@ class ImageSet extends Model
             $set->handleMainSetStatus();
         });
         static::deleted(function (self $set) {
-            DB::table('offline_mall_product_variants')
+            DB::table('webbook_mall_product_variants')
                 ->where('image_set_id', $set->id)
                 ->update(['image_set_id' => null]);
         });
@@ -57,7 +57,7 @@ class ImageSet extends Model
      */
     protected function handleMainSetStatus()
     {
-        $existingSets = DB::table('offline_mall_image_sets')
+        $existingSets = DB::table('webbook_mall_image_sets')
             ->where('product_id', $this->product_id)
             ->count();
 
@@ -66,7 +66,7 @@ class ImageSet extends Model
         }
 
         if ($this->is_main_set) {
-            DB::table('offline_mall_image_sets')
+            DB::table('webbook_mall_image_sets')
                 ->where('product_id', $this->product_id)
                 ->where('id', '<>', $this->id)
                 ->update(['is_main_set' => false]);

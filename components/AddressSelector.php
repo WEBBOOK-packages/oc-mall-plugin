@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\Rule;
 use October\Rain\Exception\ValidationException;
 use October\Rain\Support\Facades\Flash;
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\Address;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\GeneralSettings;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\Address;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\GeneralSettings;
 use Validator;
 
 /**
@@ -72,8 +72,8 @@ class AddressSelector extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.addressSelector.details.name',
-            'description' => 'offline.mall::lang.components.addressSelector.details.description',
+            'name'        => 'webbook.mall::lang.components.addressSelector.details.name',
+            'description' => 'webbook.mall::lang.components.addressSelector.details.description',
         ];
     }
 
@@ -105,8 +105,8 @@ class AddressSelector extends MallComponent
     public function getTypeOptions()
     {
         return [
-            'shipping' => trans('offline.mall::lang.order.shipping_address'),
-            'billing'  => trans('offline.mall::lang.order.billing_address'),
+            'shipping' => trans('webbook.mall::lang.order.shipping_address'),
+            'billing'  => trans('webbook.mall::lang.order.billing_address'),
         ];
     }
 
@@ -131,7 +131,7 @@ class AddressSelector extends MallComponent
         $this->setData();
 
         if (Auth::user() && $this->addresses->count() < 1) {
-            Flash::warning(trans('offline.mall::frontend.flash.missing_address'));
+            Flash::warning(trans('webbook.mall::frontend.flash.missing_address'));
 
             $url = $this->controller->pageUrl($this->addressPage, [
                 'address'  => 'new',
@@ -174,7 +174,7 @@ class AddressSelector extends MallComponent
         $rules = [
             'id' => [
                 'required',
-                Rule::exists('offline_mall_addresses')->where(function ($q) use ($user) {
+                Rule::exists('webbook_mall_addresses')->where(function ($q) use ($user) {
                     $q->where('customer_id', $user->customer->id);
                 }),
             ],

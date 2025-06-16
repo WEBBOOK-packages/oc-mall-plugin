@@ -3,15 +3,15 @@
 # ===================================
 
 property_groups:
-    label: 'offline.mall::lang.common.property_group'
+    label: 'webbook.mall::lang.common.property_group'
     deferredBinding: false
     view:
-        list: $/offline/mall/models/propertygroup/columns_pivot_legacy.yaml
+        list: $/webbook/mall/models/propertygroup/columns_pivot_legacy.yaml
         toolbarButtons: add|remove
-        recordUrl: '/offline/mall/propertygroups/update/:id'
+        recordUrl: '/webbook/mall/propertygroups/update/:id'
     manage:
-        form: $/offline/mall/models/propertygroup/fields_no_relation.yaml
-        list: $/offline/mall/models/propertygroup/columns.yaml
+        form: $/webbook/mall/models/propertygroup/fields_no_relation.yaml
+        list: $/webbook/mall/models/propertygroup/columns.yaml
     structure:
         showTree: false
         showReorder: true
@@ -19,11 +19,11 @@ property_groups:
         dragRow: true
 
 products:
-    label: 'offline.mall::lang.common.product'
+    label: 'webbook.mall::lang.common.product'
     view:
-        list: $/offline/mall/models/product/columns.yaml
+        list: $/webbook/mall/models/product/columns.yaml
         recordsPerPage: 10
-        recordUrl: offline/mall/products/update/:id
+        recordUrl: webbook/mall/products/update/:id
     readOnly: true
     structure:
         showTree: false
@@ -31,11 +31,11 @@ products:
         maxDepth: 1
 
 review_categories:
-    label: 'offline.mall::lang.common.review_category'
+    label: 'webbook.mall::lang.common.review_category'
     view:
-        list: $/offline/mall/models/reviewcategory/columns.yaml
+        list: $/webbook/mall/models/reviewcategory/columns.yaml
         recordsPerPage: 10
         toolbarButtons: add|create|remove|delete
     manage:
-        form: $/offline/mall/models/reviewcategory/fields.yaml
-        list: $/offline/mall/models/reviewcategory/columns.yaml
+        form: $/webbook/mall/models/reviewcategory/fields.yaml
+        list: $/webbook/mall/models/reviewcategory/columns.yaml

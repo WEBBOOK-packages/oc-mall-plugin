@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Traits;
+namespace WebBook\Mall\Classes\Traits;
 
 use DB;
 use Exception;

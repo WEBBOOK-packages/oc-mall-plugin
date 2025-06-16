@@ -4,33 +4,33 @@ columns:
         type: number
         sortable: true
     name:
-        label: 'offline.mall::lang.common.name'
+        label: 'webbook.mall::lang.common.name'
         type: text
         searchable: true
         sortable: false
     type:
-        label: 'offline.mall::lang.custom_fields.type'
+        label: 'webbook.mall::lang.custom_fields.type'
         searchable: true
         sortable: false
         type: partial
-        path: $/offline/mall/models/property/_type.htm
+        path: $/webbook/mall/models/property/_type.htm
     unit:
-        label: 'offline.mall::lang.common.unit'
+        label: 'webbook.mall::lang.common.unit'
         type: text
         searchable: true
         sortable: false
     pivot[filter_type]:
-        label: 'offline.mall::lang.properties.filter_type'
+        label: 'webbook.mall::lang.properties.filter_type'
         sortable: false
         type: partial
-        path: $/offline/mall/models/property/_filter_type.htm
+        path: $/webbook/mall/models/property/_filter_type.htm
     pivot[use_for_variants]:
-        label: 'offline.mall::lang.properties.use_for_variants'
+        label: 'webbook.mall::lang.properties.use_for_variants'
         sortable: false
         type: partial
-        path: $/offline/mall/models/property/_use_for_variants.htm
+        path: $/webbook/mall/models/property/_use_for_variants.htm
     created_at:
-        label: 'offline.mall::lang.common.created_at'
+        label: 'webbook.mall::lang.common.created_at'
         type: datetime
         searchable: true
         sortable: false

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\PaymentMethod;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\ShippingMethod;
-use OFFLINE\Mall\Models\Tax;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\PaymentMethod;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\Tax;
+use WebBook\Mall\Tests\PluginTestCase;
 use RainLab\User\Models\User;
 
 class TaxTest extends PluginTestCase
@@ -46,7 +46,7 @@ class TaxTest extends PluginTestCase
         // Assign Tax to Product
         $product = Product::first();
         $product->taxes()->attach($tax->id);
-        
+
         // Check if assigned
         $product = Product::first();
         $this->assertNotEmpty($product->taxes()->get()->toArray());
@@ -72,7 +72,7 @@ class TaxTest extends PluginTestCase
         // Assign Tax to Product
         $shippingMethod = ShippingMethod::first();
         $shippingMethod->taxes()->attach($tax->id);
-        
+
         // Check if assigned
         $shippingMethod = ShippingMethod::first();
         $this->assertNotEmpty($shippingMethod->taxes()->get()->toArray());
@@ -98,7 +98,7 @@ class TaxTest extends PluginTestCase
         // Assign Tax to Product
         $paymentMethod = PaymentMethod::first();
         $paymentMethod->taxes()->attach($tax->id);
-        
+
         // Check if assigned
         $paymentMethod = PaymentMethod::first();
         $this->assertNotEmpty($paymentMethod->taxes()->get()->toArray());

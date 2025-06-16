@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use DB;
 use Event;
 use Model;
-use OFFLINE\Mall\Classes\Traits\Cart\CartItemPriceAccessors;
-use OFFLINE\Mall\Classes\Traits\HashIds;
-use OFFLINE\Mall\Classes\Traits\JsonPrice;
+use WebBook\Mall\Classes\Traits\Cart\CartItemPriceAccessors;
+use WebBook\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Traits\JsonPrice;
 
 class CartProduct extends Model
 {
@@ -17,7 +17,7 @@ class CartProduct extends Model
     use JsonPrice;
     use CartItemPriceAccessors;
 
-    public $table = 'offline_mall_cart_products';
+    public $table = 'webbook_mall_cart_products';
 
     public $fillable = ['quantity', 'product_id', 'variant_id', 'weight', 'price'];
 
@@ -59,7 +59,7 @@ class CartProduct extends Model
     public $belongsToMany = [
         'service_options' => [
             ServiceOption::class,
-            'table'    => 'offline_mall_cart_product_service_option',
+            'table'    => 'webbook_mall_cart_product_service_option',
             'key'      => 'cart_product_id',
             'otherKey' => 'service_option_id',
         ],
@@ -83,7 +83,7 @@ class CartProduct extends Model
         static::deleted(function (self $cartProduct) {
             Event::fire('mall.cart.product.removed', [$cartProduct]);
             CustomFieldValue::where('cart_product_id', $cartProduct->id)->delete();
-            DB::table('offline_mall_cart_product_service_option')->where('cart_product_id', $cartProduct->id)->delete();
+            DB::table('webbook_mall_cart_product_service_option')->where('cart_product_id', $cartProduct->id)->delete();
         });
     }
 

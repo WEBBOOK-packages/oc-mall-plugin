@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Carbon\Carbon;
 use DB;
@@ -12,14 +12,14 @@ use Illuminate\Support\Collection;
 use Model;
 use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Cart\DiscountApplier;
-use OFFLINE\Mall\Classes\Exceptions\InvalidDiscountException;
-use OFFLINE\Mall\Classes\Totals\TotalsCalculator;
-use OFFLINE\Mall\Classes\Totals\TotalsCalculatorInput;
-use OFFLINE\Mall\Classes\Traits\Cart\CartActions;
-use OFFLINE\Mall\Classes\Traits\Cart\CartSession;
-use OFFLINE\Mall\Classes\Traits\Cart\Discounts;
-use OFFLINE\Mall\Classes\Traits\ShippingMethods;
+use WebBook\Mall\Classes\Cart\DiscountApplier;
+use WebBook\Mall\Classes\Exceptions\InvalidDiscountException;
+use WebBook\Mall\Classes\Totals\TotalsCalculator;
+use WebBook\Mall\Classes\Totals\TotalsCalculatorInput;
+use WebBook\Mall\Classes\Traits\Cart\CartActions;
+use WebBook\Mall\Classes\Traits\Cart\CartSession;
+use WebBook\Mall\Classes\Traits\Cart\Discounts;
+use WebBook\Mall\Classes\Traits\ShippingMethods;
 use Session;
 
 /**
@@ -38,7 +38,7 @@ class Cart extends Model
 
     public $rules = [];
 
-    public $table = 'offline_mall_carts';
+    public $table = 'webbook_mall_carts';
 
     public $hasMany = [
         'products' => [CartProduct::class, 'deleted' => true],
@@ -65,7 +65,7 @@ class Cart extends Model
     public $belongsToMany = [
         'discounts' => [
             Discount::class,
-            'table' => 'offline_mall_cart_discount',
+            'table' => 'webbook_mall_cart_discount',
         ],
     ];
 

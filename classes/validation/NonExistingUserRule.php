@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Validation;
+namespace WebBook\Mall\Classes\Validation;
 
 
 use RainLab\User\Models\User;

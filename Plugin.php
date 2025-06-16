@@ -2,33 +2,33 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall;
+namespace WebBook\Mall;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\View;
 use October\Rain\Database\Relations\Relation;
-use OFFLINE\Mall\Classes\Registration\BootComponents;
-use OFFLINE\Mall\Classes\Registration\BootEvents;
-use OFFLINE\Mall\Classes\Registration\BootExtensions;
-use OFFLINE\Mall\Classes\Registration\BootMails;
-use OFFLINE\Mall\Classes\Registration\BootServiceContainer;
-use OFFLINE\Mall\Classes\Registration\BootSettings;
-use OFFLINE\Mall\Classes\Registration\BootTwig;
-use OFFLINE\Mall\Classes\Registration\BootValidation;
-use OFFLINE\Mall\Console\CheckCommand;
-use OFFLINE\Mall\Console\IndexCommand;
-use OFFLINE\Mall\Console\PurgeCommand;
-use OFFLINE\Mall\Console\SeedDataCommand;
-use OFFLINE\Mall\Models\CustomField;
-use OFFLINE\Mall\Models\CustomFieldOption;
-use OFFLINE\Mall\Models\Discount;
-use OFFLINE\Mall\Models\ImageSet;
-use OFFLINE\Mall\Models\PaymentMethod;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\ServiceOption;
-use OFFLINE\Mall\Models\ShippingMethod;
-use OFFLINE\Mall\Models\ShippingMethodRate;
-use OFFLINE\Mall\Models\Variant;
+use WebBook\Mall\Classes\Registration\BootComponents;
+use WebBook\Mall\Classes\Registration\BootEvents;
+use WebBook\Mall\Classes\Registration\BootExtensions;
+use WebBook\Mall\Classes\Registration\BootMails;
+use WebBook\Mall\Classes\Registration\BootServiceContainer;
+use WebBook\Mall\Classes\Registration\BootSettings;
+use WebBook\Mall\Classes\Registration\BootTwig;
+use WebBook\Mall\Classes\Registration\BootValidation;
+use WebBook\Mall\Console\CheckCommand;
+use WebBook\Mall\Console\IndexCommand;
+use WebBook\Mall\Console\PurgeCommand;
+use WebBook\Mall\Console\SeedDataCommand;
+use WebBook\Mall\Models\CustomField;
+use WebBook\Mall\Models\CustomFieldOption;
+use WebBook\Mall\Models\Discount;
+use WebBook\Mall\Models\ImageSet;
+use WebBook\Mall\Models\PaymentMethod;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\ServiceOption;
+use WebBook\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\ShippingMethodRate;
+use WebBook\Mall\Models\Variant;
 use System;
 use System\Classes\PluginBase;
 
@@ -101,10 +101,10 @@ class Plugin extends PluginBase
         $this->registerEvents();
         $this->registerValidationRules();
 
-        $this->registerConsoleCommand('offline.mall.check', CheckCommand::class);
-        $this->registerConsoleCommand('offline.mall.index', IndexCommand::class);
-        $this->registerConsoleCommand('offline.mall.purge', PurgeCommand::class);
-        $this->registerConsoleCommand('offline.mall.seed', SeedDataCommand::class);
+        $this->registerConsoleCommand('webbook.mall.check', CheckCommand::class);
+        $this->registerConsoleCommand('webbook.mall.index', IndexCommand::class);
+        $this->registerConsoleCommand('webbook.mall.purge', PurgeCommand::class);
+        $this->registerConsoleCommand('webbook.mall.seed', SeedDataCommand::class);
 
         View::share('app_url', config('app.url'));
     }

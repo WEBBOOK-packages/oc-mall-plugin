@@ -1,13 +1,13 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Traits;
+namespace WebBook\Mall\Classes\Traits;
 
 use October\Rain\Support\Collection;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Property;
-use OFFLINE\Mall\Models\PropertyGroup;
-use OFFLINE\Mall\Models\PropertyValue;
-use OFFLINE\Mall\Models\Variant;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Property;
+use WebBook\Mall\Models\PropertyGroup;
+use WebBook\Mall\Models\PropertyValue;
+use WebBook\Mall\Models\Variant;
 
 trait PropertyValues
 {

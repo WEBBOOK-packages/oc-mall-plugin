@@ -1,15 +1,15 @@
 <?php
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class CreateOfflineMallCartCustomFieldValue extends Migration
+class CreateWebBookMallCartCustomFieldValue extends Migration
 {
     public function up()
     {
-        Schema::create('offline_mall_cart_custom_field_value', function ($table) {
+        Schema::create('webbook_mall_cart_custom_field_value', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->integer('cart_product_id')->unsigned()->nullable();
@@ -23,6 +23,6 @@ class CreateOfflineMallCartCustomFieldValue extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('offline_mall_cart_custom_field_value');
+        Schema::dropIfExists('webbook_mall_cart_custom_field_value');
     }
 }

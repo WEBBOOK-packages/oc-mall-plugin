@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\PaymentState;
+namespace WebBook\Mall\Classes\PaymentState;
 
 class PendingState extends PaymentState
 {

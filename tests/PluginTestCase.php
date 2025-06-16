@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests;
+namespace WebBook\Mall\Tests;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use OFFLINE\Mall\Classes\Index\Index;
-use OFFLINE\Mall\Classes\Index\Noop;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Updates\Seeders\MallSeeder;
-use OFFLINE\Mall\Updates\Seeders\Tables\CustomerGroupTableSeeder;
-use OFFLINE\Mall\Updates\Seeders\Tables\CustomerTableSeeder;
-use OFFLINE\Mall\Updates\Seeders\Tables\CustomFieldTableSeeder;
-use OFFLINE\Mall\Updates\Seeders\Tables\ProductTableSeeder;
+use WebBook\Mall\Classes\Index\Index;
+use WebBook\Mall\Classes\Index\Noop;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Updates\Seeders\MallSeeder;
+use WebBook\Mall\Updates\Seeders\Tables\CustomerGroupTableSeeder;
+use WebBook\Mall\Updates\Seeders\Tables\CustomerTableSeeder;
+use WebBook\Mall\Updates\Seeders\Tables\CustomFieldTableSeeder;
+use WebBook\Mall\Updates\Seeders\Tables\ProductTableSeeder;
 use System;
 use System\Classes\PluginManager;
 
@@ -34,7 +34,7 @@ class PluginTestCase extends \PluginTestCase
         if (version_compare(System::VERSION, '3.0', '<')) {
             $manager = PluginManager::instance();
             $manager->loadPlugins();
-            $plugin = $manager->findByIdentifier('offline.mall');
+            $plugin = $manager->findByIdentifier('webbook.mall');
             $manager->registerPlugin($plugin);
 
             app()->call(MallSeeder::class);
@@ -44,32 +44,32 @@ class PluginTestCase extends \PluginTestCase
             app()->call(ProductTableSeeder::class);
         } else {
             $this->artisan('plugin:seed', [
-                'namespace' => 'OFFLINE.Mall',
-                'class'     => 'OFFLINE\Mall\Updates\Seeders\MallSeeder',
+                'namespace' => 'WebBook.Mall',
+                'class'     => 'WebBook\Mall\Updates\Seeders\MallSeeder',
             ]);
-    
+
             //@todo temporary solution to fix testing
             $this->artisan('plugin:seed', [
-                'namespace' => 'OFFLINE.Mall',
-                'class'     => 'OFFLINE\Mall\Updates\Seeders\Tables\CustomerGroupTableSeeder',
+                'namespace' => 'WebBook.Mall',
+                'class'     => 'WebBook\Mall\Updates\Seeders\Tables\CustomerGroupTableSeeder',
             ]);
-    
+
             //@todo temporary solution to fix testing
             $this->artisan('plugin:seed', [
-                'namespace' => 'OFFLINE.Mall',
-                'class'     => 'OFFLINE\Mall\Updates\Seeders\Tables\CustomerTableSeeder',
+                'namespace' => 'WebBook.Mall',
+                'class'     => 'WebBook\Mall\Updates\Seeders\Tables\CustomerTableSeeder',
             ]);
-    
+
             //@todo temporary solution to fix testing
             $this->artisan('plugin:seed', [
-                'namespace' => 'OFFLINE.Mall',
-                'class'     => 'OFFLINE\Mall\Updates\Seeders\Tables\CustomFieldTableSeeder',
+                'namespace' => 'WebBook.Mall',
+                'class'     => 'WebBook\Mall\Updates\Seeders\Tables\CustomFieldTableSeeder',
             ]);
-    
+
             //@todo temporary solution to fix testing
             $this->artisan('plugin:seed', [
-                'namespace' => 'OFFLINE.Mall',
-                'class'     => 'OFFLINE\Mall\Updates\Seeders\Tables\ProductTableSeeder',
+                'namespace' => 'WebBook.Mall',
+                'class'     => 'WebBook\Mall\Updates\Seeders\Tables\ProductTableSeeder',
             ]);
         }
 

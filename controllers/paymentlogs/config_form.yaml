@@ -1,11 +1,11 @@
-name: 'offline.mall::lang.common.payment'
-modelClass: OFFLINE\Mall\Models\PaymentLog
-form: $/offline/mall/models/paymentlog/fields.yaml
-defaultRedirect: offline/mall/paymentlogs
+name: 'webbook.mall::lang.common.payment'
+modelClass: WebBook\Mall\Models\PaymentLog
+form: $/webbook/mall/models/paymentlog/fields.yaml
+defaultRedirect: webbook/mall/paymentlogs
 create:
-    redirect: 'offline/mall/paymentlogs/update/:id'
-    redirectClose: offline/mall/paymentlogs
+    redirect: 'webbook/mall/paymentlogs/update/:id'
+    redirectClose: webbook/mall/paymentlogs
 update:
-    redirect: offline/mall/paymentlogs
-    redirectClose: offline/mall/paymentlogs
+    redirect: webbook/mall/paymentlogs
+    redirectClose: webbook/mall/paymentlogs
 preview: {  }

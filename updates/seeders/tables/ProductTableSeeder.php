@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Tables;
+namespace WebBook\Mall\Updates\Seeders\Tables;
 
 use October\Rain\Database\Updates\Seeder;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Updates\Seeders\Demo\Cruiser1000;
-use OFFLINE\Mall\Updates\Seeders\Demo\Cruiser1500;
-use OFFLINE\Mall\Updates\Seeders\Demo\Cruiser3000;
-use OFFLINE\Mall\Updates\Seeders\Demo\Cruiser3500;
-use OFFLINE\Mall\Updates\Seeders\Demo\Cruiser5000;
-use OFFLINE\Mall\Updates\Seeders\Demo\GiftCard100;
-use OFFLINE\Mall\Updates\Seeders\Demo\GiftCard200;
-use OFFLINE\Mall\Updates\Seeders\Demo\GiftCard50;
-use OFFLINE\Mall\Updates\Seeders\Demo\Jersey;
-use OFFLINE\Mall\Updates\Seeders\Demo\RedShirt;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Updates\Seeders\Demo\Cruiser1000;
+use WebBook\Mall\Updates\Seeders\Demo\Cruiser1500;
+use WebBook\Mall\Updates\Seeders\Demo\Cruiser3000;
+use WebBook\Mall\Updates\Seeders\Demo\Cruiser3500;
+use WebBook\Mall\Updates\Seeders\Demo\Cruiser5000;
+use WebBook\Mall\Updates\Seeders\Demo\GiftCard100;
+use WebBook\Mall\Updates\Seeders\Demo\GiftCard200;
+use WebBook\Mall\Updates\Seeders\Demo\GiftCard50;
+use WebBook\Mall\Updates\Seeders\Demo\Jersey;
+use WebBook\Mall\Updates\Seeders\Demo\RedShirt;
 
 class ProductTableSeeder extends Seeder
 {
@@ -38,7 +38,7 @@ class ProductTableSeeder extends Seeder
                     'CHF' => 20,
                     'EUR' => 30,
                 ];
-        
+
                 $product = Product::create([
                     'name' => 'Test 2',
                     'slug' => 'test-2',
@@ -53,7 +53,7 @@ class ProductTableSeeder extends Seeder
 
             return;
         }
-        
+
         // Bikes
         (new Cruiser1000())->create();
         (new Cruiser1500())->create();

@@ -6,7 +6,7 @@
                 <ul>
                     <li>
                         <a href="<?= $ordersList ?>">
-                            <?= e(trans('offline.mall::lang.common.orders')) ?>
+                            <?= e(trans('webbook.mall::lang.common.orders')) ?>
                         </a>
                     </li>
                     <li><?= e($order['invoice_number']) ?></li>
@@ -36,12 +36,12 @@
                                 <ul class="nav nav-tabs">
                                     <li class="active">
                                         <a href="#order">
-                                            <?= e(trans('offline.mall::lang.common.products')) ?>
+                                            <?= e(trans('webbook.mall::lang.common.products')) ?>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#payments">
-                                            <?= e(trans('offline.mall::lang.common.payments')) ?>
+                                            <?= e(trans('webbook.mall::lang.common.payments')) ?>
                                         </a>
                                     </li>
                                 </ul>
@@ -67,8 +67,8 @@
                                     type="button"
                                     class="oc-icon-trash-o btn-icon danger pull-right"
                                     data-request="onDelete"
-                                    data-load-indicator="<?= e(trans('offline.mall::lang.order.deleting')) ?>"
-                                    data-request-confirm="<?= e(trans('offline.mall::lang.order.delete_confirm')) ?>"
+                                    data-load-indicator="<?= e(trans('webbook.mall::lang.order.deleting')) ?>"
+                                    data-request-confirm="<?= e(trans('webbook.mall::lang.order.delete_confirm')) ?>"
                                 >
                                 </button>
                             </div>
@@ -84,18 +84,18 @@
                 <div class="sidebar-content">
                     <?= $this->makePartial('address', [
                         'address' => $order['shipping_address'],
-                        'heading' => e(trans('offline.mall::lang.order.shipping_address'))
+                        'heading' => e(trans('webbook.mall::lang.order.shipping_address'))
                     ]) ?>
 
                     <?php if (!$order['shipping_address_same_as_billing']): ?>
                         <?= $this->makePartial('address', [
                             'address' => $order['billing_address'],
-                            'heading' => e(trans('offline.mall::lang.order.billing_address'))
+                            'heading' => e(trans('webbook.mall::lang.order.billing_address'))
                         ]) ?>
                     <?php else: ?>
                         <div class="sidebar-box sidebar-box--with-icon">
                             <i class="icon icon-info-circle"></i>
-                            <?= e(trans('offline.mall::lang.order.shipping_address_is_same_as_billing')); ?>
+                            <?= e(trans('webbook.mall::lang.order.shipping_address_is_same_as_billing')); ?>
                         </div>
                     <?php endif; ?>
 
@@ -106,15 +106,15 @@
                     }
                     ?>
 
-                    <?php if (config('offline.mall::features.order_notes')): ?>
+                    <?php if (config('webbook.mall::features.order_notes')): ?>
 
-                        <h5><?= e(trans('offline.mall::lang.order.notes_section')) ?></h5>
+                        <h5><?= e(trans('webbook.mall::lang.order.notes_section')) ?></h5>
 
                         <form action="#" data-request="onUpdateNotes" data-request-validate data-request-flash>
                             <?= $orderFormWidget->render() ?>
 
                             <button data-attach-loading class="btn btn-primary w-100">
-                                <?= e(trans('offline.mall::lang.order.update_notes')) ?>
+                                <?= e(trans('webbook.mall::lang.order.update_notes')) ?>
                             </button>
                         </form>
 

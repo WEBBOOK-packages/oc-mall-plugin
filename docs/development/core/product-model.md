@@ -6,7 +6,7 @@ The `Product` model is the central entity of your shop installation.
 
 ::: tip
 These are only examples of the most commonly used relationships.
-Take a look at the [Product model's code](https://github.com/OFFLINE-GmbH/oc-mall-plugin/blob/develop/models/Product.php) to gain deeper insights.
+Take a look at the [Product model's code](https://github.com/WebBook-GmbH/oc-mall-plugin/blob/develop/models/Product.php) to gain deeper insights.
 :::
 
 ## Access pricing information

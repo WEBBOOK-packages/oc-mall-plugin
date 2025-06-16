@@ -25,15 +25,15 @@
 - Custom order states
 - Flexible e-mail notifications
 - Easily extendable with custom features
-- [Google Tag Manager and Google Merchant Center integrations](https://offline-gmbh.github.io/oc-mall-plugin/digging-deeper/analytics.html)
+- [Google Tag Manager and Google Merchant Center integrations](git@github.com:WEBBOOK-packages/oc-mall-plugin.git/digging-deeper/analytics.html)
 
 
 ## Read More
 
-- [Mall on OctoberCMS Marketplace](https://octobercms.com/plugin/offline-mall)
-- [Mall Demo Theme on OctoberCMS Marketplace](https://octobercms.com/theme/offline-oc-mall-theme)
-- [Official Documentation](https://offline-gmbh.github.io/oc-mall-plugin)
-- [Demonstration Website](https://mall.offline.swiss)
+- [Mall on OctoberCMS Marketplace](https://octobercms.com/plugin/webbook-mall)
+- [Mall Demo Theme on OctoberCMS Marketplace](https://octobercms.com/theme/webbook-oc-mall-theme)
+- [Official Documentation](https://webbook-gmbh.github.io/oc-mall-plugin)
+- [Demonstration Website](https://mall.webbook.swiss)
 
 
 ## Requirements
@@ -44,7 +44,7 @@
 
 We highly recommend not using SQLite on production environments, especially for larger Shops.
 
-There is also a [legacy version](https://github.com/OFFLINE-GmbH/oc-mall-plugin/tree/v1) of this 
+There is also a [legacy version](https://github.com/WebBook-GmbH/oc-mall-plugin/tree/v1) of this 
 plugin available, that works with OctoberCMS v1. However, this version is no longer updated nor 
 supported.
 
@@ -63,10 +63,10 @@ composer require \
    rainlab/user-plugin \
    rainlab/location-plugin \
    rainlab/translate-plugin \
-   offline/oc-mall-plugin
+   webbook/oc-mall-plugin
 ``` 
 
-Once the plugin is installed take a look at [the official documentation](https://offline-gmbh.github.io/oc-mall-plugin/)
+Once the plugin is installed take a look at [the official documentation](https://webbook-gmbh.github.io/oc-mall-plugin/)
 to get everything up and running.
 
 
@@ -79,7 +79,7 @@ were run on a DigitalOcean CPU optimized Droplet with 2 vCPU and 4GB RAM. Octobe
 All measurements were done using the [Bedard.Debugbar](https://octobercms.com/plugin/bedard-debugbar) 
 plugin and are the average load time over 10 page loads (I told you they were unscientific!).
  
-`Index size` defines the size of the `offline_mall_index` table. This table includes de-normalized 
+`Index size` defines the size of the `webbook_mall_index` table. This table includes de-normalized 
 information about all Products and Variants. An index size of 1000 means there are 1000 individual 
 Variants and Products stored. The demo data used was built using the  `php artisan mall:seed-demo` 
 command run in an infinite loop.

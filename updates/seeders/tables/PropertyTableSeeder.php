@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Tables;
+namespace WebBook\Mall\Updates\Seeders\Tables;
 
 use October\Rain\Database\Updates\Seeder;
-use OFFLINE\Mall\Models\Category;
-use OFFLINE\Mall\Models\Property;
-use OFFLINE\Mall\Models\PropertyGroup;
+use WebBook\Mall\Models\Category;
+use WebBook\Mall\Models\Property;
+use WebBook\Mall\Models\PropertyGroup;
 
 class PropertyTableSeeder extends Seeder
 {
@@ -35,22 +35,22 @@ class PropertyTableSeeder extends Seeder
 
         // Dimensions
         $propertyGroup = PropertyGroup::create([
-            'name' => trans('offline.mall::demo.property_groups.dimensions'),
+            'name' => trans('webbook.mall::demo.property_groups.dimensions'),
             'slug' => 'dimensions',
         ]);
         $propertyGroup->properties()->attach([
             Property::create([
-                'name' => trans('offline.mall::demo.property_groups.height'),
+                'name' => trans('webbook.mall::demo.property_groups.height'),
                 'type' => 'text',
                 'unit' => 'mm',
             ])->id,
             Property::create([
-                'name' => trans('offline.mall::demo.property_groups.width'),
+                'name' => trans('webbook.mall::demo.property_groups.width'),
                 'type' => 'text',
                 'unit' => 'mm',
             ])->id,
             Property::create([
-                'name' => trans('offline.mall::demo.property_groups.depth'),
+                'name' => trans('webbook.mall::demo.property_groups.depth'),
                 'type' => 'text',
                 'unit' => 'mm',
             ])->id,
@@ -62,12 +62,12 @@ class PropertyTableSeeder extends Seeder
 
         // Size
         $propertyGroup = PropertyGroup::create([
-            'name' => trans('offline.mall::demo.property_groups.size'),
+            'name' => trans('webbook.mall::demo.property_groups.size'),
             'slug' => 'size',
         ]);
         $propertyGroup->properties()->attach(
             Property::create([
-                'name'      => trans('offline.mall::demo.property_groups.size'),
+                'name'      => trans('webbook.mall::demo.property_groups.size'),
                 'type'      => 'dropdown',
                 'unit'      => '',
                 'slug'      => 'size',
@@ -98,30 +98,30 @@ class PropertyTableSeeder extends Seeder
     {
         // Bike Specifications
         $specsGroup = PropertyGroup::create([
-            'name'         => trans('offline.mall::demo.property_groups.bike_specs'),
-            'display_name' => trans('offline.mall::demo.property_groups.specs'),
+            'name'         => trans('webbook.mall::demo.property_groups.bike_specs'),
+            'display_name' => trans('webbook.mall::demo.property_groups.specs'),
             'slug'         => 'bike-specs',
         ]);
         $specsGroup->properties()->attach([
             Property::create([
-                'name'    => trans('offline.mall::demo.property_groups.gender'),
+                'name'    => trans('webbook.mall::demo.property_groups.gender'),
                 'type'    => 'dropdown',
                 'unit'    => '',
                 'slug'    => 'gender',
                 'options' => [
-                    ['value' => trans('offline.mall::demo.property_groups.male')],
-                    ['value' => trans('offline.mall::demo.property_groups.female')],
-                    ['value' => trans('offline.mall::demo.property_groups.unisex')],
+                    ['value' => trans('webbook.mall::demo.property_groups.male')],
+                    ['value' => trans('webbook.mall::demo.property_groups.female')],
+                    ['value' => trans('webbook.mall::demo.property_groups.unisex')],
                 ],
             ])->id,
             Property::create([
-                'name' => trans('offline.mall::demo.property_groups.material'),
+                'name' => trans('webbook.mall::demo.property_groups.material'),
                 'type' => 'text',
                 'unit' => '',
                 'slug' => 'material',
             ])->id,
             Property::create([
-                'name' => trans('offline.mall::demo.property_groups.color'),
+                'name' => trans('webbook.mall::demo.property_groups.color'),
                 'type' => 'color',
                 'unit' => '',
                 'slug' => 'color',
@@ -130,12 +130,12 @@ class PropertyTableSeeder extends Seeder
 
         // Bike Sizes
         $sizeGroup = PropertyGroup::create([
-            'name' => trans('offline.mall::demo.property_groups.bike_size'),
+            'name' => trans('webbook.mall::demo.property_groups.bike_size'),
             'slug' => 'bike-size',
         ]);
         $sizeGroup->properties()->attach([
             Property::create([
-                'name'      => trans('offline.mall::demo.property_groups.frame_size'),
+                'name'      => trans('webbook.mall::demo.property_groups.frame_size'),
                 'type'      => 'dropdown',
                 'unit'      => 'cm/inch',
                 'slug'      => 'frame-size',
@@ -147,7 +147,7 @@ class PropertyTableSeeder extends Seeder
                 ],
             ])->id,
             Property::create([
-                'name'      => trans('offline.mall::demo.property_groups.wheel_size'),
+                'name'      => trans('webbook.mall::demo.property_groups.wheel_size'),
                 'type'      => 'dropdown',
                 'unit'      => 'inch',
                 'slug'      => 'wheel-size',
@@ -164,18 +164,18 @@ class PropertyTableSeeder extends Seeder
 
         // Bike Suspension
         $suspensionGroup = PropertyGroup::create([
-            'name' => trans('offline.mall::demo.property_groups.suspension'),
+            'name' => trans('webbook.mall::demo.property_groups.suspension'),
             'slug' => 'suspension',
         ]);
         $suspensionGroup->properties()->attach([
             Property::create([
-                'name' => trans('offline.mall::demo.property_groups.fork_travel'),
+                'name' => trans('webbook.mall::demo.property_groups.fork_travel'),
                 'type' => 'integer',
                 'unit' => 'mm',
                 'slug' => 'fork-travel',
             ])->id,
             Property::create([
-                'name' => trans('offline.mall::demo.property_groups.rear_travel'),
+                'name' => trans('webbook.mall::demo.property_groups.rear_travel'),
                 'type' => 'integer',
                 'unit' => 'mm',
                 'slug' => 'rear-travel',
@@ -184,8 +184,8 @@ class PropertyTableSeeder extends Seeder
 
         // Clothing
         $clothingGroup = PropertyGroup::create([
-            'name'         => trans('offline.mall::demo.property_groups.clothing_specs'),
-            'display_name' => trans('offline.mall::demo.property_groups.specs'),
+            'name'         => trans('webbook.mall::demo.property_groups.clothing_specs'),
+            'display_name' => trans('webbook.mall::demo.property_groups.specs'),
             'slug'         => 'specs',
         ]);
 
@@ -195,7 +195,7 @@ class PropertyTableSeeder extends Seeder
             'use_for_variants'  => true,
             'filter_type'       => 'set',
         ]);
-        
+
         $clothingGroup->properties()->attach([
             Property::where('slug', 'material')->first()->id,
             Property::where('slug', 'gender')->first()->id,

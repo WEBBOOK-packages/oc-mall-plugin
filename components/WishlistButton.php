@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Illuminate\Support\Collection;
 use October\Rain\Exception\ValidationException;
 use October\Rain\Support\Facades\Flash;
-use OFFLINE\Mall\Classes\Traits\HashIds;
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\Wishlist;
-use OFFLINE\Mall\Models\WishlistItem;
+use WebBook\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\Wishlist;
+use WebBook\Mall\Models\WishlistItem;
 use Validator;
 
 class WishlistButton extends MallComponent
@@ -27,8 +27,8 @@ class WishlistButton extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.wishlistButton.details.name',
-            'description' => 'offline.mall::lang.components.wishlistButton.details.description',
+            'name'        => 'webbook.mall::lang.components.wishlistButton.details.name',
+            'description' => 'webbook.mall::lang.components.wishlistButton.details.description',
         ];
     }
 
@@ -36,13 +36,13 @@ class WishlistButton extends MallComponent
     {
         return [
             'product' => [
-                'title'       => 'offline.mall::lang.components.wishlistButton.properties.product.title',
-                'description' => 'offline.mall::lang.components.wishlistButton.properties.product.description',
+                'title'       => 'webbook.mall::lang.components.wishlistButton.properties.product.title',
+                'description' => 'webbook.mall::lang.components.wishlistButton.properties.product.description',
                 'type'        => 'string',
             ],
             'variant' => [
-                'title'       => 'offline.mall::lang.components.wishlistButton.properties.variant.title',
-                'description' => 'offline.mall::lang.components.wishlistButton.properties.variant.description',
+                'title'       => 'webbook.mall::lang.components.wishlistButton.properties.variant.title',
+                'description' => 'webbook.mall::lang.components.wishlistButton.properties.variant.description',
                 'type'        => 'string',
             ],
         ];
@@ -99,8 +99,8 @@ class WishlistButton extends MallComponent
             'wishlist_id' => $wishlist->id,
         ]);
 
-        Flash::success(trans('offline.mall::frontend.wishlist.added'));
-        
+        Flash::success(trans('webbook.mall::frontend.wishlist.added'));
+
         $this->page['items'] = $this->getWishlists();
 
         return [
@@ -142,7 +142,7 @@ class WishlistButton extends MallComponent
         if ($v->fails()) {
             throw new ValidationException($v);
         }
-        
+
         $this->decodeIds();
 
         Wishlist::where('id', $this->decode(post('wishlist_id')))->delete();

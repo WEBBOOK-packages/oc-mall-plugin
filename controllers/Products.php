@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Controllers;
+namespace WebBook\Mall\Controllers;
 
 use Backend\Behaviors\FormController;
 use Backend\Behaviors\ListController;
@@ -13,21 +13,21 @@ use BackendMenu;
 use DB;
 use Event;
 use Flash;
-use OFFLINE\Mall\Classes\Database\IsStatesScope;
-use OFFLINE\Mall\Classes\Index\Index;
-use OFFLINE\Mall\Classes\Observers\ProductObserver;
-use OFFLINE\Mall\Classes\Traits\ProductPriceTable;
-use OFFLINE\Mall\Models\CustomField;
-use OFFLINE\Mall\Models\CustomFieldOption;
-use OFFLINE\Mall\Models\ImageSet;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\ProductFile;
-use OFFLINE\Mall\Models\ProductPrice;
-use OFFLINE\Mall\Models\Property;
-use OFFLINE\Mall\Models\PropertyValue;
-use OFFLINE\Mall\Models\Review;
-use OFFLINE\Mall\Models\Variant;
+use WebBook\Mall\Classes\Database\IsStatesScope;
+use WebBook\Mall\Classes\Index\Index;
+use WebBook\Mall\Classes\Observers\ProductObserver;
+use WebBook\Mall\Classes\Traits\ProductPriceTable;
+use WebBook\Mall\Models\CustomField;
+use WebBook\Mall\Models\CustomFieldOption;
+use WebBook\Mall\Models\ImageSet;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\ProductFile;
+use WebBook\Mall\Models\ProductPrice;
+use WebBook\Mall\Models\Property;
+use WebBook\Mall\Models\PropertyValue;
+use WebBook\Mall\Models\Review;
+use WebBook\Mall\Models\Variant;
 use RainLab\Translate\Behaviors\TranslatableModel;
 
 class Products extends Controller
@@ -75,7 +75,7 @@ class Products extends Controller
      * @var array
      */
     public $requiredPermissions = [
-        'offline.mall.manage_products',
+        'webbook.mall.manage_products',
     ];
 
     /**
@@ -90,11 +90,11 @@ class Products extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('OFFLINE.Mall', 'mall-catalogue', 'mall-products');
+        BackendMenu::setContext('WebBook.Mall', 'mall-catalogue', 'mall-products');
 
         $model                  = post('option_id') ? CustomFieldOption::find(post('option_id')) : null;
         $this->optionFormWidget = $this->createOptionFormWidget($model);
-        $this->addCss('/plugins/offline/mall/assets/backend.css');
+        $this->addCss('/plugins/webbook/mall/assets/backend.css');
 
         if (count($this->params) > 0) {
             // This is pretty hacky but it works. To get the original data from the Variant
@@ -124,9 +124,9 @@ class Products extends Controller
 
         // If the product has no category something is wrong and needs fixing!
         if (!$this->vars['formModel']->categories) {
-            Flash::error(trans('offline.mall::lang.common.action_required'));
+            Flash::error(trans('webbook.mall::lang.common.action_required'));
 
-            return redirect(Backend::url('offline/mall/products/change_category/' . $id));
+            return redirect(Backend::url('webbook/mall/products/change_category/' . $id));
         }
 
         // Strike through all old file versions.
@@ -156,11 +156,11 @@ class Products extends Controller
      */
     public function change_category($id)
     {
-        $this->pageTitle   = trans('offline.mall::lang.common.action_required');
+        $this->pageTitle   = trans('webbook.mall::lang.common.action_required');
         $config            = $this->makeConfigFromArray([
             'fields' => [
                 'categories' => [
-                    'label'           => 'offline.mall::lang.common.category',
+                    'label'           => 'webbook.mall::lang.common.category',
                     'nameFrom'        => 'name',
                     'descriptionFrom' => 'description',
                     'span'            => 'auto',
@@ -185,9 +185,9 @@ class Products extends Controller
         $product->categories()->attach(post('Product.categories'));
         $product->save();
 
-        Flash::success(trans('offline.mall::lang.common.saved_changes'));
+        Flash::success(trans('webbook.mall::lang.common.saved_changes'));
 
-        return redirect(Backend::url('offline/mall/products/update/' . $this->params[0]));
+        return redirect(Backend::url('webbook/mall/products/update/' . $this->params[0]));
     }
 
     /**
@@ -278,7 +278,7 @@ class Products extends Controller
     {
         Review::findOrFail(post('id'))->approve();
 
-        Flash::success(trans('offline.mall::lang.reviews.approved'));
+        Flash::success(trans('webbook.mall::lang.reviews.approved'));
 
         $this->initRelation(Product::findOrFail($this->params[0]), 'reviews');
 
@@ -297,7 +297,7 @@ class Products extends Controller
         $this->vars['customFieldId']    = post('manage_id');
         $this->vars['type']             = post('type');
 
-        return $this->makePartial('$/offline/mall/controllers/customfields/_option_form.htm');
+        return $this->makePartial('$/webbook/mall/controllers/customfields/_option_form.htm');
     }
 
     /**
@@ -311,7 +311,7 @@ class Products extends Controller
         $this->vars['customFieldOptionId'] = post('option_id');
         $this->vars['type']                = post('type');
 
-        return $this->makePartial('$/offline/mall/controllers/customfields/_option_form.htm');
+        return $this->makePartial('$/webbook/mall/controllers/customfields/_option_form.htm');
     }
 
     /**
@@ -400,7 +400,7 @@ class Products extends Controller
             ->each
             ->duplicate();
 
-        Flash::success(trans('offline.mall::lang.common.duplicated'));
+        Flash::success(trans('webbook.mall::lang.common.duplicated'));
 
         return $this->asExtension(ListController::class)->listRefresh();
     }
@@ -419,7 +419,7 @@ class Products extends Controller
         $this->vars['items'] = $items;
         $this->vars['type']  = post('type');
 
-        return ['#optionList' => $this->makePartial('$/offline/mall/controllers/customfields/_options_list.htm')];
+        return ['#optionList' => $this->makePartial('$/webbook/mall/controllers/customfields/_options_list.htm')];
     }
 
     /**
@@ -442,7 +442,7 @@ class Products extends Controller
      */
     protected function createOptionFormWidget(CustomFieldOption $model = null)
     {
-        $config                    = $this->makeConfig('$/offline/mall/models/customfieldoption/fields.yaml');
+        $config                    = $this->makeConfig('$/webbook/mall/models/customfieldoption/fields.yaml');
         $config->alias             = 'optionForm';
         $config->arrayName         = 'Option';
         $config->model             = $model ?? new CustomFieldOption();

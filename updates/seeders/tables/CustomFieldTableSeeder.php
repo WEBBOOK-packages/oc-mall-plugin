@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Tables;
+namespace WebBook\Mall\Updates\Seeders\Tables;
 
 use October\Rain\Database\Updates\Seeder;
-use OFFLINE\Mall\Models\CustomField;
-use OFFLINE\Mall\Models\CustomFieldOption;
+use WebBook\Mall\Models\CustomField;
+use WebBook\Mall\Models\CustomFieldOption;
 
 class CustomFieldTableSeeder extends Seeder
 {

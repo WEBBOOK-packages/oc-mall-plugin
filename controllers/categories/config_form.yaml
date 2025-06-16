@@ -1,14 +1,14 @@
-name: 'offline.mall::lang.common.category'
-modelClass: OFFLINE\Mall\Models\Category
-form: $/offline/mall/models/category/fields.yaml
-defaultRedirect: offline/mall/categories
+name: 'webbook.mall::lang.common.category'
+modelClass: WebBook\Mall\Models\Category
+form: $/webbook/mall/models/category/fields.yaml
+defaultRedirect: webbook/mall/categories
 create:
-    title: 'offline.mall::lang.titles.categories.create'
-    redirect: 'offline/mall/categories/update/:id'
-    redirectClose: offline/mall/categories
+    title: 'webbook.mall::lang.titles.categories.create'
+    redirect: 'webbook/mall/categories/update/:id'
+    redirectClose: webbook/mall/categories
 update:
-    title: 'offline.mall::lang.titles.categories.update'
-    redirect: offline/mall/categories
-    redirectClose: offline/mall/categories
+    title: 'webbook.mall::lang.titles.categories.update'
+    redirect: webbook/mall/categories
+    redirectClose: webbook/mall/categories
 preview:
-    title: 'offline.mall::lang.titles.categories.preview'
+    title: 'webbook.mall::lang.titles.categories.preview'

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Controllers;
+namespace WebBook\Mall\Controllers;
 
 use Backend\Behaviors\FormController;
 use Backend\Behaviors\ListController;
@@ -36,6 +36,6 @@ class Variants extends Controller
      * @var array
      */
     public $requiredPermissions = [
-        'offline.mall.manage_products',
+        'webbook.mall.manage_products',
     ];
 }

@@ -13,7 +13,7 @@
     "authors": [
         {
             "name": "Tobias Kündig",
-            "email": "tobias@offline.ch"
+            "email": "tobias@webbook.ch"
         }
     ],
     "require": {
@@ -33,7 +33,7 @@
         "vitalybaev/google-merchant-feed": "Required to use the Google Merchant Feed integration",
         "bummzack/omnipay-postfinance": "Required to use the PostFinance payment provider",
         "elasticsearch/elasticsearch": "Required to use the ElasticSearch indexing support (experimental)",
-        "offline/jsonq": "Required to use the file based index",
+        "webbook/jsonq": "Required to use the file based index",
         "tmarois/filebase": "Required to use the file based index"
     },
     "require-dev": {

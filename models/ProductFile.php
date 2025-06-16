@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\Validation;
@@ -13,7 +13,7 @@ class ProductFile extends Model
 {
     use Validation;
 
-    public $table = 'offline_mall_product_files';
+    public $table = 'webbook_mall_product_files';
 
     public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
 
@@ -41,7 +41,7 @@ class ProductFile extends Model
     public $belongsToMany = [
         'variants' => [
             Variant::class,
-            'table' => 'offline_mall_product_file_variant',
+            'table' => 'webbook_mall_product_file_variant',
         ],
     ];
 

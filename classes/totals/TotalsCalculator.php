@@ -1,17 +1,17 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Totals;
+namespace WebBook\Mall\Classes\Totals;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use October\Contracts\Twig\CallsAnyMethod;
-use OFFLINE\Mall\Classes\Cart\DiscountApplier;
-use OFFLINE\Mall\Classes\Traits\FilteredTaxes;
-use OFFLINE\Mall\Classes\Traits\Rounding;
-use OFFLINE\Mall\Models\CartProduct;
-use OFFLINE\Mall\Models\Discount;
-use OFFLINE\Mall\Models\Tax;
-use OFFLINE\Mall\Models\WishlistItem;
+use WebBook\Mall\Classes\Cart\DiscountApplier;
+use WebBook\Mall\Classes\Traits\FilteredTaxes;
+use WebBook\Mall\Classes\Traits\Rounding;
+use WebBook\Mall\Models\CartProduct;
+use WebBook\Mall\Models\Discount;
+use WebBook\Mall\Models\Tax;
+use WebBook\Mall\Models\WishlistItem;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyFields)
@@ -242,12 +242,12 @@ class TotalsCalculator implements CallsAnyMethod
     {
         return $this->totalTaxes;
     }
-    
+
     public function totalDiscounts(): float
     {
         return $this->totalDiscounts;
     }
-    
+
     public function totalPrePayment(): float
     {
         return $this->totalPrePayment;

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Tables;
+namespace WebBook\Mall\Updates\Seeders\Tables;
 
 use October\Rain\Database\Updates\Seeder;
-use OFFLINE\Mall\Models\CustomerGroup;
+use WebBook\Mall\Models\CustomerGroup;
 
 class CustomerGroupTableSeeder extends Seeder
 {
@@ -19,19 +19,19 @@ class CustomerGroupTableSeeder extends Seeder
         if (!$useDemo && config('app.env') != 'testing') {
             return;
         }
-        
+
         CustomerGroup::create([
-            'name' => trans('offline.mall::demo.customer_groups.silver.name'),
+            'name' => trans('webbook.mall::demo.customer_groups.silver.name'),
             'code' => 'silver',
         ]);
 
         CustomerGroup::create([
-            'name' => trans('offline.mall::demo.customer_groups.gold.name'),
+            'name' => trans('webbook.mall::demo.customer_groups.gold.name'),
             'code' => 'gold',
         ]);
-        
+
         CustomerGroup::create([
-            'name' => trans('offline.mall::demo.customer_groups.diamond.name'),
+            'name' => trans('webbook.mall::demo.customer_groups.diamond.name'),
             'code' => 'diamond',
         ]);
     }

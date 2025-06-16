@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Registration;
+namespace WebBook\Mall\Classes\Registration;
 
 use Barryvdh\DomPDF\Facade;
 use Barryvdh\DomPDF\PDF;
@@ -9,24 +9,24 @@ use Dompdf\Dompdf;
 use Hashids\Hashids;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Cache;
-use OFFLINE\Mall\Classes\Customer\DefaultSignInHandler;
-use OFFLINE\Mall\Classes\Customer\DefaultSignUpHandler;
-use OFFLINE\Mall\Classes\Customer\SignInHandler;
-use OFFLINE\Mall\Classes\Customer\SignUpHandler;
-use OFFLINE\Mall\Classes\Index\Filebase;
-use OFFLINE\Mall\Classes\Index\Index;
-use OFFLINE\Mall\Classes\Index\IndexNotSupportedException;
-use OFFLINE\Mall\Classes\Index\MySQL\MySQL;
-use OFFLINE\Mall\Classes\Payments\DefaultPaymentGateway;
-use OFFLINE\Mall\Classes\Payments\Offline;
-use OFFLINE\Mall\Classes\Payments\PaymentGateway;
-use OFFLINE\Mall\Classes\Payments\PayPalRest;
-use OFFLINE\Mall\Classes\Payments\PostFinance;
-use OFFLINE\Mall\Classes\Payments\Stripe;
-use OFFLINE\Mall\Classes\User\UserProvider;
-use OFFLINE\Mall\Classes\Utils\DefaultMoney;
-use OFFLINE\Mall\Classes\Utils\Money;
-use OFFLINE\Mall\Models\GeneralSettings;
+use WebBook\Mall\Classes\Customer\DefaultSignInHandler;
+use WebBook\Mall\Classes\Customer\DefaultSignUpHandler;
+use WebBook\Mall\Classes\Customer\SignInHandler;
+use WebBook\Mall\Classes\Customer\SignUpHandler;
+use WebBook\Mall\Classes\Index\Filebase;
+use WebBook\Mall\Classes\Index\Index;
+use WebBook\Mall\Classes\Index\IndexNotSupportedException;
+use WebBook\Mall\Classes\Index\MySQL\MySQL;
+use WebBook\Mall\Classes\Payments\DefaultPaymentGateway;
+use WebBook\Mall\Classes\Payments\WebBook;
+use WebBook\Mall\Classes\Payments\PaymentGateway;
+use WebBook\Mall\Classes\Payments\PayPalRest;
+use WebBook\Mall\Classes\Payments\PostFinance;
+use WebBook\Mall\Classes\Payments\Stripe;
+use WebBook\Mall\Classes\User\UserProvider;
+use WebBook\Mall\Classes\Utils\DefaultMoney;
+use WebBook\Mall\Classes\Utils\Money;
+use WebBook\Mall\Models\GeneralSettings;
 use PDO;
 
 trait BootServiceContainer
@@ -38,7 +38,7 @@ trait BootServiceContainer
         $this->app->singleton(Money::class, fn () => new DefaultMoney());
         $this->app->singleton(PaymentGateway::class, function () {
             $gateway = new DefaultPaymentGateway();
-            $gateway->registerProvider(new Offline());
+            $gateway->registerProvider(new WebBook());
             $gateway->registerProvider(new PayPalRest());
             $gateway->registerProvider(new Stripe());
             $gateway->registerProvider(new PostFinance());
@@ -47,7 +47,7 @@ trait BootServiceContainer
         });
         $this->app->singleton(Hashids::class, fn () => new Hashids(config('app.key', 'oc-mall'), 8));
         $this->app->bind(Index::class, function () {
-            $driver = Cache::rememberForever('offline_mall.mysql.index.driver', function () {
+            $driver = Cache::rememberForever('webbook_mall.mysql.index.driver', function () {
                 $driver = GeneralSettings::get('index_driver');
 
                 if ($driver === null) {
@@ -85,10 +85,10 @@ trait BootServiceContainer
                 }
             } catch (IndexNotSupportedException $e) {
                 logger()->error(
-                    '[OFFLINE.Mall] Your database does not support JSON data. Your index driver has been switched to "Filesystem". Update your database to make use of database indexing.'
+                    '[WebBook.Mall] Your database does not support JSON data. Your index driver has been switched to "Filesystem". Update your database to make use of database indexing.'
                 );
                 GeneralSettings::set('index_driver', 'filesystem');
-                Cache::forget('offline_mall.mysql.index.driver');
+                Cache::forget('webbook_mall.mysql.index.driver');
 
                 return new Filebase();
             }
@@ -107,7 +107,7 @@ trait BootServiceContainer
         AliasLoader::getInstance()->alias('PDF', Facade::class);
 
         $this->app->bind('dompdf.options', function () {
-            if ($defines = $this->app['config']->get('offline.mall::pdf.defines')) {
+            if ($defines = $this->app['config']->get('webbook.mall::pdf.defines')) {
                 $options = [];
 
                 foreach ($defines as $key => $value) {
@@ -115,7 +115,7 @@ trait BootServiceContainer
                     $options[$key] = $value;
                 }
             } else {
-                $options = $this->app['config']->get('offline.mall::pdf.options', []);
+                $options = $this->app['config']->get('webbook.mall::pdf.options', []);
             }
 
             return $options;

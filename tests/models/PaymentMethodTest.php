@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
 use Event;
-use OFFLINE\Mall\Models\Address;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Models\PaymentMethod;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Tax;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Models\Address;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Models\PaymentMethod;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Tax;
+use WebBook\Mall\Tests\PluginTestCase;
 use RainLab\Location\Models\Country;
 
 class PaymentMethodTest extends PluginTestCase

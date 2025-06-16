@@ -1,21 +1,21 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Payments;
+namespace WebBook\Mall\Classes\Payments;
 
 /**
- * This provider can be used for all offline payments.
+ * This provider can be used for all webbook payments.
  *
  * The order's payment state will be marked as pending if
  * this provider is used.
  */
-class Offline extends PaymentProvider
+class WebBook extends PaymentProvider
 {
     /**
      * {@inheritdoc}
      */
     public function name(): string
     {
-        return 'Offline';
+        return 'WebBook';
     }
 
     /**
@@ -23,7 +23,7 @@ class Offline extends PaymentProvider
      */
     public function identifier(): string
     {
-        return 'offline';
+        return 'webbook';
     }
 
     /**

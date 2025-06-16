@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Index\MySQL;
+namespace WebBook\Mall\Classes\Index\MySQL;
 
 use Cache;
 use DB;
@@ -8,22 +8,22 @@ use Event;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Collection;
 use October\Rain\Database\Schema\Blueprint;
-use OFFLINE\Mall\Classes\CategoryFilter\Filter;
-use OFFLINE\Mall\Classes\CategoryFilter\RangeFilter;
-use OFFLINE\Mall\Classes\CategoryFilter\SetFilter;
-use OFFLINE\Mall\Classes\CategoryFilter\SortOrder\Random;
-use OFFLINE\Mall\Classes\CategoryFilter\SortOrder\SortOrder;
-use OFFLINE\Mall\Classes\Index\Entry;
-use OFFLINE\Mall\Classes\Index\Index;
-use OFFLINE\Mall\Classes\Index\IndexNotSupportedException;
-use OFFLINE\Mall\Classes\Index\IndexResult;
-use OFFLINE\Mall\Models\Currency;
+use WebBook\Mall\Classes\CategoryFilter\Filter;
+use WebBook\Mall\Classes\CategoryFilter\RangeFilter;
+use WebBook\Mall\Classes\CategoryFilter\SetFilter;
+use WebBook\Mall\Classes\CategoryFilter\SortOrder\Random;
+use WebBook\Mall\Classes\CategoryFilter\SortOrder\SortOrder;
+use WebBook\Mall\Classes\Index\Entry;
+use WebBook\Mall\Classes\Index\Index;
+use WebBook\Mall\Classes\Index\IndexNotSupportedException;
+use WebBook\Mall\Classes\Index\IndexResult;
+use WebBook\Mall\Models\Currency;
 use Schema;
 use Throwable;
 
 class MySQL implements Index
 {
-    public const CACHE_KEY = 'offline_mall.mysql.index.exists';
+    public const CACHE_KEY = 'webbook_mall.mysql.index.exists';
 
     /**
      * Type casts for index columns.

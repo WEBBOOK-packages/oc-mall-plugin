@@ -1,20 +1,20 @@
 fields:
     is_enabled:
         type: switch
-        label: offline.mall::lang.price_category_settings.is_enabled
+        label: webbook.mall::lang.price_category_settings.is_enabled
         span: left
         default: true
     name:
-        label: 'offline.mall::lang.common.name'
+        label: 'webbook.mall::lang.common.name'
         span: left
         type: text
     title:
-        label: 'offline.mall::lang.price_category_settings.title_label'
+        label: 'webbook.mall::lang.price_category_settings.title_label'
         span: left
         type: text
-        description: 'offline.mall::lang.price_category_settings.title_description'
+        description: 'webbook.mall::lang.price_category_settings.title_description'
     code:
-        label: 'offline.mall::lang.common.code'
+        label: 'webbook.mall::lang.common.code'
         span: right
         preset:
             field: name

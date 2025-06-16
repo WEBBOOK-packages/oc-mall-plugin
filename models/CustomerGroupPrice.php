@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use October\Rain\Database\Traits\Validation;
 
@@ -14,7 +14,7 @@ class CustomerGroupPrice extends Price
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_customer_group_prices';
+    public $table = 'webbook_mall_customer_group_prices';
 
     /**
      * The validation rules for the single attributes.

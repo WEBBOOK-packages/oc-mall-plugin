@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Tables;
+namespace WebBook\Mall\Updates\Seeders\Tables;
 
 use October\Rain\Database\Updates\Seeder;
-use OFFLINE\Mall\Models\PaymentMethod;
+use WebBook\Mall\Models\PaymentMethod;
 
 class PaymentMethodTableSeeder extends Seeder
 {
@@ -19,14 +19,14 @@ class PaymentMethodTableSeeder extends Seeder
         if ($useDemo) {
             return;
         }
-        
+
         PaymentMethod::create([
-            'name'              => trans('offline.mall::demo.payment_methods.invoice'),
-            'payment_provider'  => 'offline',
+            'name'              => trans('webbook.mall::demo.payment_methods.invoice'),
+            'payment_provider'  => 'webbook',
             'sort_order'        => 1,
             'is_default'        => true,
         ]);
-        
+
         PaymentMethod::create([
             'name'              => 'PayPal',
             'payment_provider'  => 'paypal-rest',

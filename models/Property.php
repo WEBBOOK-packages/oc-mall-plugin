@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Illuminate\Support\Facades\Queue;
 use Model;
@@ -10,8 +10,8 @@ use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\SortableRelation;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Jobs\PropertyRemovalUpdate;
-use OFFLINE\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Jobs\PropertyRemovalUpdate;
+use WebBook\Mall\Classes\Traits\HashIds;
 
 class Property extends Model
 {
@@ -32,7 +32,7 @@ class Property extends Model
         'slug' => 'name',
     ];
 
-    public $table = 'offline_mall_properties';
+    public $table = 'webbook_mall_properties';
 
     public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
 
@@ -57,7 +57,7 @@ class Property extends Model
     public $belongsToMany = [
         'property_groups' => [
             PropertyGroup::class,
-            'table'      => 'offline_mall_property_property_group',
+            'table'      => 'webbook_mall_property_property_group',
             'key'        => 'property_id',
             'otherKey'   => 'property_group_id',
             'pivot'      => ['use_for_variants', 'filter_type', 'sort_order'],
@@ -96,7 +96,7 @@ class Property extends Model
             $categories = $this->property_groups->flatMap->getRelatedCategories();
 
             Product::whereHas('categories', function ($q) use ($categories) {
-                $q->whereIn('offline_mall_category_product.category_id', $categories->pluck('id'));
+                $q->whereIn('webbook_mall_category_product.category_id', $categories->pluck('id'));
             })
                 ->where('group_by_property_id', $this->id)
                 ->update(['group_by_property_id' => null]);
@@ -152,18 +152,18 @@ class Property extends Model
     public function getTypeOptions()
     {
         return [
-            'text'       => trans('offline.mall::lang.custom_field_options.text'),
-            'integer'    => trans('offline.mall::lang.custom_field_options.integer'),
-            'float'      => trans('offline.mall::lang.custom_field_options.float'),
-            'textarea'   => trans('offline.mall::lang.custom_field_options.textarea'),
-            'richeditor' => trans('offline.mall::lang.custom_field_options.richeditor'),
-            'dropdown'   => trans('offline.mall::lang.custom_field_options.dropdown'),
-            'checkbox'   => trans('offline.mall::lang.custom_field_options.checkbox'),
-            'color'      => trans('offline.mall::lang.custom_field_options.color'),
-            //            'image'    => trans('offline.mall::lang.custom_field_options.image'),
-            'datetime'   => trans('offline.mall::lang.custom_field_options.datetime'),
-            'date'       => trans('offline.mall::lang.custom_field_options.date'),
-            'switch'     => trans('offline.mall::lang.custom_field_options.switch'),
+            'text'       => trans('webbook.mall::lang.custom_field_options.text'),
+            'integer'    => trans('webbook.mall::lang.custom_field_options.integer'),
+            'float'      => trans('webbook.mall::lang.custom_field_options.float'),
+            'textarea'   => trans('webbook.mall::lang.custom_field_options.textarea'),
+            'richeditor' => trans('webbook.mall::lang.custom_field_options.richeditor'),
+            'dropdown'   => trans('webbook.mall::lang.custom_field_options.dropdown'),
+            'checkbox'   => trans('webbook.mall::lang.custom_field_options.checkbox'),
+            'color'      => trans('webbook.mall::lang.custom_field_options.color'),
+            //            'image'    => trans('webbook.mall::lang.custom_field_options.image'),
+            'datetime'   => trans('webbook.mall::lang.custom_field_options.datetime'),
+            'date'       => trans('webbook.mall::lang.custom_field_options.date'),
+            'switch'     => trans('webbook.mall::lang.custom_field_options.switch'),
         ];
     }
 }

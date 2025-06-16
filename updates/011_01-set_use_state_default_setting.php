@@ -1,9 +1,9 @@
 <?php
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use October\Rain\Database\Updates\Migration;
-use OFFLINE\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\GeneralSettings;
 
 class SetUseStateDefaultSetting extends Migration
 {

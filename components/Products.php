@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use ArrayAccess;
 use Flash;
@@ -11,19 +11,19 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use LogicException;
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Classes\CategoryFilter\QueryString;
-use OFFLINE\Mall\Classes\CategoryFilter\SetFilter;
-use OFFLINE\Mall\Classes\CategoryFilter\SortOrder\SortOrder;
-use OFFLINE\Mall\Classes\Exceptions\OutOfStockException;
-use OFFLINE\Mall\Classes\Index\Index;
-use OFFLINE\Mall\Classes\Traits\CustomFields;
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\Cart as CartModel;
-use OFFLINE\Mall\Models\Category as CategoryModel;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Variant;
+use WebBook\Mall\Classes\CategoryFilter\QueryString;
+use WebBook\Mall\Classes\CategoryFilter\SetFilter;
+use WebBook\Mall\Classes\CategoryFilter\SortOrder\SortOrder;
+use WebBook\Mall\Classes\Exceptions\OutOfStockException;
+use WebBook\Mall\Classes\Index\Index;
+use WebBook\Mall\Classes\Traits\CustomFields;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\Cart as CartModel;
+use WebBook\Mall\Models\Category as CategoryModel;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Variant;
 use Redirect;
 
 /**
@@ -145,8 +145,8 @@ class Products extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.products.details.name',
-            'description' => 'offline.mall::lang.components.products.details.description',
+            'name'        => 'webbook.mall::lang.components.products.details.name',
+            'description' => 'webbook.mall::lang.components.products.details.description',
         ];
     }
 
@@ -159,55 +159,55 @@ class Products extends MallComponent
     {
         return [
             'category'        => [
-                'title'   => 'offline.mall::lang.common.category',
+                'title'   => 'webbook.mall::lang.common.category',
                 'default' => null,
                 'type'    => 'dropdown',
             ],
             'filterComponent' => [
-                'title'       => 'offline.mall::lang.components.products.properties.filter_component.title',
-                'description' => 'offline.mall::lang.components.products.properties.filter_component.description',
+                'title'       => 'webbook.mall::lang.components.products.properties.filter_component.title',
+                'description' => 'webbook.mall::lang.components.products.properties.filter_component.description',
                 'default'     => 'productsFilter',
                 'type'        => 'string',
             ],
             'filter'          => [
-                'title'       => 'offline.mall::lang.components.products.properties.filter.title',
-                'description' => 'offline.mall::lang.components.products.properties.filter.description',
+                'title'       => 'webbook.mall::lang.components.products.properties.filter.title',
+                'description' => 'webbook.mall::lang.components.products.properties.filter.description',
                 'default'     => null,
                 'type'        => 'string',
             ],
             'setPageTitle'    => [
-                'title'       => 'offline.mall::lang.components.products.properties.set_page_title.title',
-                'description' => 'offline.mall::lang.components.products.properties.set_page_title.description',
+                'title'       => 'webbook.mall::lang.components.products.properties.set_page_title.title',
+                'description' => 'webbook.mall::lang.components.products.properties.set_page_title.description',
                 'default'     => '0',
                 'type'        => 'checkbox',
             ],
             'includeVariants' => [
-                'title'       => 'offline.mall::lang.components.products.properties.include_variants.title',
-                'description' => 'offline.mall::lang.components.products.properties.include_variants.description',
+                'title'       => 'webbook.mall::lang.components.products.properties.include_variants.title',
+                'description' => 'webbook.mall::lang.components.products.properties.include_variants.description',
                 'default'     => '1',
                 'type'        => 'checkbox',
             ],
             'includeChildren' => [
-                'title'       => 'offline.mall::lang.components.products.properties.include_children.title',
-                'description' => 'offline.mall::lang.components.products.properties.include_children.description',
+                'title'       => 'webbook.mall::lang.components.products.properties.include_children.title',
+                'description' => 'webbook.mall::lang.components.products.properties.include_children.description',
                 'default'     => '0',
                 'type'        => 'checkbox',
             ],
             'perPage'         => [
-                'title'       => 'offline.mall::lang.components.products.properties.per_page.title',
-                'description' => 'offline.mall::lang.components.products.properties.per_page.description',
+                'title'       => 'webbook.mall::lang.components.products.properties.per_page.title',
+                'description' => 'webbook.mall::lang.components.products.properties.per_page.description',
                 'default'     => '9',
                 'type'        => 'string',
             ],
             'paginate'        => [
-                'title'       => 'offline.mall::lang.components.products.properties.paginate.title',
-                'description' => 'offline.mall::lang.components.products.properties.paginate.description',
+                'title'       => 'webbook.mall::lang.components.products.properties.paginate.title',
+                'description' => 'webbook.mall::lang.components.products.properties.paginate.description',
                 'default'     => '1',
                 'type'        => 'checkbox',
             ],
             'sort'            => [
-                'title'       => 'offline.mall::lang.components.products.properties.sort.title',
-                'description' => 'offline.mall::lang.components.products.properties.sort.description',
+                'title'       => 'webbook.mall::lang.components.products.properties.sort.title',
+                'description' => 'webbook.mall::lang.components.products.properties.sort.description',
                 'default'     => null,
                 'type'        => 'dropdown',
             ],
@@ -222,8 +222,8 @@ class Products extends MallComponent
     public function getCategoryOptions()
     {
         return [
-            null    => trans('offline.mall::lang.components.products.properties.no_category_filter'),
-            ':slug' => trans('offline.mall::lang.components.products.properties.use_url'),
+            null    => trans('webbook.mall::lang.components.products.properties.no_category_filter'),
+            ':slug' => trans('webbook.mall::lang.components.products.properties.use_url'),
         ]
             + CategoryModel::get()->pluck('name', 'id')->toArray();
     }
@@ -235,7 +235,7 @@ class Products extends MallComponent
      */
     public function getSortOptions()
     {
-        return [null => trans('offline.mall::lang.common.none')] + SortOrder::dropdownOptions();
+        return [null => trans('webbook.mall::lang.common.none')] + SortOrder::dropdownOptions();
     }
 
     /**
@@ -284,13 +284,13 @@ class Products extends MallComponent
         $quantity = (int)post('quantity', $product->quantity_default ?? 1);
 
         if ($quantity < 1) {
-            throw new ValidationException(['quantity' => trans('offline.mall::lang.common.invalid_quantity')]);
+            throw new ValidationException(['quantity' => trans('webbook.mall::lang.common.invalid_quantity')]);
         }
 
         try {
             $cart->addProduct($product, $quantity, $variant, $values);
         } catch (OutOfStockException $e) {
-            throw new ValidationException(['stock' => trans('offline.mall::lang.common.stock_limit_reached')]);
+            throw new ValidationException(['stock' => trans('webbook.mall::lang.common.stock_limit_reached')]);
         }
 
         // If the redirect_to_cart option is set to true the user is redirected to the cart.
@@ -300,7 +300,7 @@ class Products extends MallComponent
             return Redirect::to($this->controller->pageUrl($cartPage));
         }
 
-        Flash::success(trans('offline.mall::frontend.cart.added'));
+        Flash::success(trans('webbook.mall::frontend.cart.added'));
 
         return [
             'added'    => true,
@@ -470,7 +470,7 @@ class Products extends MallComponent
 
         if ($this->property('category') === ':slug' && $this->param('slug') === null) {
             throw new LogicException(
-                'OFFLINE.Mall: A :slug URL parameter is needed when selecting products by category slug.'
+                'WebBook.Mall: A :slug URL parameter is needed when selecting products by category slug.'
             );
         }
 

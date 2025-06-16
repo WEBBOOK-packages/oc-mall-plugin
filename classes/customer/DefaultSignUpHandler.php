@@ -1,19 +1,19 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Customer;
+namespace WebBook\Mall\Classes\Customer;
 
 use DB;
 use Event;
 use Illuminate\Support\Facades\Validator;
 use October\Rain\Auth\AuthException;
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Classes\User\Settings;
-use OFFLINE\Mall\Models\Address;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\Customer;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\Wishlist;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Classes\User\Settings;
+use WebBook\Mall\Models\Address;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\Customer;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\Wishlist;
 use RainLab\User\Models\Setting;
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserGroup;
@@ -73,34 +73,34 @@ class DefaultSignUpHandler implements SignUpHandler
     public static function messages(): array
     {
         $messages = [
-            'email.required'          => trans('offline.mall::lang.components.signup.errors.email.required'),
-            'email.email'             => trans('offline.mall::lang.components.signup.errors.email.email'),
-            'email.unique'            => trans('offline.mall::lang.components.signup.errors.email.unique'),
-            'email.non_existing_user' => trans('offline.mall::lang.components.signup.errors.email.non_existing_user'),
+            'email.required'          => trans('webbook.mall::lang.components.signup.errors.email.required'),
+            'email.email'             => trans('webbook.mall::lang.components.signup.errors.email.email'),
+            'email.unique'            => trans('webbook.mall::lang.components.signup.errors.email.unique'),
+            'email.non_existing_user' => trans('webbook.mall::lang.components.signup.errors.email.non_existing_user'),
 
-            'firstname.required'           => trans('offline.mall::lang.components.signup.errors.firstname.required'),
-            'lastname.required'            => trans('offline.mall::lang.components.signup.errors.lastname.required'),
-            'billing_lines.required'       => trans('offline.mall::lang.components.signup.errors.lines.required'),
-            'billing_zip.required'         => trans('offline.mall::lang.components.signup.errors.zip.required'),
-            'billing_city.required'        => trans('offline.mall::lang.components.signup.errors.city.required'),
-            'billing_country_id.required'  => trans('offline.mall::lang.components.signup.errors.country_id.required'),
-            'billing_country_id.exists'    => trans('offline.mall::lang.components.signup.errors.country_id.exists'),
-            'billing_state_id.required'    => trans('offline.mall::lang.components.signup.errors.state_id.required'),
-            'billing_state_id.exists'      => trans('offline.mall::lang.components.signup.errors.state_id.exists'),
-            'shipping_lines.required'      => trans('offline.mall::lang.components.signup.errors.lines.required'),
-            'shipping_zip.required'        => trans('offline.mall::lang.components.signup.errors.zip.required'),
-            'shipping_city.required'       => trans('offline.mall::lang.components.signup.errors.city.required'),
-            'shipping_country_id.required' => trans('offline.mall::lang.components.signup.errors.country_id.required'),
-            'shipping_country_id.exists'   => trans('offline.mall::lang.components.signup.errors.country_id.exists'),
+            'firstname.required'           => trans('webbook.mall::lang.components.signup.errors.firstname.required'),
+            'lastname.required'            => trans('webbook.mall::lang.components.signup.errors.lastname.required'),
+            'billing_lines.required'       => trans('webbook.mall::lang.components.signup.errors.lines.required'),
+            'billing_zip.required'         => trans('webbook.mall::lang.components.signup.errors.zip.required'),
+            'billing_city.required'        => trans('webbook.mall::lang.components.signup.errors.city.required'),
+            'billing_country_id.required'  => trans('webbook.mall::lang.components.signup.errors.country_id.required'),
+            'billing_country_id.exists'    => trans('webbook.mall::lang.components.signup.errors.country_id.exists'),
+            'billing_state_id.required'    => trans('webbook.mall::lang.components.signup.errors.state_id.required'),
+            'billing_state_id.exists'      => trans('webbook.mall::lang.components.signup.errors.state_id.exists'),
+            'shipping_lines.required'      => trans('webbook.mall::lang.components.signup.errors.lines.required'),
+            'shipping_zip.required'        => trans('webbook.mall::lang.components.signup.errors.zip.required'),
+            'shipping_city.required'       => trans('webbook.mall::lang.components.signup.errors.city.required'),
+            'shipping_country_id.required' => trans('webbook.mall::lang.components.signup.errors.country_id.required'),
+            'shipping_country_id.exists'   => trans('webbook.mall::lang.components.signup.errors.country_id.exists'),
 
-            'password.required' => trans('offline.mall::lang.components.signup.errors.password.required'),
-            'password.min'      => trans('offline.mall::lang.components.signup.errors.password.min'),
-            'password.max'      => trans('offline.mall::lang.components.signup.errors.password.max'),
+            'password.required' => trans('webbook.mall::lang.components.signup.errors.password.required'),
+            'password.min'      => trans('webbook.mall::lang.components.signup.errors.password.min'),
+            'password.max'      => trans('webbook.mall::lang.components.signup.errors.password.max'),
 
-            'password_repeat.required' => trans('offline.mall::lang.components.signup.errors.password_repeat.required'),
-            'password_repeat.same'     => trans('offline.mall::lang.components.signup.errors.password_repeat.same'),
+            'password_repeat.required' => trans('webbook.mall::lang.components.signup.errors.password_repeat.required'),
+            'password_repeat.same'     => trans('webbook.mall::lang.components.signup.errors.password_repeat.same'),
 
-            'terms_accepted.required' => trans('offline.mall::lang.components.signup.errors.terms_accepted.required'),
+            'terms_accepted.required' => trans('webbook.mall::lang.components.signup.errors.terms_accepted.required'),
         ];
 
         Event::fire('mall.customer.extendSignupMessages', [&$messages]);
@@ -227,7 +227,7 @@ class DefaultSignUpHandler implements SignUpHandler
             unset($data['name']);
             unset($data['surname']);
         }
-        
+
         $user = Auth::register($data, ! $requiresConfirmation);
 
         if ($this->asGuest && $user && $group = UserGroup::getGuestGroup()) {

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Console;
+namespace WebBook\Mall\Console;
 
 use DB;
 use Exception;
 use Illuminate\Console\Command;
-use OFFLINE\Mall\Classes\Index\Index;
-use OFFLINE\Mall\Classes\Index\Noop;
-use OFFLINE\Mall\Classes\Index\ProductEntry;
-use OFFLINE\Mall\Classes\Index\VariantEntry;
-use OFFLINE\Mall\Updates\Seeders\DemoSeeder;
-use OFFLINE\Mall\Updates\Seeders\MallSeeder;
+use WebBook\Mall\Classes\Index\Index;
+use WebBook\Mall\Classes\Index\Noop;
+use WebBook\Mall\Classes\Index\ProductEntry;
+use WebBook\Mall\Classes\Index\VariantEntry;
+use WebBook\Mall\Updates\Seeders\DemoSeeder;
+use WebBook\Mall\Updates\Seeders\MallSeeder;
 use System;
 
 class SeedDataCommand extends Command
@@ -46,19 +46,19 @@ class SeedDataCommand extends Command
      */
     public function handle()
     {
-        $question = 'All existing OFFLINE.Mall data will be erased. Do you want to continue?';
+        $question = 'All existing WebBook.Mall data will be erased. Do you want to continue?';
 
         if (!$this->option('force') && !$this->confirm($question, false)) {
             return 0;
         }
-        
+
         $demo = $this->option('with-demo');
         $question = 'Would you also like to import the demo content?';
 
         if (!$this->option('force') && !$demo && $this->confirm($question, false)) {
             $demo = true;
         }
-        
+
         // Force locale
         $locale = $this->option('locale');
 
@@ -94,8 +94,8 @@ class SeedDataCommand extends Command
                 app()->call(MallSeeder::class);
             } else {
                 $this->callSilent('plugin:seed', [
-                    'namespace' => 'OFFLINE.Mall',
-                    'class'     => 'OFFLINE\Mall\Updates\Seeders\MallSeeder',
+                    'namespace' => 'WebBook.Mall',
+                    'class'     => 'WebBook\Mall\Updates\Seeders\MallSeeder',
                 ]);
             }
             $this->info('Seed core records successful.');
@@ -116,8 +116,8 @@ class SeedDataCommand extends Command
                     app()->call(DemoSeeder::class);
                 } else {
                     $this->callSilent('plugin:seed', [
-                        'namespace' => 'OFFLINE.Mall',
-                        'class'     => 'OFFLINE\Mall\Updates\Seeders\DemoSeeder',
+                        'namespace' => 'WebBook.Mall',
+                        'class'     => 'WebBook\Mall\Updates\Seeders\DemoSeeder',
                     ]);
                 }
                 $this->info('Seed demo records successful.');
@@ -158,25 +158,25 @@ class SeedDataCommand extends Command
         try {
             if (version_compare(System::VERSION, '3.0', '<')) {
                 $this->callSilent('plugin:refresh', [
-                    'name'          => 'OFFLINE.Mall',
+                    'name'          => 'WebBook.Mall',
                     '--force'       => true,
                     '--quiet'       => true,
                 ]);
             } else {
                 $this->callSilent('plugin:refresh', [
-                    'namespace'     => 'OFFLINE.Mall',
+                    'namespace'     => 'WebBook.Mall',
                     '--force'       => true,
                     '--quiet'       => true,
                 ]);
             }
             $this->callSilent('cache:clear', []);
-    
+
             // Clean Database
             DB::table('system_files')
-                ->where('attachment_type', 'LIKE', 'OFFLINE%Mall%')
+                ->where('attachment_type', 'LIKE', 'WebBook%Mall%')
                 ->orWhere('attachment_type', 'LIKE', 'mall.%')
                 ->delete();
-    
+
             // Clean Indexes
             $index = app(Index::class);
             $index->drop(ProductEntry::INDEX);

@@ -1,13 +1,13 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Queries;
+namespace WebBook\Mall\Classes\Queries;
 
 use Closure;
 use DB;
 use Illuminate\Support\Collection;
 use October\Rain\Database\QueryBuilder;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\PropertyValue;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\PropertyValue;
 
 /**
  * This query is used to get a specific Variant model by
@@ -49,14 +49,14 @@ class VariantByPropertyValuesQuery
     public function query()
     {
         return PropertyValue::leftJoin(
-            'offline_mall_product_variants',
+            'webbook_mall_product_variants',
             'variant_id',
             '=',
-            'offline_mall_product_variants.id'
+            'webbook_mall_product_variants.id'
         )
-            ->whereNull('offline_mall_product_variants.deleted_at')
-            ->where('offline_mall_product_variants.published', true)
-            ->where('offline_mall_product_variants.product_id', $this->product->id)
+            ->whereNull('webbook_mall_product_variants.deleted_at')
+            ->where('webbook_mall_product_variants.published', true)
+            ->where('webbook_mall_product_variants.product_id', $this->product->id)
             ->select(DB::raw('variant_id, count(*) as matching_attributes'))
             ->groupBy(['variant_id'])
             ->with('variant')

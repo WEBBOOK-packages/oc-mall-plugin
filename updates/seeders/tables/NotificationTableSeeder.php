@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Tables;
+namespace WebBook\Mall\Updates\Seeders\Tables;
 
 use October\Rain\Database\Updates\Seeder;
-use OFFLINE\Mall\Models\Notification;
+use WebBook\Mall\Models\Notification;
 
 class NotificationTableSeeder extends Seeder
 {
@@ -19,85 +19,85 @@ class NotificationTableSeeder extends Seeder
         if ($useDemo) {
             return;
         }
-        
+
         Notification::create([
             'enabled'     => true,
-            'code'        => 'offline.mall::admin.checkout_succeeded',
-            'name'        => trans('offline.mall::demo.notifications.admin_checkout_succeeded.name'),
-            'description' => trans('offline.mall::demo.notifications.admin_checkout_succeeded.description'),
-            'template'    => 'offline.mall::mail.admin.checkout_succeeded',
+            'code'        => 'webbook.mall::admin.checkout_succeeded',
+            'name'        => trans('webbook.mall::demo.notifications.admin_checkout_succeeded.name'),
+            'description' => trans('webbook.mall::demo.notifications.admin_checkout_succeeded.description'),
+            'template'    => 'webbook.mall::mail.admin.checkout_succeeded',
         ]);
 
         Notification::create([
             'enabled'     => true,
-            'code'        => 'offline.mall::admin.checkout_failed',
-            'name'        => trans('offline.mall::demo.notifications.admin_checkout_failed.name'),
-            'description' => trans('offline.mall::demo.notifications.admin_checkout_failed.description'),
-            'template'    => 'offline.mall::mail.admin.checkout_failed',
+            'code'        => 'webbook.mall::admin.checkout_failed',
+            'name'        => trans('webbook.mall::demo.notifications.admin_checkout_failed.name'),
+            'description' => trans('webbook.mall::demo.notifications.admin_checkout_failed.description'),
+            'template'    => 'webbook.mall::mail.admin.checkout_failed',
         ]);
 
         Notification::create([
             'enabled'     => true,
-            'code'        => 'offline.mall::customer.created',
-            'name'        => trans('offline.mall::demo.notifications.customer_created.name'),
-            'description' => trans('offline.mall::demo.notifications.customer_created.description'),
-            'template'    => 'offline.mall::mail.customer.created',
+            'code'        => 'webbook.mall::customer.created',
+            'name'        => trans('webbook.mall::demo.notifications.customer_created.name'),
+            'description' => trans('webbook.mall::demo.notifications.customer_created.description'),
+            'template'    => 'webbook.mall::mail.customer.created',
         ]);
 
         Notification::create([
             'enabled'     => true,
-            'code'        => 'offline.mall::checkout.succeeded',
-            'name'        => trans('offline.mall::demo.notifications.checkout_succeeded.name'),
-            'description' => trans('offline.mall::demo.notifications.checkout_succeeded.description'),
-            'template'    => 'offline.mall::mail.checkout.succeeded',
+            'code'        => 'webbook.mall::checkout.succeeded',
+            'name'        => trans('webbook.mall::demo.notifications.checkout_succeeded.name'),
+            'description' => trans('webbook.mall::demo.notifications.checkout_succeeded.description'),
+            'template'    => 'webbook.mall::mail.checkout.succeeded',
         ]);
 
         Notification::create([
             'enabled'     => true,
-            'code'        => 'offline.mall::checkout.failed',
-            'name'        => trans('offline.mall::demo.notifications.checkout_failed.name'),
-            'description' => trans('offline.mall::demo.notifications.checkout_failed.description'),
-            'template'    => 'offline.mall::mail.checkout.failed',
+            'code'        => 'webbook.mall::checkout.failed',
+            'name'        => trans('webbook.mall::demo.notifications.checkout_failed.name'),
+            'description' => trans('webbook.mall::demo.notifications.checkout_failed.description'),
+            'template'    => 'webbook.mall::mail.checkout.failed',
         ]);
 
         Notification::create([
             'enabled'     => true,
-            'code'        => 'offline.mall::order.shipped',
-            'name'        => trans('offline.mall::demo.notifications.order_shipped.name'),
-            'description' => trans('offline.mall::demo.notifications.order_shipped.description'),
-            'template'    => 'offline.mall::mail.order.shipped',
+            'code'        => 'webbook.mall::order.shipped',
+            'name'        => trans('webbook.mall::demo.notifications.order_shipped.name'),
+            'description' => trans('webbook.mall::demo.notifications.order_shipped.description'),
+            'template'    => 'webbook.mall::mail.order.shipped',
         ]);
 
         Notification::create([
             'enabled'     => true,
-            'code'        => 'offline.mall::order.state.changed',
-            'name'        => trans('offline.mall::demo.notifications.order_state_changed.name'),
-            'description' => trans('offline.mall::demo.notifications.order_state_changed.description'),
-            'template'    => 'offline.mall::mail.order.state_changed',
+            'code'        => 'webbook.mall::order.state.changed',
+            'name'        => trans('webbook.mall::demo.notifications.order_state_changed.name'),
+            'description' => trans('webbook.mall::demo.notifications.order_state_changed.description'),
+            'template'    => 'webbook.mall::mail.order.state_changed',
         ]);
 
         Notification::create([
             'enabled'     => true,
-            'code'        => 'offline.mall::payment.paid',
-            'name'        => trans('offline.mall::demo.notifications.payment_paid.name'),
-            'description' => trans('offline.mall::demo.notifications.payment_paid.description'),
-            'template'    => 'offline.mall::mail.payment.paid',
+            'code'        => 'webbook.mall::payment.paid',
+            'name'        => trans('webbook.mall::demo.notifications.payment_paid.name'),
+            'description' => trans('webbook.mall::demo.notifications.payment_paid.description'),
+            'template'    => 'webbook.mall::mail.payment.paid',
         ]);
 
         Notification::create([
             'enabled'     => true,
-            'code'        => 'offline.mall::payment.failed',
-            'name'        => trans('offline.mall::demo.notifications.payment_failed.name'),
-            'description' => trans('offline.mall::demo.notifications.payment_failed.description'),
-            'template'    => 'offline.mall::mail.payment.failed',
+            'code'        => 'webbook.mall::payment.failed',
+            'name'        => trans('webbook.mall::demo.notifications.payment_failed.name'),
+            'description' => trans('webbook.mall::demo.notifications.payment_failed.description'),
+            'template'    => 'webbook.mall::mail.payment.failed',
         ]);
 
         Notification::create([
             'enabled'     => true,
-            'code'        => 'offline.mall::payment.refunded',
-            'name'        => trans('offline.mall::demo.notifications.payment_refunded.name'),
-            'description' => trans('offline.mall::demo.notifications.payment_refunded.description'),
-            'template'    => 'offline.mall::mail.payment.refunded',
+            'code'        => 'webbook.mall::payment.refunded',
+            'name'        => trans('webbook.mall::demo.notifications.payment_refunded.name'),
+            'description' => trans('webbook.mall::demo.notifications.payment_refunded.description'),
+            'template'    => 'webbook.mall::mail.payment.refunded',
         ]);
     }
 }

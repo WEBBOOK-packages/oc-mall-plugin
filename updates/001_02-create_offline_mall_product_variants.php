@@ -1,15 +1,15 @@
 <?php
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class CreateOfflineMallProductVariants extends Migration
+class CreateWebBookMallProductVariants extends Migration
 {
     public function up()
     {
-        Schema::create('offline_mall_product_variants', function ($table) {
+        Schema::create('webbook_mall_product_variants', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->integer('product_id')->unsigned();
@@ -34,7 +34,7 @@ class CreateOfflineMallProductVariants extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('offline_mall_product_variants');
+        Schema::dropIfExists('webbook_mall_product_variants');
         Schema::enableForeignKeyConstraints();
     }
 }

@@ -1,6 +1,6 @@
 {
-    "name": "@offline/mall",
-    "homepage": "https://github.com/OFFLINE-GmbH/oc-mall-plugin",
+    "name": "@webbook/mall",
+    "homepage": "git@github.com:WEBBOOK-packages/oc-mall-plugin.git",
     "description": "E-commerce solution for October CMS",
     "keywords": [
         "october",
@@ -10,7 +10,7 @@
         "plugin"
     ],
     "license": "MIT",
-    "author": "Tobias Kündig <tobias@offline.ch> (https://offline.ch)",
+    "author": "Tobias Kündig <tobias@webbook.ch> (https://webbook.ch)",
     "private": true,
     "type": "module",
     "scripts": {

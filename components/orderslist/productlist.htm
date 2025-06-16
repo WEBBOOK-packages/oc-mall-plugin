@@ -7,7 +7,7 @@
                     {% for option in product.service_options %}
                         <br/>
                         <span class="text-muted">
-                        <strong>{{ 'offline.mall::lang.common.service'|trans }}</strong>:
+                        <strong>{{ 'webbook.mall::lang.common.service'|trans }}</strong>:
                         {{ option.name }}
                     </span>
                     {% endfor %}
@@ -30,27 +30,27 @@
                         {% if product.product.inventory_management_method == 'single' %}
                             <br/>
                             <a href="{{ grant.download_link }}">
-                                {{ 'offline.mall::frontend.download_file'|trans({ file: grant.display_name }) }}
+                                {{ 'webbook.mall::frontend.download_file'|trans({ file: grant.display_name }) }}
                                 {{ loop.length > 1 ? ('#' ~ loop.index) }}
                             </a>
                             {% if grant.expires_at %}
-                                <br />{{ 'offline.mall::frontend.download_valid_until'|trans({ date: grant.expires_at.toDateString() }) }}
+                                <br />{{ 'webbook.mall::frontend.download_valid_until'|trans({ date: grant.expires_at.toDateString() }) }}
                             {% endif %}
                             {% if grant.max_download_count %}
-                                <br />{{ 'offline.mall::frontend.download_count'|trans({ count: grant.max_download_count }) }}
+                                <br />{{ 'webbook.mall::frontend.download_count'|trans({ count: grant.max_download_count }) }}
                             {% endif %}
                         {% else %}
                             {% for file in grant.files %}
                                 <br/>
                                 <a href="{{ grant.download_link }}/{{ file.id }}">
-                                    {{ 'offline.mall::frontend.download_file'|trans({ file: file.display_name|default('Document ' . file.id) }) }}
+                                    {{ 'webbook.mall::frontend.download_file'|trans({ file: file.display_name|default('Document ' . file.id) }) }}
                                     {{ loop.length > 1 ? ('#' ~ loop.index) }}
                                 </a>
                                 {% if grant.expires_at %}
-                                    <br />{{ 'offline.mall::frontend.download_valid_until'|trans({ date: grant.expires_at.toDateString() }) }}
+                                    <br />{{ 'webbook.mall::frontend.download_valid_until'|trans({ date: grant.expires_at.toDateString() }) }}
                                 {% endif %}
                                 {% if grant.max_download_count %}
-                                    <br />{{ 'offline.mall::frontend.download_count'|trans({ count: grant.max_download_count }) }}
+                                    <br />{{ 'webbook.mall::frontend.download_count'|trans({ count: grant.max_download_count }) }}
                                 {% endif %}
                             {% endfor %}
                         {% endif %}
@@ -76,7 +76,7 @@
     <tr class="mall-cart__total">
         <td></td>
         <td colspan="2">
-            {{ 'offline.mall::frontend.total'|trans }}
+            {{ 'webbook.mall::frontend.total'|trans }}
         </td>
         <td class="text-right">
             {{ order.totalProductPostTaxes()|raw }}
@@ -119,7 +119,7 @@
     <tr class="mall-cart__grand-total">
         <td></td>
         <td colspan="2">
-            {{ 'offline.mall::frontend.grand_total'|trans }}
+            {{ 'webbook.mall::frontend.grand_total'|trans }}
         </td>
         <td class="text-right">
             {{ order.totalPostTaxes()|raw }}

@@ -1,11 +1,11 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\CategoryFilter\SortOrder;
+namespace WebBook\Mall\Classes\CategoryFilter\SortOrder;
 
 use Event;
 use Illuminate\Support\Collection;
 use October\Contracts\Twig\CallsAnyMethod;
-use OFFLINE\Mall\Models\Currency;
+use WebBook\Mall\Models\Currency;
 
 abstract class SortOrder implements CallsAnyMethod
 {
@@ -84,14 +84,14 @@ abstract class SortOrder implements CallsAnyMethod
             'name'       => new Name(),
         ];
 
-        $extensions = array_filter(Event::fire('offline.mall.extendSortOrder'));
+        $extensions = array_filter(Event::fire('webbook.mall.extendSortOrder'));
 
         if (count($extensions) > 0) {
             foreach ($extensions as $extension) {
                 $options = array_merge($options, $extension);
             }
         }
-        
+
         if ($excludeInternal) {
             unset($options['manual'], $options['random'], $options['name']);
         }
@@ -127,7 +127,7 @@ abstract class SortOrder implements CallsAnyMethod
      */
     public function label(): string
     {
-        return trans('offline.mall::lang.components.productsFilter.sortOrder.' . camel_case($this->key()));
+        return trans('webbook.mall::lang.components.productsFilter.sortOrder.' . camel_case($this->key()));
     }
 
     /**

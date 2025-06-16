@@ -2,7 +2,7 @@
 export default {
     root: '.',
     defaultLocale: 'en',
-    namespace: 'offline.mall',
+    namespace: 'webbook.mall',
     localeDir: 'lang',
     files: [
         '**/*.php',
@@ -17,7 +17,7 @@ export default {
         '!vendor/**/*',
     ],
     theme: {
-        name: 'Offline/Mall Translations',
+        name: 'WebBook/Mall Translations',
         logo: 'assets/images/orders-icon.svg',
     },
     server: {

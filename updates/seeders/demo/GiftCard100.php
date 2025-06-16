@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Demo;
+namespace WebBook\Mall\Updates\Seeders\Demo;
 
-use OFFLINE\Mall\Models\ProductPrice;
+use WebBook\Mall\Models\ProductPrice;
 
 class GiftCard100 extends DemoProduct
 {
@@ -14,10 +14,10 @@ class GiftCard100 extends DemoProduct
             'brand_id'                     => null,
             'user_defined_id'              => 'GIFTCARD100',
             'slug'                         => 'gift-card-100',
-            'name'                         => trans('offline.mall::demo.products.gift_card_100.name'),
-            'description'                  => trans('offline.mall::demo.products.gift_card_100.description'),
-            'description_short'            => trans('offline.mall::demo.products.gift_card_100.description_short'),
-            'meta_title'                   => trans('offline.mall::demo.products.gift_card_100.meta_title'),
+            'name'                         => trans('webbook.mall::demo.products.gift_card_100.name'),
+            'description'                  => trans('webbook.mall::demo.products.gift_card_100.description'),
+            'description_short'            => trans('webbook.mall::demo.products.gift_card_100.description_short'),
+            'meta_title'                   => trans('webbook.mall::demo.products.gift_card_100.meta_title'),
             'meta_keywords'                => 'gift, card',
             'weight'                       => 0,
             'inventory_management_method'  => 'product',
@@ -55,7 +55,7 @@ class GiftCard100 extends DemoProduct
     {
         return [
             [
-                'name'        =>  trans('offline.mall::demo.products.images.gift'),
+                'name'        =>  trans('webbook.mall::demo.products.images.gift'),
                 'is_main_set' => true,
                 'images'      => [
                     realpath(__DIR__ . '/images/gift-card.jpg'),

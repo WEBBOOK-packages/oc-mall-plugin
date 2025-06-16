@@ -1,21 +1,21 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Traits;
+namespace WebBook\Mall\Classes\Traits;
 
 use Backend\Widgets\Table;
 use DB;
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Classes\Database\IsStatesScope;
-use OFFLINE\Mall\Classes\Index\Index;
-use OFFLINE\Mall\Classes\Observers\ProductObserver;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Models\CustomerGroup;
-use OFFLINE\Mall\Models\CustomerGroupPrice;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\PriceCategory;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\ProductPrice;
-use OFFLINE\Mall\Models\Variant;
+use WebBook\Mall\Classes\Database\IsStatesScope;
+use WebBook\Mall\Classes\Index\Index;
+use WebBook\Mall\Classes\Observers\ProductObserver;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Models\CustomerGroup;
+use WebBook\Mall\Models\CustomerGroupPrice;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\PriceCategory;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\ProductPrice;
+use WebBook\Mall\Models\Variant;
 
 trait ProductPriceTable
 {
@@ -49,7 +49,7 @@ trait ProductPriceTable
             }
 
             if (! $hasPriceInDefaultCurrency) {
-                throw new ValidationException(['prices' => trans('offline.mall::lang.common.price_missing')]);
+                throw new ValidationException(['prices' => trans('webbook.mall::lang.common.price_missing')]);
             }
         });
 
@@ -70,7 +70,7 @@ trait ProductPriceTable
         $customerGroups = CustomerGroup::orderBy('sort_order', 'ASC')->get();
         $customerGroups->each(function (CustomerGroup $group) use ($config) {
             $config->columns['group__' . $group->id] = [
-                'title' => sprintf('%s %s', trans('offline.mall::lang.product.price'), $group->name),
+                'title' => sprintf('%s %s', trans('webbook.mall::lang.product.price'), $group->name),
             ];
         });
         $this->vars['customerGroups'] = $customerGroups;

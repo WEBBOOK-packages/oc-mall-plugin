@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Queries;
+namespace WebBook\Mall\Tests\Queries;
 
-use OFFLINE\Mall\Classes\Queries\UniquePropertyValuesInCategoriesQuery;
-use OFFLINE\Mall\Models\Category;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Property;
-use OFFLINE\Mall\Models\PropertyGroup;
-use OFFLINE\Mall\Models\PropertyValue;
-use OFFLINE\Mall\Models\UniquePropertyValue;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Classes\Queries\UniquePropertyValuesInCategoriesQuery;
+use WebBook\Mall\Models\Category;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Property;
+use WebBook\Mall\Models\PropertyGroup;
+use WebBook\Mall\Models\PropertyValue;
+use WebBook\Mall\Models\UniquePropertyValue;
+use WebBook\Mall\Tests\PluginTestCase;
 
 class UniquePropertyValuesInCategoriesQueryTest extends PluginTestCase
 {

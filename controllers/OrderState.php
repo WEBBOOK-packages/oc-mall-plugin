@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Controllers;
+namespace WebBook\Mall\Controllers;
 
 use Backend\Behaviors\FormController;
 use Backend\Behaviors\ListController;
@@ -39,7 +39,7 @@ class OrderState extends Controller
      * @var array
      */
     public $requiredPermissions = [
-        'offline.mall.manage_order_states',
+        'webbook.mall.manage_order_states',
     ];
 
     /**
@@ -49,9 +49,9 @@ class OrderState extends Controller
     {
         parent::__construct();
         BackendMenu::setContext('October.System', 'system', 'settings');
-        SettingsManager::setContext('OFFLINE.Mall', 'order_state_settings');
+        SettingsManager::setContext('WebBook.Mall', 'order_state_settings');
     }
-    
+
     /**
      * Extend query to show disabled records.
      * @param Builder $query
@@ -61,7 +61,7 @@ class OrderState extends Controller
     {
         $query->withDisabled();
     }
-    
+
     /**
      * Extend query to show disabled records.
      * @param Builder $query
@@ -79,6 +79,6 @@ class OrderState extends Controller
     public function index()
     {
         parent::index();
-        $this->addCss('/plugins/offline/mall/assets/backend.css');
+        $this->addCss('/plugins/webbook/mall/assets/backend.css');
     }
 }

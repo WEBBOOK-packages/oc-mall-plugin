@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Event;
 use Illuminate\Support\Carbon;
@@ -14,7 +14,7 @@ use System\Models\File;
 
 class ProductFileGrant extends Model
 {
-    public $table = 'offline_mall_product_file_grants';
+    public $table = 'webbook_mall_product_file_grants';
 
     public $dates = ['expires_at'];
 
@@ -73,13 +73,13 @@ class ProductFileGrant extends Model
             $variantFiles = $this->order_product->variant->files;
             $productFiles = ProductFile::whereNotExists(function (QueryBuilder $query) {
                 $query->select(DB::raw(1))
-                    ->from('offline_mall_product_file_variant')
+                    ->from('webbook_mall_product_file_variant')
                     ->whereColumn(
-                        'offline_mall_product_file_variant.product_file_id',
-                        'offline_mall_product_files.id'
+                        'webbook_mall_product_file_variant.product_file_id',
+                        'webbook_mall_product_files.id'
                     );
             })
-                ->where('offline_mall_product_files.product_id', '=', $this->order_product->product->id)
+                ->where('webbook_mall_product_files.product_id', '=', $this->order_product->product->id)
                 ->get();
 
             return $productFiles->merge($variantFiles)->all();

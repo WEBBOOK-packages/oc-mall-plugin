@@ -1,27 +1,27 @@
 columns:
     display_name:
-        label: 'offline.mall::lang.common.display_name'
+        label: 'webbook.mall::lang.common.display_name'
         type: text
         searchable: true
         sortable: true
     version:
-        label: 'offline.mall::lang.common.version'
+        label: 'webbook.mall::lang.common.version'
         type: text
         searchable: true
         sortable: true
     download_count:
-        label: 'offline.mall::lang.product_file.download_count'
+        label: 'webbook.mall::lang.product_file.download_count'
         type: number
         searchable: true
         sortable: true
     created_at:
-        label: 'offline.mall::lang.common.created_at'
+        label: 'webbook.mall::lang.common.created_at'
         type: datetime
         searchable: true
         sortable: true
         invisible: true
     updated_at:
-        label: 'offline.mall::lang.common.updated_at'
+        label: 'webbook.mall::lang.common.updated_at'
         type: datetime
         searchable: true
         sortable: true

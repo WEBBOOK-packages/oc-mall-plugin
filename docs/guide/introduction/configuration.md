@@ -32,7 +32,7 @@ individual store pages (as described in the section below).
 
 If you're new to Octobers component system, you should definitively take a look at the 
 [official documentation page](https://docs.octobercms.com/3.x/cms/themes/components.html#introduction).
-You can also take a look at [the default layout](https://github.com/OFFLINE-GmbH/oc-mall-theme/blob/master/layouts/default.htm#L7)
+You can also take a look at [the default layout](https://github.com/WebBook-GmbH/oc-mall-theme/blob/master/layouts/default.htm#L7)
 of our demonstration theme for some guidance.
 
 ### Components

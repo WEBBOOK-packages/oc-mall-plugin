@@ -1,13 +1,13 @@
-name: offline.mall::lang.currency_settings.label
-modelClass: OFFLINE\Mall\Models\Currency
-form: $/offline/mall/models/currency/fields.yaml
-defaultRedirect: offline/mall/currencies
+name: webbook.mall::lang.currency_settings.label
+modelClass: WebBook\Mall\Models\Currency
+form: $/webbook/mall/models/currency/fields.yaml
+defaultRedirect: webbook/mall/currencies
 create:
-    title: offline.mall::lang.titles.currencies.create
-    redirect: 'offline/mall/currencies/update/:id'
-    redirectClose: offline/mall/currencies
+    title: webbook.mall::lang.titles.currencies.create
+    redirect: 'webbook/mall/currencies/update/:id'
+    redirectClose: webbook/mall/currencies
 update:
-    title: offline.mall::lang.titles.currencies.update
-    redirect: offline/mall/currencies
-    redirectClose: offline/mall/currencies
+    title: webbook.mall::lang.titles.currencies.update
+    redirect: webbook/mall/currencies
+    redirectClose: webbook/mall/currencies
 preview: {  }

@@ -1,13 +1,13 @@
-name: 'offline.mall::lang.common.property_groups'
-modelClass: OFFLINE\Mall\Models\PropertyGroup
-form: $/offline/mall/models/propertygroup/fields.yaml
-defaultRedirect: offline/mall/propertygroups
+name: 'webbook.mall::lang.common.property_groups'
+modelClass: WebBook\Mall\Models\PropertyGroup
+form: $/webbook/mall/models/propertygroup/fields.yaml
+defaultRedirect: webbook/mall/propertygroups
 create:
-    title: 'offline.mall::lang.titles.property_groups.create'
-    redirect: 'offline/mall/propertygroups/update/:id'
-    redirectClose: offline/mall/propertygroups
+    title: 'webbook.mall::lang.titles.property_groups.create'
+    redirect: 'webbook/mall/propertygroups/update/:id'
+    redirectClose: webbook/mall/propertygroups
 update:
-    title: 'offline.mall::lang.titles.property_groups.edit'
-    redirect: offline/mall/propertygroups
-    redirectClose: offline/mall/propertygroups
+    title: 'webbook.mall::lang.titles.property_groups.edit'
+    redirect: webbook/mall/propertygroups
+    redirectClose: webbook/mall/propertygroups
 preview: {  }

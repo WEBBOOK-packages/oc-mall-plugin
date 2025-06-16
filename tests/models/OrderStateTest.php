@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
 use Exception;
-use OFFLINE\Mall\Models\OrderState;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Models\OrderState;
+use WebBook\Mall\Tests\PluginTestCase;
 
 class OrderStateTest extends PluginTestCase
 {

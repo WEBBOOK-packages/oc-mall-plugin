@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Controllers;
+namespace WebBook\Mall\Controllers;
 
 use Backend\Behaviors\FormController;
 use Backend\Behaviors\ListController;
@@ -25,13 +25,13 @@ class PaymentLogs extends Controller
      * @var string
      */
     public $formConfig = 'config_form.yaml';
-    
+
     /**
      * The configuration file for the list controller implementation.
      * @var string
      */
     public $listConfig = 'config_list.yaml';
-    
+
     /**
      * The configuration file for the filter option within the list controller implementation.
      * @var string
@@ -43,7 +43,7 @@ class PaymentLogs extends Controller
      * @var array
      */
     public $requiredPermissions = [
-        'offline.mall.manage_payment_log',
+        'webbook.mall.manage_payment_log',
     ];
 
     /**
@@ -52,7 +52,7 @@ class PaymentLogs extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('OFFLINE.Mall', 'mall-orders', 'mall-payment-log');
+        BackendMenu::setContext('WebBook.Mall', 'mall-orders', 'mall-payment-log');
     }
 
     /**

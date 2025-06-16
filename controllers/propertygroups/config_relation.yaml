@@ -3,21 +3,21 @@
 # ===================================
 
 properties:
-    label: 'offline.mall::lang.common.property'
+    label: 'webbook.mall::lang.common.property'
     deferredBinding: false
     view:
-        list: $/offline/mall/models/property/columns_pivot_legacy.yaml
+        list: $/webbook/mall/models/property/columns_pivot_legacy.yaml
         toolbarButtons: add|create|remove
         defaultSort:
             column: pivot[sort_order]
             direction: asc
     manage:
-        form: $/offline/mall/models/property/fields_pivot.yaml
-        list: $/offline/mall/models/property/columns.yaml
+        form: $/webbook/mall/models/property/fields_pivot.yaml
+        list: $/webbook/mall/models/property/columns.yaml
         showSearch: true
         recordsPerPage: 50
     pivot:
-        form: $/offline/mall/models/property/fields_pivot.yaml
+        form: $/webbook/mall/models/property/fields_pivot.yaml
     structure:
         showTree: false
         showReorder: true

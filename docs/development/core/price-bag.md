@@ -10,7 +10,7 @@ import SpoilerStd from '../../.vitepress/components/SpoilerStd.vue'
 The **PriceBag** construct is the new system for calculating and evaluating the applied (customer) 
 price structure, and thus replaces the obsolete `TotalsCalculator` classes. This was an important
 step, since it was not only difficult to maintain and extend, but also because it already performed 
-incorrect calculations (at least [when a discount](https://github.com/OFFLINE-GmbH/oc-mall-plugin/issues/423) 
+incorrect calculations (at least [when a discount](https://github.com/WebBook-GmbH/oc-mall-plugin/issues/423) 
 was used).
 
 **PriceBag** differs by this points:

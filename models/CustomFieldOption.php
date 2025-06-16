@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\Sortable;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Traits\HashIds;
-use OFFLINE\Mall\Classes\Traits\PriceAccessors;
+use WebBook\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Traits\PriceAccessors;
 use System\Models\File;
 
 class CustomFieldOption extends Model
@@ -59,7 +59,7 @@ class CustomFieldOption extends Model
      */
     public $field_type = '';
 
-    public $table = 'offline_mall_custom_field_options';
+    public $table = 'webbook_mall_custom_field_options';
 
     public function afterDelete()
     {

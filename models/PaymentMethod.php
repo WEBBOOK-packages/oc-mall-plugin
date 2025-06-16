@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Auth;
 use Cms\Classes\Theme;
@@ -16,10 +16,10 @@ use October\Rain\Database\Traits\Sortable;
 use October\Rain\Database\Traits\Validation;
 use October\Rain\Parse\Twig;
 use October\Rain\Support\Facades\Event;
-use OFFLINE\Mall\Classes\Database\IsStates;
-use OFFLINE\Mall\Classes\Payments\PaymentGateway;
-use OFFLINE\Mall\Classes\Totals\PaymentTotal;
-use OFFLINE\Mall\Classes\Traits\PriceAccessors;
+use WebBook\Mall\Classes\Database\IsStates;
+use WebBook\Mall\Classes\Payments\PaymentGateway;
+use WebBook\Mall\Classes\Totals\PaymentTotal;
+use WebBook\Mall\Classes\Traits\PriceAccessors;
 use System\Models\File;
 
 class PaymentMethod extends Model
@@ -62,7 +62,7 @@ class PaymentMethod extends Model
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_payment_methods';
+    public $table = 'webbook_mall_payment_methods';
 
     /**
      * The translatable attributes of this model.
@@ -167,7 +167,7 @@ class PaymentMethod extends Model
     public $belongsToMany = [
         'taxes' => [
             Tax::class,
-            'table'    => 'offline_mall_payment_method_tax',
+            'table'    => 'webbook_mall_payment_method_tax',
             'key'      => 'payment_method_id',
             'otherKey' => 'tax_id',
         ],
@@ -239,7 +239,7 @@ class PaymentMethod extends Model
      */
     public function afterDelete()
     {
-        DB::table('offline_mall_prices')
+        DB::table('webbook_mall_prices')
             ->where('priceable_type', self::MORPH_KEY)
             ->where('priceable_id', $this->id)
             ->delete();
@@ -288,7 +288,7 @@ class PaymentMethod extends Model
      */
     public function getPdfPartialOptions(): array
     {
-        $null = [null => '-- ' . trans('offline.mall::lang.payment_method.pdf_partial_none')];
+        $null = [null => '-- ' . trans('webbook.mall::lang.payment_method.pdf_partial_none')];
         $path = themes_path(sprintf('%s/partials/mallPDF/*', Theme::getActiveThemeCode()));
 
         return $null + collect(glob($path, GLOB_ONLYDIR))->mapWithKeys(

@@ -1,14 +1,14 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Traits\Cart;
+namespace WebBook\Mall\Classes\Traits\Cart;
 
 use DB;
 use Illuminate\Support\Collection;
-use OFFLINE\Mall\Classes\Exceptions\OutOfStockException;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\CartProduct;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Variant;
+use WebBook\Mall\Classes\Exceptions\OutOfStockException;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\CartProduct;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Variant;
 
 trait CartActions
 {
@@ -49,7 +49,7 @@ trait CartActions
 
                 $this->validateStock($variant ?? $product, $quantity);
                 $cartEntry->update(['quantity' => $newQuantity]);
-                
+
                 $this->validateShippingMethod();
 
                 return $this->load('products');
@@ -70,7 +70,7 @@ trait CartActions
             $cartEntry->weight     = $variant ? $variant->weight : $product->weight;
             // Skip any setter methods from the JsonPrice trait
             $cartEntry->attributes['price'] = $cartEntry->mapJsonPrice($price, 1);
-            
+
             $this->products()->save($cartEntry);
             $this->load('products');
 

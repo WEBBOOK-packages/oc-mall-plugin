@@ -1,15 +1,15 @@
 <?php
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class CreateOfflineMallPaymentsLog extends Migration
+class CreateWebBookMallPaymentsLog extends Migration
 {
     public function up()
     {
-        Schema::create('offline_mall_payments_log', function ($table) {
+        Schema::create('webbook_mall_payments_log', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->string('reference');
@@ -30,6 +30,6 @@ class CreateOfflineMallPaymentsLog extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('offline_mall_payments_log');
+        Schema::dropIfExists('webbook_mall_payments_log');
     }
 }

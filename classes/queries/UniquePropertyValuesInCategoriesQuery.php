@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Queries;
+namespace WebBook\Mall\Classes\Queries;
 
 use DB;
 use Illuminate\Support\Collection;
@@ -12,7 +12,7 @@ use October\Rain\Database\QueryBuilder;
  * for all available property values.
  *
  * @deprecated 3.4.0 use UniquePropertyValue::hydratePropertyValuesForCategories($categories)
- * @see \OFFLINE\Mall\Models\UniquePropertyValue
+ * @see \WebBook\Mall\Models\UniquePropertyValue
  */
 class UniquePropertyValuesInCategoriesQuery
 {
@@ -34,47 +34,47 @@ class UniquePropertyValuesInCategoriesQuery
      */
     public function query()
     {
-        return DB::table('offline_mall_products')
+        return DB::table('webbook_mall_products')
             ->selectRaw(
                 '
-                MIN(offline_mall_property_values.id) AS id,
-                offline_mall_property_values.value,
-                offline_mall_property_values.index_value,
-                offline_mall_property_values.property_id'
+                MIN(webbook_mall_property_values.id) AS id,
+                webbook_mall_property_values.value,
+                webbook_mall_property_values.index_value,
+                webbook_mall_property_values.property_id'
             )
             ->where(function ($q) {
                 $q->where(function ($q) {
-                    $q->where('offline_mall_products.published', true)
-                        ->whereNull('offline_mall_product_variants.id');
-                })->orWhere('offline_mall_product_variants.published', true);
+                    $q->where('webbook_mall_products.published', true)
+                        ->whereNull('webbook_mall_product_variants.id');
+                })->orWhere('webbook_mall_product_variants.published', true);
             })
-            ->whereIn('offline_mall_category_product.category_id', $this->categories->pluck('id'))
-            ->whereNull('offline_mall_product_variants.deleted_at')
-            ->whereNull('offline_mall_products.deleted_at')
-            ->where('offline_mall_property_values.value', '<>', '')
-            ->whereNotNull('offline_mall_property_values.value')
+            ->whereIn('webbook_mall_category_product.category_id', $this->categories->pluck('id'))
+            ->whereNull('webbook_mall_product_variants.deleted_at')
+            ->whereNull('webbook_mall_products.deleted_at')
+            ->where('webbook_mall_property_values.value', '<>', '')
+            ->whereNotNull('webbook_mall_property_values.value')
             ->groupBy(
-                'offline_mall_property_values.value',
-                'offline_mall_property_values.index_value',
-                'offline_mall_property_values.property_id'
+                'webbook_mall_property_values.value',
+                'webbook_mall_property_values.index_value',
+                'webbook_mall_property_values.property_id'
             )
             ->leftJoin(
-                'offline_mall_product_variants',
-                'offline_mall_products.id',
+                'webbook_mall_product_variants',
+                'webbook_mall_products.id',
                 '=',
-                'offline_mall_product_variants.product_id'
+                'webbook_mall_product_variants.product_id'
             )
             ->leftJoin(
-                'offline_mall_category_product',
-                'offline_mall_products.id',
+                'webbook_mall_category_product',
+                'webbook_mall_products.id',
                 '=',
-                'offline_mall_category_product.product_id'
+                'webbook_mall_category_product.product_id'
             )
             ->join(
-                'offline_mall_property_values',
-                'offline_mall_products.id',
+                'webbook_mall_property_values',
+                'webbook_mall_products.id',
                 '=',
-                'offline_mall_property_values.product_id'
+                'webbook_mall_property_values.product_id'
             );
     }
 }

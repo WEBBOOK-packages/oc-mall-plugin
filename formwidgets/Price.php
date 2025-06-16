@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\FormWidgets;
+namespace WebBook\Mall\FormWidgets;
 
 use Backend\Classes\FormWidgetBase;
 use October\Rain\Database\Collection;
 use October\Rain\Database\Relations\Relation;
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Models\Currency;
+use WebBook\Mall\Models\Currency;
 
 /**
  * Copied from RainLab.Translate's MLText
@@ -40,8 +40,8 @@ class Price extends FormWidgetBase
     public function init()
     {
         $this->defaultCurrency = Currency::defaultCurrency();
-        $this->addJs('/plugins/offline/mall/assets/pricewidget.js', 'OFFLINE.Mall');
-        $this->addCss('/plugins/offline/mall/assets/pricewidget.css', 'OFFLINE.Mall');
+        $this->addJs('/plugins/webbook/mall/assets/pricewidget.js', 'WebBook.Mall');
+        $this->addCss('/plugins/webbook/mall/assets/pricewidget.css', 'WebBook.Mall');
     }
 
     /**
@@ -74,7 +74,7 @@ class Price extends FormWidgetBase
         $values = collect(post('MallPrice'))->map(fn ($value, $key) => $value[$this->valueFrom] === '' || $value[$this->valueFrom] === null ? null : $key)->filter();
 
         if (!$values->has($this->defaultCurrency->id)) {
-            throw new ValidationException([$this->valueFrom => trans('offline.mall::lang.common.price_missing')]);
+            throw new ValidationException([$this->valueFrom => trans('webbook.mall::lang.common.price_missing')]);
         }
 
         return null;

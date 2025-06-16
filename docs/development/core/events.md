@@ -147,7 +147,7 @@ Add custom content to the order detail sidebar. This event receives the `$order`
 Returned strings will be added to the sidebar.
 
 ```php
-Event::listen('mall.backend.order.sidebar', function (\OFFLINE\Mall\Models\Order $order) {
+Event::listen('mall.backend.order.sidebar', function (\WebBook\Mall\Models\Order $order) {
     $form = new Form(null, [
         'model' => $order,
         'fields' => [

@@ -1,12 +1,12 @@
-name: offline.mall::lang.common.payment_methods
-modelClass: OFFLINE\Mall\Models\PaymentMethod
-form: $/offline/mall/models/paymentmethod/fields.yaml
-defaultRedirect: offline/mall/paymentmethods
+name: webbook.mall::lang.common.payment_methods
+modelClass: WebBook\Mall\Models\PaymentMethod
+form: $/webbook/mall/models/paymentmethod/fields.yaml
+defaultRedirect: webbook/mall/paymentmethods
 create:
-    title: 'offline.mall::lang.titles.payment_methods.create'
-    redirect: 'offline/mall/paymentmethods/update/:id'
-    redirectClose: offline/mall/paymentmethods
+    title: 'webbook.mall::lang.titles.payment_methods.create'
+    redirect: 'webbook/mall/paymentmethods/update/:id'
+    redirectClose: webbook/mall/paymentmethods
 update:
-    title: 'offline.mall::lang.titles.payment_methods.edit'
-    redirect: offline/mall/paymentmethods
-    redirectClose: offline/mall/paymentmethods
+    title: 'webbook.mall::lang.titles.payment_methods.edit'
+    redirect: webbook/mall/paymentmethods
+    redirectClose: webbook/mall/paymentmethods

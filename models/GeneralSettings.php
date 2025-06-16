@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Cms\Classes\Page;
 use Cms\Classes\Theme;
@@ -22,13 +22,13 @@ class GeneralSettings extends Model
      * Required settings code property.
      * @var string
      */
-    public $settingsCode = 'offline_mall_settings';
+    public $settingsCode = 'webbook_mall_settings';
 
     /**
      * Required settings YAML fields file.
      * @var string
      */
-    public $settingsFields = '$/offline/mall/models/settings/fields_general.yaml';
+    public $settingsFields = '$/webbook/mall/models/settings/fields_general.yaml';
 
     /**
      * The validation rules for the single attributes.
@@ -54,7 +54,7 @@ class GeneralSettings extends Model
      */
     public function afterSave()
     {
-        Cache::forget('offline_mall.mysql.index.driver');
+        Cache::forget('webbook_mall.mysql.index.driver');
     }
 
     /**
@@ -67,9 +67,9 @@ class GeneralSettings extends Model
     {
         $theme = Theme::getActiveTheme();
         $pages = Page::listInTheme($theme, true);
-        
+
         $cmsPages = [];
-        
+
         foreach ($pages as $page) {
             if (!$page->hasComponent($component)) {
                 continue;

@@ -1,15 +1,15 @@
 <?php
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class CreateOfflineMallCartDiscount extends Migration
+class CreateWebBookMallCartDiscount extends Migration
 {
     public function up()
     {
-        Schema::create('offline_mall_cart_discount', function ($table) {
+        Schema::create('webbook_mall_cart_discount', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->integer('cart_id')->unsigned();
@@ -20,9 +20,9 @@ class CreateOfflineMallCartDiscount extends Migration
             }
         });
     }
-    
+
     public function down()
     {
-        Schema::dropIfExists('offline_mall_cart_discount');
+        Schema::dropIfExists('webbook_mall_cart_discount');
     }
 }

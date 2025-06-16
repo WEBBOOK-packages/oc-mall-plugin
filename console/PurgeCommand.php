@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Console;
+namespace WebBook\Mall\Console;
 
 use DB;
 use Illuminate\Console\Command;
-use OFFLINE\Mall\Models\Discount;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Variant;
+use WebBook\Mall\Models\Discount;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Variant;
 
 class PurgeCommand extends Command
 {
@@ -47,28 +47,28 @@ class PurgeCommand extends Command
 
         // Delete Orders
         $this->warn(' Deleting orders...');
-        DB::table('offline_mall_order_products')->truncate();
-        DB::table('offline_mall_orders')->truncate();
+        DB::table('webbook_mall_order_products')->truncate();
+        DB::table('webbook_mall_orders')->truncate();
         $this->output->newLine();
 
         // Delete Carts
         $this->warn(' Deleting carts...');
-        DB::table('offline_mall_cart_custom_field_value')->truncate();
-        DB::table('offline_mall_cart_discount')->truncate();
-        DB::table('offline_mall_cart_products')->truncate();
-        DB::table('offline_mall_carts')->truncate();
+        DB::table('webbook_mall_cart_custom_field_value')->truncate();
+        DB::table('webbook_mall_cart_discount')->truncate();
+        DB::table('webbook_mall_cart_products')->truncate();
+        DB::table('webbook_mall_carts')->truncate();
         $this->output->newLine();
 
         // Delete Customers
         $this->warn(' Deleting customers...');
-        DB::table('offline_mall_addresses')->truncate();
-        DB::table('offline_mall_customers')->truncate();
+        DB::table('webbook_mall_addresses')->truncate();
+        DB::table('webbook_mall_customers')->truncate();
         DB::table('users')->truncate();
         $this->output->newLine();
 
         // Delete Payment Logs
         $this->warn(' Deleting payment logs...');
-        DB::table('offline_mall_payments_log')->truncate();
+        DB::table('webbook_mall_payments_log')->truncate();
         $this->output->newLine();
 
         // Clean Up

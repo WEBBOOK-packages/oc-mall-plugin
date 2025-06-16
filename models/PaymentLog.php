@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\SoftDelete;
@@ -15,7 +15,7 @@ class PaymentLog extends Model
 
     public $jsonable = ['data', 'order_data', 'payment_method'];
 
-    public $table = 'offline_mall_payments_log';
+    public $table = 'webbook_mall_payments_log';
 
     public $casts = [
         'failed' => 'boolean',

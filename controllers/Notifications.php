@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Controllers;
+namespace WebBook\Mall\Controllers;
 
 use Backend\Behaviors\FormController;
 use Backend\Behaviors\ListController;
@@ -10,7 +10,7 @@ use Backend\Classes\Controller;
 use BackendMenu;
 use Illuminate\Support\Facades\Cache;
 use October\Rain\Support\Facades\Flash;
-use OFFLINE\Mall\Models\Notification;
+use WebBook\Mall\Models\Notification;
 use System\Classes\SettingsManager;
 
 class Notifications extends Controller
@@ -41,7 +41,7 @@ class Notifications extends Controller
      * @var array
      */
     public $requiredPermissions = [
-        'offline.mall.manage_notifications',
+        'webbook.mall.manage_notifications',
     ];
 
     /**
@@ -51,7 +51,7 @@ class Notifications extends Controller
     {
         parent::__construct();
         BackendMenu::setContext('October.System', 'system', 'settings');
-        SettingsManager::setContext('OFFLINE.Mall', 'notification_settings');
+        SettingsManager::setContext('WebBook.Mall', 'notification_settings');
     }
 
     /**
@@ -70,7 +70,7 @@ class Notifications extends Controller
         Notification::whereIn('id', post('checked'))->update(['enabled' => $value]);
         Cache::forget(Notification::CACHE_KEY);
         Flash::success(trans('backend::lang.form.update_success', [
-            'name' => trans('offline.mall::lang.common.notification'),
+            'name' => trans('webbook.mall::lang.common.notification'),
         ]));
     }
 }

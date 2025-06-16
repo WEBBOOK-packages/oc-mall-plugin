@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Cms\Classes\ComponentBase;
 
@@ -13,8 +13,8 @@ class EnhancedEcommerceAnalytics extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.enhancedEcommerceAnalytics.details.name',
-            'description' => 'offline.mall::lang.components.enhancedEcommerceAnalytics.details.description',
+            'name'        => 'webbook.mall::lang.components.enhancedEcommerceAnalytics.details.name',
+            'description' => 'webbook.mall::lang.components.enhancedEcommerceAnalytics.details.description',
         ];
     }
 

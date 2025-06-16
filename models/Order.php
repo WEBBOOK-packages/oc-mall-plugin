@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
@@ -13,14 +13,14 @@ use Model;
 use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\Validation;
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Classes\Exceptions\InvalidDiscountException;
-use OFFLINE\Mall\Classes\Jobs\SendVirtualProductFiles;
-use OFFLINE\Mall\Classes\PaymentState\PaidState;
-use OFFLINE\Mall\Classes\PaymentState\PendingState;
-use OFFLINE\Mall\Classes\Traits\HashIds;
-use OFFLINE\Mall\Classes\Traits\JsonPrice;
-use OFFLINE\Mall\Classes\Traits\PDFMaker;
-use OFFLINE\Mall\Classes\Utils\Money;
+use WebBook\Mall\Classes\Exceptions\InvalidDiscountException;
+use WebBook\Mall\Classes\Jobs\SendVirtualProductFiles;
+use WebBook\Mall\Classes\PaymentState\PaidState;
+use WebBook\Mall\Classes\PaymentState\PendingState;
+use WebBook\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Traits\JsonPrice;
+use WebBook\Mall\Classes\Traits\PDFMaker;
+use WebBook\Mall\Classes\Utils\Money;
 use RuntimeException;
 use Session;
 use System\Classes\PluginManager;
@@ -44,7 +44,7 @@ class Order extends Model
         'billing_address'                  => 'required',
         'lang'                             => 'required',
         'ip_address'                       => 'required',
-        'customer_id'                      => 'required|exists:offline_mall_customers,id',
+        'customer_id'                      => 'required|exists:webbook_mall_customers,id',
     ];
 
     public $jsonable = [
@@ -58,7 +58,7 @@ class Order extends Model
         'shipping',
     ];
 
-    public $table = 'offline_mall_orders';
+    public $table = 'webbook_mall_orders';
 
     public $hasOne = ['payment_log' => PaymentLog::class];
 
@@ -180,14 +180,14 @@ class Order extends Model
         $removed = $cart->removeUnpublishedProducts();
 
         if ($removed->count() > 0) {
-            throw new ValidationException(['cart' => trans('offline.mall::frontend.cart.products_unavailable')]);
+            throw new ValidationException(['cart' => trans('webbook.mall::frontend.cart.products_unavailable')]);
         }
 
         // Ensure all applied discounts are still valid.
         try {
             $cart->validateDiscounts();
         } catch (InvalidDiscountException $e) {
-            throw new ValidationException(['cart' => trans('offline.mall::frontend.cart.discounts_no_longer_valid')]);
+            throw new ValidationException(['cart' => trans('webbook.mall::frontend.cart.discounts_no_longer_valid')]);
         }
 
         $order = DB::transaction(function () use ($additionalAttributes, $cart) {

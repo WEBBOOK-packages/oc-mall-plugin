@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Controllers;
+namespace WebBook\Mall\Controllers;
 
 use Backend;
 use Backend\Behaviors\ImportExportController;
@@ -12,10 +12,10 @@ use Backend\Classes\Controller;
 use BackendMenu;
 use Flash;
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Classes\Stats\OrdersStats;
-use OFFLINE\Mall\Classes\Utils\Money;
-use OFFLINE\Mall\Models\Order;
-use OFFLINE\Mall\Models\OrderState;
+use WebBook\Mall\Classes\Stats\OrdersStats;
+use WebBook\Mall\Classes\Utils\Money;
+use WebBook\Mall\Models\Order;
+use WebBook\Mall\Models\OrderState;
 
 class Orders extends Controller
 {
@@ -52,7 +52,7 @@ class Orders extends Controller
      * @var array
      */
     public $requiredPermissions = [
-        'offline.mall.manage_orders',
+        'webbook.mall.manage_orders',
     ];
 
     /**
@@ -61,7 +61,7 @@ class Orders extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('OFFLINE.Mall', 'mall-orders', 'mall-orders');
+        BackendMenu::setContext('WebBook.Mall', 'mall-orders', 'mall-orders');
     }
 
     /**
@@ -81,7 +81,7 @@ class Orders extends Controller
     public function index()
     {
         parent::index();
-        $this->addCss('/plugins/offline/mall/assets/backend.css');
+        $this->addCss('/plugins/webbook/mall/assets/backend.css');
         $this->vars['stats'] = new OrdersStats();
         $this->vars['money'] = app(Money::class);
     }
@@ -93,11 +93,11 @@ class Orders extends Controller
     public function show()
     {
         $this->bodyClass = 'compact-container';
-        $this->pageTitle = trans('offline.mall::lang.titles.orders.show');
-        $this->addCss('/plugins/offline/mall/assets/backend.css');
-        $this->vars['ordersList'] = Backend::url('offline/mall/orders');
-        $this->vars['productUpdate'] = Backend::url('offline/mall/products/update');
-        $this->vars['addressUpdate'] = Backend::url('offline/mall/addresses/update');
+        $this->pageTitle = trans('webbook.mall::lang.titles.orders.show');
+        $this->addCss('/plugins/webbook/mall/assets/backend.css');
+        $this->vars['ordersList'] = Backend::url('webbook/mall/orders');
+        $this->vars['productUpdate'] = Backend::url('webbook/mall/products/update');
+        $this->vars['addressUpdate'] = Backend::url('webbook/mall/addresses/update');
         $this->vars['customerPreview'] = Backend::url('rainlab/user/users/preview');
 
         $order = Order::with('products', 'order_state')->findOrFail($this->params[0]);
@@ -113,14 +113,14 @@ class Orders extends Controller
         $config = $this->makeConfigFromArray([
             'fields' => [
                 'customer_notes' => [
-                    'label' => 'offline.mall::lang.order.customer_notes',
+                    'label' => 'webbook.mall::lang.order.customer_notes',
                     'span' => 'full',
                     'type' => 'textarea',
                     'size' => 'tiny',
                 ],
                 'admin_notes' => [
-                    'label' => 'offline.mall::lang.order.admin_notes',
-                    'comment' => 'offline.mall::lang.order.admin_notes_comment',
+                    'label' => 'webbook.mall::lang.order.admin_notes',
+                    'comment' => 'webbook.mall::lang.order.admin_notes_comment',
                     'span' => 'full',
                     'type' => 'textarea',
                     'size' => 'tiny',
@@ -144,7 +144,7 @@ class Orders extends Controller
 
         $order->save();
 
-        Flash::success(trans('offline.mall::lang.order.notes_updated'));
+        Flash::success(trans('webbook.mall::lang.order.notes_updated'));
     }
 
     /**
@@ -174,7 +174,7 @@ class Orders extends Controller
         $availableStatus = $order->payment_state::getAvailableTransitions();
 
         if (!in_array($newState, $availableStatus)) {
-            throw new ValidationException([trans('offline.mall::lang.order.invalid_status')]);
+            throw new ValidationException([trans('webbook.mall::lang.order.invalid_status')]);
         }
 
         $order->payment_state = $newState;
@@ -255,9 +255,9 @@ class Orders extends Controller
     {
         $order = Order::findOrFail($recordId);
         $order->delete();
-        Flash::success(trans('offline.mall::lang.order.deleted'));
+        Flash::success(trans('webbook.mall::lang.order.deleted'));
 
-        return Backend::redirect('offline/mall/orders');
+        return Backend::redirect('webbook/mall/orders');
     }
 
     /**
@@ -274,7 +274,7 @@ class Orders extends Controller
         $order->shippingNotification = $shippingNotification;
 
         $order->save();
-        Flash::success(trans('offline.mall::lang.order.updated'));
+        Flash::success(trans('webbook.mall::lang.order.updated'));
 
         return $order;
     }

@@ -3,11 +3,11 @@
         <div class="mall-order-details">
             <div class="mall-order-details__row">
                 <div class="mall-order-details__detail">
-                    <h5>{{ 'offline.mall::frontend.order.order_state'|trans }}</h5>
+                    <h5>{{ 'webbook.mall::frontend.order.order_state'|trans }}</h5>
                     {{ order.order_state_label }}
                 </div>
                 <div class="mall-order-details__detail">
-                    <h5>{{ 'offline.mall::frontend.order.payment_state'|trans }}</h5>
+                    <h5>{{ 'webbook.mall::frontend.order.payment_state'|trans }}</h5>
                     {{ order.payment_state_label }}
                     {% if not order.isPaid %}
                         {% if order.payment_method.instructions %}
@@ -18,7 +18,7 @@
                         <br/>
                         {% if __SELF__.paymentLink is defined %}
                             <a href="{{ __SELF__.paymentLink }}?order={{ order.hashId }}">
-                                {{ 'offline.mall::frontend.payment_method.pay_now'|trans }}
+                                {{ 'webbook.mall::frontend.payment_method.pay_now'|trans }}
                             </a>
                         {% endif %}
                     {% endif %}
@@ -26,18 +26,18 @@
             </div>
             <div class="mall-order-details__row">
                 <div class="mall-order-details__detail">
-                    <h5>{{ 'offline.mall::frontend.shipping_method'|trans }}</h5>
+                    <h5>{{ 'webbook.mall::frontend.shipping_method'|trans }}</h5>
                     {{ order.shipping.method.name }}
                 </div>
                 <div class="mall-order-details__detail">
-                    <h5>{{ 'offline.mall::frontend.payment_method'|trans }}</h5>
+                    <h5>{{ 'webbook.mall::frontend.payment_method'|trans }}</h5>
                     {{ order.payment_method.name }}
                 </div>
             </div>
             {% if order.tracking_number or order.tracking_url %}
                 <div class="mall-order-details__row">
                     <div class="mall-order-details__detail">
-                        <h5>{{ 'offline.mall::frontend.shipping_tracking'|trans }}</h5>
+                        <h5>{{ 'webbook.mall::frontend.shipping_tracking'|trans }}</h5>
                         {% if order.tracking_url %}
                             <a href="{{ order.tracking_url }}" target="_blank"
                                rel="noopener nofollow">
@@ -55,13 +55,13 @@
             {% endif %}
             <div class="mall-order-details__row">
                 <div class="mall-order-details__detail">
-                    <h5>{{ 'offline.mall::frontend.shipping_address'|trans }}</h5>
+                    <h5>{{ 'webbook.mall::frontend.shipping_address'|trans }}</h5>
                     {% if order.shipping_address is defined %}
                         {% partial __SELF__ ~ '::address' address=order.shipping_address %}
                     {% endif %}
                 </div>
                 <div class="mall-order-details__detail">
-                    <h5>{{ 'offline.mall::frontend.billing_address'|trans }}</h5>
+                    <h5>{{ 'webbook.mall::frontend.billing_address'|trans }}</h5>
                     {% if order.billing_address is defined %}
                         {% partial __SELF__ ~ '::address' address=order.billing_address %}
                     {% endif %}

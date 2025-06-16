@@ -1,16 +1,16 @@
 columns:
     name:
-        label: 'offline.mall::lang.category.name'
+        label: 'webbook.mall::lang.category.name'
         type: text
         searchable: true
         sortable: true
     slug:
-        label: 'offline.mall::lang.common.slug'
+        label: 'webbook.mall::lang.common.slug'
         type: text
         searchable: true
         sortable: true
     code:
-        label: 'offline.mall::lang.category.code'
+        label: 'webbook.mall::lang.category.code'
         type: text
         searchable: true
         sortable: true

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Tables;
+namespace WebBook\Mall\Updates\Seeders\Tables;
 
 use October\Rain\Database\Updates\Seeder;
-use OFFLINE\Mall\Models\Brand;
+use WebBook\Mall\Models\Brand;
 
 class BrandTableSeeder extends Seeder
 {
@@ -19,11 +19,11 @@ class BrandTableSeeder extends Seeder
         if (!$useDemo) {
             return;
         }
-        
+
         Brand::create([
             'name'        => 'Cruiser Bikes',
             'slug'        => 'cruiser-bikes',
-            'description' => trans('offline.mall::demo.brands.cruiser_bikes.description'),
+            'description' => trans('webbook.mall::demo.brands.cruiser_bikes.description'),
             'website'     => 'https://cruiser.bikes',
             'sort_order'  => 1,
         ]);

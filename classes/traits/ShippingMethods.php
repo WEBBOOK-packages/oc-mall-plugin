@@ -1,8 +1,8 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Traits;
+namespace WebBook\Mall\Classes\Traits;
 
-use OFFLINE\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\ShippingMethod;
 
 trait ShippingMethods
 {

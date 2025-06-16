@@ -1,13 +1,13 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Stats;
+namespace WebBook\Mall\Classes\Stats;
 
 use DB;
 use Illuminate\Support\Carbon;
-use OFFLINE\Mall\Classes\PaymentState\PaidState;
-use OFFLINE\Mall\Classes\PaymentState\PaymentState;
-use OFFLINE\Mall\Models\Order;
-use OFFLINE\Mall\Models\OrderState;
+use WebBook\Mall\Classes\PaymentState\PaidState;
+use WebBook\Mall\Classes\PaymentState\PaymentState;
+use WebBook\Mall\Models\Order;
+use WebBook\Mall\Models\OrderState;
 
 class OrdersStats
 {

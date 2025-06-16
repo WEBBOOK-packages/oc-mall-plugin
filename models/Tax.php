@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Illuminate\Support\Facades\Cache;
 use Model;
 use October\Rain\Database\Collection;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Database\IsStates;
+use WebBook\Mall\Classes\Database\IsStates;
 use Rainlab\Location\Models\Country as RainLabCountry;
 
 class Tax extends Model
@@ -25,7 +25,7 @@ class Tax extends Model
     /**
      * Disable `is_default` handler on IsStates trait. Even if Tax uses a default value, the
      * current IsStates trait does not support multiple defaults, especially when using an
-     * additional linking table (`offline_mall_country_tax`).
+     * additional linking table (`webbook_mall_country_tax`).
      * @var null|string
      */
     public const IS_DEFAULT = null;
@@ -43,13 +43,13 @@ class Tax extends Model
     public $implement = [
         '@RainLab.Translate.Behaviors.TranslatableModel',
     ];
-    
+
     /**
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_taxes';
-    
+    public $table = 'webbook_mall_taxes';
+
     /**
      * The translatable attributes of this model.
      * @var array
@@ -95,25 +95,25 @@ class Tax extends Model
     public $belongsToMany = [
         'products'         => [
             Product::class,
-            'table'    => 'offline_mall_product_tax',
+            'table'    => 'webbook_mall_product_tax',
             'key'      => 'tax_id',
             'otherKey' => 'product_id',
         ],
         'shipping_methods' => [
             ShippingMethod::class,
-            'table'    => 'offline_mall_shipping_method_tax',
+            'table'    => 'webbook_mall_shipping_method_tax',
             'key'      => 'tax_id',
             'otherKey' => 'shipping_method_id',
         ],
         'payment_methods'  => [
             PaymentMethod::class,
-            'table'    => 'offline_mall_payment_method_tax',
+            'table'    => 'webbook_mall_payment_method_tax',
             'key'      => 'tax_id',
             'otherKey' => 'payment_method_id',
         ],
         'countries'        => [
             RainLabCountry::class,
-            'table'      => 'offline_mall_country_tax',
+            'table'      => 'webbook_mall_country_tax',
             'key'        => 'tax_id',
             'otherKey'   => 'country_id',
             'conditions' => 'is_enabled = true',

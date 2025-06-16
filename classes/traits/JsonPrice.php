@@ -1,13 +1,13 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Traits;
+namespace WebBook\Mall\Classes\Traits;
 
 use Illuminate\Support\Facades\Cache;
-use OFFLINE\Mall\Classes\Utils\Money;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Variant;
+use WebBook\Mall\Classes\Utils\Money;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Variant;
 
 trait JsonPrice
 {

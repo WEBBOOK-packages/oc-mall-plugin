@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Illuminate\Support\Facades\Queue;
 use Model;
 use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\Sortable;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Jobs\BrandChangeUpdate;
+use WebBook\Mall\Classes\Jobs\BrandChangeUpdate;
 use System\Models\File;
 
 class Brand extends Model
@@ -43,7 +43,7 @@ class Brand extends Model
         'sort_order',
     ];
 
-    public $table = 'offline_mall_brands';
+    public $table = 'webbook_mall_brands';
 
     public $attachOne = [
         'logo' => File::class,

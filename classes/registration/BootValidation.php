@@ -1,8 +1,8 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Registration;
+namespace WebBook\Mall\Classes\Registration;
 
-use OFFLINE\Mall\Classes\Validation\NonExistingUserRule;
+use WebBook\Mall\Classes\Validation\NonExistingUserRule;
 
 trait BootValidation
 {

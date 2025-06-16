@@ -1,46 +1,46 @@
 fields:
     is_enabled:
         type: switch
-        label: offline.mall::lang.payment_method_settings.is_enabled
+        label: webbook.mall::lang.payment_method_settings.is_enabled
         span: left
         default: true
     is_default:
         type: switch
-        label: offline.mall::lang.payment_method_settings.set_as_default
+        label: webbook.mall::lang.payment_method_settings.set_as_default
         span: right
 tabs:
     fields:
         name:
-            label: 'offline.mall::lang.common.name'
+            label: 'webbook.mall::lang.common.name'
             oc.commentPosition: ''
             span: auto
             type: text
-            tab: 'offline.mall::lang.product.general'
+            tab: 'webbook.mall::lang.product.general'
         payment_provider:
-            label: 'offline.mall::lang.common.payment_provider'
+            label: 'webbook.mall::lang.common.payment_provider'
             oc.commentPosition: ''
             span: auto
             type: dropdown
-            tab: 'offline.mall::lang.product.general'
+            tab: 'webbook.mall::lang.product.general'
         code:
-            label: 'offline.mall::lang.common.code'
-            comment: 'offline.mall::lang.common.code_comment'
+            label: 'webbook.mall::lang.common.code'
+            comment: 'webbook.mall::lang.common.code_comment'
             span: auto
             type: text
-            placeholder: 'offline.mall::lang.common.code'
+            placeholder: 'webbook.mall::lang.common.code'
             preset:
                 field: name
                 type: slug
-            tab: 'offline.mall::lang.product.general'
+            tab: 'webbook.mall::lang.product.general'
         pdf_partial:
-            label: 'offline.mall::lang.payment_method.pdf_partial'
-            comment: 'offline.mall::lang.payment_method.pdf_partial_comment'
+            label: 'webbook.mall::lang.payment_method.pdf_partial'
+            comment: 'webbook.mall::lang.payment_method.pdf_partial_comment'
             oc.commentPosition: ''
             span: auto
             type: dropdown
-            tab: 'offline.mall::lang.product.general'
+            tab: 'webbook.mall::lang.product.general'
         logo:
-            label: 'offline.mall::lang.common.logo'
+            label: 'webbook.mall::lang.common.logo'
             oc.commentPosition: ''
             mode: image
             fileTypes: jpg,jpeg,bmp,png,webp,gif,svg
@@ -52,41 +52,41 @@ tabs:
                 extension: auto
             span: auto
             type: fileupload
-            tab: 'offline.mall::lang.product.general'
+            tab: 'webbook.mall::lang.product.general'
         instructions:
-            label: 'offline.mall::lang.payment_method.instructions'
-            comment: 'offline.mall::lang.payment_method.instructions_comment'
+            label: 'webbook.mall::lang.payment_method.instructions'
+            comment: 'webbook.mall::lang.payment_method.instructions_comment'
             size: large
             span: auto
             type: codeeditor
             language: twig
-            tab: 'offline.mall::lang.product.general'
+            tab: 'webbook.mall::lang.product.general'
         description:
-            label: 'offline.mall::lang.product.description'
+            label: 'webbook.mall::lang.product.description'
             size: large
             span: auto
             type: richeditor
-            tab: 'offline.mall::lang.product.general'
+            tab: 'webbook.mall::lang.product.general'
         fee_label:
-            label: 'offline.mall::lang.payment_method.fee_label'
+            label: 'webbook.mall::lang.payment_method.fee_label'
             span: left
             type: text
-            comment: 'offline.mall::lang.payment_method.fee_label_comment'
-            tab: 'offline.mall::lang.common.fees'
+            comment: 'webbook.mall::lang.payment_method.fee_label_comment'
+            tab: 'webbook.mall::lang.common.fees'
         taxes:
             span: right
             path: taxes
             type: partial
-            tab: 'offline.mall::lang.common.fees'
+            tab: 'webbook.mall::lang.common.fees'
         _prices:
-            label: 'offline.mall::lang.payment_method.price'
+            label: 'webbook.mall::lang.payment_method.price'
             span: left
             type: mall.price
-            comment: 'offline.mall::lang.payment_method.price_comment'
-            tab: 'offline.mall::lang.common.fees'
+            comment: 'webbook.mall::lang.payment_method.price_comment'
+            tab: 'webbook.mall::lang.common.fees'
         fee_percentage:
-            label: 'offline.mall::lang.payment_method.fee_percentage'
+            label: 'webbook.mall::lang.payment_method.fee_percentage'
             span: left
             type: text
-            comment: 'offline.mall::lang.payment_method.fee_percentage_comment'
-            tab: 'offline.mall::lang.common.fees'
+            comment: 'webbook.mall::lang.payment_method.fee_percentage_comment'
+            tab: 'webbook.mall::lang.common.fees'

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Demo;
+namespace WebBook\Mall\Updates\Seeders\Demo;
 
-use OFFLINE\Mall\Models\ProductPrice;
-use OFFLINE\Mall\Models\Review;
+use WebBook\Mall\Models\ProductPrice;
+use WebBook\Mall\Models\Review;
 
 class Cruiser1500 extends DemoProduct
 {
@@ -16,10 +16,10 @@ class Cruiser1500 extends DemoProduct
             'user_defined_id'              => 'CITY002',
             'slug'                         => 'cruiser-1500',
             'name'                         => 'Cruiser 1500',
-            'description'                  => trans('offline.mall::demo.products.cruiser_1500.description'),
-            'description_short'            => trans('offline.mall::demo.products.cruiser_1500.description_short'),
-            'meta_title'                   => trans('offline.mall::demo.products.cruiser_1500.meta_title'),
-            'meta_description'             => trans('offline.mall::demo.products.cruiser_1500.meta_description'),
+            'description'                  => trans('webbook.mall::demo.products.cruiser_1500.description'),
+            'description_short'            => trans('webbook.mall::demo.products.cruiser_1500.description_short'),
+            'meta_title'                   => trans('webbook.mall::demo.products.cruiser_1500.meta_title'),
+            'meta_description'             => trans('webbook.mall::demo.products.cruiser_1500.meta_description'),
             'meta_keywords'                => 'city, citybike, cruiser, bike',
             'weight'                       => 7000,
             'inventory_management_method'  => 'variant',
@@ -45,13 +45,13 @@ class Cruiser1500 extends DemoProduct
     {
         return [
             'color'       => [
-                'name' => trans('offline.mall::demo.products.properties.think_pink'),
+                'name' => trans('webbook.mall::demo.products.properties.think_pink'),
                 'hex' => '#f686aa',
             ],
             'rear-travel' => '0',
             'fork-travel' => '0',
-            'material'    => trans('offline.mall::demo.products.properties.aluminium'),
-            'gender'      => trans('offline.mall::demo.products.properties.female'),
+            'material'    => trans('webbook.mall::demo.products.properties.aluminium'),
+            'gender'      => trans('webbook.mall::demo.products.properties.female'),
         ];
     }
 
@@ -136,7 +136,7 @@ class Cruiser1500 extends DemoProduct
     {
         return [
             [
-                'name'        =>  trans('offline.mall::demo.products.images.main'),
+                'name'        =>  trans('webbook.mall::demo.products.images.main'),
                 'is_main_set' => true,
                 'images'      => [
                     realpath(__DIR__ . '/images/cruiser-1500-1.jpg'),
@@ -150,8 +150,8 @@ class Cruiser1500 extends DemoProduct
         return [
             [
                 'review'           => new Review([
-                    'title'         => trans('offline.mall::demo.products.cruiser_1500.reviews.title'),
-                    'description'   => trans('offline.mall::demo.products.cruiser_1500.reviews.description'),
+                    'title'         => trans('webbook.mall::demo.products.cruiser_1500.reviews.title'),
+                    'description'   => trans('webbook.mall::demo.products.cruiser_1500.reviews.description'),
                     'rating'        => 1,
                 ]),
                 'category_reviews' => [

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Traits\HashIds;
 use RainLab\Location\Behaviors\LocationModel;
 use System\Classes\PluginManager;
 
@@ -23,7 +23,7 @@ class Address extends Model
         'lines'       => 'required',
         'zip'         => 'required',
         'country_id'  => 'required|exists:rainlab_location_countries,id',
-        'customer_id' => 'required|exists:offline_mall_customers,id',
+        'customer_id' => 'required|exists:webbook_mall_customers,id',
         'city'        => 'required',
     ];
 
@@ -49,7 +49,7 @@ class Address extends Model
 
     public $appends = ['hash_id'];
 
-    public $table = 'offline_mall_addresses';
+    public $table = 'webbook_mall_addresses';
 
     public $belongsTo = [
         'customer' => Customer::class,

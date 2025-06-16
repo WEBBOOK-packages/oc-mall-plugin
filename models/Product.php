@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Cache;
 use Cms\Classes\Page;
@@ -14,18 +14,18 @@ use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\Validation;
 use October\Rain\Support\Collection;
-use OFFLINE\Mall\Classes\Index\Index;
-use OFFLINE\Mall\Classes\Observers\ProductObserver;
-use OFFLINE\Mall\Classes\Traits\CustomFields;
-use OFFLINE\Mall\Classes\Traits\FilteredTaxes;
-use OFFLINE\Mall\Classes\Traits\HashIds;
-use OFFLINE\Mall\Classes\Traits\Images;
-use OFFLINE\Mall\Classes\Traits\PDFMaker;
-use OFFLINE\Mall\Classes\Traits\PriceAccessors;
-use OFFLINE\Mall\Classes\Traits\ProductPriceAccessors;
-use OFFLINE\Mall\Classes\Traits\PropertyValues;
-use OFFLINE\Mall\Classes\Traits\StockAndQuantity;
-use OFFLINE\Mall\Classes\Traits\UserSpecificPrice;
+use WebBook\Mall\Classes\Index\Index;
+use WebBook\Mall\Classes\Observers\ProductObserver;
+use WebBook\Mall\Classes\Traits\CustomFields;
+use WebBook\Mall\Classes\Traits\FilteredTaxes;
+use WebBook\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Traits\Images;
+use WebBook\Mall\Classes\Traits\PDFMaker;
+use WebBook\Mall\Classes\Traits\PriceAccessors;
+use WebBook\Mall\Classes\Traits\ProductPriceAccessors;
+use WebBook\Mall\Classes\Traits\PropertyValues;
+use WebBook\Mall\Classes\Traits\StockAndQuantity;
+use WebBook\Mall\Classes\Traits\UserSpecificPrice;
 use System\Models\File;
 
 class Product extends Model
@@ -57,7 +57,7 @@ class Product extends Model
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_products';
+    public $table = 'webbook_mall_products';
 
     /**
      * The translatable attributes of this model.
@@ -269,40 +269,40 @@ class Product extends Model
     public $belongsToMany = [
         'categories'      => [
             Category::class,
-            'table'    => 'offline_mall_category_product',
+            'table'    => 'webbook_mall_category_product',
             'key'      => 'product_id',
             'otherKey' => 'category_id',
             'pivot'    => ['sort_order'],
         ],
         'custom_fields'   => [
             CustomField::class,
-            'table'    => 'offline_mall_product_custom_field',
+            'table'    => 'webbook_mall_product_custom_field',
             'key'      => 'product_id',
             'otherKey' => 'custom_field_id',
         ],
         'accessories'     => [
             Product::class,
-            'table'      => 'offline_mall_product_accessory',
+            'table'      => 'webbook_mall_product_accessory',
             'key'        => 'accessory_id',
             'otherKey'   => 'product_id',
             'conditions' => 'published = 1',
         ],
         'is_accessory_of' => [
             Product::class,
-            'table'      => 'offline_mall_product_accessory',
+            'table'      => 'webbook_mall_product_accessory',
             'key'        => 'product_id',
             'otherKey'   => 'accessory_id',
             'conditions' => 'published = 1',
         ],
         'taxes'           => [
             Tax::class,
-            'table'    => 'offline_mall_product_tax',
+            'table'    => 'webbook_mall_product_tax',
             'key'      => 'product_id',
             'otherKey' => 'tax_id',
         ],
         'carts'           => [
             Cart::class,
-            'table'      => 'offline_mall_cart_products',
+            'table'      => 'webbook_mall_cart_products',
             'key'        => 'product_id',
             'otherKey'   => 'cart_id',
             'deleted'    => true,
@@ -312,7 +312,7 @@ class Product extends Model
         ],
         'services'        => [
             Service::class,
-            'table'    => 'offline_mall_product_service',
+            'table'    => 'webbook_mall_product_service',
             'key'      => 'product_id',
             'otherKey' => 'service_id',
             'pivot'    => ['required'],
@@ -425,12 +425,12 @@ class Product extends Model
         $this->additional_prices()->withDisabled()->delete();
         $this->variants()->delete();
         $this->property_values()->delete();
-        DB::table('offline_mall_product_accessory')->where('product_id', $this->id)->delete();
-        DB::table('offline_mall_product_tax')->where('product_id', $this->id)->delete();
-        DB::table('offline_mall_cart_products')->where('product_id', $this->id)->delete();
-        DB::table('offline_mall_product_custom_field')->where('product_id', $this->id)->delete();
-        DB::table('offline_mall_category_product')->where('product_id', $this->id)->delete();
-        DB::table('offline_mall_wishlist_items')->where('product_id', $this->id)->delete();
+        DB::table('webbook_mall_product_accessory')->where('product_id', $this->id)->delete();
+        DB::table('webbook_mall_product_tax')->where('product_id', $this->id)->delete();
+        DB::table('webbook_mall_cart_products')->where('product_id', $this->id)->delete();
+        DB::table('webbook_mall_product_custom_field')->where('product_id', $this->id)->delete();
+        DB::table('webbook_mall_category_product')->where('product_id', $this->id)->delete();
+        DB::table('webbook_mall_wishlist_items')->where('product_id', $this->id)->delete();
     }
 
     public function duplicate(): self
@@ -631,7 +631,7 @@ class Product extends Model
      */
     public function getGroupByPropertyIdOptions()
     {
-        return ['' => trans('offline.mall::lang.common.none')]
+        return ['' => trans('webbook.mall::lang.common.none')]
             + $this->categories->flatMap->properties->filter(fn ($q) => $q->pivot->use_for_variants)->pluck('name', 'id')->toArray();
     }
 
@@ -641,7 +641,7 @@ class Product extends Model
     public function getSortOrders()
     {
         return Cache::rememberForever(self::sortOrderCacheKey($this->id), function () {
-            return DB::table('offline_mall_category_product')
+            return DB::table('webbook_mall_category_product')
                 ->where('product_id', $this->id)
                 ->get(['category_id', 'sort_order',])
                 ->pluck('sort_order', 'category_id')
@@ -752,8 +752,8 @@ class Product extends Model
     public function getInventoryManagementMethodOptions()
     {
         return [
-            'single'  => 'offline.mall::lang.variant.method.single',
-            'variant' => 'offline.mall::lang.variant.method.variant',
+            'single'  => 'webbook.mall::lang.variant.method.single',
+            'variant' => 'webbook.mall::lang.variant.method.variant',
         ];
     }
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Classes\Database;
+namespace WebBook\Mall\Classes\Database;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -32,7 +32,7 @@ class IsStatesScope implements Scope
 
         return $builder;
     }
-    
+
     /**
      * Extend the query builder with the needed functions.
      * @param Builder $builder

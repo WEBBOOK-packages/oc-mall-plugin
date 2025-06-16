@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Auth;
 use Illuminate\Support\Collection;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\Order;
-use OFFLINE\Mall\Models\OrderState;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\Order;
+use WebBook\Mall\Models\OrderState;
 
 /**
  * The OrdersList component displays a list of all the user's orders.
@@ -44,8 +44,8 @@ class OrdersList extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.ordersList.details.name',
-            'description' => 'offline.mall::lang.components.ordersList.details.description',
+            'name'        => 'webbook.mall::lang.components.ordersList.details.name',
+            'description' => 'webbook.mall::lang.components.ordersList.details.description',
         ];
     }
 
@@ -71,7 +71,7 @@ class OrdersList extends MallComponent
         if (!$user || !$user->customer) {
             return;
         }
-        
+
         $this->paymentLink = $this->getPaymentLink();
         $this->orders = Order::byCustomer($user->customer)
             ->with(['products', 'products.variant'])

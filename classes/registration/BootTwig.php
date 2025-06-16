@@ -1,8 +1,8 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Registration;
+namespace WebBook\Mall\Classes\Registration;
 
-use OFFLINE\Mall\Classes\Utils\Money;
+use WebBook\Mall\Classes\Utils\Money;
 use System\Twig\Extension as TwigExtension;
 use System\Twig\Loader as TwigLoader;
 use Twig\Environment;

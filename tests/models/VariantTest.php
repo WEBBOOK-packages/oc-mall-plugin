@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
 use DB;
-use OFFLINE\Mall\Models\ImageSet;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Property;
-use OFFLINE\Mall\Models\PropertyValue;
-use OFFLINE\Mall\Models\Tax;
-use OFFLINE\Mall\Models\Variant;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Models\ImageSet;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Property;
+use WebBook\Mall\Models\PropertyValue;
+use WebBook\Mall\Models\Tax;
+use WebBook\Mall\Models\Variant;
+use WebBook\Mall\Tests\PluginTestCase;
 use System\Models\File;
 
 class VariantTest extends PluginTestCase
@@ -101,7 +101,7 @@ class VariantTest extends PluginTestCase
 
     public function test_it_inherits_files()
     {
-        DB::table('offline_mall_product_variants')
+        DB::table('webbook_mall_product_variants')
             ->where('id', $this->variant->id)
             ->update(['image_set_id' => null]);
 
@@ -121,7 +121,7 @@ class VariantTest extends PluginTestCase
 
         $this->product->main_image_set->images()->save($file);
 
-        DB::table('offline_mall_product_variants')
+        DB::table('webbook_mall_product_variants')
             ->where('id', $this->variant->id)
             ->update(['image_set_id' => null]);
 
@@ -296,7 +296,7 @@ class VariantTest extends PluginTestCase
             'price_category_id' => 1,
             'currency_id'       => 1,
         ]));
-        
+
         $variant->load('additional_prices');
 
         $this->assertEquals($priceFormatted, $variant->old_price->toArray());

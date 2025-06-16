@@ -1,12 +1,12 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Traits;
+namespace WebBook\Mall\Classes\Traits;
 
 use Event;
 use October\Rain\Support\Collection;
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\Tax;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\Tax;
 
 /**
  * This trait is used to filter a Collection of taxes based

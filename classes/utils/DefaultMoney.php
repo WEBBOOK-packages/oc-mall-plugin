@@ -1,9 +1,9 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Utils;
+namespace WebBook\Mall\Classes\Utils;
 
 use Illuminate\Support\Facades\App;
-use OFFLINE\Mall\Models\Currency;
+use WebBook\Mall\Models\Currency;
 use Twig\Environment;
 use Twig\Loader\ArrayLoader;
 use Twig_Environment;

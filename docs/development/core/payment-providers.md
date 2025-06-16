@@ -6,7 +6,7 @@ You can add your own payment provider by providing an implementation of a `Payme
  
 ## Implement a PaymentProvider 
 
-To implement a `PaymentProvider` simply extend the abstract `OFFLINE\Mall\Classes\Payments\PaymentProvider` class and
+To implement a `PaymentProvider` simply extend the abstract `WebBook\Mall\Classes\Payments\PaymentProvider` class and
  implement all missing methods. 
  
 You can place your custom `PaymentProvider` inside the `classes` directory of your plugin:
@@ -18,7 +18,7 @@ You can place your custom `PaymentProvider` inside the `classes` directory of yo
 The `process` method receives an instance of a `PaymentResult`. You can call one of the three methods `success`, 
 `redirect` and `fail` on it. This will automatically log the payment attempt and update the order. 
 
-Check out [the payment providers that are shipped with the plugin](https://github.com/OFFLINE-GmbH/oc-mall-plugin/tree/develop/classes/payments) for more information on how to use these 
+Check out [the payment providers that are shipped with the plugin](https://github.com/WebBook-GmbH/oc-mall-plugin/tree/develop/classes/payments) for more information on how to use these 
 methods.
 
 ### Example implementation
@@ -27,15 +27,15 @@ methods.
 <?php
 namespace YourName\YourPlugin\Classes;
 
-use OFFLINE\Mall\Models\PaymentGatewaySettings;
-use OFFLINE\Mall\Classes\Payments\PaymentResult;
+use WebBook\Mall\Models\PaymentGatewaySettings;
+use WebBook\Mall\Classes\Payments\PaymentResult;
 
-class ExampleProvider extends \OFFLINE\Mall\Classes\Payments\PaymentProvider
+class ExampleProvider extends \WebBook\Mall\Classes\Payments\PaymentProvider
 {
     /**
      * The order that is being paid.
      *
-     * @var \OFFLINE\Mall\Models\Order
+     * @var \WebBook\Mall\Models\Order
      */
     public $order;
     /**
@@ -177,7 +177,7 @@ method.
 namespace YourName\YourPlugin;
 
 use YourName\YourPlugin\Classes\ExampleProvider;
-use OFFLINE\Mall\Classes\Payments\PaymentGateway;
+use WebBook\Mall\Classes\Payments\PaymentGateway;
 use System\Classes\PluginBase;
 
 // Your Plugin.php

@@ -1,15 +1,15 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Totals;
+namespace WebBook\Mall\Classes\Totals;
 
 use Carbon\Carbon;
 use October\Contracts\Twig\CallsAnyMethod;
-use OFFLINE\Mall\Classes\Cart\DiscountApplier;
-use OFFLINE\Mall\Classes\Traits\Rounding;
-use OFFLINE\Mall\Models\Discount;
-use OFFLINE\Mall\Models\ShippingMethod;
-use OFFLINE\Mall\Models\ShippingMethodRate;
-use OFFLINE\Mall\Models\Tax;
+use WebBook\Mall\Classes\Cart\DiscountApplier;
+use WebBook\Mall\Classes\Traits\Rounding;
+use WebBook\Mall\Models\Discount;
+use WebBook\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\ShippingMethodRate;
+use WebBook\Mall\Models\Tax;
 
 class ShippingTotal implements \JsonSerializable, CallsAnyMethod
 {

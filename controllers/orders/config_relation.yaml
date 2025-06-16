@@ -3,10 +3,10 @@
 # ===================================
 
 payment_logs:
-    label: 'offline.mall::lang.common.payment'
+    label: 'webbook.mall::lang.common.payment'
     view:
-        list: $/offline/mall/models/paymentlog/columns.yaml
+        list: $/webbook/mall/models/paymentlog/columns.yaml
         toolbarButtons: delete
     manage:
-        form: $/offline/mall/models/paymentlog/fields.yaml
+        form: $/webbook/mall/models/paymentlog/fields.yaml
         recordsPerPage: 10

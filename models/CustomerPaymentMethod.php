@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Traits\HashIds;
 
 class CustomerPaymentMethod extends Model
 {
@@ -15,11 +15,11 @@ class CustomerPaymentMethod extends Model
     use HashIds;
     use SoftDelete;
 
-    public $table = 'offline_mall_customer_payment_methods';
+    public $table = 'webbook_mall_customer_payment_methods';
 
     public $rules = [
-        'payment_method_id' => 'required|exists:offline_mall_payment_methods,id',
-        'customer_id'       => 'required|exists:offline_mall_customers,id',
+        'payment_method_id' => 'required|exists:webbook_mall_payment_methods,id',
+        'customer_id'       => 'required|exists:webbook_mall_customers,id',
     ];
 
     public $belongsTo = [

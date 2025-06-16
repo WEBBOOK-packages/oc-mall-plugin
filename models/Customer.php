@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Carbon\Carbon;
 use DB;
@@ -20,7 +20,7 @@ class Customer extends Model
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_customers';
+    public $table = 'webbook_mall_customers';
 
     /**
      * The validation rules for the single attributes.
@@ -64,7 +64,7 @@ class Customer extends Model
     public $belongsTo = [
         'user' => User::class,
     ];
-    
+
     /**
      * The hasMany relationships of this model.
      * @var array

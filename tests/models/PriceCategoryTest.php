@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
 use Illuminate\Support\Facades\DB;
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\PriceCategory;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\PriceCategory;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Tests\PluginTestCase;
 use RainLab\User\Models\User;
 
 class PriceCategoryTest extends PluginTestCase
@@ -95,7 +95,7 @@ class PriceCategoryTest extends PluginTestCase
         $product->additional_prices()->withDisabled()->delete();
 
         // Check if prices has been deleted
-        $prices = DB::table('offline_mall_prices')
+        $prices = DB::table('webbook_mall_prices')
             ->where('priceable_type', Product::MORPH_KEY)
             ->where('priceable_id', $product->id)
             ->count();

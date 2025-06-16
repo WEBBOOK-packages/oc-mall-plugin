@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use October\Rain\Database\Updates\Migration;
 use Schema;
@@ -9,8 +9,8 @@ class RemovePaymentDataColumnFromOrdersTable extends Migration
 {
     public function up()
     {
-        Schema::table('offline_mall_orders', function ($table) {
-            if (Schema::hasColumn('offline_mall_orders', 'payment_data')) {
+        Schema::table('webbook_mall_orders', function ($table) {
+            if (Schema::hasColumn('webbook_mall_orders', 'payment_data')) {
                 $table->dropColumn(['payment_data']);
             }
         });
@@ -18,7 +18,7 @@ class RemovePaymentDataColumnFromOrdersTable extends Migration
 
     public function down()
     {
-        Schema::table('offline_mall_orders', function ($table) {
+        Schema::table('webbook_mall_orders', function ($table) {
             $table->mediumText('payment_data')->nullable();
         });
     }

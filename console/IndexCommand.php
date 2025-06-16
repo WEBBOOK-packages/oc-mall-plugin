@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Console;
+namespace WebBook\Mall\Console;
 
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
-use OFFLINE\Mall\Classes\Index\Index;
-use OFFLINE\Mall\Classes\Index\ProductEntry;
-use OFFLINE\Mall\Classes\Index\VariantEntry;
-use OFFLINE\Mall\Classes\Observers\ProductObserver;
-use OFFLINE\Mall\Models\Product;
+use WebBook\Mall\Classes\Index\Index;
+use WebBook\Mall\Classes\Index\ProductEntry;
+use WebBook\Mall\Classes\Index\VariantEntry;
+use WebBook\Mall\Classes\Observers\ProductObserver;
+use WebBook\Mall\Models\Product;
 
 class IndexCommand extends Command
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Payments;
+namespace WebBook\Mall\Classes\Payments;
 
 use Cms\Classes\Controller;
 use Illuminate\Support\Facades\Event;

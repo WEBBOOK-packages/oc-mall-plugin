@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Controllers;
+namespace WebBook\Mall\Controllers;
 
 use Backend\Behaviors\FormController;
 use Backend\Behaviors\ListController;
@@ -10,7 +10,7 @@ use Backend\Behaviors\RelationController;
 use Backend\Classes\Controller;
 use BackendMenu;
 use Flash;
-use OFFLINE\Mall\Models\Category;
+use WebBook\Mall\Models\Category;
 use System;
 
 class Categories extends Controller
@@ -50,7 +50,7 @@ class Categories extends Controller
      * @var array
      */
     public $requiredPermissions = [
-        'offline.mall.manage_categories',
+        'webbook.mall.manage_categories',
     ];
 
     /**
@@ -59,13 +59,13 @@ class Categories extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('OFFLINE.Mall', 'mall-catalogue', 'mall-categories');
+        BackendMenu::setContext('WebBook.Mall', 'mall-catalogue', 'mall-categories');
 
         if (version_compare(System::VERSION, '3.0', '<=')) {
-            $this->addJs('/plugins/offline/mall/assets/backend.js');
+            $this->addJs('/plugins/webbook/mall/assets/backend.js');
         }
     }
-    
+
     /**
      * Provides an opportunity to manipulate the field configuration.
      * @param object $config
@@ -75,7 +75,7 @@ class Categories extends Controller
     public function relationExtendConfig($config, $field, $model)
     {
         if (version_compare(System::VERSION, '3.0', '>=')) {
-            $config->view['list'] = '$/offline/mall/models/propertygroup/columns_pivot.yaml';
+            $config->view['list'] = '$/webbook/mall/models/propertygroup/columns_pivot.yaml';
         }
     }
 
@@ -89,7 +89,7 @@ class Categories extends Controller
         $model   = Category::findOrFail($this->params[0]);
         $model->setRelationOrder('property_groups', $records, range(1, count($records)), 'relation_sort_order');
 
-        Flash::success(trans('offline.mall::lang.common.sorting_updated'));
+        Flash::success(trans('webbook.mall::lang.common.sorting_updated'));
     }
 
     /**

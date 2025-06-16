@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\CustomerGroup;
-use OFFLINE\Mall\Models\CustomerGroupPrice;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Variant;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\CustomerGroup;
+use WebBook\Mall\Models\CustomerGroupPrice;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Variant;
+use WebBook\Mall\Tests\PluginTestCase;
 use RainLab\User\Models\User;
 
 class CustomerGroupPriceTest extends PluginTestCase

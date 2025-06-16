@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Classes\Database;
+namespace WebBook\Mall\Classes\Database;
 
 use Exception;
-use OFFLINE\Mall\Models\ProductPrice;
+use WebBook\Mall\Models\ProductPrice;
 
 /**
  * Checks and implements the both states `is_default` and `is_enabled`.
@@ -84,7 +84,7 @@ trait IsStates
 
         $enabledColumn = $this->getIsEnabledColumnName();
         $isEnabled = $enabledColumn == null ? true : $this->$enabledColumn !== false;
-        
+
         // Disabled models cannot be the default ones.
         if (!$isEnabled && $this->$defaultColumn) {
             $this->$defaultColumn = false;

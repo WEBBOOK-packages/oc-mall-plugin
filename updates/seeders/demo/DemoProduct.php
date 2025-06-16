@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Demo;
+namespace WebBook\Mall\Updates\Seeders\Demo;
 
 use Exception;
 use October\Rain\Support\Arr;
-use OFFLINE\Mall\Classes\Database\IsStatesScope;
-use OFFLINE\Mall\Models\Brand;
-use OFFLINE\Mall\Models\Category;
-use OFFLINE\Mall\Models\CategoryReview;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Models\CustomField;
-use OFFLINE\Mall\Models\ImageSet;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Property;
-use OFFLINE\Mall\Models\PropertyValue;
-use OFFLINE\Mall\Models\Variant;
+use WebBook\Mall\Classes\Database\IsStatesScope;
+use WebBook\Mall\Models\Brand;
+use WebBook\Mall\Models\Category;
+use WebBook\Mall\Models\CategoryReview;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Models\CustomField;
+use WebBook\Mall\Models\ImageSet;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Property;
+use WebBook\Mall\Models\PropertyValue;
+use WebBook\Mall\Models\Variant;
 
 abstract class DemoProduct
 {

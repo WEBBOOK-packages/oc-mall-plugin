@@ -8,9 +8,9 @@ A `Order` model is created as soon as the customer hits the checkout button.
 The order is persisted even if the payment fails. This enables a 
 customer to retry the payment at any time.
 
-## Payment ID for offline payments
+## Payment ID for webbook payments
 
-If you offer offline payments you might want to have a unique payment ID to 
+If you offer webbook payments you might want to have a unique payment ID to 
 identify any incoming payments. This can be done using the `payment_hash` attribute
 on the Order model.
 
@@ -23,7 +23,7 @@ echo $order->payment_hash;
 
 The `payment_hash` is presented to the shop admin on the orders backend page.
 
-### Display offline payment info in checkout mails
+### Display webbook payment info in checkout mails
 
 Any payment instructions are by default rendered in the confirmation mails
 via the `payment_state` mail partial.

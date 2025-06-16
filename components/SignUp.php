@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Exception;
 use Illuminate\Support\Facades\Session;
-use OFFLINE\Mall\Classes\Customer\SignInHandler;
-use OFFLINE\Mall\Classes\Customer\SignUpHandler;
-use OFFLINE\Mall\Classes\User\Settings as UserSettings;
-use OFFLINE\Mall\Models\GeneralSettings;
+use WebBook\Mall\Classes\Customer\SignInHandler;
+use WebBook\Mall\Classes\Customer\SignUpHandler;
+use WebBook\Mall\Classes\User\Settings as UserSettings;
+use WebBook\Mall\Models\GeneralSettings;
 use RainLab\Location\Models\Country;
 
 /**
@@ -47,8 +47,8 @@ class SignUp extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.signup.details.name',
-            'description' => 'offline.mall::lang.components.signup.details.description',
+            'name'        => 'webbook.mall::lang.components.signup.details.name',
+            'description' => 'webbook.mall::lang.components.signup.details.description',
         ];
     }
 
@@ -62,7 +62,7 @@ class SignUp extends MallComponent
         return [
             'redirect' => [
                 'type' => 'string',
-                'name' => 'offline.mall::lang.components.signup.properties.redirect.name',
+                'name' => 'webbook.mall::lang.components.signup.properties.redirect.name',
             ],
         ];
     }

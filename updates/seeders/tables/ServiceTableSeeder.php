@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Tables;
+namespace WebBook\Mall\Updates\Seeders\Tables;
 
 use October\Rain\Database\Updates\Seeder;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Service;
-use OFFLINE\Mall\Models\ServiceOption;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Service;
+use WebBook\Mall\Models\ServiceOption;
 
 class ServiceTableSeeder extends Seeder
 {
@@ -25,40 +25,40 @@ class ServiceTableSeeder extends Seeder
 
         // Warranty
         $warranty = Service::create([
-            'name'          => trans('offline.mall::demo.services.warranty.name'),
-            'description'   => trans('offline.mall::demo.services.warranty.description'),
+            'name'          => trans('webbook.mall::demo.services.warranty.name'),
+            'description'   => trans('webbook.mall::demo.services.warranty.description'),
         ]);
 
         $option = ServiceOption::create([
-            'name'          => trans('offline.mall::demo.services.warranty.2_years_name'),
-            'description'   => trans('offline.mall::demo.services.warranty.2_years_description'),
+            'name'          => trans('webbook.mall::demo.services.warranty.2_years_name'),
+            'description'   => trans('webbook.mall::demo.services.warranty.2_years_description'),
             'service_id'    => $warranty->id,
         ]);
         $option->prices()->save(new Price(['currency_id' => 2, 'price' => 49]));
 
         $option = ServiceOption::create([
-            'name'          => trans('offline.mall::demo.services.warranty.3_years_name'),
-            'description'   => trans('offline.mall::demo.services.warranty.3_years_description'),
+            'name'          => trans('webbook.mall::demo.services.warranty.3_years_name'),
+            'description'   => trans('webbook.mall::demo.services.warranty.3_years_description'),
             'service_id'    => $warranty->id,
         ]);
         $option->prices()->save(new Price(['currency_id' => 2, 'price' => 69]));
 
         $option = ServiceOption::create([
-            'name'          => trans('offline.mall::demo.services.warranty.4_years_name'),
-            'description'   => trans('offline.mall::demo.services.warranty.4_years_description'),
+            'name'          => trans('webbook.mall::demo.services.warranty.4_years_name'),
+            'description'   => trans('webbook.mall::demo.services.warranty.4_years_description'),
             'service_id'  => $warranty->id,
         ]);
         $option->prices()->save(new Price(['currency_id' => 2, 'price' => 99]));
 
         // Assembly
         $assembly = Service::create([
-            'name'          => trans('offline.mall::demo.services.assembly.name'),
-            'description'   => trans('offline.mall::demo.services.assembly.description'),
+            'name'          => trans('webbook.mall::demo.services.assembly.name'),
+            'description'   => trans('webbook.mall::demo.services.assembly.description'),
         ]);
 
         $option = ServiceOption::create([
-            'name'          => trans('offline.mall::demo.services.assembly.preassemble_name'),
-            'description'   => trans('offline.mall::demo.services.assembly.preassemble_description'),
+            'name'          => trans('webbook.mall::demo.services.assembly.preassemble_name'),
+            'description'   => trans('webbook.mall::demo.services.assembly.preassemble_description'),
             'service_id'  => $assembly->id,
         ]);
         $option->prices()->save(new Price(['currency_id' => 2, 'price' => 99]));

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use OFFLINE\Mall\Models\Category;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Models\Category;
+use WebBook\Mall\Tests\PluginTestCase;
 use Throwable;
 
 class CategoryTest extends PluginTestCase

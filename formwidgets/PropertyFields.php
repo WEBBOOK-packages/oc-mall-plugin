@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\FormWidgets;
+namespace WebBook\Mall\FormWidgets;
 
 use Backend\Classes\FormField;
 use Backend\Classes\FormWidgetBase;
@@ -10,9 +10,9 @@ use Backend\FormWidgets\ColorPicker;
 use Backend\FormWidgets\DatePicker;
 use Backend\FormWidgets\FileUpload;
 use Backend\FormWidgets\RichEditor;
-use OFFLINE\Mall\Models\Property;
-use OFFLINE\Mall\Models\PropertyGroup;
-use OFFLINE\Mall\Models\PropertyValue;
+use WebBook\Mall\Models\Property;
+use WebBook\Mall\Models\PropertyGroup;
+use WebBook\Mall\Models\PropertyValue;
 
 /**
  * PropertyFields Form Widget

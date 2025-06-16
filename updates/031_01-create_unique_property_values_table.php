@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use DB;
 use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
-use OFFLINE\Mall\Models\Category;
-use OFFLINE\Mall\Models\UniquePropertyValue;
+use WebBook\Mall\Models\Category;
+use WebBook\Mall\Models\UniquePropertyValue;
 use Schema;
 
 /**
@@ -25,7 +25,7 @@ class CreateUniquePropertyValuesTable_031_01 extends Migration
      */
     public function up()
     {
-        Schema::create('offline_mall_unique_property_values', function (Blueprint $table) {
+        Schema::create('webbook_mall_unique_property_values', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->integer('property_value_id')->unsigned();
@@ -53,6 +53,6 @@ class CreateUniquePropertyValuesTable_031_01 extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offline_mall_unique_property_values');
+        Schema::dropIfExists('webbook_mall_unique_property_values');
     }
 };

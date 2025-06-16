@@ -1,13 +1,13 @@
-name: 'offline.mall::lang.common.services'
-modelClass: OFFLINE\Mall\Models\Service
-form: $/offline/mall/models/service/fields.yaml
-defaultRedirect: offline/mall/services
+name: 'webbook.mall::lang.common.services'
+modelClass: WebBook\Mall\Models\Service
+form: $/webbook/mall/models/service/fields.yaml
+defaultRedirect: webbook/mall/services
 create:
-    title: 'offline.mall::lang.titles.services.create'
-    redirect: 'offline/mall/services/update/:id'
-    redirectClose: offline/mall/services
+    title: 'webbook.mall::lang.titles.services.create'
+    redirect: 'webbook/mall/services/update/:id'
+    redirectClose: webbook/mall/services
 update:
-    title: 'offline.mall::lang.titles.services.update'
-    redirect: offline/mall/services
-    redirectClose: offline/mall/services
+    title: 'webbook.mall::lang.titles.services.update'
+    redirect: webbook/mall/services
+    redirectClose: webbook/mall/services
 preview: {  }

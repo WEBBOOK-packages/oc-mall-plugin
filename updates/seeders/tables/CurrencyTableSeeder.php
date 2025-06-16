@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Tables;
+namespace WebBook\Mall\Updates\Seeders\Tables;
 
 use October\Rain\Database\Updates\Seeder;
-use OFFLINE\Mall\Models\Currency;
+use WebBook\Mall\Models\Currency;
 
 class CurrencyTableSeeder extends Seeder
 {
@@ -19,7 +19,7 @@ class CurrencyTableSeeder extends Seeder
         if ($useDemo) {
             return;
         }
-        
+
         Currency::create([
             'code'       => 'EUR',
             'format'     => '{{ price|number_format(2, ",", ".") }}{{ currency.symbol }}',
@@ -37,7 +37,7 @@ class CurrencyTableSeeder extends Seeder
             'rate'       => 0.94,
             'is_default' => false,
         ]);
-        
+
         Currency::create([
             'code'       => 'USD',
             'format'     => '{{ currency.symbol }} {{ price|number_format(2, ".", ",") }}',

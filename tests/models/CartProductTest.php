@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
-use OFFLINE\Mall\Models\Address;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\CartProduct;
-use OFFLINE\Mall\Models\CustomField;
-use OFFLINE\Mall\Models\CustomFieldOption;
-use OFFLINE\Mall\Models\CustomFieldValue;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Service;
-use OFFLINE\Mall\Models\ServiceOption;
-use OFFLINE\Mall\Models\Tax;
-use OFFLINE\Mall\Models\Variant;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Models\Address;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\CartProduct;
+use WebBook\Mall\Models\CustomField;
+use WebBook\Mall\Models\CustomFieldOption;
+use WebBook\Mall\Models\CustomFieldValue;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Service;
+use WebBook\Mall\Models\ServiceOption;
+use WebBook\Mall\Models\Tax;
+use WebBook\Mall\Models\Variant;
+use WebBook\Mall\Tests\PluginTestCase;
 
 class CartProductTest extends PluginTestCase
 {

@@ -80,6 +80,6 @@ data using the `{{ order }}` variable.
 :::
 
 Take a look at the demo theme for an example implementation:
-[https://github.com/OFFLINE-GmbH/oc-mall-theme/tree/master/partials/mallPDF/order](https://github.com/OFFLINE-GmbH/oc-mall-theme/tree/master/partials/mallPDF/order)
+[https://github.com/WebBook-GmbH/oc-mall-theme/tree/master/partials/mallPDF/order](https://github.com/WebBook-GmbH/oc-mall-theme/tree/master/partials/mallPDF/order)
 
 Read more about the PDF support [on the PDF page](/development/core/pdf).

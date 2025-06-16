@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use DB;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
-use OFFLINE\Mall\Classes\CategoryFilter\Filter;
-use OFFLINE\Mall\Classes\CategoryFilter\QueryString;
-use OFFLINE\Mall\Classes\CategoryFilter\RangeFilter;
-use OFFLINE\Mall\Classes\CategoryFilter\SetFilter;
-use OFFLINE\Mall\Classes\CategoryFilter\SortOrder\SortOrder;
-use OFFLINE\Mall\Classes\Queries\PriceRangeQuery;
-use OFFLINE\Mall\Classes\Utils\Money;
-use OFFLINE\Mall\Models\Brand;
-use OFFLINE\Mall\Models\Category;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Models\Property;
-use OFFLINE\Mall\Models\PropertyGroup;
+use WebBook\Mall\Classes\CategoryFilter\Filter;
+use WebBook\Mall\Classes\CategoryFilter\QueryString;
+use WebBook\Mall\Classes\CategoryFilter\RangeFilter;
+use WebBook\Mall\Classes\CategoryFilter\SetFilter;
+use WebBook\Mall\Classes\CategoryFilter\SortOrder\SortOrder;
+use WebBook\Mall\Classes\Queries\PriceRangeQuery;
+use WebBook\Mall\Classes\Utils\Money;
+use WebBook\Mall\Models\Brand;
+use WebBook\Mall\Models\Category;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Models\Property;
+use WebBook\Mall\Models\PropertyGroup;
 
 /**
  * The ProductsFilter component is used to filter items of
@@ -185,8 +185,8 @@ class ProductsFilter extends MallComponent
     public function componentDetails()
     {
         return [
-            'name' => 'offline.mall::lang.components.productsFilter.details.name',
-            'description' => 'offline.mall::lang.components.productsFilter.details.description',
+            'name' => 'webbook.mall::lang.components.productsFilter.details.name',
+            'description' => 'webbook.mall::lang.components.productsFilter.details.description',
         ];
     }
 
@@ -199,40 +199,40 @@ class ProductsFilter extends MallComponent
     {
         return [
             'category' => [
-                'title' => 'offline.mall::lang.common.category',
+                'title' => 'webbook.mall::lang.common.category',
                 'default' => null,
                 'type' => 'dropdown',
             ],
             'includeChildren' => [
-                'title' => 'offline.mall::lang.components.productsFilter.properties.includeChildren.title',
-                'description' => 'offline.mall::lang.components.productsFilter.properties.includeChildren.description',
+                'title' => 'webbook.mall::lang.components.productsFilter.properties.includeChildren.title',
+                'description' => 'webbook.mall::lang.components.productsFilter.properties.includeChildren.description',
                 'default' => null,
                 'type' => 'checkbox',
             ],
             'includeVariants' => [
-                'title' => 'offline.mall::lang.components.productsFilter.properties.includeVariants.title',
-                'description' => 'offline.mall::lang.components.productsFilter.properties.includeVariants.description',
+                'title' => 'webbook.mall::lang.components.productsFilter.properties.includeVariants.title',
+                'description' => 'webbook.mall::lang.components.productsFilter.properties.includeVariants.description',
                 'default' => null,
                 'type' => 'checkbox',
             ],
             'showPriceFilter' => [
-                'title' => 'offline.mall::lang.components.productsFilter.properties.showPriceFilter.title',
+                'title' => 'webbook.mall::lang.components.productsFilter.properties.showPriceFilter.title',
                 'default' => '1',
                 'type' => 'checkbox',
             ],
             'showBrandFilter' => [
-                'title' => 'offline.mall::lang.components.productsFilter.properties.showBrandFilter.title',
+                'title' => 'webbook.mall::lang.components.productsFilter.properties.showBrandFilter.title',
                 'default' => '1',
                 'type' => 'checkbox',
             ],
             'showOnSaleFilter' => [
-                'title' => 'offline.mall::lang.components.productsFilter.properties.showOnSaleFilter.title',
+                'title' => 'webbook.mall::lang.components.productsFilter.properties.showOnSaleFilter.title',
                 'default' => '0',
                 'type' => 'checkbox',
             ],
             'includeSliderAssets' => [
-                'title' => 'offline.mall::lang.components.productsFilter.properties.includeSliderAssets.title',
-                'description' => 'offline.mall::lang.components.productsFilter.properties.includeSliderAssets.description',
+                'title' => 'webbook.mall::lang.components.productsFilter.properties.includeSliderAssets.title',
+                'description' => 'webbook.mall::lang.components.productsFilter.properties.includeSliderAssets.description',
                 'default' => '1',
                 'type' => 'checkbox',
             ],
@@ -246,7 +246,7 @@ class ProductsFilter extends MallComponent
      */
     public function getCategoryOptions()
     {
-        return [':slug' => trans('offline.mall::lang.components.products.properties.use_url')]
+        return [':slug' => trans('webbook.mall::lang.components.products.properties.use_url')]
             + Category::get()->pluck('name', 'id')->toArray();
     }
 
@@ -393,7 +393,7 @@ class ProductsFilter extends MallComponent
         $this->setVar('propertyGroups', $this->getPropertyGroups());
         $this->setProps();
 
-        $nullOption = [null => trans('offline.mall::frontend.select')];
+        $nullOption = [null => trans('webbook.mall::frontend.select')];
 
         $this->setVar('filter', $this->getFilter());
         $this->setVar('sortOrder', $this->getSortOrder());
@@ -437,21 +437,21 @@ class ProductsFilter extends MallComponent
      */
     protected function setBrands()
     {
-        $brands = DB::table('offline_mall_products')
-            ->where('offline_mall_products.published', '=', true)
+        $brands = DB::table('webbook_mall_products')
+            ->where('webbook_mall_products.published', '=', true)
             ->when($this->categories->count() > 0, function ($query) {
-                $query->whereIn('offline_mall_category_product.category_id', $this->categories->pluck('id'));
+                $query->whereIn('webbook_mall_category_product.category_id', $this->categories->pluck('id'));
             })
-            ->select('offline_mall_brands.*')
+            ->select('webbook_mall_brands.*')
             ->distinct()
-            ->join('offline_mall_brands', 'offline_mall_products.brand_id', '=', 'offline_mall_brands.id')
+            ->join('webbook_mall_brands', 'webbook_mall_products.brand_id', '=', 'webbook_mall_brands.id')
             ->join(
-                'offline_mall_category_product',
-                'offline_mall_products.id',
+                'webbook_mall_category_product',
+                'webbook_mall_products.id',
                 '=',
-                'offline_mall_category_product.product_id'
+                'webbook_mall_category_product.product_id'
             )
-            ->orderBy('offline_mall_brands.name')
+            ->orderBy('webbook_mall_brands.name')
             ->get()
             ->toArray();
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Traits;
+namespace WebBook\Mall\Classes\Traits;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Cms\Classes\CmsException;

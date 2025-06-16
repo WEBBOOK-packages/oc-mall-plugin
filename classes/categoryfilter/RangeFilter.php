@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\CategoryFilter;
+namespace WebBook\Mall\Classes\CategoryFilter;
 
 class RangeFilter extends Filter
 {

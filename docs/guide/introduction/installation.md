@@ -31,7 +31,7 @@ the following commands
 php artisan plugin:install RainLab.User
 php artisan plugin:install RainLab.Location
 php artisan plugin:install RainLab.Translate
-php artisan plugin:install OFFLINE.Mall
+php artisan plugin:install WebBook.Mall
 ```
 
 You can also use composer to install the plugins, however, keep in mind that you've to install 
@@ -48,7 +48,7 @@ php artisan october:migrate
 ```
 
 ```sh
-composer require offline/oc-mall-plugin
+composer require webbook/oc-mall-plugin
 ```
 
 ```sh
@@ -101,7 +101,7 @@ Since version 3.1, **Mall** no longer inserts any data automatically during the 
 can use the following command to seed the initial data, as happened before.
 
 ```sh
-php artisan plugin:seed OFFLINE.Mall OFFLINE\Mall\Updates\Seeders\MallSeeder
+php artisan plugin:seed WebBook.Mall WebBook\Mall\Updates\Seeders\MallSeeder
 ```
 
 However, we **highly recommend** using the following command instead, which allows you to customize 
@@ -119,7 +119,7 @@ therefore not run this command on an already configured installations.
 You can also simple reset the whole **Mall** installation by running the following command.
 
 ```sh
-php artisan plugin:refresh OFFLINE.Mall
+php artisan plugin:refresh WebBook.Mall
 ```
 
 

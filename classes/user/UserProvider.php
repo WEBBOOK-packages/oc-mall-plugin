@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\User;
+namespace WebBook\Mall\Classes\User;
 
 
 use Illuminate\Auth\EloquentUserProvider;

@@ -1,23 +1,23 @@
 fields:
     name:
-        label: 'offline.mall::lang.common.name'
+        label: 'webbook.mall::lang.common.name'
         span: auto
         type: text
     slug:
-        label: 'offline.mall::lang.common.slug'
+        label: 'webbook.mall::lang.common.slug'
         span: auto
         type: text
     description:
-        label: 'offline.mall::lang.product.description'
+        label: 'webbook.mall::lang.product.description'
         size: large
         span: auto
         type: richeditor
     website:
-        label: 'offline.mall::lang.common.website'
+        label: 'webbook.mall::lang.common.website'
         span: auto
         type: text
     logo:
-        label: 'offline.mall::lang.common.logo'
+        label: 'webbook.mall::lang.common.logo'
         mode: image
         imageWidth: '200'
         imageHeight: '200'

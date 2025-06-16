@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Tables;
+namespace WebBook\Mall\Updates\Seeders\Tables;
 
 use October\Rain\Database\Updates\Seeder;
-use OFFLINE\Mall\Models\Address;
-use OFFLINE\Mall\Models\Customer;
-use OFFLINE\Mall\Models\CustomerGroup;
+use WebBook\Mall\Models\Address;
+use WebBook\Mall\Models\Customer;
+use WebBook\Mall\Models\CustomerGroup;
 use RainLab\Location\Models\Country;
 use RainLab\Location\Models\State;
 use RainLab\User\Models\User;
@@ -29,18 +29,18 @@ class CustomerTableSeeder extends Seeder
 
         $this->createUser(
             'normal_customer@example.tld',
-            trans('offline.mall::demo.customers.normal'),
+            trans('webbook.mall::demo.customers.normal'),
         );
 
         $this->createUser(
             'gold_customer@example.tld',
-            trans('offline.mall::demo.customers.gold'),
+            trans('webbook.mall::demo.customers.gold'),
             CustomerGroup::where('code', 'gold')->first()->id
         );
 
         $this->createUser(
             'diamond_customer@example.tld',
-            trans('offline.mall::demo.customers.diamond'),
+            trans('webbook.mall::demo.customers.diamond'),
             CustomerGroup::where('code', 'diamond')->first()->id
         );
     }
@@ -76,7 +76,7 @@ class CustomerTableSeeder extends Seeder
             'username'                  => $email,
         ], $args);
 
-        $user->offline_mall_customer_group_id = $customerGroupId;
+        $user->webbook_mall_customer_group_id = $customerGroupId;
         $user->save();
 
         $customer = Customer::create([

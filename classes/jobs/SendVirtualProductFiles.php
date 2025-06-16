@@ -1,17 +1,17 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Jobs;
+namespace WebBook\Mall\Classes\Jobs;
 
 use App;
 use Cms\Classes\Controller;
 use DB;
 use Illuminate\Contracts\Queue\Job;
 use Illuminate\Support\Facades\Mail;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\Notification;
-use OFFLINE\Mall\Models\Order;
-use OFFLINE\Mall\Models\OrderProduct;
-use OFFLINE\Mall\Models\ProductFileGrant;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\Notification;
+use WebBook\Mall\Models\Order;
+use WebBook\Mall\Models\OrderProduct;
+use WebBook\Mall\Models\ProductFileGrant;
 
 /**
  * This Job generates ProductFileGrants for each purchased product.
@@ -53,7 +53,7 @@ class SendVirtualProductFiles
             });
 
             // If the file notification has been disabled exit here.
-            if (! $this->enabledNotifications->has('offline.mall::product.file_download')) {
+            if (! $this->enabledNotifications->has('webbook.mall::product.file_download')) {
                 return;
             }
 
@@ -71,7 +71,7 @@ class SendVirtualProductFiles
 
             App::setLocale($order->lang);
             Mail::send(
-                $this->enabledNotifications->get('offline.mall::product.file_download'),
+                $this->enabledNotifications->get('webbook.mall::product.file_download'),
                 $data,
                 function ($message) use ($order) {
                     $message->to($order->customer->user->email, $order->customer->name);

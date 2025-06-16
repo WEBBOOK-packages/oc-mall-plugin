@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Classes\Exceptions;
+namespace WebBook\Mall\Classes\Exceptions;
 
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Variant;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Variant;
 use RuntimeException;
 
 class OutOfStockException extends RuntimeException

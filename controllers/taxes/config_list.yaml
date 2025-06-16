@@ -1,7 +1,7 @@
-title: offline.mall::lang.common.taxes
-modelClass: OFFLINE\Mall\Models\Tax
-list: $/offline/mall/models/tax/columns.yaml
-recordUrl: 'offline/mall/taxes/update/:id'
+title: webbook.mall::lang.common.taxes
+modelClass: WebBook\Mall\Models\Tax
+list: $/webbook/mall/models/tax/columns.yaml
+recordUrl: 'webbook/mall/taxes/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'
 recordsPerPage: 20
 showSetup: true

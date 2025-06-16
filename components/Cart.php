@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Flash;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use OFFLINE\Mall\Classes\Exceptions\OutOfStockException;
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\Cart as CartModel;
-use OFFLINE\Mall\Models\CartProduct;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\ShippingMethod;
-use OFFLINE\Mall\Models\Variant;
+use WebBook\Mall\Classes\Exceptions\OutOfStockException;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\Cart as CartModel;
+use WebBook\Mall\Models\CartProduct;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\Variant;
 
 /**
  * The Cart component displays a user's cart.
@@ -90,8 +90,8 @@ class Cart extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.cart.details.name',
-            'description' => 'offline.mall::lang.components.cart.details.description',
+            'name'        => 'webbook.mall::lang.components.cart.details.name',
+            'description' => 'webbook.mall::lang.components.cart.details.description',
         ];
     }
 
@@ -105,28 +105,28 @@ class Cart extends MallComponent
         return [
             'showDiscountApplier' => [
                 'type'    => 'checkbox',
-                'title'   => 'offline.mall::lang.components.cart.properties.showDiscountApplier.title',
+                'title'   => 'webbook.mall::lang.components.cart.properties.showDiscountApplier.title',
                 'default' => 1,
             ],
             'discountCodeLimit' => [
                 'type'    => 'string',
-                'title'   => 'offline.mall::lang.components.cart.properties.discountCodeLimit.title',
-                'description' => 'offline.mall::lang.components.cart.properties.discountCodeLimit.description',
+                'title'   => 'webbook.mall::lang.components.cart.properties.discountCodeLimit.title',
+                'description' => 'webbook.mall::lang.components.cart.properties.discountCodeLimit.description',
                 'default' => 0,
             ],
             'showTaxes'           => [
                 'type'    => 'checkbox',
-                'title'   => 'offline.mall::lang.components.cart.properties.showTaxes.title',
+                'title'   => 'webbook.mall::lang.components.cart.properties.showTaxes.title',
                 'default' => 1,
             ],
             'showShipping' => [
                 'type'    => 'checkbox',
-                'title'   => 'offline.mall::lang.components.cart.properties.showShipping.title',
+                'title'   => 'webbook.mall::lang.components.cart.properties.showShipping.title',
                 'default' => 1,
             ],
             'showProceedToCheckoutButton' => [
                 'type'    => 'checkbox',
-                'title'   => 'offline.mall::lang.components.cart.properties.showProceedToCheckoutButton.title',
+                'title'   => 'webbook.mall::lang.components.cart.properties.showProceedToCheckoutButton.title',
                 'default' => 0,
             ],
         ];
@@ -199,7 +199,7 @@ class Cart extends MallComponent
         try {
             $cart->setQuantity($product->id, (int)input('quantity'));
         } catch (OutOfStockException $exc) {
-            Flash::error(trans('offline.mall::lang.common.out_of_stock', ['quantity' => $exc->product->stock]));
+            Flash::error(trans('webbook.mall::lang.common.out_of_stock', ['quantity' => $exc->product->stock]));
 
             return [];
         } finally {
@@ -226,13 +226,13 @@ class Cart extends MallComponent
         $cart = CartModel::byUser(Auth::user());
 
         $product = $this->getProductFromCart($cart, $id);
-        
+
         if (!$product) {
             return [];
         }
 
         $cart->removeProduct($product);
-        
+
         $this->setData();
 
         return [

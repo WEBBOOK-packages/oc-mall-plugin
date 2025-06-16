@@ -3,6 +3,6 @@
 # ===================================
 
 export:
-    title: offline.mall::lang.titles.orders.export
-    modelClass: OFFLINE\Mall\Models\OrderExport
-    list: $/offline/mall/models/order/export_columns.yaml
+    title: webbook.mall::lang.titles.orders.export
+    modelClass: WebBook\Mall\Models\OrderExport
+    list: $/webbook/mall/models/order/export_columns.yaml

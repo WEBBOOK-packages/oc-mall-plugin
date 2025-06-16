@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Events;
+namespace WebBook\Mall\Classes\Events;
 
 use Backend\Facades\Backend;
 use Cms\Classes\Controller;
@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 use October\Rain\Database\Collection;
 use October\Rain\Mail\Mailable;
-use OFFLINE\Mall\Classes\Jobs\SendOrderConfirmationToCustomer;
-use OFFLINE\Mall\Classes\PaymentState\FailedState;
-use OFFLINE\Mall\Classes\PaymentState\PaidState;
-use OFFLINE\Mall\Classes\PaymentState\RefundedState;
-use OFFLINE\Mall\Classes\User\Settings as UserSettings;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\Notification;
-use OFFLINE\Mall\Models\Order;
+use WebBook\Mall\Classes\Jobs\SendOrderConfirmationToCustomer;
+use WebBook\Mall\Classes\PaymentState\FailedState;
+use WebBook\Mall\Classes\PaymentState\PaidState;
+use WebBook\Mall\Classes\PaymentState\RefundedState;
+use WebBook\Mall\Classes\User\Settings as UserSettings;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\Notification;
+use WebBook\Mall\Models\Order;
 use PDOException;
 use RainLab\Translate\Classes\Translator;
 
@@ -42,17 +42,17 @@ class MailingEventHandler
     public function subscribe($events)
     {
         $eventMap = [
-            'offline.mall::customer.created'    => [
+            'webbook.mall::customer.created'    => [
                 'event'   => 'mall.customer.afterSignup',
-                'handler' => '\offline\mall\classes\events\MailingEventHandler@customerCreated',
+                'handler' => '\webbook\mall\classes\events\MailingEventHandler@customerCreated',
             ],
-            'offline.mall::order.state.changed' => [
+            'webbook.mall::order.state.changed' => [
                 'event'   => 'mall.order.state.changed',
-                'handler' => '\offline\mall\classes\events\MailingEventHandler@orderStateChanged',
+                'handler' => '\webbook\mall\classes\events\MailingEventHandler@orderStateChanged',
             ],
-            'offline.mall::order.shipped'       => [
+            'webbook.mall::order.shipped'       => [
                 'event'   => 'mall.order.shipped',
-                'handler' => '\offline\mall\classes\events\MailingEventHandler@orderShipped',
+                'handler' => '\webbook\mall\classes\events\MailingEventHandler@orderShipped',
             ],
         ];
 
@@ -62,9 +62,9 @@ class MailingEventHandler
             }
         }
 
-        $events->listen('mall.order.payment_state.changed', '\offline\mall\classes\events\MailingEventHandler@orderPaymentStateChanged');
-        $events->listen('mall.checkout.succeeded', '\offline\mall\classes\events\MailingEventHandler@checkoutSucceeded');
-        $events->listen('mall.checkout.failed', '\offline\mall\classes\events\MailingEventHandler@checkoutFailed');
+        $events->listen('mall.order.payment_state.changed', '\webbook\mall\classes\events\MailingEventHandler@orderPaymentStateChanged');
+        $events->listen('mall.checkout.succeeded', '\webbook\mall\classes\events\MailingEventHandler@checkoutSucceeded');
+        $events->listen('mall.checkout.failed', '\webbook\mall\classes\events\MailingEventHandler@checkoutFailed');
     }
 
     /**
@@ -100,7 +100,7 @@ class MailingEventHandler
             'confirm_code' => $confirmCode,
         ];
 
-        Mail::queue($this->template('offline.mall::customer.created'), $data, function ($message) use ($user) {
+        Mail::queue($this->template('webbook.mall::customer.created'), $data, function ($message) use ($user) {
             if (class_exists(Translator::class) && method_exists($message, 'locale')) {
                 $message->locale(Translator::instance()->getLocale());
             }
@@ -118,10 +118,10 @@ class MailingEventHandler
     public function checkoutSucceeded($result)
     {
         // Notify the customer
-        if ($this->enabledNotifications->has('offline.mall::checkout.succeeded')) {
+        if ($this->enabledNotifications->has('webbook.mall::checkout.succeeded')) {
             $input = [
                 'id'          => $result->order->id,
-                'template'    => $this->template('offline.mall::checkout.succeeded'),
+                'template'    => $this->template('webbook.mall::checkout.succeeded'),
                 'account_url' => $this->getAccountUrl(),
                 'order_url'   => $this->getBackendOrderUrl($result->order),
             ];
@@ -131,7 +131,7 @@ class MailingEventHandler
 
         // Notify the admin
         if (
-            $this->enabledNotifications->has('offline.mall::admin.checkout_succeeded')
+            $this->enabledNotifications->has('webbook.mall::admin.checkout_succeeded')
             && $adminMail = GeneralSettings::get('admin_email')
         ) {
             $data = [
@@ -140,7 +140,7 @@ class MailingEventHandler
                 'order_url'   => $this->getBackendOrderUrl($result->order),
             ];
             Mail::queue(
-                $this->template('offline.mall::admin.checkout_succeeded'),
+                $this->template('webbook.mall::admin.checkout_succeeded'),
                 $data,
                 function (Mailable $message) use ($adminMail) {
                     $message->to($adminMail);
@@ -165,8 +165,8 @@ class MailingEventHandler
         ];
 
         // Notify the customer
-        if ($this->enabledNotifications->has('offline.mall::checkout.failed')) {
-            Mail::queue($this->template('offline.mall::checkout.failed'), $data, function ($message) use ($result, $data) {
+        if ($this->enabledNotifications->has('webbook.mall::checkout.failed')) {
+            Mail::queue($this->template('webbook.mall::checkout.failed'), $data, function ($message) use ($result, $data) {
                 $this->handleLocale($message, $data['order']);
                 $message->to($result->order->customer->user->email, $result->order->customer->name);
             });
@@ -174,11 +174,11 @@ class MailingEventHandler
 
         // Notify the admin
         if (
-            $this->enabledNotifications->has('offline.mall::admin.checkout_failed')
+            $this->enabledNotifications->has('webbook.mall::admin.checkout_failed')
             && $adminMail = GeneralSettings::get('admin_email')
         ) {
             Mail::queue(
-                $this->template('offline.mall::admin.checkout_failed'),
+                $this->template('webbook.mall::admin.checkout_failed'),
                 $data,
                 function ($message) use ($adminMail) {
                     $message->to($adminMail);
@@ -203,7 +203,7 @@ class MailingEventHandler
             'account_url' => $this->getAccountUrl(),
         ];
 
-        Mail::queue($this->template('offline.mall::order.state.changed'), $data, function ($message) use ($order) {
+        Mail::queue($this->template('webbook.mall::order.state.changed'), $data, function ($message) use ($order) {
             $this->handleLocale($message, $order);
             $message->to($order->customer->user->email, $order->customer->name);
         });
@@ -227,7 +227,7 @@ class MailingEventHandler
             'account_url' => $this->getAccountUrl(),
         ];
 
-        Mail::queue($this->template('offline.mall::order.shipped'), $data, function ($message) use ($order) {
+        Mail::queue($this->template('webbook.mall::order.shipped'), $data, function ($message) use ($order) {
             $this->handleLocale($message, $order);
             $message->to($order->customer->user->email, $order->customer->name);
         });
@@ -265,7 +265,7 @@ class MailingEventHandler
         }
 
         // This notification is disabled.
-        if (! $this->enabledNotifications->has('offline.mall::payment.' . $view)) {
+        if (! $this->enabledNotifications->has('webbook.mall::payment.' . $view)) {
             return;
         }
 
@@ -275,7 +275,7 @@ class MailingEventHandler
         ];
 
         Mail::queue(
-            $this->template('offline.mall::payment.' . $view),
+            $this->template('webbook.mall::payment.' . $view),
             $data,
             function ($message) use ($order) {
                 $this->handleLocale($message, $order);
@@ -288,7 +288,7 @@ class MailingEventHandler
 
         if ($failedBecamePaid && $adminMail = GeneralSettings::get('admin_email')) {
             Mail::queue(
-                'offline.mall::mail.admin.payment_paid',
+                'webbook.mall::mail.admin.payment_paid',
                 $data,
                 function ($message) use ($adminMail) {
                     $message->to($adminMail);
@@ -335,7 +335,7 @@ class MailingEventHandler
      */
     protected function getBackendOrderUrl($order): string
     {
-        return Backend::url('offline/mall/orders/show/' . $order->id);
+        return Backend::url('webbook/mall/orders/show/' . $order->id);
     }
 
     /**

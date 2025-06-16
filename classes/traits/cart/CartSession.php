@@ -1,10 +1,10 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Traits\Cart;
+namespace WebBook\Mall\Classes\Traits\Cart;
 
 use Cookie;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\Customer;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\Customer;
 use RainLab\User\Models\User;
 use Session;
 

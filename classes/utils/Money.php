@@ -1,8 +1,8 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Utils;
+namespace WebBook\Mall\Classes\Utils;
 
-use OFFLINE\Mall\Models\Currency;
+use WebBook\Mall\Models\Currency;
 
 interface Money
 {

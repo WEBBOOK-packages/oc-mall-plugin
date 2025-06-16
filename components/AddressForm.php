@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use October\Rain\Support\Facades\Flash;
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\Address;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\GeneralSettings;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\Address;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\GeneralSettings;
 use RainLab\Location\Models\Country;
 
 /**
@@ -60,8 +60,8 @@ class AddressForm extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.addressForm.details.name',
-            'description' => 'offline.mall::lang.components.addressForm.details.description',
+            'name'        => 'webbook.mall::lang.components.addressForm.details.name',
+            'description' => 'webbook.mall::lang.components.addressForm.details.description',
         ];
     }
 
@@ -75,15 +75,15 @@ class AddressForm extends MallComponent
         return [
             'address'  => [
                 'type'  => 'dropdown',
-                'title' => 'offline.mall::lang.components.addressForm.properties.address.title',
+                'title' => 'webbook.mall::lang.components.addressForm.properties.address.title',
             ],
             'redirect' => [
                 'type'  => 'dropdown',
-                'title' => 'offline.mall::lang.components.addressForm.properties.redirect.title',
+                'title' => 'webbook.mall::lang.components.addressForm.properties.redirect.title',
             ],
             'set'      => [
                 'type'  => 'dropdown',
-                'title' => 'offline.mall::lang.components.addressForm.properties.set.title',
+                'title' => 'webbook.mall::lang.components.addressForm.properties.set.title',
             ],
         ];
     }
@@ -106,8 +106,8 @@ class AddressForm extends MallComponent
     public function getRedirectOptions()
     {
         return [
-            'checkout' => trans('offline.mall::lang.components.addressForm.redirects.checkout'),
-            'account'  => trans('offline.mall::lang.components.addressForm.redirects.account'),
+            'checkout' => trans('webbook.mall::lang.components.addressForm.redirects.checkout'),
+            'account'  => trans('webbook.mall::lang.components.addressForm.redirects.account'),
         ];
     }
 
@@ -119,9 +119,9 @@ class AddressForm extends MallComponent
     public function getSetOptions()
     {
         return [
-            null       => trans('offline.mall::lang.common.not_in_use'),
-            'billing'  => trans('offline.mall::lang.components.addressForm.set.billing'),
-            'shipping' => trans('offline.mall::lang.components.addressForm.set.shipping'),
+            null       => trans('webbook.mall::lang.common.not_in_use'),
+            'billing'  => trans('webbook.mall::lang.components.addressForm.set.billing'),
+            'shipping' => trans('webbook.mall::lang.components.addressForm.set.shipping'),
         ];
     }
 
@@ -217,7 +217,7 @@ class AddressForm extends MallComponent
         }
         $user->customer->save();
 
-        Flash::success(trans('offline.mall::lang.common.saved_changes'));
+        Flash::success(trans('webbook.mall::lang.common.saved_changes'));
 
         if ($url = $this->getRedirectUrl()) {
             return redirect()->to(url($url));

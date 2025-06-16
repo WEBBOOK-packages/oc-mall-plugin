@@ -1,12 +1,12 @@
-name: 'offline.mall::lang.product.properties'
-modelClass: OFFLINE\Mall\Models\Property
-form: $/offline/mall/models/property/fields.yaml
-defaultRedirect: offline/mall/properties
+name: 'webbook.mall::lang.product.properties'
+modelClass: WebBook\Mall\Models\Property
+form: $/webbook/mall/models/property/fields.yaml
+defaultRedirect: webbook/mall/properties
 create:
-    title: 'offline.mall::lang.titles.properties.create'
-    redirect: 'offline/mall/properties/update/:id'
-    redirectClose: offline/mall/properties
+    title: 'webbook.mall::lang.titles.properties.create'
+    redirect: 'webbook/mall/properties/update/:id'
+    redirectClose: webbook/mall/properties
 update:
-    title: 'offline.mall::lang.titles.properties.edit'
-    redirect: offline/mall/properties
-    redirectClose: offline/mall/properties
+    title: 'webbook.mall::lang.titles.properties.edit'
+    redirect: webbook/mall/properties
+    redirectClose: webbook/mall/properties

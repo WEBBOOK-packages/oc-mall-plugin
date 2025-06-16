@@ -58,7 +58,7 @@ installing Mall via `plugin:install` or `project:sync` on OctoberCMS v3 installa
 The following dependencies are only required if necessary, but must be installed manually if needed.
 
 - [bummzack/omnipay-postfinance](https://packagist.org/packages/bummzack/omnipay-postfinance) - To use the PostFinance payment provider
-- [offline/jsonq](https://packagist.org/packages/offline/jsonq) - To use the file based index
+- [webbook/jsonq](https://packagist.org/packages/webbook/jsonq) - To use the file based index
 - [tmarois/filebase](https://packagist.org/packages/tmarois/filebase) - To use the file based index
 - [vitalybaev/google-merchant-feed](https://packagist.org/packages/vitalybaev/google-merchant-feed) - To use the Google Merchant Feed integration
 
@@ -76,6 +76,6 @@ must be installed manually as well, of course.
 
 ## Links
 
-- [Demo Website](https://mall.offline.swiss)
-- Mall Plugin - [GitHub](https://github.com/OFFLINE-GmbH/oc-mall-plugin) / [Marketplace](https://octobercms.com/plugin/offline-mall)
-- Demo Theme - [GitHub](https://github.com/OFFLINE-GmbH/oc-mall-theme) / [Marketplace](https://octobercms.com/theme/offline-oc-mall-theme)
+- [Demo Website](https://mall.webbook.swiss)
+- Mall Plugin - [GitHub](https://github.com/WebBook-GmbH/oc-mall-plugin) / [Marketplace](https://octobercms.com/plugin/webbook-mall)
+- Demo Theme - [GitHub](https://github.com/WebBook-GmbH/oc-mall-theme) / [Marketplace](https://octobercms.com/theme/webbook-oc-mall-theme)

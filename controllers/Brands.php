@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Controllers;
+namespace WebBook\Mall\Controllers;
 
 use Backend\Behaviors\FormController;
 use Backend\Behaviors\ListController;
@@ -39,7 +39,7 @@ class Brands extends Controller
      * @var array
      */
     public $requiredPermissions = [
-        'offline.mall.manage_brands',
+        'webbook.mall.manage_brands',
     ];
 
     /**
@@ -48,6 +48,6 @@ class Brands extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('OFFLINE.Mall', 'mall-catalogue', 'mall-brands');
+        BackendMenu::setContext('WebBook.Mall', 'mall-catalogue', 'mall-brands');
     }
 }

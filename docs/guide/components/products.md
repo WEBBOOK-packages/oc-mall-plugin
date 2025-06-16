@@ -29,7 +29,7 @@ The expected value is a encoded query string. You can tweak your filter
 using the [ProductsFilter](/guide/components/products-filter) component and simply copy and paste
 the query string:
 
-https://mall.offline.swiss/en/category/bikes[?on_sale=true&material=aluminium.carbon&color=dark-grey](https://mall.offline.swiss/en/category/bikes?on_sale=true&material=aluminium.carbon&color=dark-grey)
+https://mall.webbook.swiss/en/category/bikes[?on_sale=true&material=aluminium.carbon&color=dark-grey](https://mall.webbook.swiss/en/category/bikes?on_sale=true&material=aluminium.carbon&color=dark-grey)
 
 ```
 filter = "on_sale=true&material=aluminium.carbon&color=dark-grey"
@@ -137,7 +137,7 @@ perPage = 4
 paginate = 0
 sort = "random"
 ==
-use OFFLINE\Mall\Models\Category;
+use WebBook\Mall\Models\Category;
 
 function onStart() {
     // Fetch the category from the product component.
@@ -162,7 +162,7 @@ function onStart() {
 
 ### Add a add to cart button on the category page
 
-Add the following `a` tag to your item partial `/plugins/offline/components/products/item.htm`
+Add the following `a` tag to your item partial `/plugins/webbook/components/products/item.htm`
 
 ```html
 <div class="mall-products-item">

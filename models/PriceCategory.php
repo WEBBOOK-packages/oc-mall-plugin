@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use DB;
 use Model;
 use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\Sortable;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Database\IsStates;
+use WebBook\Mall\Classes\Database\IsStates;
 
 class PriceCategory extends Model
 {
@@ -43,12 +43,12 @@ class PriceCategory extends Model
     public $implement = [
         '@RainLab.Translate.Behaviors.TranslatableModel',
     ];
-    
+
     /**
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_price_categories';
+    public $table = 'webbook_mall_price_categories';
 
     /**
      * The translatable attributes of this model.
@@ -114,6 +114,6 @@ class PriceCategory extends Model
      */
     public function afterDelete()
     {
-        DB::table('offline_mall_prices')->where('price_category_id', $this->id)->delete();
+        DB::table('webbook_mall_prices')->where('price_category_id', $this->id)->delete();
     }
 }

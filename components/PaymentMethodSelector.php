@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Auth;
 use Illuminate\Contracts\Encryption\DecryptException;
@@ -10,14 +10,14 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Collection;
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Classes\Payments\PaymentGateway;
-use OFFLINE\Mall\Classes\Payments\PaymentService;
-use OFFLINE\Mall\Classes\Traits\HashIds;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\CustomerPaymentMethod;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\Order;
-use OFFLINE\Mall\Models\PaymentMethod;
+use WebBook\Mall\Classes\Payments\PaymentGateway;
+use WebBook\Mall\Classes\Payments\PaymentService;
+use WebBook\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\CustomerPaymentMethod;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\Order;
+use WebBook\Mall\Models\PaymentMethod;
 use Symfony\Component\HttpFoundation\Response;
 use Validator;
 
@@ -93,8 +93,8 @@ class PaymentMethodSelector extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.paymentMethodSelector.details.name',
-            'description' => 'offline.mall::lang.components.paymentMethodSelector.details.description',
+            'name'        => 'webbook.mall::lang.components.paymentMethodSelector.details.name',
+            'description' => 'webbook.mall::lang.components.paymentMethodSelector.details.description',
         ];
     }
 
@@ -156,7 +156,7 @@ class PaymentMethodSelector extends MallComponent
         $this->setData();
 
         $rules = [
-            'id' => 'required|exists:offline_mall_payment_methods,id',
+            'id' => 'required|exists:webbook_mall_payment_methods,id',
         ];
 
         $validation = Validator::make(post(), $rules);

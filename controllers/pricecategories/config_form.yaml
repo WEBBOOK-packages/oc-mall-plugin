@@ -1,13 +1,13 @@
-name: offline.mall::lang.price_category_settings.label
-modelClass: OFFLINE\Mall\Models\PriceCategory
-form: $/offline/mall/models/pricecategory/fields.yaml
-defaultRedirect: offline/mall/pricecategories
+name: webbook.mall::lang.price_category_settings.label
+modelClass: WebBook\Mall\Models\PriceCategory
+form: $/webbook/mall/models/pricecategory/fields.yaml
+defaultRedirect: webbook/mall/pricecategories
 create:
-    title: offline.mall::lang.titles.price_categories.create
-    redirect: 'offline/mall/pricecategories/update/:id'
-    redirectClose: offline/mall/pricecategories
+    title: webbook.mall::lang.titles.price_categories.create
+    redirect: 'webbook/mall/pricecategories/update/:id'
+    redirectClose: webbook/mall/pricecategories
 update:
-    title: offline.mall::lang.titles.price_categories.update
-    redirect: offline/mall/pricecategories
-    redirectClose: offline/mall/pricecategories
+    title: webbook.mall::lang.titles.price_categories.update
+    redirect: webbook/mall/pricecategories
+    redirectClose: webbook/mall/pricecategories
 preview: {  }

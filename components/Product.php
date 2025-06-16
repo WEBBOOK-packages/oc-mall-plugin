@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Auth;
 use Flash;
@@ -11,19 +11,19 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Redirect;
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Classes\Exceptions\OutOfStockException;
-use OFFLINE\Mall\Classes\Queries\VariantByPropertyValuesQuery;
-use OFFLINE\Mall\Classes\Traits\CustomFields;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Models\CustomFieldValue;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Product as ProductModel;
-use OFFLINE\Mall\Models\Property;
-use OFFLINE\Mall\Models\PropertyValue;
-use OFFLINE\Mall\Models\ReviewSettings;
-use OFFLINE\Mall\Models\Variant;
+use WebBook\Mall\Classes\Exceptions\OutOfStockException;
+use WebBook\Mall\Classes\Queries\VariantByPropertyValuesQuery;
+use WebBook\Mall\Classes\Traits\CustomFields;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Models\CustomFieldValue;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Product as ProductModel;
+use WebBook\Mall\Models\Property;
+use WebBook\Mall\Models\PropertyValue;
+use WebBook\Mall\Models\ReviewSettings;
+use WebBook\Mall\Models\Variant;
 use Request;
 use Session;
 use System\Classes\PluginManager;
@@ -124,8 +124,8 @@ class Product extends MallComponent
     public function componentDetails()
     {
         return [
-            'name' => 'offline.mall::lang.components.product.details.name',
-            'description' => 'offline.mall::lang.components.product.details.description',
+            'name' => 'webbook.mall::lang.components.product.details.name',
+            'description' => 'webbook.mall::lang.components.product.details.description',
         ];
     }
 
@@ -136,16 +136,16 @@ class Product extends MallComponent
      */
     public function defineProperties()
     {
-        $langPrefix = 'offline.mall::lang.components.product.properties.redirectOnPropertyChange';
+        $langPrefix = 'webbook.mall::lang.components.product.properties.redirectOnPropertyChange';
 
         return [
             'product' => [
-                'title' => 'offline.mall::lang.common.product',
+                'title' => 'webbook.mall::lang.common.product',
                 'default' => ':slug',
                 'type' => 'dropdown',
             ],
             'variant' => [
-                'title' => 'offline.mall::lang.common.variant',
+                'title' => 'webbook.mall::lang.common.variant',
                 'default' => ':slug',
                 'depends' => ['product'],
                 'type' => 'dropdown',
@@ -157,8 +157,8 @@ class Product extends MallComponent
                 'type' => 'checkbox',
             ],
             'currentVariantReviewsOnly' => [
-                'title' => 'offline.mall::lang.components.productReviews.properties.currentVariantReviewsOnly.title',
-                'description' => 'offline.mall::lang.components.productReviews.properties.currentVariantReviewsOnly.description',
+                'title' => 'webbook.mall::lang.components.productReviews.properties.currentVariantReviewsOnly.title',
+                'description' => 'webbook.mall::lang.components.productReviews.properties.currentVariantReviewsOnly.description',
                 'type' => 'checkbox',
                 'default' => 0,
             ],
@@ -172,7 +172,7 @@ class Product extends MallComponent
      */
     public function getProductOptions()
     {
-        return [':slug' => trans('offline.mall::lang.components.products.properties.use_url')]
+        return [':slug' => trans('webbook.mall::lang.components.products.properties.use_url')]
             + ProductModel::get()->pluck('name', 'id')->toArray();
     }
 
@@ -186,10 +186,10 @@ class Product extends MallComponent
         $product = Request::input('product');
 
         if (! $product || $product === ':slug') {
-            return [':slug' => trans('offline.mall::lang.components.products.properties.use_url')];
+            return [':slug' => trans('webbook.mall::lang.components.products.properties.use_url')];
         }
 
-        return [':slug' => trans('offline.mall::lang.components.products.properties.use_url')]
+        return [':slug' => trans('webbook.mall::lang.components.products.properties.use_url')]
             + ProductModel::find($product)->variants->pluck('name', 'id')->toArray();
     }
 
@@ -272,7 +272,7 @@ class Product extends MallComponent
         $quantity = (int)input('quantity', $product->quantity_default ?? 1);
 
         if ($quantity < 1) {
-            throw new ValidationException(['quantity' => trans('offline.mall::lang.common.invalid_quantity')]);
+            throw new ValidationException(['quantity' => trans('webbook.mall::lang.common.invalid_quantity')]);
         }
 
         // In case this product does not have any services attached, add it to the cart directly.
@@ -319,7 +319,7 @@ class Product extends MallComponent
             }
         );
         $messages = $required->mapWithKeys(
-            fn ($service) => ['service.' . $service->id . '.*.required' => trans('offline.mall::frontend.services.required')]
+            fn ($service) => ['service.' . $service->id . '.*.required' => trans('webbook.mall::frontend.services.required')]
         );
 
         // Validate all required services are selected.
@@ -559,7 +559,7 @@ class Product extends MallComponent
         try {
             $cartProduct = $cart->addProduct($product, $quantity, $variant, $values, $serviceOptions);
         } catch (OutOfStockException $e) {
-            throw new ValidationException(['quantity' => trans('offline.mall::lang.common.stock_limit_reached')]);
+            throw new ValidationException(['quantity' => trans('webbook.mall::lang.common.stock_limit_reached')]);
         }
 
         // If the redirect_to_cart option is set to true the user is redirected to the cart.
@@ -569,7 +569,7 @@ class Product extends MallComponent
             return Redirect::to($this->controller->pageUrl($cartPage));
         }
 
-        Flash::success(trans('offline.mall::frontend.cart.added'));
+        Flash::success(trans('webbook.mall::frontend.cart.added'));
 
         return [
             'product' => $product->only($this->getPublicProductAttributes()),
@@ -682,7 +682,7 @@ class Product extends MallComponent
                     return $order->get($value->value, 999999);
                 });
             }
-            
+
             return (object)[
                 'property' => $property,
                 'values' => optional($filteredValues)->unique('value'),

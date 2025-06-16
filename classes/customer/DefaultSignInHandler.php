@@ -1,6 +1,6 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Customer;
+namespace WebBook\Mall\Classes\Customer;
 
 use Auth;
 use Event;
@@ -8,10 +8,10 @@ use Exception;
 use Flash;
 use October\Rain\Auth\AuthException;
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Classes\User\Settings;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\Customer;
-use OFFLINE\Mall\Models\Wishlist;
+use WebBook\Mall\Classes\User\Settings;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\Customer;
+use WebBook\Mall\Models\Wishlist;
 use RainLab\User\Models\Setting;
 use RainLab\User\Models\User;
 use RainLab\User\Models\UserLog;
@@ -30,7 +30,7 @@ class DefaultSignInHandler implements SignInHandler
                 ? 'not_activated'
                 : 'unknown_user';
 
-            Flash::error(trans('offline.mall::lang.components.signup.errors.' . $error));
+            Flash::error(trans('webbook.mall::lang.components.signup.errors.' . $error));
         } catch (Exception $ex) {
             Flash::error($ex->getMessage());
         }
@@ -95,7 +95,7 @@ class DefaultSignInHandler implements SignInHandler
         if ($user->customer->is_guest) {
             Auth::logout();
 
-            throw new AuthException('offline.mall::lang.components.signup.errors.user_is_guest');
+            throw new AuthException('webbook.mall::lang.components.signup.errors.user_is_guest');
         }
 
         Cart::transferSessionCartToCustomer($user->customer);
@@ -122,11 +122,11 @@ class DefaultSignInHandler implements SignInHandler
             'password' => sprintf('required|min:%d|max:255', $minPasswordLength),
         ];
         $messages = [
-            'login.required'    => trans('offline.mall::lang.components.signup.errors.login.required'),
-            'login.email'       => trans('offline.mall::lang.components.signup.errors.login.email'),
-            'login.between'     => trans('offline.mall::lang.components.signup.errors.login.between'),
-            'password.required' => trans('offline.mall::lang.components.signup.errors.password.required'),
-            'password.max'      => trans('offline.mall::lang.components.signup.errors.password.max'),
+            'login.required'    => trans('webbook.mall::lang.components.signup.errors.login.required'),
+            'login.email'       => trans('webbook.mall::lang.components.signup.errors.login.email'),
+            'login.between'     => trans('webbook.mall::lang.components.signup.errors.login.between'),
+            'password.required' => trans('webbook.mall::lang.components.signup.errors.password.required'),
+            'password.max'      => trans('webbook.mall::lang.components.signup.errors.password.max'),
         ];
 
         $validation = Validator::make($data, $rules, $messages);

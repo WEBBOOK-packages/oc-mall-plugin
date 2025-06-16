@@ -1,8 +1,8 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Payments;
+namespace WebBook\Mall\Classes\Payments;
 
-use OFFLINE\Mall\Models\PaymentGatewaySettings;
+use WebBook\Mall\Models\PaymentGatewaySettings;
 use Omnipay\Omnipay;
 use RainLab\Translate\Classes\Translator;
 use Request;
@@ -96,19 +96,19 @@ class PostFinance extends PaymentProvider
     {
         return [
             'postfinance_test_mode'      => [
-                'label'   => 'offline.mall::lang.payment_gateway_settings.postfinance.test_mode',
-                'comment' => 'offline.mall::lang.payment_gateway_settings.postfinance.test_mode_comment',
+                'label'   => 'webbook.mall::lang.payment_gateway_settings.postfinance.test_mode',
+                'comment' => 'webbook.mall::lang.payment_gateway_settings.postfinance.test_mode_comment',
                 'span'    => 'left',
                 'type'    => 'switch',
             ],
             'postfinance_pspid'          => [
-                'label' => 'offline.mall::lang.payment_gateway_settings.postfinance.pspid',
+                'label' => 'webbook.mall::lang.payment_gateway_settings.postfinance.pspid',
                 'span'  => 'left',
                 'type'  => 'text',
             ],
             'postfinance_hashing_method' => [
-                'label'   => 'offline.mall::lang.payment_gateway_settings.postfinance.hashing_method',
-                'comment' => 'offline.mall::lang.payment_gateway_settings.postfinance.hashing_method_comment',
+                'label'   => 'webbook.mall::lang.payment_gateway_settings.postfinance.hashing_method',
+                'comment' => 'webbook.mall::lang.payment_gateway_settings.postfinance.hashing_method_comment',
                 'default' => 'sha1',
                 'span'    => 'left',
                 'type'    => 'dropdown',
@@ -119,14 +119,14 @@ class PostFinance extends PaymentProvider
                 ],
             ],
             'postfinance_sha_in'         => [
-                'label'   => 'offline.mall::lang.payment_gateway_settings.postfinance.sha_in',
-                'comment' => 'offline.mall::lang.payment_gateway_settings.postfinance.sha_in_comment',
+                'label'   => 'webbook.mall::lang.payment_gateway_settings.postfinance.sha_in',
+                'comment' => 'webbook.mall::lang.payment_gateway_settings.postfinance.sha_in_comment',
                 'span'    => 'left',
                 'type'    => 'text',
             ],
             'postfinance_sha_out'        => [
-                'label'   => 'offline.mall::lang.payment_gateway_settings.postfinance.sha_out',
-                'comment' => 'offline.mall::lang.payment_gateway_settings.postfinance.sha_out_comment',
+                'label'   => 'webbook.mall::lang.payment_gateway_settings.postfinance.sha_out',
+                'comment' => 'webbook.mall::lang.payment_gateway_settings.postfinance.sha_out_comment',
                 'span'    => 'left',
                 'type'    => 'text',
             ],

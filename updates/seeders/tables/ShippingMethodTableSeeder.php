@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Tables;
+namespace WebBook\Mall\Updates\Seeders\Tables;
 
 use October\Rain\Database\Updates\Seeder;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\ShippingMethod;
 
 class ShippingMethodTableSeeder extends Seeder
 {
@@ -20,9 +20,9 @@ class ShippingMethodTableSeeder extends Seeder
         if ($useDemo) {
             return;
         }
-        
+
         $method = ShippingMethod::create([
-            'name'          => trans('offline.mall::demo.shipping_methods.standard'),
+            'name'          => trans('webbook.mall::demo.shipping_methods.standard'),
             'sort_order'    => 1,
             'is_default'    => true,
         ]);
@@ -43,9 +43,9 @@ class ShippingMethodTableSeeder extends Seeder
                 'priceable_type' => ShippingMethod::MORPH_KEY,
             ]),
         ]);
-        
+
         $method = ShippingMethod::create([
-            'name'                      => trans('offline.mall::demo.shipping_methods.express'),
+            'name'                      => trans('webbook.mall::demo.shipping_methods.express'),
             'sort_order'                => 1,
             'is_default'                => false,
             'guaranteed_delivery_days'  => 3,

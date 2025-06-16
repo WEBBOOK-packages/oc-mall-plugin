@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates\Seeders\Tables;
+namespace WebBook\Mall\Updates\Seeders\Tables;
 
 use October\Rain\Database\Updates\Seeder;
-use OFFLINE\Mall\Models\ReviewCategory;
+use WebBook\Mall\Models\ReviewCategory;
 
 class ReviewCategoryTableSeeder extends Seeder
 {
@@ -19,17 +19,17 @@ class ReviewCategoryTableSeeder extends Seeder
         if (!$useDemo) {
             return;
         }
-        
+
         ReviewCategory::create([
-            'name' => trans('offline.mall::demo.review_categories.price'),
+            'name' => trans('webbook.mall::demo.review_categories.price'),
         ]);
 
         ReviewCategory::create([
-            'name' => trans('offline.mall::demo.review_categories.design'),
+            'name' => trans('webbook.mall::demo.review_categories.design'),
         ]);
 
         ReviewCategory::create([
-            'name' => trans('offline.mall::demo.review_categories.quality'),
+            'name' => trans('webbook.mall::demo.review_categories.quality'),
         ]);
     }
 }

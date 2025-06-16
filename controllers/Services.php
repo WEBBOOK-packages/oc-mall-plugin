@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Controllers;
+namespace WebBook\Mall\Controllers;
 
 use Backend\Behaviors\FormController;
 use Backend\Behaviors\ListController;
@@ -11,9 +11,9 @@ use Backend\Classes\Controller;
 use BackendMenu;
 use DB;
 use October\Rain\Support\Facades\Flash;
-use OFFLINE\Mall\Classes\Database\IsStatesScope;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Service;
+use WebBook\Mall\Classes\Database\IsStatesScope;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Service;
 
 class Services extends Controller
 {
@@ -52,7 +52,7 @@ class Services extends Controller
      * @var array
      */
     public $requiredPermissions = [
-        'offline.mall.manage_services',
+        'webbook.mall.manage_services',
     ];
 
     /**
@@ -61,7 +61,7 @@ class Services extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('OFFLINE.Mall', 'mall-catalogue', 'mall-services');
+        BackendMenu::setContext('WebBook.Mall', 'mall-catalogue', 'mall-services');
     }
 
     /**
@@ -74,7 +74,7 @@ class Services extends Controller
         $model   = Service::findOrFail($this->params[0]);
         $model->setRelationOrder('options', $records, range(1, count($records)));
 
-        Flash::success(trans('offline.mall::lang.common.sorting_updated'));
+        Flash::success(trans('webbook.mall::lang.common.sorting_updated'));
     }
 
     /**

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Closure;
 use DB;
@@ -13,8 +13,8 @@ use Model;
 use October\Rain\Database\Collection;
 use October\Rain\Database\Traits\Sortable;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Database\IsStates;
-use OFFLINE\Mall\Classes\Traits\PriceAccessors;
+use WebBook\Mall\Classes\Database\IsStates;
+use WebBook\Mall\Classes\Traits\PriceAccessors;
 use Rainlab\Location\Models\Country as RainLabCountry;
 use System\Models\File;
 
@@ -36,7 +36,7 @@ class ShippingMethod extends Model
     /**
      * Disable `is_default` handler on IsStates trait. Even if ShippingMethod uses a default value,
      * the current IsStates trait does not support multiple defaults, especially by using an
-     * additional linking table (`offline_mall_shipping_country`).
+     * additional linking table (`webbook_mall_shipping_country`).
      * @var null|string
      */
     public const IS_DEFAULT = null;
@@ -59,7 +59,7 @@ class ShippingMethod extends Model
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_shipping_methods';
+    public $table = 'webbook_mall_shipping_methods';
 
     /**
      * The translatable attributes of this model.
@@ -143,19 +143,19 @@ class ShippingMethod extends Model
     public $belongsToMany = [
         'taxes'     => [
             Tax::class,
-            'table'    => 'offline_mall_shipping_method_tax',
+            'table'    => 'webbook_mall_shipping_method_tax',
             'key'      => 'shipping_method_id',
             'otherKey' => 'tax_id',
         ],
         'discounts'     => [
             Discount::class,
-            'table'    => 'offline_mall_shipping_method_discount',
+            'table'    => 'webbook_mall_shipping_method_discount',
             'key'      => 'shipping_method_id',
             'otherKey' => 'discount_id',
         ],
         'countries' => [
             RainLabCountry::class,
-            'table'    => 'offline_mall_shipping_countries',
+            'table'    => 'webbook_mall_shipping_countries',
             'key'      => 'shipping_method_id',
             'otherKey' => 'country_id',
         ],
@@ -200,8 +200,8 @@ class ShippingMethod extends Model
     public static function noShippingRequired(): self
     {
         return new self([
-            'name'        => trans('offline.mall::lang.shipping_method.not_required_name'),
-            'description' => trans('offline.mall::lang.shipping_method.not_required_description'),
+            'name'        => trans('webbook.mall::lang.shipping_method.not_required_name'),
+            'description' => trans('webbook.mall::lang.shipping_method.not_required_description'),
         ]);
     }
 
@@ -316,7 +316,7 @@ class ShippingMethod extends Model
      */
     public function afterDelete()
     {
-        DB::table('offline_mall_prices')
+        DB::table('webbook_mall_prices')
             ->where('priceable_type', self::MORPH_KEY)
             ->where('priceable_id', $this->id)
             ->delete();

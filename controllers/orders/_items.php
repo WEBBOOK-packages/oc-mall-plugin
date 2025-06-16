@@ -8,22 +8,22 @@
     <tr>
         <th>
             <span>
-                <?= e(trans('offline.mall::lang.product.name')) ?>
+                <?= e(trans('webbook.mall::lang.product.name')) ?>
             </span>
         </th>
         <th class="text-right">
             <span>
-                <?= e(trans('offline.mall::lang.order.quantity')) ?>
+                <?= e(trans('webbook.mall::lang.order.quantity')) ?>
             </span>
         </th>
         <th class="text-right">
             <span>
-                <?= e(trans('offline.mall::lang.product.price')) ?>
+                <?= e(trans('webbook.mall::lang.product.price')) ?>
             </span>
         </th>
         <th class="text-right">
             <span>
-                <?= e(trans('offline.mall::lang.order.total')) ?>
+                <?= e(trans('webbook.mall::lang.order.total')) ?>
             </span>
         </th>
     </tr>
@@ -46,7 +46,7 @@
             </div>
             <?php if ($item->service_options): ?>
                 <?php foreach($item->service_options as $option): ?>
-                    <strong><?= e(trans('offline.mall::lang.common.service')) ?></strong>:
+                    <strong><?= e(trans('webbook.mall::lang.common.service')) ?></strong>:
                     <?= e($option['name']) ?><br/>
                 <?php endforeach; ?>
             <?php endif; ?>
@@ -68,7 +68,7 @@
     <tr class="orderfooter separator separator-bottom">
         <td colspan="3">
             <span>
-                <?= e(trans('offline.mall::lang.order.subtotal')) ?>
+                <?= e(trans('webbook.mall::lang.order.subtotal')) ?>
             </span>
         </td>
         <td class="text-right">
@@ -82,7 +82,7 @@
     <tr class="orderdiscount">
         <td colspan="3">
             <span>
-                <?= e(trans('offline.mall::lang.common.discount')) ?>:
+                <?= e(trans('webbook.mall::lang.common.discount')) ?>:
                 <?= e($entry['discount']['name']) ?>
             </span>
         </td>
@@ -98,7 +98,7 @@
     <tr class="orderfooter separator">
         <td colspan="3">
             <span>
-                <?= e(trans('offline.mall::lang.common.shipping')) ?>:
+                <?= e(trans('webbook.mall::lang.common.shipping')) ?>:
                 <?php if (!empty($order['shipping']['method'])): ?>
                     <?= e($order['shipping']['method']['name']) ?>
                 <?php endif; ?>
@@ -119,7 +119,7 @@
     <tr class="orderfooter separator">
         <td colspan="3">
             <span>
-                <?= e(trans('offline.mall::lang.common.payment')) ?>:
+                <?= e(trans('webbook.mall::lang.common.payment')) ?>:
                 <?php if (!empty($order['payment']['method'])): ?>
                     <?= e($order['payment']['method']['name']) ?>
                 <?php endif; ?>
@@ -127,7 +127,7 @@
         </td>
         <td class="text-right">
             <span>
-                <?php $currency = \OFFLINE\Mall\Models\Currency::find(array_get($order->currency, 'id', 0)); ?>
+                <?php $currency = \WebBook\Mall\Models\Currency::find(array_get($order->currency, 'id', 0)); ?>
                 <?= e($money->format($order['payment']['total'], null, $currency)) ?>
             </span>
         </td>
@@ -136,7 +136,7 @@
     <tr class="orderfooter-bottomline">
         <td colspan="3">
             <span>
-                <?= e(trans('offline.mall::lang.order.grand_total')) ?>
+                <?= e(trans('webbook.mall::lang.order.grand_total')) ?>
             </span>
         </td>
         <td class="text-right"><span><?= e($order->totalPostTaxes()) ?></span></td>

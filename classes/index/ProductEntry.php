@@ -1,12 +1,12 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Index;
+namespace WebBook\Mall\Classes\Index;
 
 use Event;
 use Illuminate\Support\Collection;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Models\CustomerGroup;
-use OFFLINE\Mall\Models\Product;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Models\CustomerGroup;
+use WebBook\Mall\Models\Product;
 
 class ProductEntry implements Entry
 {

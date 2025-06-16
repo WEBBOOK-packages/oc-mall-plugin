@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class AlterOfflineMallPaymentMethods_030_05 extends Migration
+class AlterWebBookMallPaymentMethods_030_05 extends Migration
 {
     /**
      * Install Migration
@@ -17,7 +17,7 @@ class AlterOfflineMallPaymentMethods_030_05 extends Migration
      */
     public function up()
     {
-        Schema::table('offline_mall_payment_methods', function (Blueprint $table) {
+        Schema::table('webbook_mall_payment_methods', function (Blueprint $table) {
             $table->boolean('is_enabled')->default(true)->after('sort_order');
             $table->boolean('is_default')->default(false)->after('sort_order');
         });
@@ -30,21 +30,21 @@ class AlterOfflineMallPaymentMethods_030_05 extends Migration
      */
     public function down()
     {
-        if (Schema::hasColumn('offline_mall_payment_methods', 'is_default')) {
+        if (Schema::hasColumn('webbook_mall_payment_methods', 'is_default')) {
             if (method_exists(Schema::class, 'dropColumns')) {
-                Schema::dropColumns('offline_mall_payment_methods', 'is_default');
+                Schema::dropColumns('webbook_mall_payment_methods', 'is_default');
             } else {
-                Schema::table('offline_mall_payment_methods', function (Blueprint $table) {
+                Schema::table('webbook_mall_payment_methods', function (Blueprint $table) {
                     $table->dropColumn('is_default');
                 });
             }
         }
 
-        if (Schema::hasColumn('offline_mall_payment_methods', 'is_enabled')) {
+        if (Schema::hasColumn('webbook_mall_payment_methods', 'is_enabled')) {
             if (method_exists(Schema::class, 'dropColumns')) {
-                Schema::dropColumns('offline_mall_payment_methods', 'is_enabled');
+                Schema::dropColumns('webbook_mall_payment_methods', 'is_enabled');
             } else {
-                Schema::table('offline_mall_payment_methods', function (Blueprint $table) {
+                Schema::table('webbook_mall_payment_methods', function (Blueprint $table) {
                     $table->dropColumn('is_enabled');
                 });
             }

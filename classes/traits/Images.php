@@ -1,9 +1,9 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Traits;
+namespace WebBook\Mall\Classes\Traits;
 
 use October\Rain\Support\Collection;
-use OFFLINE\Mall\Models\ImageSet;
+use WebBook\Mall\Models\ImageSet;
 use System\Models\File;
 
 trait Images

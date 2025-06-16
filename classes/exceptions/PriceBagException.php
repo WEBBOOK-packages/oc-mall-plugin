@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Classes\Exceptions;
+namespace WebBook\Mall\Classes\Exceptions;
 
 use RuntimeException;
 

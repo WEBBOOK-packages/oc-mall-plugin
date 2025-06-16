@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Carbon\Carbon;
 use Model;
 use October\Rain\Database\Traits\Nullable;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Traits\HashIds;
-use OFFLINE\Mall\Classes\Traits\PriceAccessors;
+use WebBook\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Traits\PriceAccessors;
 
 class Discount extends Model
 {
@@ -30,7 +30,7 @@ class Discount extends Model
         'types'                                => 'in:fixed_amount,rate,shipping',
         'product'                              => 'required_if:trigger,product',
         'customer_group'                       => 'required_if:trigger,customer_group',
-        'code'                                 => 'nullable|unique:offline_mall_discounts,code',
+        'code'                                 => 'nullable|unique:webbook_mall_discounts,code',
         'type'                                 => 'in:fixed_amount,rate,shipping',
         'rate'                                 => 'required_if:type,rate|nullable|numeric',
         'shipping_description'                 => 'required_if:type,shipping',
@@ -39,7 +39,7 @@ class Discount extends Model
 
     public $with = ['shipping_prices', 'amounts', 'totals_to_reach'];
 
-    public $table = 'offline_mall_discounts';
+    public $table = 'webbook_mall_discounts';
 
     public $dates = ['valid_from', 'expires'];
 
@@ -92,8 +92,8 @@ class Discount extends Model
     ];
 
     public $belongsToMany = [
-        'carts' => [Cart::class, 'table' => 'offline_mall_cart_discount'],
-        'shipping_methods' => [ShippingMethod::class, 'table' => 'offline_mall_shipping_method_discount'],
+        'carts' => [Cart::class, 'table' => 'webbook_mall_cart_discount'],
+        'shipping_methods' => [ShippingMethod::class, 'table' => 'webbook_mall_shipping_method_discount'],
     ];
 
     public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
@@ -151,7 +151,7 @@ class Discount extends Model
             'shipping',
         ];
 
-        return collect($keys)->mapWithKeys(fn ($key) => [$key => trans('offline.mall::lang.discounts.types.' . $key)]);
+        return collect($keys)->mapWithKeys(fn ($key) => [$key => trans('webbook.mall::lang.discounts.types.' . $key)]);
     }
 
     public function getTriggerOptions()
@@ -165,7 +165,7 @@ class Discount extends Model
             'payment_method',
         ];
 
-        return collect($keys)->mapWithKeys(fn ($key) => [$key => trans('offline.mall::lang.discounts.triggers.' . $key)]);
+        return collect($keys)->mapWithKeys(fn ($key) => [$key => trans('webbook.mall::lang.discounts.triggers.' . $key)]);
     }
 
     public function amount($currency = null)
@@ -185,6 +185,6 @@ class Discount extends Model
 
     public function getProductIdOptions()
     {
-        return [null => trans('offline.mall::lang.common.none')] + Product::get()->pluck('name', 'id')->toArray();
+        return [null => trans('webbook.mall::lang.common.none')] + Product::get()->pluck('name', 'id')->toArray();
     }
 }

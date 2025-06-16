@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Tests\Models;
+namespace WebBook\Mall\Tests\Models;
 
-use OFFLINE\Mall\Models\CustomField;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Models\CustomField;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Tests\PluginTestCase;
 
 class ProductTest extends PluginTestCase
 {

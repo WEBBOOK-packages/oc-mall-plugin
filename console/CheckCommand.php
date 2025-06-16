@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Console;
+namespace WebBook\Mall\Console;
 
 use Illuminate\Console\Command;
-use OFFLINE\Mall\Models\Currency;
-use OFFLINE\Mall\Models\GeneralSettings;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\Currency;
+use WebBook\Mall\Models\GeneralSettings;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\ShippingMethod;
 
 class CheckCommand extends Command
 {
@@ -181,7 +181,7 @@ class CheckCommand extends Command
 
         foreach ($pages as $page) {
             if (GeneralSettings::get($page) === null) {
-                $errors[] = '- ' . trans('offline.mall::lang.general_settings.' . $page);
+                $errors[] = '- ' . trans('webbook.mall::lang.general_settings.' . $page);
             }
         }
 

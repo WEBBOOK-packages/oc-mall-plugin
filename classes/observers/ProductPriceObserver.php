@@ -1,9 +1,9 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Observers;
+namespace WebBook\Mall\Classes\Observers;
 
-use OFFLINE\Mall\Classes\Index\Index;
-use OFFLINE\Mall\Models\ProductPrice;
+use WebBook\Mall\Classes\Index\Index;
+use WebBook\Mall\Models\ProductPrice;
 
 class ProductPriceObserver
 {

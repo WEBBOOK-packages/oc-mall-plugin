@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Traits\Cart\CartItemPriceAccessors;
-use OFFLINE\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Traits\Cart\CartItemPriceAccessors;
+use WebBook\Mall\Classes\Traits\HashIds;
 
 class WishlistItem extends Model
 {
@@ -15,12 +15,12 @@ class WishlistItem extends Model
     use CartItemPriceAccessors;
     use HashIds;
 
-    public $table = 'offline_mall_wishlist_items';
+    public $table = 'webbook_mall_wishlist_items';
 
     public $rules = [
-        'product_id'  => 'required|exists:offline_mall_products,id',
-        'wishlist_id' => 'required|exists:offline_mall_wishlists,id',
-        'variant_id'  => 'nullable|exists:offline_mall_product_variants,id',
+        'product_id'  => 'required|exists:webbook_mall_products,id',
+        'wishlist_id' => 'required|exists:webbook_mall_wishlists,id',
+        'variant_id'  => 'nullable|exists:webbook_mall_product_variants,id',
     ];
 
     public $belongsTo = [

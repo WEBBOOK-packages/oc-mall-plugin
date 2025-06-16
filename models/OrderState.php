@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,7 +11,7 @@ use Model;
 use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\Sortable;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Database\IsStates;
+use WebBook\Mall\Classes\Database\IsStates;
 
 class OrderState extends Model
 {
@@ -55,9 +55,9 @@ class OrderState extends Model
      * @var array
      */
     public static $availableFlagOptions = [
-        self::FLAG_CANCELLED => 'offline.mall::lang.order_states.flags.cancelled',
-        self::FLAG_COMPLETE  => 'offline.mall::lang.order_states.flags.complete',
-        self::FLAG_NEW       => 'offline.mall::lang.order_states.flags.new',
+        self::FLAG_CANCELLED => 'webbook.mall::lang.order_states.flags.cancelled',
+        self::FLAG_COMPLETE  => 'webbook.mall::lang.order_states.flags.complete',
+        self::FLAG_NEW       => 'webbook.mall::lang.order_states.flags.new',
     ];
 
     /**
@@ -72,7 +72,7 @@ class OrderState extends Model
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_order_states';
+    public $table = 'webbook_mall_order_states';
 
     /**
      * The translatable attributes of this model.

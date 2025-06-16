@@ -1,11 +1,11 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Payments;
+namespace WebBook\Mall\Classes\Payments;
 
 use Illuminate\Support\Facades\Session;
 use October\Rain\Exception\ValidationException;
-use OFFLINE\Mall\Models\CustomerPaymentMethod;
-use OFFLINE\Mall\Models\PaymentGatewaySettings;
+use WebBook\Mall\Models\CustomerPaymentMethod;
+use WebBook\Mall\Models\PaymentGatewaySettings;
 use Omnipay\Common\GatewayInterface;
 use Omnipay\Common\Message\ResponseInterface;
 use Omnipay\Omnipay;
@@ -189,14 +189,14 @@ class Stripe extends PaymentProvider
     {
         return [
             'stripe_api_key'         => [
-                'label'   => 'offline.mall::lang.payment_gateway_settings.stripe.api_key',
-                'comment' => 'offline.mall::lang.payment_gateway_settings.stripe.api_key_comment',
+                'label'   => 'webbook.mall::lang.payment_gateway_settings.stripe.api_key',
+                'comment' => 'webbook.mall::lang.payment_gateway_settings.stripe.api_key_comment',
                 'span'    => 'left',
                 'type'    => 'text',
             ],
             'stripe_publishable_key' => [
-                'label'   => 'offline.mall::lang.payment_gateway_settings.stripe.publishable_key',
-                'comment' => 'offline.mall::lang.payment_gateway_settings.stripe.publishable_key_comment',
+                'label'   => 'webbook.mall::lang.payment_gateway_settings.stripe.publishable_key',
+                'comment' => 'webbook.mall::lang.payment_gateway_settings.stripe.publishable_key_comment',
                 'span'    => 'left',
                 'type'    => 'text',
             ],
@@ -245,7 +245,7 @@ class Stripe extends PaymentProvider
     protected function createCustomer($customer, GatewayInterface $gateway)
     {
         $description = sprintf(
-            'OFFLINE.Mall Customer %s (%d)',
+            'WebBook.Mall Customer %s (%d)',
             $customer->user->email,
             $customer->id
         );
@@ -366,7 +366,7 @@ class Stripe extends PaymentProvider
     protected function createCustomerPaymentMethod($customerReference, $cardReference, array $card)
     {
         CustomerPaymentMethod::create([
-            'name'              => trans('offline.mall::lang.order.credit_card'),
+            'name'              => trans('webbook.mall::lang.order.credit_card'),
             'customer_id'       => $this->order->customer->id,
             'payment_method_id' => $this->order->payment_method_id,
             'data'              => [

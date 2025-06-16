@@ -1,8 +1,8 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Traits\Category;
+namespace WebBook\Mall\Classes\Traits\Category;
 
-use OFFLINE\Mall\Models\Category;
+use WebBook\Mall\Models\Category;
 use System\Classes\PluginManager;
 
 trait Translation

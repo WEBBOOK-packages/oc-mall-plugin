@@ -1,15 +1,15 @@
 <?php
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class CreateOfflineMallCategoryPropertyGroup extends Migration
+class CreateWebBookMallCategoryPropertyGroup extends Migration
 {
     public function up()
     {
-        Schema::create('offline_mall_category_property_group', function ($table) {
+        Schema::create('webbook_mall_category_property_group', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->integer('category_id')->unsigned();
@@ -26,6 +26,6 @@ class CreateOfflineMallCategoryPropertyGroup extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('offline_mall_category_property_group');
+        Schema::dropIfExists('webbook_mall_category_property_group');
     }
 }

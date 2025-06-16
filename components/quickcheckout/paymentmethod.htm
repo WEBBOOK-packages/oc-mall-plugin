@@ -1,5 +1,5 @@
 <header class="mall-quick-checkout__collapsible-header">
-    <h2 class="mall-quick-checkout__heading">{{ 'offline.mall::frontend.payment'|trans }}</h2>
+    <h2 class="mall-quick-checkout__heading">{{ 'webbook.mall::frontend.payment'|trans }}</h2>
     <div class="mall-quick-checkout__collapsible-summary">
         {% if cart.payment_method is defined %}
             {{ cart.payment_method.name|default(null) }}
@@ -47,7 +47,7 @@
                 {% endif %}
             {% endif %}
         {% else %}
-            <p>{{ 'offline.mall::frontend.no_payment_method_available'|trans }} </p>
+            <p>{{ 'webbook.mall::frontend.no_payment_method_available'|trans }} </p>
         {% endfor %}
     </div>
 </section>

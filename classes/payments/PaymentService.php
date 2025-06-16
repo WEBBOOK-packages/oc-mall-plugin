@@ -1,8 +1,8 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Payments;
+namespace WebBook\Mall\Classes\Payments;
 
-use OFFLINE\Mall\Models\Order;
+use WebBook\Mall\Models\Order;
 use Throwable;
 
 /**

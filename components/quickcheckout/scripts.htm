@@ -77,7 +77,7 @@
                     data: {id: this.dataset.id},
                     update: {'{{ __SELF__ }}::cart': '.mall-cart'},
                     loading: $.oc.stripeLoadIndicator,
-                    confirm: '{{ 'offline.mall::frontend.confirm' | trans }}',
+                    confirm: '{{ 'webbook.mall::frontend.confirm' | trans }}',
                     success: function (data) {
                         this.success(data)
                         $.publish('mall.cart.update', data)

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Cache;
 use DB;
@@ -13,13 +13,13 @@ use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\SortableRelation;
 use October\Rain\Database\Traits\Validation;
 use October\Rain\Support\Collection;
-use OFFLINE\Mall\Classes\Index\Index;
-use OFFLINE\Mall\Classes\Jobs\PropertyRemovalUpdate;
-use OFFLINE\Mall\Classes\Observers\ProductObserver;
-use OFFLINE\Mall\Classes\Traits\Category\MenuItems;
-use OFFLINE\Mall\Classes\Traits\Category\Properties;
-use OFFLINE\Mall\Classes\Traits\Category\Slug;
-use OFFLINE\Mall\Classes\Traits\Category\Translation;
+use WebBook\Mall\Classes\Index\Index;
+use WebBook\Mall\Classes\Jobs\PropertyRemovalUpdate;
+use WebBook\Mall\Classes\Observers\ProductObserver;
+use WebBook\Mall\Classes\Traits\Category\MenuItems;
+use WebBook\Mall\Classes\Traits\Category\Properties;
+use WebBook\Mall\Classes\Traits\Category\Slug;
+use WebBook\Mall\Classes\Traits\Category\Translation;
 use System\Models\File;
 
 class Category extends Model
@@ -65,7 +65,7 @@ class Category extends Model
      * The table associated with this model.
      * @var string
      */
-    public $table = 'offline_mall_categories';
+    public $table = 'webbook_mall_categories';
 
     /**
      * The translatable attributes of this model.
@@ -133,7 +133,7 @@ class Category extends Model
     public $belongsToMany = [
         'products'          => [
             Product::class,
-            'table'    => 'offline_mall_category_product',
+            'table'    => 'webbook_mall_category_product',
             'key'      => 'category_id',
             'otherKey' => 'product_id',
             'pivot'    => ['sort_order'],
@@ -141,7 +141,7 @@ class Category extends Model
         ],
         'publishedProducts' => [
             Product::class,
-            'table'    => 'offline_mall_category_product',
+            'table'    => 'webbook_mall_category_product',
             'key'      => 'category_id',
             'otherKey' => 'product_id',
             'scope'    => 'published',
@@ -149,14 +149,14 @@ class Category extends Model
         ],
         'property_groups'   => [
             PropertyGroup::class,
-            'table'    => 'offline_mall_category_property_group',
+            'table'    => 'webbook_mall_category_property_group',
             'key'      => 'category_id',
             'otherKey' => 'property_group_id',
             'pivot'    => ['relation_sort_order'],
         ],
         'review_categories' => [
             ReviewCategory::class,
-            'table' => 'offline_mall_category_review_category',
+            'table' => 'webbook_mall_category_review_category',
         ],
     ];
 
@@ -245,7 +245,7 @@ class Category extends Model
             $model->warmCache();
         });
         static::deleted(function (self $model) {
-            DB::table('offline_mall_category_product')->where('category_id', $model->id)->delete();
+            DB::table('webbook_mall_category_product')->where('category_id', $model->id)->delete();
             $model->purgeCache();
             $model->warmCache();
         });
@@ -282,7 +282,7 @@ class Category extends Model
 
         return [
             // null key for "no parent"
-            null => '(' . trans('offline.mall::lang.category.no_parent') . ')',
+            null => '(' . trans('webbook.mall::lang.category.no_parent') . ')',
         ] + $items->listsNested('name', 'id');
     }
 
@@ -293,8 +293,8 @@ class Category extends Model
      */
     public static function allowedSortingOptions()
     {
-        $name    = trans('offline.mall::lang.product.name');
-        $created = trans('offline.mall::lang.common.created_at');
+        $name    = trans('webbook.mall::lang.product.name');
+        $created = trans('webbook.mall::lang.common.created_at');
 
         return [
             'name asc'        => "{$name}, A->Z",

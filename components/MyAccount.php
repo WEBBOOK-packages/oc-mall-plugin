@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Cms\Classes\Controller;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use October\Rain\Exception\ValidationException;
 use October\Rain\Support\Facades\Flash;
-use OFFLINE\Mall\Classes\User\Auth;
-use OFFLINE\Mall\Models\GeneralSettings;
+use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Models\GeneralSettings;
 
 /**
  * The MyAccount component displays an overview of a customer's account.
@@ -46,8 +46,8 @@ class MyAccount extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.myAccount.details.name',
-            'description' => 'offline.mall::lang.components.myAccount.details.description',
+            'name'        => 'webbook.mall::lang.components.myAccount.details.name',
+            'description' => 'webbook.mall::lang.components.myAccount.details.description',
         ];
     }
 
@@ -61,7 +61,7 @@ class MyAccount extends MallComponent
         return [
             'page' => [
                 'type'  => 'dropdown',
-                'title' => 'offline.mall::lang.components.myAccount.properties.page.title',
+                'title' => 'webbook.mall::lang.components.myAccount.properties.page.title',
             ],
         ];
     }
@@ -74,9 +74,9 @@ class MyAccount extends MallComponent
     public function getPageOptions()
     {
         return [
-            'orders'    => trans('offline.mall::lang.components.myAccount.pages.orders'),
-            'profile'   => trans('offline.mall::lang.components.myAccount.pages.profile'),
-            'addresses' => trans('offline.mall::lang.components.myAccount.pages.addresses'),
+            'orders'    => trans('webbook.mall::lang.components.myAccount.pages.orders'),
+            'profile'   => trans('webbook.mall::lang.components.myAccount.pages.profile'),
+            'addresses' => trans('webbook.mall::lang.components.myAccount.pages.addresses'),
         ];
     }
 
@@ -144,7 +144,7 @@ class MyAccount extends MallComponent
             $code = request()->get('code');
 
             $error = [
-                'code' => trans('offline.mall::frontend.account.confirmation.error'),
+                'code' => trans('webbook.mall::frontend.account.confirmation.error'),
             ];
 
             $parts = explode('!', $code);

@@ -1,7 +1,7 @@
-title: 'offline.mall::lang.common.order_states'
-modelClass: OFFLINE\Mall\Models\OrderState
-list: $/offline/mall/models/orderstate/columns.yaml
-recordUrl: 'offline/mall/orderstate/update/:id'
+title: 'webbook.mall::lang.common.order_states'
+modelClass: WebBook\Mall\Models\OrderState
+list: $/webbook/mall/models/orderstate/columns.yaml
+recordUrl: 'webbook/mall/orderstate/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'
 recordsPerPage: 20
 showSetup: true

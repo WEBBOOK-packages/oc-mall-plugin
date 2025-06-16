@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\Validation;
 use October\Rain\Support\Collection;
-use OFFLINE\Mall\Classes\Traits\PriceAccessors;
+use WebBook\Mall\Classes\Traits\PriceAccessors;
 
 class CustomFieldValue extends Model
 {
@@ -15,11 +15,11 @@ class CustomFieldValue extends Model
     use PriceAccessors;
 
     public $rules = [
-        'cart_product_id' => 'exists:offline_mall_cart_products,id',
-        'custom_field_id' => 'exists:offline_mall_custom_fields,id',
+        'cart_product_id' => 'exists:webbook_mall_cart_products,id',
+        'custom_field_id' => 'exists:webbook_mall_custom_fields,id',
     ];
 
-    public $table = 'offline_mall_cart_custom_field_value';
+    public $table = 'webbook_mall_cart_custom_field_value';
 
     public $with = ['custom_field_option', 'prices'];
 

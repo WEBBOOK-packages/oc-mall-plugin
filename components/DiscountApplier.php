@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Components;
+namespace WebBook\Mall\Components;
 
 use Auth;
 use October\Rain\Exception\ValidationException;
 use October\Rain\Support\Facades\Flash;
-use OFFLINE\Mall\Models\Cart;
+use WebBook\Mall\Models\Cart;
 use Throwable;
 
 /**
@@ -23,8 +23,8 @@ class DiscountApplier extends MallComponent
     public function componentDetails()
     {
         return [
-            'name'        => 'offline.mall::lang.components.discountApplier.details.name',
-            'description' => 'offline.mall::lang.components.discountApplier.details.description',
+            'name'        => 'webbook.mall::lang.components.discountApplier.details.name',
+            'description' => 'webbook.mall::lang.components.discountApplier.details.description',
         ];
     }
 
@@ -38,8 +38,8 @@ class DiscountApplier extends MallComponent
         return [
             'discountCodeLimit' => [
                 'type'    => 'string',
-                'title'   => 'offline.mall::lang.components.cart.properties.discountCodeLimit.title',
-                'description' => 'offline.mall::lang.components.cart.properties.discountCodeLimit.description',
+                'title'   => 'webbook.mall::lang.components.cart.properties.discountCodeLimit.title',
+                'description' => 'webbook.mall::lang.components.cart.properties.discountCodeLimit.description',
                 'default' => 0,
             ],
         ];
@@ -65,6 +65,6 @@ class DiscountApplier extends MallComponent
             ]);
         }
 
-        Flash::success(trans('offline.mall::lang.components.discountApplier.discount_applied'));
+        Flash::success(trans('webbook.mall::lang.components.discountApplier.discount_applied'));
     }
 }

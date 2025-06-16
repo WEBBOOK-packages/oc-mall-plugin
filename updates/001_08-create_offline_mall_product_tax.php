@@ -1,16 +1,16 @@
 <?php
 
-namespace OFFLINE\Mall\Updates;
+namespace WebBook\Mall\Updates;
 
 use Illuminate\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
 use Schema;
 
-class CreateOfflineMallProductTax extends Migration
+class CreateWebBookMallProductTax extends Migration
 {
     public function up()
     {
-        Schema::create('offline_mall_product_tax', function (Blueprint $table) {
+        Schema::create('webbook_mall_product_tax', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->integer('tax_id');
@@ -22,6 +22,6 @@ class CreateOfflineMallProductTax extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('offline_mall_product_tax');
+        Schema::dropIfExists('webbook_mall_product_tax');
     }
 }

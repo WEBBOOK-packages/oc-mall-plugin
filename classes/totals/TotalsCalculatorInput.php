@@ -1,15 +1,15 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Totals;
+namespace WebBook\Mall\Classes\Totals;
 
 
 use Illuminate\Support\Collection;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\Discount;
-use OFFLINE\Mall\Models\PaymentMethod;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\ShippingMethod;
-use OFFLINE\Mall\Models\Wishlist;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\Discount;
+use WebBook\Mall\Models\PaymentMethod;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\Wishlist;
 
 class TotalsCalculatorInput
 {
