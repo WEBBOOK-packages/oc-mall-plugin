@@ -50,7 +50,6 @@ class Plugin extends PluginBase
     public $require = [
         'RainLab.User',
         'RainLab.Location',
-        'RainLab.Translate',
     ];
 
     /**
