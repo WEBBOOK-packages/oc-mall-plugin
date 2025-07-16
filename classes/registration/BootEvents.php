@@ -47,12 +47,12 @@ trait BootEvents
     protected function registerStaticPagesEvents()
     {
         $listTypes = fn () => [
-            'mall-category' => '[OFFLINE.Mall] ' . trans('offline.mall::lang.menu_items.single_category'),
-            'mall-product' => '[OFFLINE.Mall] ' . trans('offline.mall::lang.menu_items.single_product'),
-            'mall-variant' => '[OFFLINE.Mall] ' . trans('offline.mall::lang.menu_items.single_variant'),
-            'all-mall-categories' => '[OFFLINE.Mall] ' . trans('offline.mall::lang.menu_items.all_categories'),
-            'all-mall-products' => '[OFFLINE.Mall] ' . trans('offline.mall::lang.menu_items.all_products'),
-            'all-mall-variants' => '[OFFLINE.Mall] ' . trans('offline.mall::lang.menu_items.all_variants'),
+            'mall-category' => '[WebBook.Mall] ' . trans('webbook.mall::lang.menu_items.single_category'),
+            'mall-product' => '[WebBook.Mall] ' . trans('webbook.mall::lang.menu_items.single_product'),
+            'mall-variant' => '[WebBook.Mall] ' . trans('webbook.mall::lang.menu_items.single_variant'),
+            'all-mall-categories' => '[WebBook.Mall] ' . trans('webbook.mall::lang.menu_items.all_categories'),
+            'all-mall-products' => '[WebBook.Mall] ' . trans('webbook.mall::lang.menu_items.all_products'),
+            'all-mall-variants' => '[WebBook.Mall] ' . trans('webbook.mall::lang.menu_items.all_variants'),
         ];
 
         $getTypeInfo = function ($type) {
@@ -128,14 +128,14 @@ trait BootEvents
 
     protected function registerSiteSearchEvents()
     {
-        Event::listen('offline.sitesearch.extend', fn () => new ProductsSearchProvider());
+        Event::listen('webbook.sitesearch.extend', fn () => new ProductsSearchProvider());
     }
 
     protected function registerGdprEvents()
     {
-        Event::listen('offline.gdpr::cleanup.register', fn () => [
+        Event::listen('webbook.gdpr::cleanup.register', fn () => [
             'id'     => 'oc-mall-plugin',
-            'label'  => 'OFFLINE Mall',
+            'label'  => 'WebBook Mall',
             'models' => [
                 [
                     'label'   => 'Customers',

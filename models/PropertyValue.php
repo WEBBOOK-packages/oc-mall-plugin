@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Traits\HashIds;
 use System\Models\File;
 
 class PropertyValue extends Model
@@ -160,7 +160,7 @@ class PropertyValue extends Model
         if ($type === 'checkbox') {
             $key = (bool)$value ? 'yes' : 'no';
 
-            return trans('offline.mall::lang.common.' . $key);
+            return trans('webbook.mall::lang.common.' . $key);
         }
 
         return e($value);

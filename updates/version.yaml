@@ -60,7 +60,7 @@ v1.0.7:
 v1.0.8:
     - 'Optimized handling of manually created customer accounts'
 v1.0.9:
-    - 'Added option to force filter string for Products component (https://offline-gmbh.github.io/oc-mall-plugin/components/products.htmlfilter-string)'
+    - 'Added option to force filter string for Products component (https://webbook-gmbh.github.io/oc-mall-plugin/components/products.htmlfilter-string)'
 v1.0.10:
     - 'Fixed usage of single Category as menu item (thanks to @PrestaSafe)'
 v1.0.11:
@@ -173,7 +173,7 @@ v1.3.8:
 v1.3.9:
     - 'Fixed minor dataLayer bugs'
 v1.3.10:
-    - 'Re-use Eloquent model events to trigger `mall.cart.product.*` events. If you added custom event listeners for any of these events make sure to update your function signature to only accept a single CartProduct model (see https://offline-gmbh.github.io/oc-mall-plugin/development/events.htmlcart)'
+    - 'Re-use Eloquent model events to trigger `mall.cart.product.*` events. If you added custom event listeners for any of these events make sure to update your function signature to only accept a single CartProduct model (see https://webbook-gmbh.github.io/oc-mall-plugin/development/events.htmlcart)'
 v1.3.11:
     - 'Added links to edit and preview customer data to orders list (thanks to @Eoler)'
 v1.3.12:
@@ -201,10 +201,10 @@ v1.5.2:
 v1.5.3:
     - 'Another bugfix release'
 v1.6.0:
-    - 'Added Reviews. Speaking of reviews, did you already add a review for this plugin ;-)? https://octobercms.com/plugin/offline-mall'
+    - 'Added Reviews. Speaking of reviews, did you already add a review for this plugin ;-)? https://octobercms.com/plugin/webbook-mall'
     - 015_01-create_offline_mall_reviews.php
 v1.6.1:
-    - "Bugfix release. Don't forget to check out the new changelog for updates to 1.6.0: https://offline-gmbh.github.io/oc-mall-plugin/changelog/1.6.0.html"
+    - "Bugfix release. Don't forget to check out the new changelog for updates to 1.6.0: https://webbook-gmbh.github.io/oc-mall-plugin/changelog/1.6.0.html"
 v1.6.2:
     - 'Added forceShippingPrice method to Cart model'
 v1.6.3:
@@ -249,7 +249,7 @@ v1.8.4:
 v1.8.5:
     - 'The PDF button in the Wishlists component remains visible now after a Product has been removed or edited by the user'
 v1.9.0:
-    - 'Better handling of country specific taxes, multi-language e-mails, translatable property values and more! (Full Changelog: https://offline-gmbh.github.io/oc-mall-plugin/changelog/1.9.0.html)'
+    - 'Better handling of country specific taxes, multi-language e-mails, translatable property values and more! (Full Changelog: https://webbook-gmbh.github.io/oc-mall-plugin/changelog/1.9.0.html)'
     - 019_01-add_is_default_column_to_taxes_table.php
 v1.9.1:
     - 'Bugfix release'
@@ -363,7 +363,7 @@ v1.13.5:
 v1.13.6:
     - 'Optimized compatibility with Winter CMS, fixed various bugs'
 v1.14.0:
-    - 'Added support for PHP 8 (see changelog: https://offline-gmbh.github.io/oc-mall-plugin/changelog/1.14.0.html)'
+    - 'Added support for PHP 8 (see changelog: https://webbook-gmbh.github.io/oc-mall-plugin/changelog/1.14.0.html)'
 v1.14.1:
     - 'Added possibility to apply discounts when a certain shipping method is selected (credits to @inalto)'
     - 027_01-create_offline_mall_shipping_method_discount.php
@@ -407,7 +407,7 @@ v2.0.7:
 v2.0.8:
     - 'Further compatibility fixes'
 v2.0.9:
-    - 'Optimized OFFLINE.SiteSearch integration'
+    - 'Optimized WebBook.SiteSearch integration'
 v2.0.10:
     - 'Added PDFMaker trait to product model'
 v2.0.11:
@@ -419,7 +419,7 @@ v2.0.13:
 v2.0.15:
     - 'Fixed handling of Currency model timestamps'
 v2.0.16:
-    - 'Fixed bug in addressSelector component. If you did override any of the component partials, make sure to include the following change in your own partials: https://github.com/OFFLINE-GmbH/oc-mall-plugin/commit/8e66134b35e03bf373e2a7a91d09c190a3a7e8c4'
+    - 'Fixed bug in addressSelector component. If you did override any of the component partials, make sure to include the following change in your own partials: https://github.com/WebBook-GmbH/oc-mall-plugin/commit/8e66134b35e03bf373e2a7a91d09c190a3a7e8c4'
 v2.0.17:
     - 'Cleaned up the return values of the Product::onAddToCart component method'
 v2.0.18:
@@ -449,7 +449,7 @@ v3.0.2:
 v3.0.3:
     - 'Fixed handling of Currency model timestamps'
 v3.0.4:
-    - 'Fixed bug in addressSelector component. If you did override any of the component partials, make sure to include the following change in your own partials: https://github.com/OFFLINE-GmbH/oc-mall-plugin/commit/8e66134b35e03bf373e2a7a91d09c190a3a7e8c4'
+    - 'Fixed bug in addressSelector component. If you did override any of the component partials, make sure to include the following change in your own partials: https://github.com/WebBook-GmbH/oc-mall-plugin/commit/8e66134b35e03bf373e2a7a91d09c190a3a7e8c4'
 v3.0.5:
     - 'Cleaned up the return values of the Product::onAddToCart component method'
 v3.0.6:
@@ -695,3 +695,5 @@ v3.7.4:
     - "Fixed FR translations (thanks to @willouch)"
 v3.7.5:
     - "Fixed FR translations (thanks to @damsfx)"
+v3.7.6:
+    - "Replace `OFFLINE` namespace and related references with `WebBook` equivalents"

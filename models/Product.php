@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Cache;
 use Cms\Classes\Page;
@@ -14,18 +14,18 @@ use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\Validation;
 use October\Rain\Support\Collection;
-use OFFLINE\Mall\Classes\Index\Index;
-use OFFLINE\Mall\Classes\Observers\ProductObserver;
-use OFFLINE\Mall\Classes\Traits\CustomFields;
-use OFFLINE\Mall\Classes\Traits\FilteredTaxes;
-use OFFLINE\Mall\Classes\Traits\HashIds;
-use OFFLINE\Mall\Classes\Traits\Images;
-use OFFLINE\Mall\Classes\Traits\PDFMaker;
-use OFFLINE\Mall\Classes\Traits\PriceAccessors;
-use OFFLINE\Mall\Classes\Traits\ProductPriceAccessors;
-use OFFLINE\Mall\Classes\Traits\PropertyValues;
-use OFFLINE\Mall\Classes\Traits\StockAndQuantity;
-use OFFLINE\Mall\Classes\Traits\UserSpecificPrice;
+use WebBook\Mall\Classes\Index\Index;
+use WebBook\Mall\Classes\Observers\ProductObserver;
+use WebBook\Mall\Classes\Traits\CustomFields;
+use WebBook\Mall\Classes\Traits\FilteredTaxes;
+use WebBook\Mall\Classes\Traits\HashIds;
+use WebBook\Mall\Classes\Traits\Images;
+use WebBook\Mall\Classes\Traits\PDFMaker;
+use WebBook\Mall\Classes\Traits\PriceAccessors;
+use WebBook\Mall\Classes\Traits\ProductPriceAccessors;
+use WebBook\Mall\Classes\Traits\PropertyValues;
+use WebBook\Mall\Classes\Traits\StockAndQuantity;
+use WebBook\Mall\Classes\Traits\UserSpecificPrice;
 use System\Models\File;
 
 class Product extends Model
@@ -631,7 +631,7 @@ class Product extends Model
      */
     public function getGroupByPropertyIdOptions()
     {
-        return ['' => trans('offline.mall::lang.common.none')]
+        return ['' => trans('webbook.mall::lang.common.none')]
             + $this->categories->flatMap->properties->filter(fn ($q) => $q->pivot->use_for_variants)->pluck('name', 'id')->toArray();
     }
 
@@ -753,8 +753,8 @@ class Product extends Model
     public function getInventoryManagementMethodOptions()
     {
         return [
-            'single'  => 'offline.mall::lang.variant.method.single',
-            'variant' => 'offline.mall::lang.variant.method.variant',
+            'single'  => 'webbook.mall::lang.variant.method.single',
+            'variant' => 'webbook.mall::lang.variant.method.variant',
         ];
     }
 

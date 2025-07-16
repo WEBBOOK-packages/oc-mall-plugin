@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OFFLINE\Mall\Models;
+namespace WebBook\Mall\Models;
 
 use Carbon\Carbon;
 use DB;
@@ -12,14 +12,14 @@ use Illuminate\Support\Collection;
 use Model;
 use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\Validation;
-use OFFLINE\Mall\Classes\Cart\DiscountApplier;
-use OFFLINE\Mall\Classes\Exceptions\InvalidDiscountException;
-use OFFLINE\Mall\Classes\Totals\TotalsCalculator;
-use OFFLINE\Mall\Classes\Totals\TotalsCalculatorInput;
-use OFFLINE\Mall\Classes\Traits\Cart\CartActions;
-use OFFLINE\Mall\Classes\Traits\Cart\CartSession;
-use OFFLINE\Mall\Classes\Traits\Cart\Discounts;
-use OFFLINE\Mall\Classes\Traits\ShippingMethods;
+use WebBook\Mall\Classes\Cart\DiscountApplier;
+use WebBook\Mall\Classes\Exceptions\InvalidDiscountException;
+use WebBook\Mall\Classes\Totals\TotalsCalculator;
+use WebBook\Mall\Classes\Totals\TotalsCalculatorInput;
+use WebBook\Mall\Classes\Traits\Cart\CartActions;
+use WebBook\Mall\Classes\Traits\Cart\CartSession;
+use WebBook\Mall\Classes\Traits\Cart\Discounts;
+use WebBook\Mall\Classes\Traits\ShippingMethods;
 use Session;
 
 /**
@@ -260,9 +260,9 @@ class Cart extends Model
     }
 
     /**
-     * Cleanup of old data using OFFLINE.GDPR.
+     * Cleanup of old data using WebBook.GDPR.
      *
-     * @see https://github.com/OFFLINE-GmbH/oc-gdpr-plugin
+     * @see https://github.com/WebBook-GmbH/oc-gdpr-plugin
      *
      * @param Carbon $deadline
      * @param int $keepDays

@@ -1,12 +1,12 @@
 <?php
 
-namespace OFFLINE\Mall\Classes\Totals;
+namespace WebBook\Mall\Classes\Totals;
 
 use JsonSerializable;
 use October\Contracts\Twig\CallsAnyMethod;
-use OFFLINE\Mall\Classes\Traits\Rounding;
-use OFFLINE\Mall\Classes\Utils\Money;
-use OFFLINE\Mall\Models\Tax;
+use WebBook\Mall\Classes\Traits\Rounding;
+use WebBook\Mall\Classes\Utils\Money;
+use WebBook\Mall\Models\Tax;
 
 class TaxTotal implements JsonSerializable, CallsAnyMethod
 {

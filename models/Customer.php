@@ -122,8 +122,8 @@ class Customer extends Model
     }
 
     /**
-     * Cleanup of old data using OFFLINE.GDPR.
-     * @see https://github.com/OFFLINE-GmbH/oc-gdpr-plugin
+     * Cleanup of old data using WebBook.GDPR.
+     * @see https://github.com/WebBook-GmbH/oc-gdpr-plugin
      * @param Carbon $deadline
      * @param int $keepDays
      */

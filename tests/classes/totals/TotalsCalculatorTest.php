@@ -1,24 +1,24 @@
 <?php
 
-namespace OFFLINE\Mall\Tests\Classes\Totals;
+namespace WebBook\Mall\Tests\Classes\Totals;
 
-use OFFLINE\Mall\Classes\Totals\TotalsCalculator;
-use OFFLINE\Mall\Classes\Totals\TotalsCalculatorInput;
-use OFFLINE\Mall\Models\Address;
-use OFFLINE\Mall\Models\Cart;
-use OFFLINE\Mall\Models\CustomField;
-use OFFLINE\Mall\Models\CustomFieldOption;
-use OFFLINE\Mall\Models\CustomFieldValue;
-use OFFLINE\Mall\Models\Discount;
-use OFFLINE\Mall\Models\Price;
-use OFFLINE\Mall\Models\Product;
-use OFFLINE\Mall\Models\Service;
-use OFFLINE\Mall\Models\ServiceOption;
-use OFFLINE\Mall\Models\ShippingMethod;
-use OFFLINE\Mall\Models\ShippingMethodRate;
-use OFFLINE\Mall\Models\Tax;
-use OFFLINE\Mall\Models\Variant;
-use OFFLINE\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Classes\Totals\TotalsCalculator;
+use WebBook\Mall\Classes\Totals\TotalsCalculatorInput;
+use WebBook\Mall\Models\Address;
+use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\CustomField;
+use WebBook\Mall\Models\CustomFieldOption;
+use WebBook\Mall\Models\CustomFieldValue;
+use WebBook\Mall\Models\Discount;
+use WebBook\Mall\Models\Price;
+use WebBook\Mall\Models\Product;
+use WebBook\Mall\Models\Service;
+use WebBook\Mall\Models\ServiceOption;
+use WebBook\Mall\Models\ShippingMethod;
+use WebBook\Mall\Models\ShippingMethodRate;
+use WebBook\Mall\Models\Tax;
+use WebBook\Mall\Models\Variant;
+use WebBook\Mall\Tests\PluginTestCase;
 
 class TotalsCalculatorTest extends PluginTestCase
 {
@@ -150,7 +150,7 @@ class TotalsCalculatorTest extends PluginTestCase
 
     public function test_it_calculates_taxes_included_on_amount_after_discount_applied()
     {
-        $this->markTestSkipped('This test covers an open bug, @see https://github.com/OFFLINE-GmbH/oc-mall-plugin/issues/423');
+        $this->markTestSkipped('This test covers an open bug, @see https://github.com/WebBook-GmbH/oc-mall-plugin/issues/423');
 
         $tax1 = $this->getTax('Test 1', 10);
         $tax2 = $this->getTax('Test 2', 20);
@@ -187,7 +187,7 @@ class TotalsCalculatorTest extends PluginTestCase
 
     public function test_it_calculates_taxes_included_on_zero_amount_after_discount_applied()
     {
-        $this->markTestSkipped('This test covers an open bug, @see https://github.com/OFFLINE-GmbH/oc-mall-plugin/issues/423');
+        $this->markTestSkipped('This test covers an open bug, @see https://github.com/WebBook-GmbH/oc-mall-plugin/issues/423');
 
         $tax1 = $this->getTax('Test 1', 10);
         $tax2 = $this->getTax('Test 2', 20);
@@ -220,7 +220,7 @@ class TotalsCalculatorTest extends PluginTestCase
 
     public function test_it_calculates_taxes_with_different_taxes_and_discount()
     {
-        $this->markTestSkipped('This test covers an open bug, @see https://github.com/OFFLINE-GmbH/oc-mall-plugin/issues/423');
+        $this->markTestSkipped('This test covers an open bug, @see https://github.com/WebBook-GmbH/oc-mall-plugin/issues/423');
 
         $tax1 = $this->getTax('Test 1', 10);
         $tax2 = $this->getTax('Test 2', 5);
@@ -288,7 +288,7 @@ class TotalsCalculatorTest extends PluginTestCase
 
     public function test_it_calculates_taxes_excluded_with_discount()
     {
-        $this->markTestSkipped('This test covers an open bug, @see https://github.com/OFFLINE-GmbH/oc-mall-plugin/issues/423');
+        $this->markTestSkipped('This test covers an open bug, @see https://github.com/WebBook-GmbH/oc-mall-plugin/issues/423');
 
         $tax1 = $this->getTax('Test 1', 10);
         $tax2 = $this->getTax('Test 2', 20);

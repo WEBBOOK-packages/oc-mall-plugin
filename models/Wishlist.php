@@ -123,7 +123,7 @@ class Wishlist extends Model
             ? ['customer_id' => $user->customer->id]
             : ['session_id' => static::getSessionId()];
 
-        $name ??= trans('offline.mall::frontend.wishlist.default_name');
+        $name ??= trans('webbook.mall::frontend.wishlist.default_name');
 
         return Wishlist::create(array_merge($attributes, ['name' => $name]));
     }
@@ -165,9 +165,9 @@ class Wishlist extends Model
     }
 
     /**
-     * Cleanup of old data using OFFLINE.GDPR.
+     * Cleanup of old data using WebBook.GDPR.
      *
-     * @see https://github.com/OFFLINE-GmbH/oc-gdpr-plugin
+     * @see https://github.com/WebBook-GmbH/oc-gdpr-plugin
      *
      * @param Carbon $deadline
      * @param int $keepDays

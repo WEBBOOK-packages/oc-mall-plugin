@@ -2,14 +2,14 @@
 
 
 
-## OFFLINE.SiteSearch
+## WebBook.SiteSearch
 
-Searching for products and variants using [OFFLINE.SiteSearch](https://github.com/OFFLINE-GmbH/oc-site-search-plugin) 
+Searching for products and variants using [WebBook.SiteSearch](https://github.com/WebBook-GmbH/oc-site-search-plugin) 
 works out of the box.
 
-## OFFLINE.GDPR
+## WebBook.GDPR
 
-Data retention via [OFFLINE.GDPR](https://github.com/OFFLINE-GmbH/oc-gdpr-plugin) for Orders, Customer accounts
+Data retention via [WebBook.GDPR](https://github.com/WebBook-GmbH/oc-gdpr-plugin) for Orders, Customer accounts
  and abandoned Carts is available out of the box and can be configured via the plugin's backend settings page. 
  
 ## RainLab.Translate

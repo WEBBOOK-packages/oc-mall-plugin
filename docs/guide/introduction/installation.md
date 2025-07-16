@@ -5,7 +5,7 @@ editLink: true
 
 # Installation
 
-**Mall** can be found on the official [October CMS Marketplace](https://octobercms.com/plugin/offline-mall). 
+**Mall** can be found on the official [October CMS Marketplace](https://octobercms.com/plugin/webbook-mall). 
 
 
 ## Using Marketplace
@@ -66,7 +66,7 @@ make everything work.
 
 | Feature                      | Package |
 | ---------------------------- | ------- |
-| File-Based Index             | [`offline/jsonq`](https://packagist.org/packages/offline/jsonq)<br />[`tmarois/filebase`](https://packagist.org/packages/tmarois/filebase) |
+| File-Based Index             | [`webbook/jsonq`](https://packagist.org/packages/webbook/jsonq)<br />[`tmarois/filebase`](https://packagist.org/packages/tmarois/filebase) |
 | Google Merchant Feed         | [`vitalybaev/google-merchant-feed`](https://packagist.org/packages/vitalybaev/google-merchant-feed) |
 | PostFinance Payment Provider | [`bummzack/omnipay-postfinance`](https://packagist.org/packages/bummzack/omnipay-postfinance) |
 
@@ -126,14 +126,14 @@ php artisan plugin:refresh WebBook.Mall
 ## Setup Demo-Theme
 
 We also provide a simple demonstration theme to make getting started with our **Mall** plugin as 
-easy as possible. You can find this theme on the official [October CMS Marketplace](https://octobercms.com/theme/offline-oc-mall-theme) 
-as well as on [GitHub](https://github.com/OFFLINE-GmbH/oc-mall-theme).
+easy as possible. You can find this theme on the official [October CMS Marketplace](https://octobercms.com/theme/webbook-oc-mall-theme) 
+as well as on [GitHub](https://github.com/WebBook-GmbH/oc-mall-theme).
 
 To install the theme, make sure you've installed the dependent packages first
 
 ```sh
 php artisan plugin:install RainLab.Pages
-php artisan plugin:install OFFLINE.SiteSearch
+php artisan plugin:install WebBook.SiteSearch
 ```
 
 After that, you can download and extract the theme inside the `themes/mall` folder of your 
