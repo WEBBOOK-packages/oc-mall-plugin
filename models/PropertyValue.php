@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace WebBook\Mall\Models;
+namespace OFFLINE\Mall\Models;
 
 use Model;
 use October\Rain\Database\Traits\Validation;
-use WebBook\Mall\Classes\Traits\HashIds;
+use OFFLINE\Mall\Classes\Traits\HashIds;
 use System\Models\File;
 
 class PropertyValue extends Model
@@ -32,7 +32,7 @@ class PropertyValue extends Model
 
     public $with = ['property'];
 
-    public $table = 'webbook_mall_property_values';
+    public $table = 'offline_mall_property_values';
 
     public $belongsTo = [
         'property' => [Property::class, 'deleted' => true],
@@ -43,6 +43,11 @@ class PropertyValue extends Model
     public $attachOne = [
         'image' => File::class,
     ];
+
+    /**
+     * These types must never be translated.
+     */
+    public $untranslatableTypes = ['checkbox', 'switch', 'integer', 'float'];
 
     /**
      * The parent's attribute type is stored to make trigger conditions
@@ -70,6 +75,7 @@ class PropertyValue extends Model
             $decoded = $this->jsonDecodeValue();
             $value = $decoded['name'] ?? $decoded['hex'] ?? '';
         }
+
         $this->index_value = str_slug($value);
     }
 
@@ -80,6 +86,10 @@ class PropertyValue extends Model
 
     public function setValueAttribute($value)
     {
+        if (in_array(optional($this->property)->type, $this->untranslatableTypes)) {
+            $this->translatable = [];
+        }
+
         $this->attributes['value'] = $this->handleArrayValue($value);
     }
 
@@ -91,7 +101,12 @@ class PropertyValue extends Model
     public function getValueAttribute()
     {
         $type  = optional($this->property)->type;
-        $value = $this->getAttributeTranslated('value');
+
+        if (in_array($type, $this->untranslatableTypes)) {
+            $value = $this->original['value'];
+        } else {
+            $value = $this->getAttributeTranslated('value');
+        }
 
         if ($type === 'float') {
             return (float)$value;
@@ -101,7 +116,7 @@ class PropertyValue extends Model
             return (int)$value;
         }
 
-        if ($type === 'checkbox') {
+        if ($type === 'checkbox' || $type === 'switch') {
             return (bool)$value;
         }
 
@@ -145,7 +160,7 @@ class PropertyValue extends Model
         if ($type === 'checkbox') {
             $key = (bool)$value ? 'yes' : 'no';
 
-            return trans('webbook.mall::lang.common.' . $key);
+            return trans('offline.mall::lang.common.' . $key);
         }
 
         return e($value);
@@ -198,7 +213,7 @@ class PropertyValue extends Model
      */
     private function jsonDecodeValue($value = null)
     {
-        $value = $value ?? $this->attributes['value'];
+        $value ??= $this->attributes['value'];
 
         if (! $value) {
             return null;

@@ -24,7 +24,7 @@ return $config
         'no_trailing_whitespace' => true,
         'echo_tag_syntax' => ['format' => 'short'],
         'return_assignment' => true,
-        'semicolon_after_instruction' => true,
+        'semicolon_after_instruction' => false,
         'explicit_string_variable' => true,
         'single_quote' => ['strings_containing_single_quote_chars' => false],
         'function_declaration' => ['closure_function_spacing' => 'one'],

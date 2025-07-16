@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WebBook\Mall\Models;
+namespace OFFLINE\Mall\Models;
 
 use Carbon\Carbon;
 use DB;
@@ -12,14 +12,14 @@ use Illuminate\Support\Collection;
 use Model;
 use October\Rain\Database\Traits\SoftDelete;
 use October\Rain\Database\Traits\Validation;
-use WebBook\Mall\Classes\Cart\DiscountApplier;
-use WebBook\Mall\Classes\Exceptions\InvalidDiscountException;
-use WebBook\Mall\Classes\Totals\TotalsCalculator;
-use WebBook\Mall\Classes\Totals\TotalsCalculatorInput;
-use WebBook\Mall\Classes\Traits\Cart\CartActions;
-use WebBook\Mall\Classes\Traits\Cart\CartSession;
-use WebBook\Mall\Classes\Traits\Cart\Discounts;
-use WebBook\Mall\Classes\Traits\ShippingMethods;
+use OFFLINE\Mall\Classes\Cart\DiscountApplier;
+use OFFLINE\Mall\Classes\Exceptions\InvalidDiscountException;
+use OFFLINE\Mall\Classes\Totals\TotalsCalculator;
+use OFFLINE\Mall\Classes\Totals\TotalsCalculatorInput;
+use OFFLINE\Mall\Classes\Traits\Cart\CartActions;
+use OFFLINE\Mall\Classes\Traits\Cart\CartSession;
+use OFFLINE\Mall\Classes\Traits\Cart\Discounts;
+use OFFLINE\Mall\Classes\Traits\ShippingMethods;
 use Session;
 
 /**
@@ -38,7 +38,7 @@ class Cart extends Model
 
     public $rules = [];
 
-    public $table = 'webbook_mall_carts';
+    public $table = 'offline_mall_carts';
 
     public $hasMany = [
         'products' => [CartProduct::class, 'deleted' => true],
@@ -65,7 +65,7 @@ class Cart extends Model
     public $belongsToMany = [
         'discounts' => [
             Discount::class,
-            'table' => 'webbook_mall_cart_discount',
+            'table' => 'offline_mall_cart_discount',
         ],
     ];
 
@@ -141,7 +141,7 @@ class Cart extends Model
      */
     public function getIsVirtualAttribute(): bool
     {
-        return $this->products->count() > 0 && $this->products->every(fn(CartProduct $product) => $product->data->is_virtual);
+        return $this->products->count() > 0 && $this->products->every(fn (CartProduct $product) => $product->data->is_virtual);
     }
 
     public function getShippingAddressSameAsBillingAttribute(): bool
@@ -222,8 +222,8 @@ class Cart extends Model
      * Remove all products that are no longer published.
      * Returns all removed products.
      *
-     * @return \October\Rain\Support\Collection
      * @throws Exception
+     * @return \October\Rain\Support\Collection
      */
     public function removeUnpublishedProducts()
     {
@@ -333,6 +333,7 @@ class Cart extends Model
 
         if ($invalidDiscounts->count() > 0) {
             $this->save();
+
             throw new InvalidDiscountException($this, $invalidDiscounts);
         }
     }

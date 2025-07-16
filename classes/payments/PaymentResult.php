@@ -2,6 +2,7 @@
 
 namespace WebBook\Mall\Classes\Payments;
 
+use Config;
 use WebBook\Mall\Classes\PaymentState\FailedState;
 use WebBook\Mall\Classes\PaymentState\PaidState;
 use WebBook\Mall\Classes\PaymentState\PendingState;
@@ -9,7 +10,6 @@ use WebBook\Mall\Models\Order;
 use WebBook\Mall\Models\PaymentLog;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
-use Config;
 
 /**
  * The PaymentResult contains the result of a payment attempt.
