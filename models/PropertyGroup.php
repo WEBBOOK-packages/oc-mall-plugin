@@ -37,12 +37,12 @@ class PropertyGroup extends Model
 
     public $fillable = ['name', 'display_name', 'slug', 'description'];
 
-    public $table = 'offline_mall_property_groups';
+    public $table = 'webbook_mall_property_groups';
 
     public $belongsToMany = [
         'properties'            => [
             Property::class,
-            'table'      => 'offline_mall_property_property_group',
+            'table'      => 'webbook_mall_property_property_group',
             'key'        => 'property_group_id',
             'otherKey'   => 'property_id',
             'pivot'      => ['use_for_variants', 'filter_type', 'sort_order'],
@@ -51,17 +51,17 @@ class PropertyGroup extends Model
         ],
         'filterable_properties' => [
             Property::class,
-            'table'      => 'offline_mall_property_property_group',
+            'table'      => 'webbook_mall_property_property_group',
             'key'        => 'property_group_id',
             'otherKey'   => 'property_id',
             'pivot'      => ['use_for_variants', 'filter_type', 'sort_order'],
             'pivotModel' => PropertyGroupProperty::class,
-            'order'      => 'offline_mall_property_property_group.sort_order ASC',
-            'conditions' => 'offline_mall_property_property_group.filter_type is not null',
+            'order'      => 'webbook_mall_property_property_group.sort_order ASC',
+            'conditions' => 'webbook_mall_property_property_group.filter_type is not null',
         ],
         'categories'            => [
             Category::class,
-            'table'    => 'offline_mall_category_property_group',
+            'table'    => 'webbook_mall_category_property_group',
             'key'      => 'property_group_id',
             'otherKey' => 'category_id',
             'pivot'    => ['relation_sort_order'],

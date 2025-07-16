@@ -38,7 +38,7 @@ class Cart extends Model
 
     public $rules = [];
 
-    public $table = 'offline_mall_carts';
+    public $table = 'webbook_mall_carts';
 
     public $hasMany = [
         'products' => [CartProduct::class, 'deleted' => true],
@@ -65,7 +65,7 @@ class Cart extends Model
     public $belongsToMany = [
         'discounts' => [
             Discount::class,
-            'table' => 'offline_mall_cart_discount',
+            'table' => 'webbook_mall_cart_discount',
         ],
     ];
 

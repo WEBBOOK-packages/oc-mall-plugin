@@ -32,7 +32,7 @@ class PropertyValue extends Model
 
     public $with = ['property'];
 
-    public $table = 'offline_mall_property_values';
+    public $table = 'webbook_mall_property_values';
 
     public $belongsTo = [
         'property' => [Property::class, 'deleted' => true],

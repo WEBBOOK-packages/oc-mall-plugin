@@ -697,3 +697,5 @@ v3.7.5:
     - "Fixed FR translations (thanks to @damsfx)"
 v3.7.6:
     - "Replace `OFFLINE` namespace and related references with `WebBook` equivalents"
+v3.7.7:
+    - "Replace offline_mall table references with webbook_mall equivalents"

@@ -438,21 +438,21 @@ class ProductsFilter extends MallComponent
      */
     protected function setBrands()
     {
-        $brands = DB::table('offline_mall_products')
-            ->where('offline_mall_products.published', '=', true)
+        $brands = DB::table('webbook_mall_products')
+            ->where('webbook_mall_products.published', '=', true)
             ->when($this->categories->count() > 0, function ($query) {
-                $query->whereIn('offline_mall_category_product.category_id', $this->categories->pluck('id'));
+                $query->whereIn('webbook_mall_category_product.category_id', $this->categories->pluck('id'));
             })
-            ->select('offline_mall_brands.*')
+            ->select('webbook_mall_brands.*')
             ->distinct()
-            ->join('offline_mall_brands', 'offline_mall_products.brand_id', '=', 'offline_mall_brands.id')
+            ->join('webbook_mall_brands', 'webbook_mall_products.brand_id', '=', 'webbook_mall_brands.id')
             ->join(
-                'offline_mall_category_product',
-                'offline_mall_products.id',
+                'webbook_mall_category_product',
+                'webbook_mall_products.id',
                 '=',
-                'offline_mall_category_product.product_id'
+                'webbook_mall_category_product.product_id'
             )
-            ->orderBy('offline_mall_brands.name')
+            ->orderBy('webbook_mall_brands.name')
             ->get()
             ->toArray();
 
