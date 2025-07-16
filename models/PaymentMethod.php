@@ -135,7 +135,7 @@ class PaymentMethod extends Model
         'updated_at',
         'deleted_at',
     ];
-    
+
     /**
      * The accessors to append to the model's array form.
      * @var array
@@ -216,6 +216,7 @@ class PaymentMethod extends Model
     public static function getAvailableByCart(Cart $cart)
     {
         $results = array_filter(Event::fire('mall.cart.extendAvailablePaymentMethods', [$cart]) ?? []);
+
         if (count($results) > 0) {
             return $results[0];
         }
@@ -308,7 +309,7 @@ class PaymentMethod extends Model
 
         return $provider->getSettings();
     }
-    
+
     /**
      * Get price for the cart.
      * @return PaymentTotal

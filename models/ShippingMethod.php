@@ -54,7 +54,7 @@ class ShippingMethod extends Model
     public $implement = [
         '@RainLab.Translate.Behaviors.TranslatableModel',
     ];
-    
+
     /**
      * The table associated with this model.
      * @var string
@@ -227,12 +227,12 @@ class ShippingMethod extends Model
         } else {
             $total = $cart->totals()->productPostTaxes();
             $countryId = optional($cart->shipping_address)->country_id;
-    
+
             // Use the Country ID from the post data, if availalb.e
             if (post('country_id')) {
                 $countryId = post('country_id');
             }
-    
+
             return self::getAvailability($countryId, $total, $cart, null);
         }
     }
@@ -300,7 +300,7 @@ class ShippingMethod extends Model
      * JSON serialize class.
      * @return array
      */
-    public function jsonSerialize(): array
+    public function jsonSerialize(): mixed
     {
         $base = parent::jsonSerialize();
         $this->prices->load('currency');
@@ -360,7 +360,7 @@ class ShippingMethod extends Model
             return $this->getAttributeTranslated('name');
         }
     }
-    
+
     /**
      * Get price by ???
      * @param mixed $currency
@@ -370,7 +370,7 @@ class ShippingMethod extends Model
     {
         return $this->price($currency, 'available_below_totals');
     }
-    
+
     /**
      * Get price by ???
      * @param mixed $currency

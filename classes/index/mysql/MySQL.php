@@ -171,7 +171,7 @@ class MySQL implements Index
         // Allow the index data to be extended with custom information
         $customIndexData = Event::fire('mall.index.extendData', [$data]);
 
-        if(!empty($customIndexData) && is_array($customIndexData[0])) {
+        if (!empty($customIndexData) && is_array($customIndexData[0])) {
             $indexData = array_merge($indexData, $customIndexData[0]);
         }
 
@@ -240,11 +240,11 @@ class MySQL implements Index
             $db->where(function ($q) use ($currency, $min, $max) {
                 $q->whereRaw('JSON_EXTRACT(`prices`, ?) >= ?', [
                     '$.' . $currency,
-                    (int)($min * 100),
+                    (int)($min) * 100,
                 ]);
                 $q->whereRaw('JSON_EXTRACT(`prices`, ?) <= ?', [
                     '$.' . $currency,
-                    (int)($max * 100),
+                    (int)($min) * 100,
                 ]);
             });
         }
@@ -294,6 +294,7 @@ class MySQL implements Index
              * @see https://laravel.com/docs/10.x/upgrade#database-expressions
              */
             $laravelMajorVersion = (int) (explode('.', Application::VERSION)[0] ?? 0);
+
             if ($laravelMajorVersion >= 10) {
                 $expression = $expression->getValue(DB::connection()->getQueryGrammar());
             }

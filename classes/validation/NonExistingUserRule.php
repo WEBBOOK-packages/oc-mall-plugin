@@ -1,13 +1,11 @@
 <?php
 
-namespace WebBook\Mall\Classes\Validation;
-
+namespace OFFLINE\Mall\Classes\Validation;
 
 use RainLab\User\Models\User;
 
 class NonExistingUserRule
 {
-
     public function validate($attribute, $value, $parameters, $validator)
     {
         return User::with('customer')
