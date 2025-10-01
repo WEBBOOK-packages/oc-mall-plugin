@@ -701,3 +701,11 @@ v3.7.7:
     - "Replace offline_mall table references with webbook_mall equivalents"
 v3.7.8:
     - "Refactor and rename: migrate remaining offline.mall logic to webbook.mall methods and attributes."
+v3.7.9:
+    - "Allow the short_description column of the products table to be nullable."
+    - 032_01-update_description_short_column_of_products_table.php
+v3.7.10:
+    - "Allow the short_description column of the product variants table to be nullable."
+    - 032_02-update_description_short_column_of_product_variants_table.php"
+v3.7.12:
+    - "Refactor event handling and improve checkout event consistency."

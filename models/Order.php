@@ -113,6 +113,11 @@ class Order extends Model
         $this->payment_hash = str_random(10);
     }
 
+    public function afterCreate()
+    {
+        \Event::fire('mall.checkout.succeeded', [$this]);
+    }
+
     public function afterUpdate()
     {
         if ($this->isDirty('payment_state')) {

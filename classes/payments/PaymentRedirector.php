@@ -103,13 +103,11 @@ class PaymentRedirector
         }
 
         if ($result->successful) {
-            Event::fire('mall.checkout.succeeded', [$result]);
-
             return $this->finalRedirect('successful');
         }
 
         if (optional($result->order)->wasRecentlyCreated) {
-            Event::fire('mall.checkout.failed', [$result]);
+            Event::fire('mall.checkout.failed', [$result->order]);
         }
 
         return $this->finalRedirect('failed');

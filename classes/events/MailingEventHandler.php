@@ -39,32 +39,14 @@ class MailingEventHandler
      *
      * @param $events
      */
-    public function subscribe($events)
+    public function subscribe($events): void
     {
-        $eventMap = [
-            'webbook.mall::customer.created'    => [
-                'event'   => 'mall.customer.afterSignup',
-                'handler' => '\webbook\mall\classes\events\MailingEventHandler@customerCreated',
-            ],
-            'webbook.mall::order.state.changed' => [
-                'event'   => 'mall.order.state.changed',
-                'handler' => '\webbook\mall\classes\events\MailingEventHandler@orderStateChanged',
-            ],
-            'webbook.mall::order.shipped'       => [
-                'event'   => 'mall.order.shipped',
-                'handler' => '\webbook\mall\classes\events\MailingEventHandler@orderShipped',
-            ],
-        ];
-
-        foreach ($eventMap as $notification => $data) {
-            if ($this->enabledNotifications->has($notification)) {
-                $events->listen($data['event'], $data['handler']);
-            }
-        }
-
-        $events->listen('mall.order.payment_state.changed', '\webbook\mall\classes\events\MailingEventHandler@orderPaymentStateChanged');
-        $events->listen('mall.checkout.succeeded', '\webbook\mall\classes\events\MailingEventHandler@checkoutSucceeded');
-        $events->listen('mall.checkout.failed', '\webbook\mall\classes\events\MailingEventHandler@checkoutFailed');
+        $events->listen('mall.customer.afterSignup', [self::class, 'customerCreated']);
+        $events->listen('mall.order.state.changed', [self::class, 'orderStateChanged']);
+        $events->listen('mall.order.shipped', [self::class, 'orderShipped']);
+        $events->listen('mall.order.payment_state.changed', [self::class, 'orderPaymentStateChanged']);
+        $events->listen('mall.checkout.succeeded', [self::class, 'checkoutSucceeded']);
+        $events->listen('mall.checkout.failed', [self::class, 'checkoutFailed']);
     }
 
     /**
@@ -111,19 +93,17 @@ class MailingEventHandler
     /**
      * A checkout was successful.
      *
-     * @param $result
-     *
      * @throws \Cms\Classes\CmsException
      */
-    public function checkoutSucceeded($result)
+    public function checkoutSucceeded($order)
     {
         // Notify the customer
         if ($this->enabledNotifications->has('webbook.mall::checkout.succeeded')) {
             $input = [
-                'id'          => $result->order->id,
+                'id'          => $order->id,
                 'template'    => $this->template('webbook.mall::checkout.succeeded'),
                 'account_url' => $this->getAccountUrl(),
-                'order_url'   => $this->getBackendOrderUrl($result->order),
+                'order_url'   => $this->getBackendOrderUrl($order),
             ];
             // Push the PDF generation and mail send call to the queue.
             Queue::push(SendOrderConfirmationToCustomer::class, $input);
@@ -135,9 +115,9 @@ class MailingEventHandler
             && $adminMail = GeneralSettings::get('admin_email')
         ) {
             $data = [
-                'order'       => $result->order->fresh(['products', 'customer']),
+                'order'       => $order->fresh(['products', 'customer']),
                 'account_url' => $this->getAccountUrl(),
-                'order_url'   => $this->getBackendOrderUrl($result->order),
+                'order_url'   => $this->getBackendOrderUrl($order),
             ];
             Mail::queue(
                 $this->template('webbook.mall::admin.checkout_succeeded'),
