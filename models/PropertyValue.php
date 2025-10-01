@@ -105,7 +105,7 @@ class PropertyValue extends Model
         if (in_array($type, $this->untranslatableTypes)) {
             $value = $this->original['value'];
         } else {
-            $value = $this->getAttributeTranslated('value');
+            $value = '';
         }
 
         if ($type === 'float') {
@@ -143,7 +143,7 @@ class PropertyValue extends Model
      */
     public function getDisplayValueAttribute()
     {
-        $value = $this->getAttributeTranslated('value');
+        $value = $this->value;
 
         if ($this->isColor()) {
             $value = $this->jsonDecodeValue($value);
@@ -168,7 +168,7 @@ class PropertyValue extends Model
 
     public function getValueAttributeTranslated($locale)
     {
-        $value = $this->noFallbackLocale()->getAttributeTranslated('value', $locale);
+        $value = $this->value;
 
         if ($this->isColor()) {
             // Only the name attribute is translatable for a color value.

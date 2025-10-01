@@ -12,6 +12,24 @@ use Validator;
 trait CustomFields
 {
     /**
+     * Safely decode a hashed id into a scalar id.
+     * Many decoders (e.g., Hashids) return an array; we want the first value or null.
+     *
+     * @param mixed $value
+     * @return int|string|null
+     */
+    private function decodeId($value)
+    {
+        $decoded = $this->decode($value);
+
+        if (is_array($decoded)) {
+            return count($decoded) > 0 ? $decoded[0] : null;
+        }
+
+        return $decoded;
+    }
+
+    /**
      * Returns the product's base price with all CustomFieldValue
      * prices added.
      *
@@ -100,7 +118,8 @@ trait CustomFields
      */
     protected function mapToCustomFields(array $values)
     {
-        $values = collect($values)->mapWithKeys(fn ($value, $id) => [$this->decode($id) => $value]);
+        // Ensure decoded keys are scalars (not arrays)
+        $values = collect($values)->mapWithKeys(fn ($value, $id) => [$this->decodeId($id) => $value]);
 
         return CustomField::with('custom_field_options')
             ->whereIn('id', $values->keys())
@@ -110,7 +129,8 @@ trait CustomFields
 
                 if (\in_array($field->type, ['dropdown', 'image', 'color'], true)) {
                     if ($field->type !== 'color' || $field->custom_field_options->count() > 0) {
-                        $value = $this->decode($value);
+                        // Ensure option id is a scalar
+                        $value = $this->decodeId($value);
                     }
                 }
 
@@ -127,16 +147,19 @@ trait CustomFields
      */
     protected function mapToCustomFieldValues(Collection $fields)
     {
-        return $fields->filter(fn ($data) => $data['value'])->map(function (array $data) {
-            $option = $data['field']->custom_field_options->find($data['value']);
+        // Keep only values that are not null or empty string to avoid accidental filtering of valid falsy values like '0'
+        return $fields
+            ->filter(fn ($data) => isset($data['value']) && $data['value'] !== '')
+            ->map(function (array $data) {
+                $option = $data['field']->custom_field_options->find($data['value']);
 
-            $value                         = new CustomFieldValue();
-            $value->value                  = $data['value'];
-            $value->custom_field_id        = $data['field']->id;
-            $value->custom_field_option_id = $option ? $option->id : null;
-            $value->price                  = $value->priceForFieldOption($data['field'], $option);
+                $value                         = new CustomFieldValue();
+                $value->value                  = $data['value'];
+                $value->custom_field_id        = $data['field']->id;
+                $value->custom_field_option_id = $option ? $option->id : null;
+                $value->price                  = $value->priceForFieldOption($data['field'], $option);
 
-            return $value;
-        });
+                return $value;
+            });
     }
 }

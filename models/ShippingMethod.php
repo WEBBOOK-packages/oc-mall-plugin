@@ -346,20 +346,22 @@ class ShippingMethod extends Model
         return $this->price()->string;
     }
 
-    /**
-     * Get name attribute.
-     * @return null|string
-     */
-    public function getNameAttribute(): ?string
-    {
-        $enforcedKey = sprintf('mall.shipping.enforced.%s.name', $this->id);
-
-        if ($this->useEnforcedValues() && $enforced = Session::get($enforcedKey)) {
-            return $enforced;
-        } else {
-            return $this->getAttributeTranslated('name');
-        }
-    }
+//    /**
+//     * Get name attribute.
+//     *
+//     * TODO: fix this, it doesn't find correct name.
+//     * @return null|string
+//     */
+//    public function getNameAttribute(): ?string
+//    {
+//        $enforcedKey = sprintf('mall.shipping.enforced.%s.name', $this->id);
+//
+//        if ($this->useEnforcedValues() && $enforced = Session::get($enforcedKey)) {
+//            return $enforced;
+//        } else {
+//            return $this->getAttributeTranslated('name');
+//        }
+//    }
 
     /**
      * Get price by ???

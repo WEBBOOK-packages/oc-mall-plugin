@@ -699,3 +699,5 @@ v3.7.6:
     - "Replace `OFFLINE` namespace and related references with `WebBook` equivalents"
 v3.7.7:
     - "Replace offline_mall table references with webbook_mall equivalents"
+v3.7.8:
+    - "Refactor and rename: migrate remaining offline.mall logic to webbook.mall methods and attributes."
