@@ -158,6 +158,9 @@ return [
     'order_state_settings' => [
         'description' => 'Configure order states',
         'is_enabled' => 'Enabled',
+        'is_internal' => 'Internal',
+        'display_state' => 'Display state',
+        'display_state_comment' => 'Display the state on the FE order page',
     ],
     'payment_method_settings' => [
         'description' => 'Manage payment methods',

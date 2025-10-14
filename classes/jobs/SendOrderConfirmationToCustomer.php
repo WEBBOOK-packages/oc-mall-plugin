@@ -38,8 +38,10 @@ class SendOrderConfirmationToCustomer
             function (Message $message) use ($order) {
                 $message->to($order->customer->user->email, $order->customer->name);
 
-                if ($pdf = $order->getPDFInvoice()) {
-                    $file_name = trans('webbook.mall::lang.order.order_file_name', ['order' => $order->id]);
+                $pdf = $order->getPDFInvoice();
+
+                if ($order->is_paid && $pdf instanceof \Barryvdh\DomPDF\PDF) {
+                    $file_name = trans('webbook.mall::lang.order.order_file_name', ['order' => $order->order_number]);
                     $message->attachData($pdf->output(), sprintf('%s.pdf', $file_name));
                 }
             }

@@ -26,7 +26,7 @@
     <?= e(trans('webbook.mall::lang.order.update_invoice_number')) ?>
 </a>
 
-<?php if ($order->payment_method->pdf_partial): ?>
+<?php if ($order->payment_method->pdf_partial && $order->is_paid): ?>
 <a class="btn btn-default  oc-icon-file-pdf-o"
    href="<?= e(Backend::url('webbook/mall/orders/invoice/' . $order['id'])) ?>"
    target="_blank">

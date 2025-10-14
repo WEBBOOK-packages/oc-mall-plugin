@@ -1,9 +1,4 @@
 fields:
-    is_enabled:
-        type: switch
-        label: webbook.mall::lang.order_state_settings.is_enabled
-        span: left
-        default: true
     name:
         label: 'webbook.mall::lang.order_states.name'
         oc.commentPosition: ''
@@ -15,6 +10,25 @@ fields:
         emptyOption: '--'
         span: right
         type: dropdown
+    is_enabled:
+        type: switch
+        label: webbook.mall::lang.order_state_settings.is_enabled
+        span: left
+        default: true
+    is_internal:
+        type: switch
+        label: webbook.mall::lang.order_state_settings.is_internal
+        span: right
+    display_state:
+        label: 'webbook.mall::lang.order_state_settings.display_state'
+        oc.commentPosition: ''
+        emptyOption: '--'
+        comment: 'webbook.mall::lang.order_state_settings.display_state_comment'
+        type: dropdown
+        trigger:
+            action: show
+            field: is_internal
+            condition: checked
     description:
         label: 'webbook.mall::lang.product.description'
         size: large

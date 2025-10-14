@@ -178,6 +178,10 @@ class MailingEventHandler
             return;
         }
 
+        if ($order->order_state->isInternal()) {
+            return;
+        }
+
         $data = [
             'order' => $order->load(['order_state']),
             'account_url' => $this->getAccountUrl(),
@@ -253,6 +257,16 @@ class MailingEventHandler
             'order'       => $order->load(['order_state', 'payment_logs']),
             'account_url' => $this->getAccountUrl(),
         ];
+
+        if ($view === 'paid') {
+            Queue::push(\WebBook\Mall\Classes\Jobs\SendOrderConfirmationToCustomer::class, [
+                'id'          => $order->id,
+                'template'    => $this->template('webbook.mall::payment.paid'),
+                'account_url' => $this->getAccountUrl(),
+                'order_url'   => $this->getBackendOrderUrl($order),
+            ]);
+            return;
+        }
 
         Mail::queue(
             $this->template('webbook.mall::payment.' . $view),

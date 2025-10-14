@@ -121,13 +121,7 @@ class Order extends Model
     public function afterUpdate()
     {
         if ($this->isDirty('payment_state')) {
-            // Don't trigger payment changes during the checkout flow. A mall.checkout.succeeded
-            // Event will already be triggered in the PaymentRedirector.
-            $flow = session()->get('mall.checkout.flow');
-
-            if ($flow !== 'checkout') {
-                Event::fire('mall.order.payment_state.changed', [$this]);
-            }
+            Event::fire('mall.order.payment_state.changed', [$this]);
 
             // If the order became paid, distribute all virtual products.
             if ($this->payment_state === PaidState::class && $this->paid_at === null) {
@@ -336,7 +330,7 @@ class Order extends Model
 
     public function getOrderStateLabelAttribute()
     {
-        return $this->order_state->name;
+        return $this->order_state->public_name;
     }
 
     public function getShippingAddressStringAttribute()

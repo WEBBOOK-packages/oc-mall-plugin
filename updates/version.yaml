@@ -709,3 +709,6 @@ v3.7.10:
     - 032_02-update_description_short_column_of_product_variants_table.php"
 v3.7.12:
     - "Refactor event handling and improve checkout event consistency."
+v3.7.20:
+    - "Add internal state handling to order states."
+    - 033_01-add_internal_state_to_offline_mall_order_states.php.php
