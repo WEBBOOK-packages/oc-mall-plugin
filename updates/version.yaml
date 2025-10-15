@@ -712,3 +712,5 @@ v3.7.12:
 v3.7.20:
     - "Add internal state handling to order states."
     - 033_01-add_internal_state_to_offline_mall_order_states.php.php
+v3.7.22:
+    - "Add display state handling and filtering for order states."

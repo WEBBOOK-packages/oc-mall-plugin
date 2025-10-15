@@ -24,6 +24,10 @@ columns:
         label: 'webbook.mall::lang.order_state_settings.is_internal'
         type: switch
         searchable: true
+    display_state:
+        label: 'webbook.mall::lang.order_state_settings.display_state'
+        type: partial
+        path: $/webbook/mall/models/orderstate/_display_state.htm
     created_at:
         label: 'webbook.mall::lang.common.created_at'
         type: datetime

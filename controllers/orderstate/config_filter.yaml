@@ -1,0 +1,28 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+    flag:
+        emptyOption: 'webbook.mall::lang.order_states.flag'
+        type: dropdown
+        options: getFlagOptions
+    is_enabled:
+        label: webbook.mall::lang.order_state_settings.is_enabled
+        type: switch
+        conditions:
+            - is_enabled <> true
+            - is_enabled = true
+    is_internal:
+        label: webbook.mall::lang.order_state_settings.is_internal
+        type: switch
+        conditions:
+            - is_internal <> true
+            - is_internal = true
+    display_state:
+        label: webbook.mall::lang.order_state_settings.display_state
+        type: group
+        modelClass: WebBook\Mall\Models\OrderState
+        conditions: display_state_id in (:filtered)
+        optionsScope: public
+        nameFrom: name

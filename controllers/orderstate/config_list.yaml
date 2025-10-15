@@ -18,3 +18,4 @@ structure:
     showReorder: true
     treeExpanded: true
     maxDepth: 1
+filter: config_filter.yaml
