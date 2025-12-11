@@ -82,12 +82,14 @@ class MailingEventHandler
             'confirm_code' => $confirmCode,
         ];
 
-        Mail::queue($this->template('webbook.mall::customer.created'), $data, function ($message) use ($user) {
-            if (class_exists(Translator::class) && method_exists($message, 'locale')) {
-                $message->locale(Translator::instance()->getLocale());
-            }
-            $message->to($user->email, $user->customer->name);
-        });
+        if ($this->enabledNotifications->has('webbook.mall::customer.created')) {
+            Mail::queue($this->template('webbook.mall::customer.created'), $data, function ($message) use ($user) {
+                if (class_exists(Translator::class) && method_exists($message, 'locale')) {
+                    $message->locale(Translator::instance()->getLocale());
+                }
+                $message->to($user->email, $user->customer->name);
+            });
+        }
     }
 
     /**

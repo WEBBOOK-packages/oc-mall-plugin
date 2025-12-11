@@ -714,3 +714,5 @@ v3.7.20:
     - 033_01-add_internal_state_to_offline_mall_order_states.php.php
 v3.7.22:
     - "Add display state handling and filtering for order states."
+v3.7.23:
+    - "Add conditional check for enabled notifications in customer creation mail handling."
