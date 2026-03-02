@@ -14,6 +14,18 @@ fields:
         label: 'webbook.mall::frontend.form.company'
         span: auto
         type: text
+    phone:
+        label: 'webbook.mall::frontend.form.phone'
+        span: auto
+        type: text
+    tin:
+        label: 'webbook.mall::frontend.form.tin'
+        span: left
+        type: text
+    vat:
+        label: 'webbook.mall::frontend.form.vat'
+        span: right
+        type: text
     lines:
         label: 'webbook.mall::frontend.form.address_lines'
         size: ''

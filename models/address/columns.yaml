@@ -9,6 +9,21 @@ columns:
         type: text
         searchable: true
         sortable: true
+    phone:
+        label: 'webbook.mall::frontend.form.phone'
+        type: text
+        searchable: true
+        sortable: true
+    tin:
+        label: 'webbook.mall::frontend.form.tin'
+        type: text
+        searchable: true
+        sortable: true
+    vat:
+        label: 'webbook.mall::frontend.form.vat'
+        type: text
+        searchable: true
+        sortable: true
     name:
         label: 'webbook.mall::frontend.form.recipient'
         type: text

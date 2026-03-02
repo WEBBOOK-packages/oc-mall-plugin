@@ -5,6 +5,15 @@
                 {% if address.company %}
                     {{ address.company }}<br/>
                 {% endif %}
+                {% if address.phone|default(null) %}
+                    {{ 'webbook.mall::frontend.form.phone'|trans }}: {{ address.phone }}<br/>
+                {% endif %}
+                {% if address.tin|default(null) %}
+                    {{ 'webbook.mall::frontend.form.tin'|trans }}: {{ address.tin }}<br/>
+                {% endif %}
+                {% if address.vat|default(null) %}
+                    {{ 'webbook.mall::frontend.form.vat'|trans }}: {{ address.vat }}<br/>
+                {% endif %}
                 {{ address.name }}<br/>
             </td>
             <td>

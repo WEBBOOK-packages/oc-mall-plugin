@@ -716,3 +716,6 @@ v3.7.22:
     - "Add display state handling and filtering for order states."
 v3.7.23:
     - "Add conditional check for enabled notifications in customer creation mail handling."
+v3.7.24:
+    - "Add phone, TIN and VAT fields to addresses."
+    - 034_01-add_contact_and_tax_fields_to_webbook_mall_addresses.php

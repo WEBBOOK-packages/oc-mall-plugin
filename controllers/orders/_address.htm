@@ -5,6 +5,15 @@
     </h4>
     <p>
         <?= e($address['company']) ?><br/>
+        <?php if (!empty($address['phone'])): ?>
+            <?= e(trans('webbook.mall::frontend.form.phone')) ?>: <?= e($address['phone']) ?><br/>
+        <?php endif; ?>
+        <?php if (!empty($address['tin'])): ?>
+            <?= e(trans('webbook.mall::frontend.form.tin')) ?>: <?= e($address['tin']) ?><br/>
+        <?php endif; ?>
+        <?php if (!empty($address['vat'])): ?>
+            <?= e(trans('webbook.mall::frontend.form.vat')) ?>: <?= e($address['vat']) ?><br/>
+        <?php endif; ?>
         <?= e($address['name']) ?><br/>
         <?= e($address['lines']) ?><br/>
         <?= e($address['zip']) ?>

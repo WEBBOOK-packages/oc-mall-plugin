@@ -10,6 +10,27 @@
     <div data-validate-for="{{ type }}company"></div>
 </div>
 <div class="mall-form-control">
+    <label for="{{ type }}phone">{{ 'webbook.mall::frontend.form.phone'|trans }}</label>
+    <input id="{{ type }}phone" type="text"
+           value="{{ address.phone|default('') }}"
+           name="{{ type }}phone">
+    <div data-validate-for="{{ type }}phone"></div>
+</div>
+<div class="mall-two-fields">
+    <div class="mall-form-control">
+        <label for="{{ type }}tin">{{ 'webbook.mall::frontend.form.tin'|trans }}</label>
+        <input id="{{ type }}tin" name="{{ type }}tin" type="text"
+               value="{{ address.tin|default('') }}">
+        <div data-validate-for="{{ type }}tin"></div>
+    </div>
+    <div class="mall-form-control">
+        <label for="{{ type }}vat">{{ 'webbook.mall::frontend.form.vat'|trans }}</label>
+        <input id="{{ type }}vat" name="{{ type }}vat" type="text"
+               value="{{ address.vat|default('') }}">
+        <div data-validate-for="{{ type }}vat"></div>
+    </div>
+</div>
+<div class="mall-form-control">
     <label for="{{ type }}address_name">{{ 'webbook.mall::frontend.form.recipient'|trans }}</label>
     <input id="{{ type }}address_name" type="text"
            value="{{ address.name|default('') }}"
