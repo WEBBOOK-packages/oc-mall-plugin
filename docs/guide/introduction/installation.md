@@ -48,7 +48,7 @@ php artisan october:migrate
 ```
 
 ```sh
-composer require webbook/oc-mall-plugin
+composer require webbook/mall-plugin
 ```
 
 ```sh

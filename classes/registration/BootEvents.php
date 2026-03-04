@@ -134,7 +134,7 @@ trait BootEvents
     protected function registerGdprEvents()
     {
         Event::listen('webbook.gdpr::cleanup.register', fn () => [
-            'id'     => 'oc-mall-plugin',
+            'id'     => 'mall-plugin',
             'label'  => 'WebBook Mall',
             'models' => [
                 [

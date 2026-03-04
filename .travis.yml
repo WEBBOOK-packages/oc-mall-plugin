@@ -62,7 +62,7 @@ matrix:
         skip-cleanup: true
         local_dir: src/docs/.vitepress/dist
         github-token: $GITHUB_TOKEN
-        repo: WebBook/oc-mall-plugin
+        repo: WebBook/mall-plugin
         keep-history: false
         target-branch: gh-pages
         on:

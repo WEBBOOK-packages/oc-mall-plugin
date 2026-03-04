@@ -1,5 +1,5 @@
 {
-    "name": "webbook/oc-mall-plugin",
+    "name": "webbook/mall-plugin",
     "type": "october-plugin",
     "description": "E-commerce solution for October CMS",
     "keywords": [

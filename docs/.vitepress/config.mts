@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
     title: "Mall OctoberCMS Plugin",
     description: "The all-inclusive e-commerce solution for OctoberCMS.",
-    base: '/oc-mall-plugin/',
+    base: '/mall-plugin/',
     vite: {
         server: {
             port: 3003
@@ -127,7 +127,7 @@ export default defineConfig({
             },
             {
                 icon: 'github',
-                link: 'https://github.com/WebBook-GmbH/oc-mall-plugin'
+                link: 'https://github.com/WEBBOOK-packages/oc-mall-plugin.git'
             }
         ]
     }

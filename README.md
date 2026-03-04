@@ -63,7 +63,7 @@ composer require \
    rainlab/user-plugin \
    rainlab/location-plugin \
    rainlab/translate-plugin \
-   webbook/oc-mall-plugin
+   webbook/mall-plugin
 ``` 
 
 Once the plugin is installed take a look at [the official documentation](https://webbook-gmbh.github.io/oc-mall-plugin/)

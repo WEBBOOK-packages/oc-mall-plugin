@@ -721,3 +721,5 @@ v3.7.24:
     - 034_01-add_contact_and_tax_fields_to_webbook_mall_addresses.php
 v3.7.25:
     - "Add phone validation rules for addresses and customer sign-up handling."
+v3.7.26:
+    - "Update package name in composer.json to webbook/mall-plugin"
