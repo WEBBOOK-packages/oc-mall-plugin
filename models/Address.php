@@ -21,6 +21,7 @@ class Address extends Model
 
     public $rules = [
         'lines'       => 'required',
+        'phone'       => 'required',
         'zip'         => 'required',
         'country_id'  => 'required|exists:rainlab_location_countries,id',
         'customer_id' => 'required|exists:webbook_mall_customers,id',

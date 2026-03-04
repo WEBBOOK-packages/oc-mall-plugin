@@ -957,6 +957,9 @@ return [
                 'lastname' => [
                     'required' => 'Vložte své příjmení.',
                 ],
+                'phone' => [
+                    'required' => 'Vložte své telefonní číslo.',
+                ],
                 'lines' => [
                     'required' => 'Vložte svou adresu.',
                 ],

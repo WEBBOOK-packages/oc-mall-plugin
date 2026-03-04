@@ -1045,6 +1045,9 @@ return [
                 'lastname' => [
                     'required' => 'Please enter your last name.',
                 ],
+                'phone' => [
+                    'required' => 'Please enter your phone number.',
+                ],
                 'lines' => [
                     'required' => 'Please enter your address.',
                 ],
