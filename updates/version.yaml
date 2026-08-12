@@ -723,3 +723,5 @@ v3.7.25:
     - "Add phone validation rules for addresses and customer sign-up handling."
 v3.7.26:
     - "Update package name in composer.json to webbook/mall-plugin"
+v3.7.27:
+    - "Add fail-safe VIES REST validation for intra-EU B2B tax exemption."

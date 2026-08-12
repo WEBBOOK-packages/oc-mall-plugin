@@ -6,11 +6,14 @@ namespace WebBook\Mall\Components;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use October\Rain\Support\Facades\Flash;
+use RainLab\Location\Models\Country;
 use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Classes\Vat\IntraEuTaxDecisionService;
+use WebBook\Mall\Classes\Vat\VatValidationResult;
+use WebBook\Mall\Classes\Vat\ViesVatValidator;
 use WebBook\Mall\Models\Address;
 use WebBook\Mall\Models\Cart;
 use WebBook\Mall\Models\GeneralSettings;
-use RainLab\Location\Models\Country;
 
 /**
  * The AddressForm component displays a form to edit an address.
@@ -218,12 +221,59 @@ class AddressForm extends MallComponent
         $user->customer->save();
 
         Flash::success(trans('webbook.mall::lang.common.saved_changes'));
+        $this->showVatValidationMessage();
 
         if ($url = $this->getRedirectUrl()) {
             return redirect()->to(url($url));
         }
 
         return null;
+    }
+
+    protected function showVatValidationMessage(): void
+    {
+        if (!config('webbook.mall::vat.enabled', false)) {
+            return;
+        }
+
+        if (trim((string)$this->address->vat) === '') {
+            return;
+        }
+
+        $validation = app(ViesVatValidator::class)->validate((string)$this->address->vat);
+
+        if ($validation->isUnavailable()) {
+            Flash::warning(trans('webbook.mall::frontend.vat.unavailable'));
+
+            return;
+        }
+
+        if ($validation->isInvalid()) {
+            Flash::warning(trans('webbook.mall::frontend.vat.invalid'));
+
+            return;
+        }
+
+        if ($this->cart && (int)$this->cart->billing_address_id === (int)$this->address->id) {
+            $this->cart->unsetRelation('billing_address');
+            $this->cart->unsetRelation('shipping_address');
+
+            $decision = app(IntraEuTaxDecisionService::class)->forCart($this->cart, true);
+            $this->cart->totalsCached = null;
+            $this->cart->unsetRelation('products');
+
+            if ($decision['is_exempt']) {
+                Flash::success(trans('webbook.mall::frontend.vat.exempt'));
+            } else {
+                Flash::warning(trans('webbook.mall::frontend.vat.valid_not_exempt'));
+            }
+
+            return;
+        }
+
+        if ($validation->status === VatValidationResult::STATUS_VALID) {
+            Flash::success(trans('webbook.mall::frontend.vat.valid'));
+        }
     }
 
     /**

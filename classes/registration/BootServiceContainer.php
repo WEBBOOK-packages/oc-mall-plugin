@@ -8,6 +8,7 @@ use DB;
 use Dompdf\Dompdf;
 use Hashids\Hashids;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Http\Client\Factory as HttpFactory;
 use Illuminate\Support\Facades\Cache;
 use WebBook\Mall\Classes\Customer\DefaultSignInHandler;
 use WebBook\Mall\Classes\Customer\DefaultSignUpHandler;
@@ -26,6 +27,8 @@ use WebBook\Mall\Classes\Payments\Stripe;
 use WebBook\Mall\Classes\User\UserProvider;
 use WebBook\Mall\Classes\Utils\DefaultMoney;
 use WebBook\Mall\Classes\Utils\Money;
+use WebBook\Mall\Classes\Vat\IntraEuTaxDecisionService;
+use WebBook\Mall\Classes\Vat\ViesVatValidator;
 use WebBook\Mall\Models\GeneralSettings;
 use PDO;
 
@@ -36,6 +39,16 @@ trait BootServiceContainer
         $this->app->bind(SignInHandler::class, fn () => new DefaultSignInHandler());
         $this->app->bind(SignUpHandler::class, fn () => new DefaultSignUpHandler());
         $this->app->singleton(Money::class, fn () => new DefaultMoney());
+        $this->app->singleton(ViesVatValidator::class, fn ($app) => new ViesVatValidator(
+            $app->make(HttpFactory::class),
+            $app['cache.store'],
+            $app['log'],
+            (array)$app['config']->get('webbook.mall::vat', [])
+        ));
+        $this->app->singleton(IntraEuTaxDecisionService::class, fn ($app) => new IntraEuTaxDecisionService(
+            $app->make(ViesVatValidator::class),
+            (array)$app['config']->get('webbook.mall::vat', [])
+        ));
         $this->app->singleton(PaymentGateway::class, function () {
             $gateway = new DefaultPaymentGateway();
             $gateway->registerProvider(new WebBook());

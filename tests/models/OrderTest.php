@@ -8,6 +8,7 @@ use Event;
 use WebBook\Mall\Classes\Exceptions\OutOfStockException;
 use WebBook\Mall\Classes\PaymentState\PendingState;
 use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Classes\Vat\IntraEuTaxDecisionService;
 use WebBook\Mall\Models\Address;
 use WebBook\Mall\Models\Cart;
 use WebBook\Mall\Models\Customer;
@@ -70,6 +71,39 @@ class OrderTest extends PluginTestCase
         $this->assertEquals(json_encode(Address::find(2)), $order->getOriginal('shipping_address'));
 
         $this->assertNotNull($cart->deleted_at);
+    }
+
+    public function test_it_stores_the_vat_validation_audit_in_the_billing_address_snapshot()
+    {
+        $decision = [
+            'tax_treatment' => IntraEuTaxDecisionService::TREATMENT_STANDARD,
+            'reason' => 'vies_invalid',
+            'is_exempt' => false,
+            'validation' => null,
+        ];
+        $audit = [
+            'vat_id' => 'DE123456789',
+            'status' => 'invalid',
+            'request_date' => '2026-07-25T11:29:19.010Z',
+            'request_identifier' => 'REQUEST-123',
+            'checked_at' => '2026-07-25T11:29:20+00:00',
+            'tax_treatment' => 'standard',
+            'reason' => 'vies_invalid',
+        ];
+
+        $decisionService = $this->createMock(IntraEuTaxDecisionService::class);
+        $decisionService->method('forCart')->willReturn($decision);
+        $decisionService->method('auditData')->with($decision)->willReturn($audit);
+        app()->instance(IntraEuTaxDecisionService::class, $decisionService);
+
+        $cart = $this->getFullCart();
+        $cart->shipping_address_id = 2;
+        $cart->billing_address_id = 1;
+        $cart->save();
+
+        $order = Order::fromCart($cart);
+
+        $this->assertSame($audit, $order->billing_address['vat_validation']);
     }
 
     public function test_it_updates_product_stock()

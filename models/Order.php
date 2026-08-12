@@ -21,6 +21,7 @@ use WebBook\Mall\Classes\Traits\HashIds;
 use WebBook\Mall\Classes\Traits\JsonPrice;
 use WebBook\Mall\Classes\Traits\PDFMaker;
 use WebBook\Mall\Classes\Utils\Money;
+use WebBook\Mall\Classes\Vat\IntraEuTaxDecisionService;
 use RuntimeException;
 use Session;
 use System\Classes\PluginManager;
@@ -208,6 +209,21 @@ class Order extends Model
                 throw new ValidationException(['Your order has no shipping method set. Please select a shipping method.']);
             }
 
+            $cart->unsetRelation('billing_address');
+            $cart->unsetRelation('shipping_address');
+            $cart->loadMissing([
+                'billing_address.country',
+                'shipping_address.country',
+            ]);
+
+            $taxDecisionService = app(IntraEuTaxDecisionService::class);
+            $taxDecision = $taxDecisionService->forCart($cart, true);
+
+            // A previous totals calculation in the same request may contain a stale tax decision.
+            $cart->totalsCached = null;
+            $cart->unsetRelation('products');
+            $cart->loadMissing(['products.product.brand']);
+
             $totals = $cart->totals;
 
             $order                                          = new static();
@@ -215,7 +231,14 @@ class Order extends Model
             $order->currency                                = Currency::activeCurrency();
             $order->lang                                    = $order->getLocale();
             $order->shipping_address_same_as_billing        = $cart->shipping_address_same_as_billing;
-            $order->billing_address                         = $cart->billing_address;
+            $billingAddress                                 = optional($cart->billing_address)->toArray();
+            $vatValidationAudit                             = $taxDecisionService->auditData($taxDecision);
+
+            if (is_array($billingAddress) && $vatValidationAudit !== null) {
+                $billingAddress['vat_validation'] = $vatValidationAudit;
+            }
+
+            $order->billing_address                         = $billingAddress;
             $order->shipping_address                        = $cart->shipping_address;
             $order->shipping                                = $totals->shippingTotal();
             $order->payment                                 = $totals->paymentTotal();

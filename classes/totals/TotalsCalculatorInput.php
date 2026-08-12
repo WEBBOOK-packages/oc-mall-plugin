@@ -13,6 +13,11 @@ use WebBook\Mall\Models\Wishlist;
 class TotalsCalculatorInput
 {
     /**
+     * @var Cart|null
+     */
+    public $cart;
+
+    /**
      * @var Collection<Product>
      */
     public $products;
@@ -56,6 +61,7 @@ class TotalsCalculatorInput
         );
 
         $input                      = new self();
+        $input->cart                = $cart;
         $input->products            = $cart->products;
         $input->shipping_method     = $cart->shipping_method;
         $input->payment_method      = $cart->payment_method;
@@ -71,6 +77,7 @@ class TotalsCalculatorInput
         $wishlist->loadMissing('items.data.taxes');
 
         $input                      = new self();
+        $input->cart                = null;
         $input->products            = $wishlist->items;
         $input->discounts           = new Collection();
         $input->shipping_method     = $wishlist->shipping_method;

@@ -19,6 +19,7 @@ use WebBook\Mall\Models\ShippingMethodRate;
 use WebBook\Mall\Models\Tax;
 use WebBook\Mall\Models\Variant;
 use WebBook\Mall\Tests\PluginTestCase;
+use WebBook\Mall\Classes\Vat\IntraEuTaxDecisionService;
 
 class TotalsCalculatorTest extends PluginTestCase
 {
@@ -146,6 +147,37 @@ class TotalsCalculatorTest extends PluginTestCase
         $this->assertCount(2, $calc->taxes());
         $this->assertEquals(1538, round($calc->taxes()[0]->total()));
         $this->assertEquals(3077, round($calc->taxes()[1]->total()));
+    }
+
+    public function test_intra_eu_exemption_removes_taxes_but_keeps_the_tax_inclusive_catalog_price()
+    {
+        $tax = $this->getTax('Test VAT', 21);
+
+        $product                     = $this->getProduct(121);
+        $product->price_includes_tax = true;
+        $product->stock              = 10;
+        $product->taxes()->attach($tax->id);
+        $product->save();
+
+        $decisionService = $this->createMock(IntraEuTaxDecisionService::class);
+        $decisionService->method('forCart')->willReturn([
+            'tax_treatment' => IntraEuTaxDecisionService::TREATMENT_INTRA_EU_EXEMPT,
+            'reason' => 'valid_vat_and_matching_eu_delivery',
+            'is_exempt' => true,
+            'validation' => null,
+        ]);
+        app()->instance(IntraEuTaxDecisionService::class, $decisionService);
+
+        $cart = $this->getCart();
+        $cart->billing_address_id = $this->address->id;
+        $cart->save();
+        $cart->addProduct($product, 1);
+
+        $calc = new TotalsCalculator(TotalsCalculatorInput::fromCart($cart));
+
+        $this->assertEquals(12100, $calc->totalPostTaxes());
+        $this->assertEquals(0, $calc->totalTaxes());
+        $this->assertCount(0, $calc->taxes());
     }
 
     public function test_it_calculates_taxes_included_on_amount_after_discount_applied()

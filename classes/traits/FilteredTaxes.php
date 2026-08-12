@@ -4,8 +4,11 @@ namespace WebBook\Mall\Classes\Traits;
 
 use Event;
 use October\Rain\Support\Collection;
+use WebBook\Mall\Classes\Totals\TotalsCalculatorInput;
 use WebBook\Mall\Classes\User\Auth;
+use WebBook\Mall\Classes\Vat\IntraEuTaxDecisionService;
 use WebBook\Mall\Models\Cart;
+use WebBook\Mall\Models\CartProduct;
 use WebBook\Mall\Models\Tax;
 
 /**
@@ -33,6 +36,16 @@ trait FilteredTaxes
         // Don't filter anything and don't use the default tax if no taxes were passed in.
         if ($taxes->count() === 0) {
             return $taxes;
+        }
+
+        $taxDecisionCart = $this->getTaxDecisionCart();
+
+        if ($taxDecisionCart) {
+            $decision = app(IntraEuTaxDecisionService::class)->forCart($taxDecisionCart);
+
+            if ($decision['is_exempt']) {
+                return new Collection();
+            }
         }
 
         $this->countryId = $this->getCartCountryId();
@@ -70,5 +83,22 @@ trait FilteredTaxes
         } else {
             return optional($cart->shipping_address)->country_id ?? $cart->getFallbackShippingCountryId();
         }
+    }
+
+    protected function getTaxDecisionCart(): ?Cart
+    {
+        if (
+            property_exists($this, 'input')
+            && $this->input instanceof TotalsCalculatorInput
+            && $this->input->cart instanceof Cart
+        ) {
+            return $this->input->cart;
+        }
+
+        if ($this instanceof CartProduct) {
+            return $this->cart;
+        }
+
+        return null;
     }
 }
